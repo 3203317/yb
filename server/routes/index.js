@@ -9,12 +9,14 @@ var util = require('speedt-utils'),
 	express = util.express;
 
 var portal = {
-	index: require('../controllers/portal/index')
+	chat: require('../controllers/portal/chat')
 };
 
 function proc_portal(app){
-	var index = portal.index;
-	app.get('/', index.indexUI);
+	var chat = portal.chat;
+	app.post('/chat/sendMsg', chat.sendMsg);
+	app.get('/chat/receiveMsg', chat.receiveMsg);
+	app.get('/chat/', chat.indexUI);
 }
 
 /**

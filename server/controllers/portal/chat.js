@@ -18,9 +18,23 @@ var EventProxy = require('eventproxy');
  * @return
  */
 exports.indexUI = function(req, res, next){
-	res.render('portal/1.0.1/index', {
+	res.render('portal/chat/index', {
 		conf: conf,
 		description: '',
 		keywords: ',html5,nodejs'
 	});
+};
+
+exports.sendMsg = function(req, res, next){
+
+};
+
+/**
+ * 长连接
+ *
+ * @params
+ * @return
+ */
+exports.receiveMsg = function(req, res, next){
+
 };

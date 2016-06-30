@@ -75,15 +75,6 @@ var server = http.createServer(app);
 // server.setTimeout(5000);
 
 server.listen(app.get('port'), function(){
-	console.log('[%s] Express server listening on port %s.', util.format(), app.get('port'));
+	console.log('[%s] chat server listening on port %s.', util.format(), app.get('port'));
 	require('./routes')(app);
-});
-
-var io = require('socket.io')(server);
-
-io.on('connection', function (socket) {
-	socket.emit('news', { hello: 'world' });
-	socket.on('my other event', function (data){
-		console.log(data);
-	});
 });
