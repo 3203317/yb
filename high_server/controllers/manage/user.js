@@ -10,15 +10,13 @@ var EventProxy = require('eventproxy');
 
 var conf = require('../../settings');
 
-var EventProxy = require('eventproxy');
-
 /**
  *
  * @params
  * @return
  */
-exports.indexUI = function(req, res, next){
-	res.render('portal/1.0.1/index', {
+exports.loginUI = function(req, res, next){
+	res.render('user/1.0.1/login', {
 		conf: conf,
 		description: '',
 		keywords: ',html5,nodejs'
