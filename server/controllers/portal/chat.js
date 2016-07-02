@@ -26,7 +26,10 @@ exports.indexUI = function(req, res, next){
 };
 
 exports.sendMsg = function(req, res, next){
-
+	var result = {
+		success: true
+	};
+	res.send(result)
 };
 
 /**
@@ -37,4 +40,12 @@ exports.sendMsg = function(req, res, next){
  */
 exports.receiveMsg = function(req, res, next){
 
+	function getRTime(){
+		var result = {
+			success: new Date()
+		};
+		res.send(result)
+	}
+
+	setTimeout(getRTime, 5000);
 };

@@ -11,10 +11,66 @@
 	<section class='container'>
 		<div class='row'>
 			<div class='col-sm-12 col-md-8'>
+				<div class='well fade in'>
+					<button class='close' data-dismiss='alert' type='button'>×</button>
+					<strong>张三 (12:09:53)：</strong> 欢迎您
+				</div>
+				<div class='well fade in'>
+					<button class='close' data-dismiss='alert' type='button'>×</button>
+					<strong>我 (13:01:23)：</strong> 不客气
+				</div>
+			</div>
+			<div class='col-sm-12 col-md-8'>
+				<textarea></textarea>
+				<button id='btn'>send</button>
 			</div>
 		</div>
 	</section>
 	#parse('portal/chat/_pagelet/footer.html')
 	#parse('_pagelet/js.html')
+	<script>
+		$('#btn').click(function(){
+			$.ajax({
+				url : '/chat/sendMsg',
+				type : 'POST',
+				dataType : 'JSON',
+				data : {
+					msg: '123'
+				},
+				success : function(data) {
+					console.log(data)
+				},
+				error : function() {
+					alert(arguments);
+				}
+			});
+		});
+
+		(function(){
+			
+
+			function getRTime(){
+				
+				$.ajax({
+					url : '/chat/receiveMsg',
+					type : 'GET',
+					dataType : 'JSON',
+					data : {
+						msg: '456'
+					},
+					success : function(data) {
+						setTimeout(getRTime, 1000);
+					},
+					error : function() {
+						alert(arguments);
+					}
+				});
+
+				//setTimeout(getRTime, 1000);
+			}
+
+			setTimeout(getRTime, 1000);
+		})();
+	</script>
 </body>
 </html>
