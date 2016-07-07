@@ -1,0 +1,208 @@
+<#include "/_pagelet/constant.html"/>
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>变更密码 | 原型系统</title>
+		<#include "/_pagelet/header.html"/>
+		<style>
+		.form-horizontal {
+			margin-bottom: 0;
+		}
+		.form-horizontal .form-actions {
+			margin-bottom: 0;
+		}
+		</style>
+	</head>
+
+	<body>
+		<div class="navbar">
+			<div class="navbar-inner">
+				<#include "../../default/1.0.2/_pagelet/banner.html"/>
+			</div><!--/.navbar-inner-->
+		</div>
+
+		<div class="main-container container-fluid">
+			<a class="menu-toggler" id="menu-toggler" href="#">
+				<span class="menu-text"></span>
+			</a>
+
+			<div class="sidebar" id="sidebar">
+				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
+					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
+						<button class="btn btn-small btn-success">
+							<i class="icon-signal"></i>
+						</button>
+
+						<button class="btn btn-small btn-info">
+							<i class="icon-pencil"></i>
+						</button>
+
+						<button class="btn btn-small btn-warning">
+							<i class="icon-group"></i>
+						</button>
+
+						<button class="btn btn-small btn-danger">
+							<i class="icon-cogs"></i>
+						</button>
+					</div>
+
+					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
+						<span class="btn btn-success"></span>
+
+						<span class="btn btn-info"></span>
+
+						<span class="btn btn-warning"></span>
+
+						<span class="btn btn-danger"></span>
+					</div>
+				</div><!--#sidebar-shortcuts-->
+
+				<#include "../../default/1.0.2/_pagelet/nav.html"/>
+			</div>
+
+			<div class="main-content">
+				<div class="breadcrumbs" id="breadcrumbs">
+					<ul class="breadcrumb">
+						<li>
+							<i class="icon-home home-icon"></i>
+							<a href="/">首页</a>
+
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+						<li class="active">变更密码</li>
+					</ul><!--.breadcrumb-->
+
+				</div>
+
+				<div class="page-content">
+					<div class="page-header position-relative">
+						<h1>
+							变更密码
+							<small>
+								<i class="icon-double-angle-right"></i>
+								Change Password
+							</small>
+						</h1>
+					</div><!--/.page-header-->
+
+					<div class="row-fluid">
+						<div class="span12">
+							<!--PAGE CONTENT BEGINS-->
+
+							<div class="alert alert-block alert-error">
+								<button type="button" class="close" data-dismiss="alert">
+									<i class="icon-remove"></i>
+								</button>
+
+								<strong>
+									<!-- <i class="icon-remove"></i> -->
+									系统提示：
+								</strong>
+
+								为了您的账户安全，请经常更换密码。
+							</div>
+
+							<div class="row-fluid">
+								<div class="span12">
+									<div class="tabbable">
+										<ul class="nav nav-tabs" id="myTab">
+											<li class="active">
+												<a data-toggle="tab" href="#login">
+													<!-- <i class="green icon-home bigger-110"></i> -->
+													变更密码
+												</a>
+											</li>
+										</ul>
+
+										<div class="tab-content">
+											<div id="login" class="tab-pane in active">
+												<form class="form-horizontal" id='frm'>
+													<input type="hidden" name='verify_token' value='${(verify_token)!}' />
+													<div class="control-group">
+														<label class="control-label" for="frm_user_pass_old">原密码</label>
+
+														<div class="controls">
+															<input type="password" class='input-large' id="frm_old_pass" name='old_pass' placeholder="原密码" />
+														</div>
+													</div>
+													<div class="control-group">
+														<label class="control-label" for="frm_user_pass">新密码</label>
+
+														<div class="controls">
+															<input type="password" class='input-large' id="frm_new_pass" name='new_pass' placeholder="新密码" />
+														</div>
+													</div>
+													<div class="control-group">
+														<label class="control-label" for="frm_user_pass_2">确认密码</label>
+
+														<div class="controls">
+															<input type="password" class='input-large' id="frm_new_pass_2" placeholder="确认密码" />
+														</div>
+													</div>
+													<div class="form-actions">
+														<button class="btn btn-info" type="button" id='btn_submit'>
+															<i class="icon-ok bigger-110"></i>
+															提交
+														</button>
+
+														&nbsp; &nbsp; &nbsp;
+														<button class="btn" type="reset">
+															<i class="icon-undo bigger-110"></i>
+															重置
+														</button>
+													</div>
+												</form>
+											</div>
+
+										</div>
+									</div>
+								</div>
+
+							</div>
+
+							<!--PAGE CONTENT ENDS-->
+						</div><!--/.span-->
+					</div><!--/.row-fluid-->
+				</div><!--/.page-content-->
+
+			</div><!--/.main-content-->
+		</div><!--/.main-container-->
+
+		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
+			<i class="icon-double-angle-up icon-only bigger-110"></i>
+		</a>
+
+		<#include "/_pagelet/js.html"/>
+
+		<script>
+
+		$(function() {
+			$('#btn_submit').click(function() {
+				if ($('#frm_new_pass').val() !== $('#frm_new_pass_2').val()) {
+					return alert('两次输入的登陆密码不一致');
+				}
+
+				$.ajax({
+					url : '${(conf_html_virtualPath)!}user/changePwd',
+					type : 'POST',
+					dataType : 'JSON',
+					data : $('#frm').serializeObjectForm(),
+					success : function(data) {
+						if (data.success){
+							alert('修改成功');
+							location.href = '${(conf_html_virtualPath)!}user/changePwd';
+							return;
+						}
+						alert(data.msg);
+					},
+					error : function() {
+						alert(arguments[2]);
+					}
+				});
+			});
+		});
+		</script>
+	</body>
+</html>

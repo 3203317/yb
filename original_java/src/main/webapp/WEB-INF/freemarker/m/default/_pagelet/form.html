@@ -1,0 +1,50 @@
+<form id='frm' class="form-horizontal">
+
+	<#list data_list! as doc>
+	<div class="control-group">
+		<label class="control-label" for="frm_${(doc.key_)!}">${(doc.comment)!}</label>
+
+		<div class="controls">
+			<input type="text" class='input-large' id="frm_${(doc.key_)!}" name='${(doc.key_)!}' placeholder="${(doc.comment)!}" value='${(doc.value_)!}' />
+			<a class="btn btn-mini btn-info" href='javascript:resetSetting("${(doc.key_)!}");'>保存</a>
+		</div>
+	</div>
+	</#list>
+
+	<!-- <div class="form-actions">
+		<button class="btn btn-info" type="button" id='btn_submit'>
+			<i class="icon-ok bigger-110"></i>
+			提交
+		</button>
+
+		&nbsp; &nbsp; &nbsp;
+		<button class="btn" type="reset">
+			<i class="icon-undo bigger-110"></i>
+			重置
+		</button>
+	</div> -->
+</form>
+<script>
+$(function(){
+	$('#frm_num_ticket').ace_spinner({
+		value: ${(data_user.num_ticket)!0},
+		min: 10,
+		max: 30000,
+		step: 10,
+		icon_up: 'icon-plus',
+		icon_down: 'icon-minus',
+		btn_up_class: 'btn-success' ,
+		btn_down_class: 'btn-danger'
+	});
+	$('#frm_num_food').ace_spinner({
+		value: ${(data_user.num_food)!0},
+		min: 10,
+		max: 30000,
+		step: 10,
+		icon_up: 'icon-plus',
+		icon_down: 'icon-minus',
+		btn_up_class: 'btn-success' ,
+		btn_down_class: 'btn-danger'
+	});
+});
+</script>
