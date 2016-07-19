@@ -34,13 +34,13 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/manage/user/login" }, method = RequestMethod.GET)
-	public String _m_user_loginUI() {
+	public String _m_loginUI() {
 		return "m/user/login";
 	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/manage/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> _m_user_login(HttpSession session,
+	public Map<String, Object> _m_login(HttpSession session,
 			@RequestParam(required = true) String user_name,
 			@RequestParam(required = true) String user_pass) {
 
@@ -73,7 +73,7 @@ public class ManagerController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/manage/user/logout" }, method = RequestMethod.GET)
-	public String _m_user_logoutUI(HttpSession session) {
+	public String _m_logoutUI(HttpSession session) {
 		session.invalidate();
 		return "redirect:/manage/user/login";
 	}
