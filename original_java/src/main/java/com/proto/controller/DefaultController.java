@@ -40,7 +40,7 @@ public class DefaultController {
 	@RequestMapping(value = { "/manage/" }, method = RequestMethod.GET)
 	public String _m_indexUI(HttpSession session, Map<String, Object> map) {
 		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",51,");
+		map.put("nav_choose", ",01,");
 		return "m/default/index";
 	}
 

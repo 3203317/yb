@@ -29,23 +29,74 @@ public class ManagerController {
 	private ManagerService managerService;
 
 	/**
-	 * 管理员登陆
+	 * 验证令牌
 	 *
+	 * @param session
+	 * @param token
+	 * @return
+	 */
+	private ResultMap<Void> verifyToken(HttpSession session, String token) {
+
+		ResultMap<Void> map = new ResultMap<Void>();
+		map.setSuccess(false);
+
+		Object verify = session.getAttribute("verify.token");
+
+		if (null == verify) {
+			map.setMsg("请刷新页面");
+			return map;
+		}
+
+		if (verify.toString().equals(token)) {
+			map.setSuccess(true);
+			session.removeAttribute("verify.token");
+			return map;
+		}
+
+		map.setMsg("请刷新页面");
+		session.removeAttribute("verify.token");
+		return map;
+	}
+
+	/**
+	 * 生成令牌（4位数字）
+	 *
+	 * @param session
+	 * @return
+	 */
+	private String genVerifyToken(HttpSession session) {
+		int i = (int) ((Math.random() * 5 + 1) * 1000);
+		session.setAttribute("verify.token", String.valueOf(i));
+		return session.getAttribute("verify.token").toString();
+	}
+
+	/**
+	 *
+	 * @param session
+	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/manage/user/login" }, method = RequestMethod.GET)
-	public String _m_loginUI() {
+	public String _m_loginUI(HttpSession session, Map<String, Object> map) {
+		map.put("verify_token", genVerifyToken(session));
 		return "m/user/login";
 	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/manage/user/login" }, method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> _m_login(HttpSession session,
+			@RequestParam(required = true) String verify_token,
 			@RequestParam(required = true) String user_name,
 			@RequestParam(required = true) String user_pass) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
+
+		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
+		if (!verifyToken.getSuccess()) {
+			result.put("msg", verifyToken.getMsg());
+			return result;
+		}
 
 		ResultMap<Manager> map = managerService.login(user_name, user_pass);
 
