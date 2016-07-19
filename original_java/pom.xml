@@ -2,20 +2,20 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.momohelp</groupId>
+	<groupId>com.proto</groupId>
 	<artifactId>original_java</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.1</version>
-	<name>momohelp :: web</name>
-	<url>http://www.momohelp.com/</url>
+	<name>proto :: web</name>
+	<url>http://www.foreworld.net/</url>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<!-- MyBatis Generator -->
 		<!-- Java接口和实体类 -->
 		<targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-		<targetMapperPackage>com.momohelp.mapper</targetMapperPackage>
-		<targetModelPackage>com.momohelp.model</targetModelPackage>
+		<targetMapperPackage>com.proto.mapper</targetMapperPackage>
+		<targetModelPackage>com.proto.model</targetModelPackage>
 		<!-- XML生成路径 -->
 		<targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
 		<targetXMLPackage>mapper</targetXMLPackage>
