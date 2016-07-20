@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import tk.mybatis.mapper.entity.Example;
 
 import com.github.pagehelper.PageHelper;
+import com.proto.model.ResultMap;
 import com.proto.model.SysCfg;
 import com.proto.service.SysCfgService;
 
@@ -26,6 +27,23 @@ public class SysCfgServiceImpl extends BaseService<SysCfg> implements
 
 		PageHelper.startPage(page, rows);
 		return selectByExample(example);
+	}
+
+	@Override
+	public ResultMap<Void> edit(SysCfg sysCfg) {
+
+		ResultMap<Void> map = new ResultMap<Void>();
+		map.setSuccess(false);
+
+		SysCfg _sysCfg = new SysCfg();
+
+		_sysCfg.setKey_(sysCfg.getKey_());
+		_sysCfg.setValue_(sysCfg.getValue_());
+
+		updateNotNull(_sysCfg);
+
+		map.setSuccess(true);
+		return map;
 	}
 
 }

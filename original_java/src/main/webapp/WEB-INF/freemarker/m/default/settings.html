@@ -95,7 +95,8 @@
 														<label class="control-label" for="${(doc.key_)!}">${(doc.title)!}</label>
 
 														<div class="controls">
-															<input type="text" onchange='changeSetting("${(doc.key_)!}")' class='input-large' id="${(doc.key_)!}" placeholder="${(doc.title)!}" value='${(doc.value_)!}' />
+															<input type="text" onchange='changeSetting("${(doc.key_)!}")' class='input-large' id="${(doc.key_)!}"
+																placeholder="${(doc.title)!}" value='${(doc.value_)!}' title='${(doc.comment)!}' />
 														</div>
 													</div>
 												</#list>
@@ -125,8 +126,33 @@
 		<script>
 		function changeSetting(key){
 
-			var val = $('#'+ key).val();
-			console.log(val);
+			var val = $('#'+ key).val().trim();
+
+			if('' === val){
+				alert('值不能为空');
+				$('#frm')[0].reset();
+				return;
+			}
+
+			$.ajax({
+				url : '${(conf_html_virtualPath)!}manage/settings/edit',
+				type : 'POST',
+				dataType : 'JSON',
+				data : {
+					key_: key,
+					value_: val
+				},
+				success : function(data) {
+					if (data.success){
+						return location.href = '${(conf_html_virtualPath)!}manage/settings/';
+					}
+					if (data.msg) alert(data.msg);
+					location.href = '${(conf_html_virtualPath)!}manage/settings/';
+				},
+				error : function() {
+					alert(arguments[2]);
+				}
+			});
 		}
 		</script>
 	</body>

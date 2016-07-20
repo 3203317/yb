@@ -2,6 +2,7 @@ package com.proto.service;
 
 import java.util.List;
 
+import com.proto.model.ResultMap;
 import com.proto.model.SysCfg;
 
 /**
@@ -12,4 +13,6 @@ import com.proto.model.SysCfg;
 public interface SysCfgService extends IService<SysCfg> {
 
 	List<SysCfg> findBySysCfg(SysCfg sysCfg, int page, int rows);
+
+	ResultMap<Void> edit(SysCfg sysCfg);
 }
