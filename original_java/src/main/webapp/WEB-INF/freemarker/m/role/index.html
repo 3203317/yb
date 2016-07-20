@@ -162,7 +162,7 @@
 															<i class="icon-trash bigger-120"></i>
 														</button>
 
-														<button class="btn btn-mini btn-warning" title='更改状态'>
+														<button class="btn btn-mini<#if doc.status=1> btn-success<#else> btn-warning</#if>" title='更改状态'>
 															<i class="icon-flag bigger-120"></i>
 														</button>
 													</div>
@@ -193,7 +193,7 @@
 
 																<li>
 																	<a href='javascript:;' class="tooltip-info" data-rel="tooltip" title="更改状态">
-																		<span class="orange">
+																		<span class="<#if doc.status=1>green<#else>orange</#if>">
 																			<i class="icon-flag bigger-120"></i>
 																		</span>
 																	</a>
