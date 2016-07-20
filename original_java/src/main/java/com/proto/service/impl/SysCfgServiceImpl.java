@@ -46,4 +46,9 @@ public class SysCfgServiceImpl extends BaseService<SysCfg> implements
 		return map;
 	}
 
+	@Override
+	public SysCfg getById(String id) {
+		return selectByKey(id);
+	}
+
 }
