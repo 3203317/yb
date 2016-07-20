@@ -21,7 +21,7 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 	@Override
 	public List<Role> findByRole(Role role, int page, int rows) {
 		Example example = new Example(Role.class);
-		example.setOrderByClause("create_time desc");
+		example.setOrderByClause("create_time DESC");
 
 		PageHelper.startPage(page, rows);
 		return selectByExample(example);
