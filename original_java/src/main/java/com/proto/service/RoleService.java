@@ -1,5 +1,7 @@
 package com.proto.service;
 
+import java.util.List;
+
 import com.proto.model.Role;
 
 /**
@@ -9,4 +11,5 @@ import com.proto.model.Role;
  */
 public interface RoleService extends IService<Role> {
 
+	List<Role> findByRole(Role role, int page, int rows);
 }

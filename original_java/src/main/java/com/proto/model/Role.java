@@ -24,8 +24,17 @@ public class Role implements Serializable {
 	private String id;
 
 	private String role_name;
+	private String role_desc;
 	private Date create_time;
 	private Integer status;
+
+	public String getRole_desc() {
+		return role_desc;
+	}
+
+	public void setRole_desc(String role_desc) {
+		this.role_desc = role_desc;
+	}
 
 	public String getId() {
 		return id;
