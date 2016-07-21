@@ -258,4 +258,19 @@ public class UserController {
 		return result;
 	}
 
+	/**
+	 * 上传头像
+	 *
+	 * @param session
+	 * @param id
+	 * @return
+	 */
+	@RequestMapping(path = "/user/changeAvatar", method = RequestMethod.GET)
+	public Map<String, Object> _i_changeAvatar(HttpSession session,
+			@RequestParam(required = true) String id) {
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+		return result;
+	}
+
 }
