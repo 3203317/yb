@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.proto.model.Manager;
 import com.proto.model.ResultMap;
 import com.proto.service.ManagerService;
+import com.proto.util.StringUtil;
 import com.proto.util.encryptUtil.MD5;
 
 /**
@@ -42,6 +43,40 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 		map.setData(manager);
 		map.setSuccess(true);
 		return map;
+	}
+
+	@Override
+	public ResultMap<Void> changePwd(String user_id, String old_pass,
+			String new_pass) {
+
+		ResultMap<Void> map = new ResultMap<Void>();
+		map.setSuccess(false);
+
+		new_pass = StringUtil.isEmpty(new_pass);
+		if (null == new_pass) {
+			map.setMsg("新密码不能为空");
+			return map;
+		}
+
+		Manager user = getById(user_id);
+
+		if (!MD5.encode(old_pass).equals(user.getUser_pass())) {
+			map.setMsg("原密码错误");
+			return map;
+		}
+
+		user = new Manager();
+		user.setId(user_id);
+		user.setUser_pass(MD5.encode(new_pass));
+		updateNotNull(user);
+
+		map.setSuccess(true);
+		return map;
+	}
+
+	@Override
+	public Manager getById(String id) {
+		return selectByKey(id);
 	}
 
 }

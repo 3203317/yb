@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.proto.model.ResultMap;
 import com.proto.model.User;
@@ -220,7 +221,7 @@ public class UserController {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",03,0301,");
-		return "i/user/1.0.1/profile";
+		return "i/user/1.0.2/profile";
 	}
 
 	@ResponseBody
@@ -262,15 +263,14 @@ public class UserController {
 	 * 上传头像
 	 *
 	 * @param session
-	 * @param id
+	 * @param file
 	 * @return
 	 */
-	@RequestMapping(path = "/user/changeAvatar", method = RequestMethod.GET)
+	@RequestMapping(path = "/user/changeAvatar", method = RequestMethod.POST)
 	public Map<String, Object> _i_changeAvatar(HttpSession session,
-			@RequestParam(required = true) String id) {
+			@RequestParam(value = "file") MultipartFile file) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 		return result;
 	}
-
 }

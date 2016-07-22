@@ -129,4 +129,48 @@ public class ManagerController {
 		return "redirect:/manage/user/login";
 	}
 
+	/**
+	 * 修改密码
+	 *
+	 * @param session
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/manage/user/changePwd" }, method = RequestMethod.GET)
+	public String _m_changePwdUI(HttpSession session, Map<String, Object> map) {
+		map.put("verify_token", genVerifyToken(session));
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",03,0302,");
+		return "m/manager/changePwd";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/manage/user/changePwd" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> _m_changePwd(HttpSession session,
+			@RequestParam(required = true) String verify_token,
+			@RequestParam(required = true) String old_pass,
+			@RequestParam(required = true) String new_pass) {
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+
+		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
+		if (!verifyToken.getSuccess()) {
+			result.put("msg", verifyToken.getMsg());
+			return result;
+		}
+
+		ResultMap<Void> changePwd = managerService
+				.changePwd(session.getAttribute("session.user.id").toString(),
+						old_pass, new_pass);
+
+		if (!changePwd.getSuccess()) {
+			result.put("msg", changePwd.getMsg());
+			return result;
+		}
+
+		result.put("success", true);
+		return result;
+	}
+
 }
