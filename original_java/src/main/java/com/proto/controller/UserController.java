@@ -295,4 +295,22 @@ public class UserController {
 		map.put("nav_choose", ",09,0901,");
 		return "m/user/add";
 	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/manage/user/add" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> _m_add(HttpSession session, User user) {
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+
+		ResultMap<User> createUser = userService.createUser(user);
+
+		if (!createUser.getSuccess()) {
+			result.put("msg", createUser.getMsg());
+			return result;
+		}
+
+		result.put("success", true);
+		return result;
+	}
 }

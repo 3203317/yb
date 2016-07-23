@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
-		<title>添加用户 | 用户管理 | 系统管理 | 后台管理</title>
+		<title>添加会员 | 会员资料 | 会员管理 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
 		<style>
 		.form-horizontal {
@@ -37,14 +37,14 @@
 						</li>
 
 						<li>
-							系统管理
+							会员管理
 							<span class="divider">
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
 						</li>
 
 						<li>
-							用户管理
+							<a href='./'>会员资料</a>
 							<span class="divider">
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
@@ -116,13 +116,45 @@
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_verify_imgCode">图形验证码</label>
+														<label class="control-label" for="frm_real_name">姓名</label>
 
 														<div class="controls">
-															<input type="text" class='input-small' id="frm_verify_imgCode" name='verify_imgCode' placeholder="图形验证码" />
-															<img id='img_verifyCode' style='height:28px' src='' title='点击更换验证码'>
+															<input type="text" class='input-large' id="frm_real_name" name='real_name' placeholder="姓名" />
 														</div>
 													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_user_pass">登陆密码</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_user_pass" name='user_pass' placeholder="登陆密码" />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_mobile">手机号码</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_mobile" name='mobile' placeholder="手机号码" />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_email">电子邮箱</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_email" name='email' placeholder="电子邮箱" />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_nickname">昵称</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_nickname" name='nickname' placeholder="昵称" />
+														</div>
+													</div>
+
 													<div class="form-actions">
 														<button class="btn btn-info" onclick="return false;" id='btn_submit'>
 															<i class="icon-ok bigger-110"></i>
@@ -155,16 +187,29 @@
 		<#include "/_pagelet/js.html"/>
 
 		<script>
-		$('#img_verifyCode').click(function(){
-			showVerifyCode();
-		});
-
-		function showVerifyCode(){
-			$('#img_verifyCode').attr('src', '/verifyCode.jpg?ts='+ (new Date()).valueOf());
-		}
 
 		$(function(){
-			showVerifyCode();
+
+			$('#btn_submit').click(function(){
+
+				$.ajax({
+					url : '${(conf_html_virtualPath)!}manage/user/add',
+					type : 'POST',
+					dataType : 'JSON',
+					data : $('#frm').serializeObjectForm(),
+					success : function(data) {
+						if (data.success){
+							alert('添加用户成功');
+							return location.href = '${(conf_html_virtualPath)!}manage/user/add';
+						}
+						if (data.msg) alert(data.msg);
+					},
+					error : function() {
+						alert(arguments[2]);
+					}
+				});
+			});
+
 		});
 		</script>
 	</body>
