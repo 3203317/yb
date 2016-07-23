@@ -1,8 +1,8 @@
 <#include "/_pagelet/constant.html"/>
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 	<head>
-		<title>添加新用户 | 管理后台 | 原型系统</title>
+		<title>添加用户 | 用户管理 | 系统管理 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
 		<style>
 		.form-horizontal {
@@ -15,50 +15,14 @@
 	</head>
 
 	<body>
-		<div class="navbar">
-			<div class="navbar-inner">
-				<#include "../default/_pagelet/banner.html"/>
-			</div><!--/.navbar-inner-->
-		</div>
+		<#include "/m/default/_pagelet/nav.html"/>
 
 		<div class="main-container container-fluid">
-			<a class="menu-toggler" id="menu-toggler" href="#">
+			<a class="menu-toggler" id="menu-toggler" href='javascript:;'>
 				<span class="menu-text"></span>
 			</a>
 
-			<div class="sidebar" id="sidebar">
-				<div class="sidebar-shortcuts" id="sidebar-shortcuts">
-					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-small btn-success">
-							<i class="icon-signal"></i>
-						</button>
-
-						<button class="btn btn-small btn-info">
-							<i class="icon-pencil"></i>
-						</button>
-
-						<button class="btn btn-small btn-warning">
-							<i class="icon-group"></i>
-						</button>
-
-						<button class="btn btn-small btn-danger">
-							<i class="icon-cogs"></i>
-						</button>
-					</div>
-
-					<div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
-						<span class="btn btn-success"></span>
-
-						<span class="btn btn-info"></span>
-
-						<span class="btn btn-warning"></span>
-
-						<span class="btn btn-danger"></span>
-					</div>
-				</div><!--#sidebar-shortcuts-->
-
-				<#include "../default/_pagelet/nav.html"/>
-			</div>
+			<#include "/m/default/_pagelet/sidebar.html"/>
 
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs">
@@ -71,18 +35,42 @@
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
 						</li>
-						<li class="active">添加新用户</li>
+
+						<li>
+							系统管理
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+
+						<li>
+							用户管理
+							<span class="divider">
+								<i class="icon-angle-right arrow-icon"></i>
+							</span>
+						</li>
+
+						<li class="active">添加用户</li>
 					</ul><!--.breadcrumb-->
 
+					<div class="nav-search" id="nav-search">
+						<form class="form-search" />
+							<span class="input-icon">
+								<input type="text" placeholder="搜索" class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
+								<i class="icon-search nav-search-icon"></i>
+							</span>
+						</form>
+					</div><!--#nav-search-->
 				</div>
 
 				<div class="page-content">
+
 					<div class="page-header position-relative">
 						<h1>
-							添加新用户
+							添加用户
 							<small>
 								<i class="icon-double-angle-right"></i>
-								Create User
+								Add User
 							</small>
 						</h1>
 					</div><!--/.page-header-->
@@ -91,40 +79,67 @@
 						<div class="span12">
 							<!--PAGE CONTENT BEGINS-->
 
-							<!-- <div class="alert alert-block alert-error">
+							<div class="alert alert-block alert-error">
 								<button type="button" class="close" data-dismiss="alert">
 									<i class="icon-remove"></i>
 								</button>
 
 								<strong>
-									<i class="icon-remove"></i>
+									<i class="icon-info-sign"></i>
 									系统提示：
 								</strong>
-
-								为了您的账户稳定，请尽量使用真实资料；支付宝，微信和银行卡至少要填写一项，开户名和姓名保持一致。
-							</div> -->
+							</div>
 
 							<div class="row-fluid">
 								<div class="span12">
 									<div class="tabbable">
 										<ul class="nav nav-tabs" id="myTab">
 											<li class="active">
-												<a data-toggle="tab" href="#home">
-													<!-- <i class="green icon-home bigger-110"></i> -->
-													添加新用户
+												<a data-toggle="tab" href="#info">
+													<i class="green icon-edit bigger-110"></i>
+													用户资料
 												</a>
 											</li>
 										</ul>
 
 										<div class="tab-content">
 											<div id="home" class="tab-pane in active">
-												<#include "./_pagelet/form.html"/>
+												<form id='frm' role='form' class="form-horizontal">
+													<input type="hidden" name='verify_token' value='${(verify_token)!}' />
+
+													<div class="control-group">
+														<label class="control-label" for="frm_user_name">用户名</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_user_name" name='user_name' placeholder="用户名" />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_verify_imgCode">图形验证码</label>
+
+														<div class="controls">
+															<input type="text" class='input-small' id="frm_verify_imgCode" name='verify_imgCode' placeholder="图形验证码" />
+															<img id='img_verifyCode' style='height:28px' src='' title='点击更换验证码'>
+														</div>
+													</div>
+													<div class="form-actions">
+														<button class="btn btn-info" onclick="return false;" id='btn_submit'>
+															<i class="icon-ok bigger-110"></i>
+															提交
+														</button>
+
+														&nbsp; &nbsp;
+														<button class="btn" type="reset">
+															<i class="icon-undo bigger-110"></i>
+															重置
+														</button>
+													</div>
+												</form>
 											</div>
 										</div>
-									</div>
+									</div><!-- 1 -->
 								</div>
-
-
 							</div>
 
 							<!--PAGE CONTENT ENDS-->
@@ -132,36 +147,24 @@
 					</div><!--/.row-fluid-->
 				</div><!--/.page-content-->
 
+				<#include "/_pagelet/settings.html"/>
 			</div><!--/.main-content-->
 		</div><!--/.main-container-->
 
-		<a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-			<i class="icon-double-angle-up icon-only bigger-110"></i>
-		</a>
-
+		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
 
 		<script>
-		$(function(){
+		$('#img_verifyCode').click(function(){
+			showVerifyCode();
+		});
 
-			$('#btn_submit').click(function() {
-				$.ajax({
-					url : '${(conf_html_virtualPath)!}manage/user/add',
-					type : 'POST',
-					dataType : 'JSON',
-					data : $('#frm').serializeObjectForm(),
-					success : function(data) {
-						if (data.success) {
-							alert('添加新用户成功')
-							return location.href = '${(conf_html_virtualPath)!}manage/user/';
-						}
-						if (data.msg) alert(data.msg[0]);
-					},
-					error : function() {
-						alert(arguments[2]);
-					}
-				});
-			});
+		function showVerifyCode(){
+			$('#img_verifyCode').attr('src', '/verifyCode.jpg?ts='+ (new Date()).valueOf());
+		}
+
+		$(function(){
+			showVerifyCode();
 		});
 		</script>
 	</body>

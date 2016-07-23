@@ -287,4 +287,12 @@ public class UserController {
 		map.put("nav_choose", ",09,0901,");
 		return "m/user/index";
 	}
+
+	@RequestMapping(value = { "/manage/user/add" }, method = RequestMethod.GET)
+	public String _m_addUI(HttpSession session, Map<String, Object> map) {
+
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",09,0901,");
+		return "m/user/add";
+	}
 }
