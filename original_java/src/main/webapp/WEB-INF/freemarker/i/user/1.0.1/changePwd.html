@@ -131,7 +131,7 @@
 														</div>
 													</div>
 													<div class="form-actions">
-														<button class="btn btn-info" type="button" id='btn_submit'>
+														<button class="btn btn-info" onclick="return false;" id='btn_submit'>
 															<i class="icon-ok bigger-110"></i>
 															提交
 														</button>
@@ -154,14 +154,11 @@
 					</div><!--/.row-fluid-->
 				</div><!--/.page-content-->
 
-				<#include "/i/default/1.0.2/_pagelet/settings.html"/>
+				<#include "/_pagelet/settings.html"/>
 			</div><!--/.main-content-->
 		</div><!--/.main-container-->
 
-		<a href="javascript:;" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-			<i class="icon-double-angle-up icon-only bigger-110"></i>
-		</a>
-
+		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
 
 		<script>

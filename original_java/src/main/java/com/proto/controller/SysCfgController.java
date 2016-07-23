@@ -36,7 +36,7 @@ public class SysCfgController {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",08,0801,");
-		return "m/default/settings";
+		return "m/settings/index";
 	}
 
 	@ResponseBody

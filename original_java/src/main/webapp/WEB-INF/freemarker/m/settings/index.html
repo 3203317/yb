@@ -7,14 +7,14 @@
 	</head>
 
 	<body>
-		<#include "./_pagelet/nav.html"/>
+		<#include "/m/default/_pagelet/nav.html"/>
 
 		<div class="main-container container-fluid">
 			<a class="menu-toggler" id="menu-toggler" href="#">
 				<span class="menu-text"></span>
 			</a>
 
-			<#include "./_pagelet/sidebar.html"/>
+			<#include "/m/default/_pagelet/sidebar.html"/>
 
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs">
@@ -117,10 +117,7 @@
 			</div><!--/.main-content-->
 		</div><!--/.main-container-->
 
-		<a href="javascript:;" id="btn-scroll-up" class="btn-scroll-up btn btn-small btn-inverse">
-			<i class="icon-double-angle-up icon-only bigger-110"></i>
-		</a>
-
+		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
 
 		<script>
