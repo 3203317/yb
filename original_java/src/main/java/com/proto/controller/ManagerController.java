@@ -71,34 +71,6 @@ public class ManagerController {
 	}
 
 	/**
-	 * 图形验证码
-	 *
-	 * @param session
-	 * @param imgCode
-	 * @return
-	 */
-	private ResultMap<Void> verifyImg(HttpSession session, String imgCode) {
-
-		ResultMap<Void> map = new ResultMap<Void>();
-		map.setSuccess(false);
-
-		Object verify = session.getAttribute("verify.imgCode");
-
-		if (null == verify) {
-			map.setMsg("请刷新页面");
-			return map;
-		}
-
-		if (verify.toString().equals(imgCode.toLowerCase())) {
-			map.setSuccess(true);
-			return map;
-		}
-
-		map.setMsg("图形验证码输入错误");
-		return map;
-	}
-
-	/**
 	 *
 	 * @param session
 	 * @param map
@@ -176,7 +148,6 @@ public class ManagerController {
 	@RequestMapping(value = { "/manage/user/changePwd" }, method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> _m_changePwd(HttpSession session,
 			@RequestParam(required = true) String verify_token,
-			@RequestParam(required = true) String verify_imgCode,
 			@RequestParam(required = true) String old_pass,
 			@RequestParam(required = true) String new_pass) {
 
@@ -186,12 +157,6 @@ public class ManagerController {
 		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
 		if (!verifyToken.getSuccess()) {
 			result.put("msg", verifyToken.getMsg());
-			return result;
-		}
-
-		ResultMap<Void> verifyImg = verifyImg(session, verify_imgCode);
-		if (!verifyImg.getSuccess()) {
-			result.put("msg", verifyImg.getMsg());
 			return result;
 		}
 

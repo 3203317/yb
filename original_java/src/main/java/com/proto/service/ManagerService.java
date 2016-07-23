@@ -10,7 +10,8 @@ import com.proto.model.ResultMap;
  */
 public interface ManagerService extends IService<Manager> {
 
-	Manager getById(String id);
+	Manager getByManager(Manager manager);
+
 
 	ResultMap<Manager> login(String user_name, String user_pass);
 

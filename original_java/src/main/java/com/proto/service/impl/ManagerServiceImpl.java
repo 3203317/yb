@@ -1,9 +1,14 @@
 package com.proto.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
+
+import tk.mybatis.mapper.entity.Example;
 
 import com.proto.model.Manager;
 import com.proto.model.ResultMap;
+import com.proto.model.User;
 import com.proto.service.ManagerService;
 import com.proto.util.StringUtil;
 import com.proto.util.encryptUtil.MD5;
@@ -17,13 +22,39 @@ import com.proto.util.encryptUtil.MD5;
 public class ManagerServiceImpl extends BaseService<Manager> implements
 		ManagerService {
 
+	/**
+	 * 唯一性查找
+	 *
+	 * @param user_name
+	 * @return
+	 */
+	private Manager getOnly(String user_name) {
+		Manager _manager = null;
+
+		_manager = new Manager();
+		_manager.setUser_name(user_name);
+		_manager = getByManager(_manager);
+		if (null != _manager) {
+			return _manager;
+		}
+
+		_manager = new Manager();
+		_manager.setEmail(user_name);
+		_manager = getByManager(_manager);
+		if (null != _manager) {
+			return _manager;
+		}
+
+		return null;
+	}
+
 	@Override
 	public ResultMap<Manager> login(String user_name, String user_pass) {
 
 		ResultMap<Manager> map = new ResultMap<Manager>();
 		map.setSuccess(false);
 
-		Manager manager = selectByKey(user_name);
+		Manager manager = getOnly(user_name);
 
 		if (null == manager) {
 			map.setMsg("用户名或密码输入错误");
@@ -58,7 +89,7 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 			return map;
 		}
 
-		Manager user = getById(user_id);
+		Manager user = selectByKey(user_id);
 
 		if (!MD5.encode(old_pass).equals(user.getUser_pass())) {
 			map.setMsg("原密码错误");
@@ -75,8 +106,25 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 	}
 
 	@Override
-	public Manager getById(String id) {
-		return selectByKey(id);
+	public Manager getByManager(Manager manager) {
+		Example example = new Example(User.class);
+
+		if (null != manager) {
+			Example.Criteria criteria = example.createCriteria();
+
+			String email = StringUtil.isEmpty(manager.getEmail());
+			if (null != email) {
+				criteria.andEqualTo("email", email);
+			}
+
+			String user_name = StringUtil.isEmpty(manager.getUser_name());
+			if (null != user_name) {
+				criteria.andEqualTo("user_name", user_name);
+			}
+		}
+
+		List<Manager> list = selectByExample(example);
+		return (null == list || 1 != list.size()) ? null : list.get(0);
 	}
 
 }

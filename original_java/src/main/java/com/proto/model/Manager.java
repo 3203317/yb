@@ -21,11 +21,21 @@ public class Manager implements Serializable {
 	@Column(name = "id")
 	private String id;
 
+	private String user_name;
+
 	private String user_pass;
 	private String nickname;
 	private String email;
 	private Date create_time;
 	private Integer status;
+
+	public String getUser_name() {
+		return user_name;
+	}
+
+	public void setUser_name(String user_name) {
+		this.user_name = user_name;
+	}
 
 	public String getId() {
 		return id;
