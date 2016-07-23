@@ -2,6 +2,7 @@ package com.proto.controller;
 
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -272,5 +273,18 @@ public class UserController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 		return result;
+	}
+
+	@RequestMapping(value = { "/manage/user/" }, method = RequestMethod.GET)
+	public String _m_indexUI(HttpSession session, Map<String, Object> map,
+			@RequestParam(required = false, defaultValue = "1") int page,
+			@RequestParam(required = false, defaultValue = "100") int rows,
+			User user) {
+
+		List<User> list = userService.findByUser(user, page, rows);
+		map.put("data_list", list);
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",09,0901,");
+		return "m/user/index";
 	}
 }

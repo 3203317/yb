@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  *
@@ -22,6 +23,9 @@ public class User implements Serializable {
 	@Column(name = "id")
 	@GeneratedValue(generator = "UUID")
 	private String id;
+
+	private String pid;
+	private String path;
 
 	private String user_name;
 
@@ -45,6 +49,33 @@ public class User implements Serializable {
 
 	private String apikey;
 	private String seckey;
+
+	@Transient
+	private User _t_pUser;
+
+	public User get_t_pUser() {
+		return _t_pUser;
+	}
+
+	public void set_t_pUser(User _t_pUser) {
+		this._t_pUser = _t_pUser;
+	}
+
+	public String getPid() {
+		return pid;
+	}
+
+	public void setPid(String pid) {
+		this.pid = pid;
+	}
+
+	public String getPath() {
+		return path;
+	}
+
+	public void setPath(String path) {
+		this.path = path;
+	}
 
 	public String getUser_name() {
 		return user_name;
