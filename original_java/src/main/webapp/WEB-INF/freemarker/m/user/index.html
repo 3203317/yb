@@ -84,7 +84,7 @@
 
 									<a href='javascript:;' class="btn btn-app btn-primary btn-mini">
 										<i class="icon-edit bigger-230"></i>
-										编辑
+										修改
 										<span class="badge badge-warning badge-right">11</span>
 									</a>
 
@@ -154,13 +154,13 @@
 												<td>
 													<div class="hidden-phone visible-desktop btn-group">
 
-														<button class="btn btn-mini btn-info" title='编辑'>
+														<a class="btn btn-mini btn-info" title='编辑' href='./edit?id=${(doc.id)!}'>
 															<i class="icon-edit bigger-120"></i>
-														</button>
+														</a>
 
-														<button class="btn btn-mini btn-danger" title='删除'>
+														<a class="btn btn-mini btn-danger" title='删除' href='./del?id=${(doc.id)!}'>
 															<i class="icon-trash bigger-120"></i>
-														</button>
+														</a>
 
 														<button class="btn btn-mini<#if doc.status=1> btn-success<#else> btn-warning</#if>" title='更改状态'>
 															<i class="icon-flag bigger-120"></i>
@@ -176,7 +176,7 @@
 															<ul class="dropdown-menu dropdown-icon-only dropdown-yellow pull-right dropdown-caret dropdown-close">
 
 																<li>
-																	<a href='javascript:;' class="tooltip-success" data-rel="tooltip" title="编辑">
+																	<a href='./edit?id=${(doc.id)!}' class="tooltip-success" data-rel="tooltip" title="编辑">
 																		<span class="blue">
 																			<i class="icon-edit bigger-120"></i>
 																		</span>
@@ -184,7 +184,7 @@
 																</li>
 
 																<li>
-																	<a href='javascript:;' class="tooltip-error" data-rel="tooltip" title="删除">
+																	<a href='./del?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="删除">
 																		<span class="red">
 																			<i class="icon-trash bigger-120"></i>
 																		</span>

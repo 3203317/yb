@@ -142,12 +142,6 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return map;
 		}
 
-		user.setReal_name(StringUtil.isEmpty(user.getReal_name()));
-		if (null == user.getReal_name()) {
-			map.setMsg("姓名不能为空");
-			return map;
-		}
-
 		user.setUser_pass(StringUtil.isEmpty(user.getUser_pass()));
 		if (null == user.getUser_pass()) {
 			map.setMsg("登陆密码不能为空");

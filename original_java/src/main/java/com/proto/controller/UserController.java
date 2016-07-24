@@ -313,4 +313,20 @@ public class UserController {
 		result.put("success", true);
 		return result;
 	}
+
+	@RequestMapping(value = { "/manage/user/edit" }, method = RequestMethod.GET)
+	public String _m_editUI(HttpSession session, Map<String, Object> map,
+			@RequestParam(required = true) String id) {
+
+		User user = userService.selectByKey(id);
+
+		if (null == user) {
+			return "redirect:/manage/user/";
+		}
+
+		map.put("data_user", user);
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",09,0901,");
+		return "m/user/edit";
+	}
 }
