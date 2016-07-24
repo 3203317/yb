@@ -23,12 +23,12 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 		ManagerService {
 
 	/**
-	 * 唯一性查找
+	 * 登陆检测：用户名、邮箱
 	 *
 	 * @param user_name
-	 * @return
+	 * @return manager
 	 */
-	private Manager getOnly(String user_name) {
+	private Manager loginCheck(String user_name) {
 		Manager _manager = null;
 
 		_manager = new Manager();
@@ -54,7 +54,7 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 		ResultMap<Manager> map = new ResultMap<Manager>();
 		map.setSuccess(false);
 
-		Manager manager = getOnly(user_name);
+		Manager manager = loginCheck(user_name);
 
 		if (null == manager) {
 			map.setMsg("用户名或密码输入错误");

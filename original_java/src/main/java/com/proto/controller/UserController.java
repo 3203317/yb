@@ -216,8 +216,8 @@ public class UserController {
 
 		map.put("verify_token", genVerifyToken(session));
 
-		User user = userService.getById(session.getAttribute("session.user.id")
-				.toString());
+		User user = userService.selectByKey(session.getAttribute(
+				"session.user.id").toString());
 		map.put("data_user", user);
 
 		map.put("session_user", session.getAttribute("session.user"));

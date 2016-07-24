@@ -14,8 +14,6 @@ public interface UserService extends IService<User> {
 
 	ResultMap<Void> remove(String user_id);
 
-	User getById(String id);
-
 	ResultMap<User> login(String user_name, String user_pass);
 
 	ResultMap<User> register(User user);

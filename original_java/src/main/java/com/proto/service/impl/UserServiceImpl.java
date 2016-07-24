@@ -35,9 +35,37 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		return super.updateNotNull(entity);
 	}
 
-	@Override
-	public User getById(String id) {
-		return selectByKey(id);
+	/**
+	 * 登陆检测：用户名、邮箱、手机号
+	 *
+	 * @param user_name
+	 * @return user
+	 */
+	private User loginCheck(String user_name) {
+		User _user = null;
+
+		_user = new User();
+		_user.setUser_name(user_name);
+		_user = getByUser(_user);
+		if (null != _user) {
+			return _user;
+		}
+
+		_user = new User();
+		_user.setEmail(user_name);
+		_user = getByUser(_user);
+		if (null != _user) {
+			return _user;
+		}
+
+		_user = new User();
+		_user.setMobile(user_name);
+		_user = getByUser(_user);
+		if (null != _user) {
+			return _user;
+		}
+
+		return null;
 	}
 
 	@Override
@@ -46,9 +74,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		ResultMap<User> map = new ResultMap<User>();
 		map.setSuccess(false);
 
-		User user = new User();
-		user.setMobile(user_name);
-		user = getByUser(user);
+		User user = loginCheck(user_name);
 
 		if (null == user) {
 			map.setMsg("用户名或密码输入错误");
@@ -60,7 +86,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return map;
 		}
 
-		if (0 == user.getStatus()) {
+		if (0 == user.getStatus() || 2 == user.getStatus()) {
 			map.setMsg("已被限制登陆，请联系管理员");
 			return map;
 		}
@@ -92,15 +118,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		ResultMap<User> map = new ResultMap<User>();
 		map.setSuccess(false);
 
-		user.setReal_name(StringUtil.isEmpty(user.getReal_name()));
-		if (null == user.getReal_name()) {
-			map.setMsg("姓名不能为空");
-			return map;
-		}
-
-		user.setUser_pass(StringUtil.isEmpty(user.getUser_pass()));
-		if (null == user.getUser_pass()) {
-			map.setMsg("登陆密码不能为空");
+		user.setUser_name(StringUtil.isEmpty(user.getUser_name()));
+		if (null == user.getUser_name()) {
+			map.setMsg("用户名不能为空");
 			return map;
 		}
 
@@ -122,7 +142,27 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return map;
 		}
 
+		user.setReal_name(StringUtil.isEmpty(user.getReal_name()));
+		if (null == user.getReal_name()) {
+			map.setMsg("姓名不能为空");
+			return map;
+		}
+
+		user.setUser_pass(StringUtil.isEmpty(user.getUser_pass()));
+		if (null == user.getUser_pass()) {
+			map.setMsg("登陆密码不能为空");
+			return map;
+		}
+
 		User _user = null;
+
+		_user = new User();
+		_user.setUser_name(user.getUser_name());
+		_user = getByUser(_user);
+		if (null != _user) {
+			map.setMsg("用户名已存在");
+			return map;
+		}
 
 		_user = new User();
 		_user.setMobile(user.getMobile());
@@ -153,8 +193,6 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		return map;
 	}
 
-	private static final String DEFAULT_USER_PASS = MD5.encode("123456");
-
 	@Override
 	public ResultMap<User> createUser(User user) {
 
@@ -166,7 +204,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 		user = map.getData();
 
-		user.setUser_pass(DEFAULT_USER_PASS);
+		user.setUser_pass(MD5.encode(user.getUser_pass()));
 		save(user);
 
 		return map;
@@ -209,6 +247,11 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			if (null != nickname) {
 				criteria.andEqualTo("nickname", nickname);
 			}
+
+			String user_name = StringUtil.isEmpty(user.getUser_name());
+			if (null != user_name) {
+				criteria.andEqualTo("user_name", user_name);
+			}
 		}
 
 		List<User> list = selectByExample(example);
@@ -247,7 +290,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return map;
 		}
 
-		User user = getById(user_id);
+		User user = selectByKey(user_id);
 
 		if (!MD5.encode(old_pass).equals(user.getUser_pass())) {
 			map.setMsg("原密码错误");
@@ -268,7 +311,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 		User user = new User();
 		user.setId(user_id);
-		user.setUser_pass(user_pass);
+		user.setUser_pass(MD5.encode(user_pass));
 
 		updateNotNull(user);
 
@@ -282,7 +325,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 		User user = new User();
 		user.setId(user_id);
-		user.setStatus(0);
+		user.setStatus(2);
 
 		updateNotNull(user);
 
