@@ -14,8 +14,8 @@
 		<!-- MyBatis Generator -->
 		<!-- Java接口和实体类 -->
 		<targetJavaProject>${basedir}/src/main/java</targetJavaProject>
-		<targetMapperPackage>com.proto.mapper</targetMapperPackage>
-		<targetModelPackage>com.proto.model</targetModelPackage>
+		<targetMapperPackage>net.foreworld.mapper</targetMapperPackage>
+		<targetModelPackage>net.foreworld.model</targetModelPackage>
 		<!-- XML生成路径 -->
 		<targetResourcesProject>${basedir}/src/main/resources</targetResourcesProject>
 		<targetXMLPackage>mapper</targetXMLPackage>
