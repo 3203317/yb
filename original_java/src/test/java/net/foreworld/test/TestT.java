@@ -3,15 +3,15 @@ package net.foreworld.test;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Test {
+import org.junit.Test;
+
+public class TestT extends BasicTest {
 
 	private static final SimpleDateFormat sdf = new SimpleDateFormat(
 			"yyyyMMddHHmmss");
 
-	/**
-	 * @param args
-	 */
-	public static void main(String[] args) {
+	@Test
+	public void testAdd() {
 		// SmSWebService service = new SmSWebService();
 		// SmSWebServiceSoap serviceSoap = service.getSmSWebServiceSoap();
 		// WsSendResponse response = serviceSoap.sendSms("154", "MOMO668",
@@ -41,7 +41,5 @@ public class Test {
 
 		}
 		System.out.println((-1 == i) ? "" : s.substring(i));
-
 	}
-
 }
