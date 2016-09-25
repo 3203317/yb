@@ -3,16 +3,17 @@ package net.foreworld.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import tk.mybatis.mapper.entity.Example;
-
-import com.github.pagehelper.PageHelper;
 import net.foreworld.model.ResultMap;
 import net.foreworld.model.User;
 import net.foreworld.service.UserService;
 import net.foreworld.util.StringUtil;
 import net.foreworld.util.encryptUtil.MD5;
+
+import org.springframework.stereotype.Service;
+
+import tk.mybatis.mapper.entity.Example;
+
+import com.github.pagehelper.PageHelper;
 
 /**
  *
@@ -256,7 +257,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	public List<User> findByUser(User user, int page, int rows) {
 
 		Example example = new Example(User.class);
-		example.setOrderByClause("create_time desc");
+		example.setOrderByClause("create_time Desc");
 
 		if (null != user) {
 			Example.Criteria criteria = example.createCriteria();

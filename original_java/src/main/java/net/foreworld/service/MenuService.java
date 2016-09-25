@@ -12,4 +12,7 @@ import net.foreworld.model.Menu;
 public interface MenuService extends IService<Menu> {
 
 	List<Menu> findByMenu(Menu menu, int page, int rows);
+
+	List<Menu> findByPid(String pid);
+
 }

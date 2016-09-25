@@ -28,4 +28,16 @@ public class MenuServiceImpl extends BaseService<Menu> implements MenuService {
 		return selectByExample(example);
 	}
 
+	@Override
+	public List<Menu> findByPid(String pid) {
+
+		Example example = new Example(Menu.class);
+		example.setOrderByClause("sort ASC");
+
+		Example.Criteria criteria = example.createCriteria();
+		criteria.andEqualTo("pid", pid);
+
+		return selectByExample(example);
+	}
+
 }
