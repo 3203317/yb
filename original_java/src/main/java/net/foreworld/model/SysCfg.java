@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "s_cfg")
 public class SysCfg implements Serializable {
 
-	private static final long serialVersionUID = -3386535959984866507L;
+	private static final long serialVersionUID = 4405049762353813061L;
 
 	@Id
 	@Column(name = "key_")

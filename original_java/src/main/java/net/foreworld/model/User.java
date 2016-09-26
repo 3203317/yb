@@ -17,7 +17,7 @@ import javax.persistence.Transient;
 @Table(name = "s_user")
 public class User implements Serializable {
 
-	private static final long serialVersionUID = -1453141126844138706L;
+	private static final long serialVersionUID = 3660088808064034358L;
 
 	@Id
 	@Column(name = "id")

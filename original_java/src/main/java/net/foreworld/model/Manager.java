@@ -15,7 +15,7 @@ import javax.persistence.Table;
 @Table(name = "s_m")
 public class Manager implements Serializable {
 
-	private static final long serialVersionUID = -6999364160420836583L;
+	private static final long serialVersionUID = 6445602727288077807L;
 
 	@Id
 	@Column(name = "id")
