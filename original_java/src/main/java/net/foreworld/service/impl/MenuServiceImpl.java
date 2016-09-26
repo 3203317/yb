@@ -57,7 +57,9 @@ public class MenuServiceImpl extends BaseService<Menu> implements MenuService {
 			return map;
 		}
 
-		menu.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+		if (null == menu.getId()) {
+			menu.setId(UUID.randomUUID().toString().replaceAll("-", ""));
+		}
 
 		if (null == menu.getSort()) {
 			menu.setSort(1);

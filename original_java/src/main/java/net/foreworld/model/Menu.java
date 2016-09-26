@@ -3,7 +3,6 @@ package net.foreworld.model;
 import java.io.Serializable;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,7 +18,6 @@ public class Menu implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(generator = "UUID")
 	private String id;
 
 	private String menu_name;

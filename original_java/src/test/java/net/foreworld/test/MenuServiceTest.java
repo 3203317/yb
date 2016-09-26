@@ -34,15 +34,15 @@ public class MenuServiceTest extends BasicTest {
 	public void test_createMenu() {
 
 		Menu menu = new Menu();
+		menu.setId("id");
 		menu.setPid("1");
-		menu.setPath("-1");
-		menu.setMenu_name("-2");
-		menu.setMenu_url("-3");
+		menu.setPath("path");
+		menu.setMenu_name("menu_name");
+		menu.setMenu_url("menu_url");
 		menu.setSort(123456);
 		menu.setIs_parent(1);
 
 		ResultMap<Menu> map = menuService.createMenu(menu);
-		System.err.println(map.getData().getId());
 
 		Assert.assertTrue(map.getSuccess());
 	}
@@ -50,13 +50,26 @@ public class MenuServiceTest extends BasicTest {
 	@Test
 	public void test_editInfo() {
 
-		menuService.editInfo(null);
+		Menu menu = new Menu();
+		menu.setId("id");
+		menu.setPid("1");
+		menu.setPath("path");
+		menu.setMenu_name("menu_name");
+		menu.setMenu_url("menu_url");
+		menu.setSort(654321);
+		menu.setIs_parent(0);
+
+		ResultMap<Void> map = menuService.editInfo(menu);
+
+		Assert.assertTrue(map.getSuccess());
 	}
 
 	@Test
 	public void test_remove() {
 
-		menuService.remove("menu_id");
+		ResultMap<Void> map = menuService.remove("id");
+
+		Assert.assertTrue(map.getSuccess());
 	}
 
 }
