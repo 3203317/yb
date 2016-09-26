@@ -44,7 +44,7 @@ public class MenuServiceTest extends BasicTest {
 
 		ResultMap<Menu> map = menuService.createMenu(menu);
 
-		Assert.assertTrue(map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
@@ -61,7 +61,7 @@ public class MenuServiceTest extends BasicTest {
 
 		ResultMap<Void> map = menuService.editInfo(menu);
 
-		Assert.assertTrue(map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
@@ -69,7 +69,7 @@ public class MenuServiceTest extends BasicTest {
 
 		ResultMap<Void> map = menuService.remove("id");
 
-		Assert.assertTrue(map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 }

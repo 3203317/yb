@@ -17,9 +17,19 @@ public class UserServiceTest extends BasicTest {
 	private UserService userService;
 
 	@Test
+	public void test_login() {
+
+		ResultMap<User> map = userService.login("halo", "1");
+
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
+	}
+
+	@Test
 	public void test_findByUser() {
 
-		List<User> list = userService.findByUser(null, 1, Integer.MAX_VALUE);
+		User user = new User();
+
+		List<User> list = userService.findByUser(user, 1, Integer.MAX_VALUE);
 		System.err.println(list.size());
 	}
 
@@ -27,26 +37,48 @@ public class UserServiceTest extends BasicTest {
 	public void test_createUser() {
 
 		User user = new User();
+
+		user.setAlipay_account("alipay_account");
+		user.setApikey("apikey");
+		user.setEmail("email");
 		user.setId("id");
-		user.setPid("1");
-		user.setPath("path");
+		user.setMobile("mobile");
+		user.setNickname("nickname");
+		user.setPid("pid");
+		user.setReal_name("real_name");
+		user.setSeckey("seckey");
+		user.setStatus(0);
+		user.setUser_name("user_name");
+		user.setUser_pass("user_pass");
+		user.setWx_account("wx_account");
 
 		ResultMap<User> map = userService.createUser(user);
 
-		Assert.assertTrue(map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
 	public void test_editInfo() {
 
 		User user = new User();
+
+		user.setAlipay_account("alipay_account");
+		user.setApikey("apikey");
+		user.setEmail("email");
 		user.setId("id");
-		user.setPid("1");
-		user.setPath("path");
+		user.setMobile("mobile");
+		user.setNickname("nickname");
+		user.setPid("pid");
+		user.setReal_name("real_name");
+		user.setSeckey("seckey");
+		user.setStatus(0);
+		user.setUser_name("user_name");
+		user.setUser_pass("user_pass");
+		user.setWx_account("wx_account");
 
 		ResultMap<Void> map = userService.editInfo(user);
 
-		Assert.assertTrue(map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
@@ -54,7 +86,7 @@ public class UserServiceTest extends BasicTest {
 
 		ResultMap<Void> map = userService.remove("id");
 
-		Assert.assertTrue(map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 }

@@ -24,8 +24,10 @@ public class User implements Serializable {
 	@GeneratedValue(generator = "UUID")
 	private String id;
 
+	/**
+	 * 推荐人
+	 */
 	private String pid;
-	private String path;
 
 	private String user_name;
 
@@ -74,14 +76,6 @@ public class User implements Serializable {
 
 	public void setPid(String pid) {
 		this.pid = pid;
-	}
-
-	public String getPath() {
-		return path;
-	}
-
-	public void setPath(String path) {
-		this.path = path;
 	}
 
 	public String getUser_name() {

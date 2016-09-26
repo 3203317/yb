@@ -37,7 +37,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	}
 
 	/**
-	 * 登陆检测：用户名、邮箱、手机号
+	 * 登陆检测
+	 *
+	 * 用户名、邮箱、手机号（任意一个都可以登陆）
 	 *
 	 * @param user_name
 	 * @return user
