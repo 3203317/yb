@@ -46,7 +46,7 @@ public class SysCfgController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 
-		ResultMap<Void> edit = roleService.edit(sysCfg);
+		ResultMap<Void> edit = roleService.editInfo(sysCfg);
 
 		if (!edit.getSuccess()) {
 			result.put("msg", edit.getMsg());

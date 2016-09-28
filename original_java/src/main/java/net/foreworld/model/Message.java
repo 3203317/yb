@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 在线工单
+ * 站内消息
  *
  * @author Administrator
  *

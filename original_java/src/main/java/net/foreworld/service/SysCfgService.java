@@ -14,7 +14,6 @@ public interface SysCfgService extends IService<SysCfg> {
 
 	List<SysCfg> findBySysCfg(SysCfg sysCfg, int page, int rows);
 
-	ResultMap<Void> edit(SysCfg sysCfg);
+	ResultMap<Void> editInfo(SysCfg sysCfg);
 
-	SysCfg getById(String id);
 }
