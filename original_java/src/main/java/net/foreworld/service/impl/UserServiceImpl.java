@@ -6,6 +6,7 @@ import java.util.List;
 import net.foreworld.model.ResultMap;
 import net.foreworld.model.User;
 import net.foreworld.service.UserService;
+import net.foreworld.util.RestUtil;
 import net.foreworld.util.StringUtil;
 import net.foreworld.util.encryptUtil.MD5;
 
@@ -212,6 +213,16 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			criteria.andEqualTo("user_name", user_name);
 		}
 
+		String apikey = StringUtil.isEmpty(user.getApikey());
+		if (null != apikey) {
+			criteria.andEqualTo("apikey", apikey);
+		}
+
+		String seckey = StringUtil.isEmpty(user.getSeckey());
+		if (null != seckey) {
+			criteria.andEqualTo("seckey", seckey);
+		}
+
 		List<User> list = selectByExample(example);
 		return (null == list || 1 != list.size()) ? null : list.get(0);
 	}
@@ -290,5 +301,49 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 		map.setSuccess(true);
 		return map;
+	}
+
+	private String genUserApiKey() {
+		String encodedKey = null;
+		User user = null;
+		do {
+			encodedKey = RestUtil.genApiKey();
+			user = findByApiKey(encodedKey);
+		} while (user != null);
+		return encodedKey;
+	}
+
+	private String genUserSecKey() {
+		String encodedKey = null;
+		User user = null;
+		do {
+			encodedKey = RestUtil.genApiKey();
+			user = findBySecKey(encodedKey);
+		} while (user != null);
+		return encodedKey;
+	}
+
+	private User findBySecKey(String seckey) {
+		seckey = StringUtil.isEmpty(seckey);
+		if (null == seckey) {
+			return null;
+		}
+
+		User user = new User();
+		user.setSeckey(seckey);
+
+		return getByUser(user);
+	}
+
+	private User findByApiKey(String apikey) {
+		apikey = StringUtil.isEmpty(apikey);
+		if (null == apikey) {
+			return null;
+		}
+
+		User user = new User();
+		user.setApikey(apikey);
+
+		return getByUser(user);
 	}
 }
