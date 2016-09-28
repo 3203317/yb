@@ -37,14 +37,14 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	}
 
 	/**
-	 * 登陆检测
+	 * 根据（用户名、邮箱、手机号）获取用户
 	 *
 	 * 用户名、邮箱、手机号（任意一个都可以登陆）
 	 *
 	 * @param user_name
-	 * @return user
+	 * @return user 用户
 	 */
-	private User loginCheck(String user_name) {
+	private User login_user(String user_name) {
 		User _user = null;
 
 		_user = new User();
@@ -77,7 +77,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		ResultMap<User> map = new ResultMap<User>();
 		map.setSuccess(false);
 
-		User user = loginCheck(user_name);
+		User user = login_user(user_name);
 
 		if (null == user) {
 			map.setMsg("用户名或密码输入错误");
@@ -102,7 +102,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	@Override
 	public ResultMap<User> register(User user) {
 
-		ResultMap<User> map = save_before(user);
+		ResultMap<User> map = register_params_check(user);
 
 		if (!map.getSuccess()) {
 			return map;
@@ -110,13 +110,30 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 		user = map.getData();
 
+		// 检测推荐人
+		if (null != user.getPid()) {
+
+			User tjr = selectByKey(user.getPid());
+
+			// 推荐人不存在，则重置为null
+			if (null == tjr) {
+				user.setPid(null);
+			}
+		}
+
 		user.setUser_pass(MD5.encode(user.getUser_pass()));
 		save(user);
 
 		return map;
 	}
 
-	private ResultMap<User> save_before(User user) {
+	/**
+	 * 对象字段验证
+	 *
+	 * @param user
+	 * @return
+	 */
+	private ResultMap<User> register_params_check(User user) {
 
 		ResultMap<User> map = new ResultMap<User>();
 		map.setSuccess(false);
@@ -124,24 +141,6 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		user.setUser_name(StringUtil.isEmpty(user.getUser_name()));
 		if (null == user.getUser_name()) {
 			map.setMsg("用户名不能为空");
-			return map;
-		}
-
-		user.setMobile(StringUtil.isEmpty(user.getMobile()));
-		if (null == user.getMobile()) {
-			map.setMsg("手机号码不能为空");
-			return map;
-		}
-
-		user.setEmail(StringUtil.isEmpty(user.getEmail()));
-		if (null == user.getEmail()) {
-			map.setMsg("电子邮箱不能为空");
-			return map;
-		}
-
-		user.setNickname(StringUtil.isEmpty(user.getNickname()));
-		if (null == user.getNickname()) {
-			map.setMsg("昵称不能为空");
 			return map;
 		}
 
@@ -157,31 +156,7 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		_user.setUser_name(user.getUser_name());
 		_user = getByUser(_user);
 		if (null != _user) {
-			map.setMsg("用户名已存在");
-			return map;
-		}
-
-		_user = new User();
-		_user.setMobile(user.getMobile());
-		_user = getByUser(_user);
-		if (null != _user) {
-			map.setMsg("手机号码已存在");
-			return map;
-		}
-
-		_user = new User();
-		_user.setEmail(user.getEmail());
-		_user = getByUser(_user);
-		if (null != _user) {
-			map.setMsg("电子邮箱已存在");
-			return map;
-		}
-
-		_user = new User();
-		_user.setNickname(user.getNickname());
-		_user = getByUser(_user);
-		if (null != _user) {
-			map.setMsg("昵称已存在");
+			map.setMsg("用户名已经存在");
 			return map;
 		}
 
@@ -191,64 +166,50 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	}
 
 	@Override
-	public ResultMap<User> createUser(User user) {
-
-		ResultMap<User> map = save_before(user);
-
-		if (!map.getSuccess()) {
-			return map;
-		}
-
-		user = map.getData();
-
-		user.setUser_pass(MD5.encode(user.getUser_pass()));
-		save(user);
-
-		return map;
-	}
-
-	@Override
 	public ResultMap<Void> editInfo(User user) {
+
+		ResultMap<Void> map = new ResultMap<Void>();
 
 		User _user = new User();
 		_user.setId(user.getId());
 		_user.setReal_name(user.getReal_name());
 		_user.setAlipay_account(user.getAlipay_account());
 		_user.setWx_account(user.getWx_account());
-
 		updateNotNull(_user);
 
-		ResultMap<Void> map = new ResultMap<Void>();
 		map.setSuccess(true);
 		return map;
 	}
 
 	@Override
 	public User getByUser(User user) {
+
+		if (null == user) {
+			return null;
+		}
+
 		Example example = new Example(User.class);
 
-		if (null != user) {
-			Example.Criteria criteria = example.createCriteria();
+		Example.Criteria criteria = example.createCriteria();
 
-			String email = StringUtil.isEmpty(user.getEmail());
-			if (null != email) {
-				criteria.andEqualTo("email", email);
-			}
+		String email = StringUtil.isEmpty(user.getEmail());
+		if (null != email) {
+			criteria.andEqualTo("email", email);
+		}
 
-			String mobile = StringUtil.isEmpty(user.getMobile());
-			if (null != mobile) {
-				criteria.andEqualTo("mobile", mobile);
-			}
+		String mobile = StringUtil.isEmpty(user.getMobile());
+		if (null != mobile) {
+			criteria.andEqualTo("mobile", mobile);
+		}
 
-			String nickname = StringUtil.isEmpty(user.getNickname());
-			if (null != nickname) {
-				criteria.andEqualTo("nickname", nickname);
-			}
+		String nickname = StringUtil.isEmpty(user.getNickname());
+		if (null != nickname) {
+			criteria.andEqualTo("nickname", nickname);
+		}
 
-			String user_name = StringUtil.isEmpty(user.getUser_name());
-			if (null != user_name) {
-				criteria.andEqualTo("user_name", user_name);
-			}
+		String user_name = StringUtil.isEmpty(user.getUser_name());
+		if (null != user_name) {
+			criteria.andEqualTo("user_name", user_name);
 		}
 
 		List<User> list = selectByExample(example);
@@ -306,13 +267,13 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	@Override
 	public ResultMap<Void> resetPwd(String user_id, String user_pass) {
 
+		ResultMap<Void> map = new ResultMap<Void>();
+
 		User user = new User();
 		user.setId(user_id);
 		user.setUser_pass(MD5.encode(user_pass));
-
 		updateNotNull(user);
 
-		ResultMap<Void> map = new ResultMap<Void>();
 		map.setSuccess(true);
 		return map;
 	}
@@ -320,13 +281,13 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	@Override
 	public ResultMap<Void> remove(String user_id) {
 
+		ResultMap<Void> map = new ResultMap<Void>();
+
 		User user = new User();
 		user.setId(user_id);
 		user.setStatus(2);
-
 		updateNotNull(user);
 
-		ResultMap<Void> map = new ResultMap<Void>();
 		map.setSuccess(true);
 		return map;
 	}

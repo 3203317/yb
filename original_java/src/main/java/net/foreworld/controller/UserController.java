@@ -7,6 +7,10 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import net.foreworld.model.ResultMap;
+import net.foreworld.model.User;
+import net.foreworld.service.UserService;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,10 +18,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-
-import net.foreworld.model.ResultMap;
-import net.foreworld.model.User;
-import net.foreworld.service.UserService;
 
 /**
  *
@@ -303,10 +303,10 @@ public class UserController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 
-		ResultMap<User> createUser = userService.createUser(user);
+		ResultMap<User> register = userService.register(user);
 
-		if (!createUser.getSuccess()) {
-			result.put("msg", createUser.getMsg());
+		if (!register.getSuccess()) {
+			result.put("msg", register.getMsg());
 			return result;
 		}
 

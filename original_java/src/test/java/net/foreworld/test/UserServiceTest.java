@@ -19,7 +19,7 @@ public class UserServiceTest extends BasicTest {
 	@Test
 	public void test_login() {
 
-		ResultMap<User> map = userService.login("halo", "1");
+		ResultMap<User> map = userService.login("user_name", "user_pass");
 
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
@@ -34,7 +34,7 @@ public class UserServiceTest extends BasicTest {
 	}
 
 	@Test
-	public void test_createUser() {
+	public void test_register() {
 
 		User user = new User();
 
@@ -44,7 +44,7 @@ public class UserServiceTest extends BasicTest {
 		user.setId("id");
 		user.setMobile("mobile");
 		user.setNickname("nickname");
-		user.setPid("pid");
+		user.setPid("08151306");
 		user.setReal_name("real_name");
 		user.setSeckey("seckey");
 		user.setStatus(0);
@@ -52,7 +52,7 @@ public class UserServiceTest extends BasicTest {
 		user.setUser_pass("user_pass");
 		user.setWx_account("wx_account");
 
-		ResultMap<User> map = userService.createUser(user);
+		ResultMap<User> map = userService.register(user);
 
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
@@ -62,19 +62,19 @@ public class UserServiceTest extends BasicTest {
 
 		User user = new User();
 
-		user.setAlipay_account("alipay_account");
+		user.setAlipay_account("1");
 		user.setApikey("apikey");
 		user.setEmail("email");
 		user.setId("id");
 		user.setMobile("mobile");
 		user.setNickname("nickname");
-		user.setPid("pid");
-		user.setReal_name("real_name");
+		user.setPid("08151306");
+		user.setReal_name("2");
 		user.setSeckey("seckey");
-		user.setStatus(0);
+		user.setStatus(1);
 		user.setUser_name("user_name");
 		user.setUser_pass("user_pass");
-		user.setWx_account("wx_account");
+		user.setWx_account("3");
 
 		ResultMap<Void> map = userService.editInfo(user);
 
@@ -85,6 +85,22 @@ public class UserServiceTest extends BasicTest {
 	public void test_remove() {
 
 		ResultMap<Void> map = userService.remove("id");
+
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
+	}
+
+	@Test
+	public void test_resetPwd() {
+
+		ResultMap<Void> map = userService.resetPwd("id", "123456");
+
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
+	}
+
+	@Test
+	public void test_changePwd() {
+
+		ResultMap<Void> map = userService.changePwd("id", "123456", "2");
 
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}

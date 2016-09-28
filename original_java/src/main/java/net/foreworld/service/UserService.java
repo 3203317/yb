@@ -12,6 +12,12 @@ import net.foreworld.model.User;
  */
 public interface UserService extends IService<User> {
 
+	/**
+	 * 删除用户（实际是禁用用户，状态改为2）
+	 *
+	 * @param user_id
+	 * @return
+	 */
 	ResultMap<Void> remove(String user_id);
 
 	/**
@@ -24,20 +30,16 @@ public interface UserService extends IService<User> {
 	ResultMap<User> login(String user_name, String user_pass);
 
 	/**
-	 * 用户注册（用户个人行为）
+	 * 用户注册
+	 *
+	 * 1、检测用户名是否已经注册
+	 *
+	 * 2、如果有推荐人，则检测推荐人（user_id）是否存在
 	 *
 	 * @param user
 	 * @return
 	 */
 	ResultMap<User> register(User user);
-
-	/**
-	 * 创建用户（后台管理员创建）
-	 *
-	 * @param user
-	 * @return
-	 */
-	ResultMap<User> createUser(User user);
 
 	/**
 	 * 修改用户资料（除密码，等等）
