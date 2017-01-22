@@ -2,13 +2,14 @@ package net.foreworld.service.impl;
 
 import java.util.List;
 
+import net.foreworld.model.Role;
+import net.foreworld.service.RoleService;
+
 import org.springframework.stereotype.Service;
 
 import tk.mybatis.mapper.entity.Example;
 
 import com.github.pagehelper.PageHelper;
-import net.foreworld.model.Role;
-import net.foreworld.service.RoleService;
 
 /**
  *

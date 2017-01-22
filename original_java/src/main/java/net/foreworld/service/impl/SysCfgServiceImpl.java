@@ -32,7 +32,6 @@ public class SysCfgServiceImpl extends BaseService<SysCfg> implements
 
 	@Override
 	public ResultMap<Void> editInfo(SysCfg sysCfg) {
-
 		ResultMap<Void> map = new ResultMap<Void>();
 		map.setSuccess(false);
 
