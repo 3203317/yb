@@ -25,7 +25,7 @@ public class User implements Serializable {
 	private String id;
 
 	/**
-	 * 推荐人
+	 * 推荐人（父级用户）
 	 */
 	private String pid;
 
@@ -56,9 +56,9 @@ public class User implements Serializable {
 	 */
 	private Integer status;
 
-	private String apikey;
-	private String seckey;
-
+	/**
+	 * 父级用户
+	 */
 	@Transient
 	private User _t_pUser;
 
@@ -164,21 +164,5 @@ public class User implements Serializable {
 
 	public void setStatus(Integer status) {
 		this.status = status;
-	}
-
-	public String getApikey() {
-		return apikey;
-	}
-
-	public void setApikey(String apikey) {
-		this.apikey = apikey;
-	}
-
-	public String getSeckey() {
-		return seckey;
-	}
-
-	public void setSeckey(String seckey) {
-		this.seckey = seckey;
 	}
 }

@@ -42,7 +42,7 @@
 
 	<servlet>
 		<servlet-name>AuthImage</servlet-name>
-		<servlet-class>net.foreworld.util.AuthImage</servlet-class>
+		<servlet-class>net.foreworld.util.verifyCode.AuthImage</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AuthImage</servlet-name>

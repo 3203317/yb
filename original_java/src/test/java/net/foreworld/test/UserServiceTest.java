@@ -39,14 +39,12 @@ public class UserServiceTest extends BasicTest {
 		User user = new User();
 
 		user.setAlipay_account("alipay_account");
-		user.setApikey("apikey");
 		user.setEmail("email");
 		user.setId("id");
 		user.setMobile("mobile");
 		user.setNickname("nickname");
 		user.setPid("08151306");
 		user.setReal_name("real_name");
-		user.setSeckey("seckey");
 		user.setStatus(0);
 		user.setUser_name("user_name");
 		user.setUser_pass("user_pass");
@@ -63,14 +61,12 @@ public class UserServiceTest extends BasicTest {
 		User user = new User();
 
 		user.setAlipay_account("1");
-		user.setApikey("apikey");
 		user.setEmail("email");
 		user.setId("id");
 		user.setMobile("mobile");
 		user.setNickname("nickname");
 		user.setPid("08151306");
 		user.setReal_name("2");
-		user.setSeckey("seckey");
 		user.setStatus(1);
 		user.setUser_name("user_name");
 		user.setUser_pass("user_pass");
