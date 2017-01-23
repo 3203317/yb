@@ -22,7 +22,7 @@ public interface MenuService extends IService<Menu> {
 	 * @param menu
 	 * @return
 	 */
-	ResultMap<Menu> createMenu(Menu menu);
+	ResultMap<Menu> saveNew(Menu menu);
 
 	ResultMap<Void> editInfo(Menu menu);
 

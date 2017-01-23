@@ -42,7 +42,7 @@ public class MenuServiceTest extends BasicTest {
 		menu.setSort(123456);
 		menu.setIs_parent(1);
 
-		ResultMap<Menu> map = menuService.createMenu(menu);
+		ResultMap<Menu> map = menuService.saveNew(menu);
 
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}

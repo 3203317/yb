@@ -43,7 +43,7 @@ public class MenuServiceImpl extends BaseService<Menu> implements MenuService {
 	}
 
 	@Override
-	public ResultMap<Menu> createMenu(Menu menu) {
+	public ResultMap<Menu> saveNew(Menu menu) {
 
 		ResultMap<Menu> map = new ResultMap<Menu>();
 		map.setSuccess(false);
