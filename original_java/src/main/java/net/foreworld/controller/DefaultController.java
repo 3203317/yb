@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DefaultController {
 
 	/**
-	 * 用户首页
+	 * 用户首页1234
 	 *
 	 * @param session
 	 * @param map
