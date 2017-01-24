@@ -6,8 +6,10 @@ import java.util.List;
 import net.foreworld.model.ResultMap;
 import net.foreworld.model.Role;
 import net.foreworld.service.RoleService;
+import net.foreworld.util.StringUtil;
 
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 import tk.mybatis.mapper.entity.Example;
 
@@ -58,6 +60,12 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 		ResultMap<Role> map = new ResultMap<Role>();
 		map.setSuccess(false);
 
+		Role byDb = getByRole(entity);
+		if (null != byDb) {
+			map.setMsg("role is exist");
+			return map;
+		}
+
 		entity.setId(null);
 		save(entity);
 
@@ -79,4 +87,22 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 		return map;
 	}
 
+	@Override
+	public Role getByRole(Role entity) {
+		if (null == entity) {
+			return null;
+		}
+
+		Example example = new Example(Role.class);
+		Example.Criteria criteria = example.createCriteria();
+
+		String role_name = StringUtil.isEmpty(entity.getRole_name());
+		if (null != role_name) {
+			criteria.andEqualTo("role_name", role_name);
+		}
+
+		List<Role> list = selectByExample(example);
+		Assert.notNull(list, "list is null");
+		return 1 == list.size() ? list.get(0) : null;
+	}
 }

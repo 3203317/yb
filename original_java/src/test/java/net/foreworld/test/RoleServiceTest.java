@@ -39,4 +39,24 @@ public class RoleServiceTest extends BasicTest {
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
+	@Test
+	public void test_editInfo() {
+		Role entity = new Role();
+		entity.setId("a0c2ee4b8c8e4d6aa1f118cece9938b6");
+		entity.setRole_desc("123456");
+		entity.setStatus(RoleService.Status.STOP.value());
+
+		ResultMap<Void> map = roleService.editInfo(entity);
+
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
+	}
+
+	@Test
+	public void test_getByRole() {
+		Role entity = new Role();
+		entity.setRole_name("role_name");
+		Role byDb = roleService.getByRole(entity);
+		Assert.assertNotNull("role is null", byDb);
+	}
+
 }

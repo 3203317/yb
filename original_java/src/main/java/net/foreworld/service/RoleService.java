@@ -51,4 +51,11 @@ public interface RoleService extends IService<Role> {
 	 * @return
 	 */
 	ResultMap<Void> setStatus(String role_id, Status status);
+
+	/**
+	 *
+	 * @param entity
+	 * @return
+	 */
+	Role getByRole(Role entity);
 }
