@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -24,17 +24,27 @@ public class Notice implements Serializable {
 	private String id;
 
 	private String title;
-
 	private String content;
-
 	private Date create_time;
-
 	private String user_id;
-	
+
+	/**
+	 * 查看数
+	 */
+	private Integer view_count;
+
 	/*-----分割线-----*/
 
 	public String getId() {
 		return id;
+	}
+
+	public Integer getView_count() {
+		return view_count;
+	}
+
+	public void setView_count(Integer view_count) {
+		this.view_count = view_count;
 	}
 
 	public void setId(String id) {

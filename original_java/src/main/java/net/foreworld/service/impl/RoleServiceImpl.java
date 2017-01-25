@@ -3,16 +3,17 @@ package net.foreworld.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
-
-import com.github.pagehelper.PageHelper;
-
 import net.foreworld.model.ResultMap;
 import net.foreworld.model.Role;
 import net.foreworld.service.RoleService;
 import net.foreworld.util.StringUtil;
+
+import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
+
 import tk.mybatis.mapper.entity.Example;
+
+import com.github.pagehelper.PageHelper;
 
 /**
  *
@@ -74,11 +75,11 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 	}
 
 	@Override
-	public ResultMap<Void> setStatus(String role_id, Status status) {
+	public ResultMap<Void> setStatus(String id, Status status) {
 		ResultMap<Void> map = new ResultMap<Void>();
 
 		Role entity = new Role();
-		entity.setId(role_id);
+		entity.setId(id);
 		entity.setStatus(status.value());
 		updateNotNull(entity);
 
@@ -87,8 +88,9 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 	}
 
 	/**
-	 * 
-	 * @param role_name 角色名
+	 *
+	 * @param role_name
+	 *            角色名
 	 * @return role
 	 */
 	private Role getByRole_name(String role_name) {

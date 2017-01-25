@@ -29,25 +29,25 @@ public interface RoleService extends IService<Role> {
 	List<Role> findByRole(Role entity, int page, int rows);
 
 	/**
-	 * 
+	 *
 	 * @param entity
 	 * @return
 	 */
 	ResultMap<Void> editInfo(Role entity);
 
 	/**
-	 * 
+	 *
 	 * @param entity
 	 * @return
 	 */
 	ResultMap<Role> saveNew(Role entity);
 
 	/**
-	 * 
-	 * @param role_id
+	 *
+	 * @param id
 	 * @param status
 	 * @return
 	 */
-	ResultMap<Void> setStatus(String role_id, Status status);
+	ResultMap<Void> setStatus(String id, Status status);
 
 }
