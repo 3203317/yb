@@ -5,13 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import net.foreworld.model.ResultMap;
-import net.foreworld.model.Role;
-import net.foreworld.service.RoleService;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
+
+import net.foreworld.model.ResultMap;
+import net.foreworld.model.Role;
+import net.foreworld.service.RoleService;
 
 public class RoleServiceTest extends BasicTest {
 
@@ -35,28 +35,24 @@ public class RoleServiceTest extends BasicTest {
 		entity.setStatus(RoleService.Status.START.value());
 
 		ResultMap<Role> map = roleService.saveNew(entity);
-
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
 	public void test_editInfo() {
 		Role entity = new Role();
-		entity.setId("a0c2ee4b8c8e4d6aa1f118cece9938b6");
+		entity.setId("ce2b91715e884800ad24bb5acba8cce2");
 		entity.setRole_desc("123456");
 		entity.setStatus(RoleService.Status.STOP.value());
 
 		ResultMap<Void> map = roleService.editInfo(entity);
-
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
-	public void test_getByRole() {
-		Role entity = new Role();
-		entity.setRole_name("role_name");
-		Role byDb = roleService.getByRole(entity);
-		Assert.assertNotNull("role is null", byDb);
+	public void test_setStatus() {
+		ResultMap<Void> map = roleService.setStatus("ce2b91715e884800ad24bb5acba8cce2", RoleService.Status.STOP);
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 }

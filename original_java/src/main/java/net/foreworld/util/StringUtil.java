@@ -11,7 +11,7 @@ public class StringUtil {
 	 * 判断字符串是否为空
 	 *
 	 * @param str
-	 * @return 为null或“”则返回null，否则返回trim()后的字符串
+	 * @return 为null或""则返回null，否则返回trim()后的字符串
 	 */
 	public static String isEmpty(String str) {
 		if (null == str)
@@ -22,8 +22,6 @@ public class StringUtil {
 
 	public static String isEmpty(String str, String defaultStr) {
 		String result = isEmpty(str);
-		if (null == result)
-			return defaultStr;
-		return result;
+		return null == result ? defaultStr : result;
 	}
 }
