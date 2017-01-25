@@ -34,4 +34,11 @@ public interface NoticeService extends IService<Notice> {
 	 * @return
 	 */
 	ResultMap<Void> remove(String id);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	Notice viewById(String id);
 }

@@ -36,8 +36,12 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 	}
 
 	@Override
-	public Notice getById(Object key) {
-		Notice entity = super.getById(key);
+	public Notice viewById(String id) {
+		Notice entity = super.getById(id);
+
+		if (null == entity)
+			return null;
+
 		entity.setView_count(entity.getView_count() + 1);
 
 		new Thread(() -> {

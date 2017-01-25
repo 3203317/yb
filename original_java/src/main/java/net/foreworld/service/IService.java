@@ -16,6 +16,8 @@ public interface IService<T> {
 
 	T selectByKey(Object key);
 
+	T getById(Object key);
+
 	int save(T entity);
 
 	int delete(Object key);
