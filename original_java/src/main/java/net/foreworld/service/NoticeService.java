@@ -11,5 +11,5 @@ import net.foreworld.model.Notice;
  */
 public interface NoticeService extends IService<Notice> {
 
-	List<Notice> findByNotice(Notice notice, int page, int rows);
+	List<Notice> findByNotice(Notice entity, int page, int rows);
 }

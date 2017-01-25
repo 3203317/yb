@@ -9,9 +9,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 网站公告
- *
- * @author Administrator
+ * 
+ * @author huangxin <3203317@qq.com>
  *
  */
 @Table(name = "w_notice")
@@ -31,6 +30,8 @@ public class Notice implements Serializable {
 	private Date create_time;
 
 	private String user_id;
+	
+	/*-----分割线-----*/
 
 	public String getId() {
 		return id;
