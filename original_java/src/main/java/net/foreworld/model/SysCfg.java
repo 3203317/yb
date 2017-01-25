@@ -25,6 +25,8 @@ public class SysCfg implements Serializable {
 	private String title;
 	private Date create_time;
 	private String comment;
+	
+	/*-----分割线-----*/
 
 	public String getKey_() {
 		return key_;

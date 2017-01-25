@@ -7,13 +7,13 @@ import net.foreworld.model.SysCfg;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 public interface SysCfgService extends IService<SysCfg> {
 
-	List<SysCfg> findBySysCfg(SysCfg sysCfg, int page, int rows);
+	List<SysCfg> findBySysCfg(SysCfg entity, int page, int rows);
 
-	ResultMap<Void> editInfo(SysCfg sysCfg);
+	ResultMap<Void> editInfo(SysCfg entity);
 
 }

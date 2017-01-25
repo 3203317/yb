@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 @Table(name = "s_role")

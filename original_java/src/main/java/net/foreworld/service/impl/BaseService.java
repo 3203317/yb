@@ -4,9 +4,8 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import tk.mybatis.mapper.common.Mapper;
-
 import net.foreworld.service.IService;
+import tk.mybatis.mapper.common.Mapper;
 
 /**
  *
@@ -25,6 +24,10 @@ public abstract class BaseService<T> implements IService<T> {
 
 	@Override
 	public T selectByKey(Object key) {
+		return mapper.selectByPrimaryKey(key);
+	}
+
+	public T getById(Object key) {
 		return mapper.selectByPrimaryKey(key);
 	}
 
