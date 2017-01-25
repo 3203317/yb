@@ -44,14 +44,22 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 
 		entity.setView_count(entity.getView_count() + 1);
 
-		new Thread(() -> {
-			Notice byDb = new Notice();
-			byDb.setId(entity.getId());
-			byDb.setView_count(entity.getView_count());
-			updateNotNull(byDb);
-		}).start();
+		updateView_count(id, entity.getView_count());
 
 		return entity;
+	}
+
+	/**
+	 * 修改浏览量
+	 *
+	 * @param id
+	 * @param view_count
+	 */
+	private void updateView_count(String id, int view_count) {
+		Notice entity = new Notice();
+		entity.setId(id);
+		entity.setView_count(view_count);
+		updateNotNull(entity);
 	}
 
 	@Override
