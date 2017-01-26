@@ -9,7 +9,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 @Table(name = "s_m")
@@ -28,6 +28,8 @@ public class Manager implements Serializable {
 	private String email;
 	private Date create_time;
 	private Integer status;
+
+	/*-----分割线-----*/
 
 	public String getUser_name() {
 		return user_name;

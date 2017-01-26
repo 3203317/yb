@@ -5,15 +5,14 @@ import net.foreworld.model.ResultMap;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 public interface ManagerService extends IService<Manager> {
 
-	Manager getByManager(Manager manager);
+	Manager getByManager(Manager entity);
 
+	ResultMap<Void> login(String user_name, String user_pass);
 
-	ResultMap<Manager> login(String user_name, String user_pass);
-
-	ResultMap<Void> changePwd(String user_id, String old_pass, String new_pass);
+	ResultMap<Void> changePwd(String id, String old_pass, String new_pass);
 }
