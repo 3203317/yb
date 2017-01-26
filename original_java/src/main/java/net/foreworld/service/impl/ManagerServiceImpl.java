@@ -54,27 +54,28 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 	}
 
 	@Override
-	public ResultMap<Void> login(String user_name, String user_pass) {
-		ResultMap<Void> map = new ResultMap<Void>();
+	public ResultMap<Manager> login(String user_name, String user_pass) {
+		ResultMap<Manager> map = new ResultMap<Manager>();
 		map.setSuccess(false);
 
-		Manager manager = loginCheck(user_name);
+		Manager entity = loginCheck(user_name);
 
-		if (null == manager) {
+		if (null == entity) {
 			map.setMsg("用户名或密码输入错误");
 			return map;
 		}
 
-		if (!MD5.encode(user_pass).equals(manager.getUser_pass())) {
+		if (!MD5.encode(user_pass).equals(entity.getUser_pass())) {
 			map.setMsg("用户名或密码输入错误");
 			return map;
 		}
 
-		if (1 != manager.getStatus()) {
+		if (1 != entity.getStatus()) {
 			map.setMsg("你已被限制登陆");
 			return map;
 		}
 
+		map.setData(entity);
 		map.setSuccess(true);
 		return map;
 	}
