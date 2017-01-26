@@ -97,7 +97,7 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 	@Override
 	public ResultMap<Void> remove(String id) {
 		ResultMap<Void> map = new ResultMap<Void>();
-		deleteByKeys(id);
+		delete(id);
 		map.setSuccess(true);
 		return map;
 	}

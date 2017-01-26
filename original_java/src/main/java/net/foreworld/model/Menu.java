@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 @Table(name = "s_menu")
@@ -27,6 +27,8 @@ public class Menu implements Serializable {
 
 	private Integer sort;
 	private Integer is_parent;
+
+	/*-----分割线-----*/
 
 	public String getId() {
 		return id;

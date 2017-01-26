@@ -7,32 +7,46 @@ import net.foreworld.model.ResultMap;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 public interface MenuService extends IService<Menu> {
 
-	List<Menu> findByMenu(Menu menu, int page, int rows);
+	/**
+	 *
+	 * @param entity
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	List<Menu> findByMenu(Menu entity, int page, int rows);
 
+	/**
+	 *
+	 * @param pid
+	 * @return
+	 */
 	List<Menu> findByPid(String pid);
 
 	/**
-	 * 判断父节点是否存在
 	 *
-	 * @param menu
+	 * @param entity
 	 * @return
 	 */
-	ResultMap<Menu> saveNew(Menu menu);
-
-	ResultMap<Void> editInfo(Menu menu);
+	ResultMap<Menu> saveNew(Menu entity);
 
 	/**
-	 * 判断是否还有子节点
 	 *
-	 * @param menu_id
-	 *            主键
+	 * @param entity
 	 * @return
 	 */
-	ResultMap<Void> remove(String menu_id);
+	ResultMap<Void> editInfo(Menu entity);
+
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	ResultMap<Void> remove(String id);
 
 }
