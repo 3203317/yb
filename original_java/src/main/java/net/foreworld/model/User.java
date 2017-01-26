@@ -11,7 +11,7 @@ import javax.persistence.Transient;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 @Table(name = "s_user")
@@ -61,6 +61,8 @@ public class User implements Serializable {
 	 */
 	@Transient
 	private User _t_pUser;
+
+	/*-----分割线-----*/
 
 	public User get_t_pUser() {
 		return _t_pUser;
