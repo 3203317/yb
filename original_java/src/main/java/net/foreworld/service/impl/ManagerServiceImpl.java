@@ -1,5 +1,6 @@
 package net.foreworld.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import net.foreworld.model.Manager;
@@ -23,6 +24,14 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 		ManagerService {
 
 	@Override
+	public int save(Manager entity) {
+		entity.setId(null);
+		entity.setCreate_time(new Date());
+		entity.setStatus(Status.START.value());
+		return super.save(entity);
+	}
+
+	@Override
 	public int updateNotNull(Manager entity) {
 		entity.setCreate_time(null);
 		return super.updateNotNull(entity);
@@ -34,20 +43,20 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 	 * @return
 	 */
 	private Manager loginCheck(String user_name) {
-		Manager _manager = null;
+		Manager entity = null;
 
-		_manager = new Manager();
-		_manager.setUser_name(user_name);
-		_manager = getByManager(_manager);
-		if (null != _manager) {
-			return _manager;
+		entity = new Manager();
+		entity.setUser_name(user_name);
+		entity = getByManager(entity);
+		if (null != entity) {
+			return entity;
 		}
 
-		_manager = new Manager();
-		_manager.setEmail(user_name);
-		_manager = getByManager(_manager);
-		if (null != _manager) {
-			return _manager;
+		entity = new Manager();
+		entity.setEmail(user_name);
+		entity = getByManager(entity);
+		if (null != entity) {
+			return entity;
 		}
 
 		return null;
@@ -65,13 +74,13 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 			return map;
 		}
 
-		if (!MD5.encode(user_pass).equals(entity.getUser_pass())) {
-			map.setMsg("用户名或密码输入错误");
+		if (Status.START.value() != entity.getStatus()) {
+			map.setMsg("你已被限制登陆");
 			return map;
 		}
 
-		if (1 != entity.getStatus()) {
-			map.setMsg("你已被限制登陆");
+		if (!MD5.encode(user_pass).equals(entity.getUser_pass())) {
+			map.setMsg("用户名或密码输入错误");
 			return map;
 		}
 
@@ -91,17 +100,17 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 			return map;
 		}
 
-		Manager user = getById(id);
+		Manager entity = getById(id);
 
-		if (!MD5.encode(old_pass).equals(user.getUser_pass())) {
+		if (!MD5.encode(old_pass).equals(entity.getUser_pass())) {
 			map.setMsg("原密码错误");
 			return map;
 		}
 
-		user = new Manager();
-		user.setId(id);
-		user.setUser_pass(MD5.encode(new_pass));
-		updateNotNull(user);
+		entity = new Manager();
+		entity.setId(id);
+		entity.setUser_pass(MD5.encode(new_pass));
+		updateNotNull(entity);
 
 		map.setSuccess(true);
 		return map;
@@ -109,11 +118,10 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 
 	@Override
 	public Manager getByManager(Manager entity) {
-		Example example = new Example(Manager.class);
-
 		if (null == entity)
 			return null;
 
+		Example example = new Example(Manager.class);
 		Example.Criteria criteria = example.createCriteria();
 
 		String email = StringUtil.isEmpty(entity.getEmail());

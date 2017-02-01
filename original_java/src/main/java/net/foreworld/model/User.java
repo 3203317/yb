@@ -47,13 +47,6 @@ public class User implements Serializable {
 
 	private Date create_time;
 
-	/**
-	 * 0禁用
-	 *
-	 * 1正常
-	 *
-	 * 2删除
-	 */
 	private Integer status;
 
 	/**

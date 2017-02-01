@@ -39,13 +39,12 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 
 	@Override
 	public Notice viewById(String id) {
-		Notice entity = super.getById(id);
+		Notice entity = getById(id);
 
 		if (null == entity)
 			return null;
 
 		entity.setView_count(entity.getView_count() + 1);
-
 		updateView_count(id, entity.getView_count());
 
 		return entity;
@@ -84,10 +83,7 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 	@Override
 	public ResultMap<Notice> saveNew(Notice entity) {
 		ResultMap<Notice> map = new ResultMap<Notice>();
-
-		entity.setId(null);
 		save(entity);
-
 		map.setData(entity);
 		map.setSuccess(true);
 		return map;

@@ -33,7 +33,9 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 	@Override
 	public int save(User entity) {
+		entity.setId(null);
 		entity.setCreate_time(new Date());
+		entity.setStatus(Status.START.value());
 		return super.save(entity);
 	}
 
@@ -64,20 +66,20 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 	 * @return
 	 */
 	private User loginCheck(String user_name) {
-		User _user = null;
+		User entity = null;
 
-		_user = new User();
-		_user.setUser_name(user_name);
-		_user = getByUser(_user);
-		if (null != _user) {
-			return _user;
+		entity = new User();
+		entity.setUser_name(user_name);
+		entity = getByUser(entity);
+		if (null != entity) {
+			return entity;
 		}
 
-		_user = new User();
-		_user.setEmail(user_name);
-		_user = getByUser(_user);
-		if (null != _user) {
-			return _user;
+		entity = new User();
+		entity.setEmail(user_name);
+		entity = getByUser(entity);
+		if (null != entity) {
+			return entity;
 		}
 
 		return null;
@@ -95,13 +97,13 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return map;
 		}
 
-		if (!MD5.encode(user_pass).equals(entity.getUser_pass())) {
-			map.setMsg("用户名或密码输入错误");
+		if (Status.START.value() != entity.getStatus()) {
+			map.setMsg("你已被限制登陆");
 			return map;
 		}
 
-		if (1 != entity.getStatus()) {
-			map.setMsg("你已被限制登陆");
+		if (!MD5.encode(user_pass).equals(entity.getUser_pass())) {
+			map.setMsg("用户名或密码输入错误");
 			return map;
 		}
 
@@ -166,11 +168,11 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 	@Override
 	public User getByUser(User entity) {
-		Example example = new Example(User.class);
 
 		if (null == entity)
 			return null;
 
+		Example example = new Example(User.class);
 		Example.Criteria criteria = example.createCriteria();
 
 		String email = StringUtil.isEmpty(entity.getEmail());

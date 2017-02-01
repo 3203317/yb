@@ -10,6 +10,20 @@ import net.foreworld.model.ResultMap;
  */
 public interface ManagerService extends IService<Manager> {
 
+	enum Status {
+		START(1), STOP(0);
+
+		private int value = 0;
+
+		private Status(int value) {
+			this.value = value;
+		}
+
+		public int value() {
+			return this.value;
+		}
+	}
+
 	Manager getByManager(Manager entity);
 
 	ResultMap<Manager> login(String user_name, String user_pass);
