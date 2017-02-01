@@ -2,7 +2,7 @@ package net.foreworld.util;
 
 /**
  *
- * @author Administrator
+ * @author huangxin <3203317@qq.com>
  *
  */
 public class StringUtil {
@@ -20,8 +20,8 @@ public class StringUtil {
 		return 0 == str.length() ? null : str;
 	}
 
-	public static String isEmpty(String str, String defaultStr) {
+	public static String isEmpty(String str, String defStr) {
 		String result = isEmpty(str);
-		return null == result ? defaultStr : result;
+		return null == result ? defStr : result;
 	}
 }

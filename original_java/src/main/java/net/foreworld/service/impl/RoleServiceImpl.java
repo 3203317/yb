@@ -31,6 +31,7 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 
 	@Override
 	public int save(Role entity) {
+		entity.setId(null);
 		entity.setCreate_time(new Date());
 		return super.save(entity);
 	}
@@ -66,7 +67,6 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 			return map;
 		}
 
-		entity.setId(null);
 		save(entity);
 
 		map.setData(entity);

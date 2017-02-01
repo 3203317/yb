@@ -24,6 +24,7 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 
 	@Override
 	public int save(Notice entity) {
+		entity.setId(null);
 		entity.setCreate_time(new Date());
 		entity.setView_count(0);
 		return super.save(entity);
@@ -32,6 +33,7 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 	@Override
 	public int updateNotNull(Notice entity) {
 		entity.setCreate_time(null);
+		entity.setUser_id(null);
 		return super.updateNotNull(entity);
 	}
 
@@ -74,10 +76,7 @@ public class NoticeServiceImpl extends BaseService<Notice> implements
 	@Override
 	public ResultMap<Void> editInfo(Notice entity) {
 		ResultMap<Void> map = new ResultMap<Void>();
-
-		entity.setUser_id(null);
 		updateNotNull(entity);
-
 		map.setSuccess(true);
 		return map;
 	}

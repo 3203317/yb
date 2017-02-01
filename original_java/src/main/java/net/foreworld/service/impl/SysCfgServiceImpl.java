@@ -2,14 +2,15 @@ package net.foreworld.service.impl;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
 import net.foreworld.model.ResultMap;
 import net.foreworld.model.SysCfg;
 import net.foreworld.service.SysCfgService;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
+
+import com.github.pagehelper.PageHelper;
 
 /**
  *
@@ -29,7 +30,7 @@ public class SysCfgServiceImpl extends BaseService<SysCfg> implements
 	@Override
 	public List<SysCfg> findBySysCfg(SysCfg entity, int page, int rows) {
 		Example example = new Example(SysCfg.class);
-		example.setOrderByClause("create_time ASC");
+		example.setOrderByClause("key_ ASC");
 
 		PageHelper.startPage(page, rows);
 		return selectByExample(example);
