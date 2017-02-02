@@ -134,6 +134,11 @@ public class ManagerServiceImpl extends BaseService<Manager> implements
 			criteria.andEqualTo("user_name", user_name);
 		}
 
+		String nickname = StringUtil.isEmpty(entity.getNickname());
+		if (null != nickname) {
+			criteria.andEqualTo("nickname", nickname);
+		}
+
 		List<Manager> list = selectByExample(example);
 		Assert.notNull(list, "manager list is null");
 		return 1 == list.size() ? list.get(0) : null;

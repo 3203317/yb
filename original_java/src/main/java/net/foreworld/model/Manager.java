@@ -22,8 +22,9 @@ public class Manager implements Serializable {
 	private String id;
 
 	private String user_name;
-
 	private String user_pass;
+
+	/* 昵称 */
 	private String nickname;
 	private String email;
 	private Date create_time;

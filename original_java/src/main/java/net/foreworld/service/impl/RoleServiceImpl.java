@@ -67,7 +67,6 @@ public class RoleServiceImpl extends BaseService<Role> implements RoleService {
 		}
 
 		save(entity);
-
 		map.setData(entity);
 		map.setSuccess(true);
 		return map;

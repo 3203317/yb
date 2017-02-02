@@ -82,6 +82,13 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return entity;
 		}
 
+		entity = new User();
+		entity.setMobile(user_name);
+		entity = getByUser(entity);
+		if (null != entity) {
+			return entity;
+		}
+
 		return null;
 	}
 
@@ -117,6 +124,16 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 		ResultMap<User> map = new ResultMap<User>();
 		map.setSuccess(false);
 
+		entity.setPid(StringUtil.isEmpty(entity.getPid()));
+
+		if (null != entity.getPid()) {
+			User pUser = getById(entity.getPid());
+
+			if (null == pUser)
+				entity.setPid(null);
+		}
+
+		entity.setUser_pass(MD5.encode(entity.getUser_pass()));
 		save(entity);
 
 		map.setData(entity);
@@ -160,6 +177,11 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			if (null != nickname) {
 				criteria.andLike("nickname", "%" + nickname + "%");
 			}
+
+			String user_name = StringUtil.isEmpty(entity.getUser_name());
+			if (null != user_name) {
+				criteria.andLike("user_name", "%" + user_name + "%");
+			}
 		}
 
 		PageHelper.startPage(page, rows);
@@ -168,21 +190,45 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 
 	@Override
 	public User getByUser(User entity) {
-
 		if (null == entity)
 			return null;
 
 		Example example = new Example(User.class);
 		Example.Criteria criteria = example.createCriteria();
 
-		String email = StringUtil.isEmpty(entity.getEmail());
-		if (null != email) {
-			criteria.andEqualTo("email", email);
+		String pid = StringUtil.isEmpty(entity.getPid());
+		if (null != pid) {
+			criteria.andEqualTo("pid", pid);
 		}
 
 		String user_name = StringUtil.isEmpty(entity.getUser_name());
 		if (null != user_name) {
 			criteria.andEqualTo("user_name", user_name);
+		}
+
+		String real_name = StringUtil.isEmpty(entity.getReal_name());
+		if (null != real_name) {
+			criteria.andEqualTo("real_name", real_name);
+		}
+
+		String mobile = StringUtil.isEmpty(entity.getMobile());
+		if (null != mobile) {
+			criteria.andEqualTo("mobile", mobile);
+		}
+
+		String nickname = StringUtil.isEmpty(entity.getNickname());
+		if (null != nickname) {
+			criteria.andEqualTo("nickname", nickname);
+		}
+
+		String email = StringUtil.isEmpty(entity.getEmail());
+		if (null != email) {
+			criteria.andEqualTo("email", email);
+		}
+
+		String qq = StringUtil.isEmpty(entity.getQq());
+		if (null != qq) {
+			criteria.andEqualTo("qq", qq);
 		}
 
 		List<User> list = selectByExample(example);
@@ -201,17 +247,17 @@ public class UserServiceImpl extends BaseService<User> implements UserService {
 			return map;
 		}
 
-		User user = getById(id);
+		User entity = getById(id);
 
-		if (!MD5.encode(old_pass).equals(user.getUser_pass())) {
+		if (!MD5.encode(old_pass).equals(entity.getUser_pass())) {
 			map.setMsg("原密码错误");
 			return map;
 		}
 
-		user = new User();
-		user.setId(id);
-		user.setUser_pass(MD5.encode(new_pass));
-		updateNotNull(user);
+		entity = new User();
+		entity.setId(id);
+		entity.setUser_pass(MD5.encode(new_pass));
+		updateNotNull(entity);
 
 		map.setSuccess(true);
 		return map;

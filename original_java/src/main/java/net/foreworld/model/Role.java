@@ -27,13 +27,6 @@ public class Role implements Serializable {
 	private String role_desc;
 	private Date create_time;
 
-	/**
-	 * 状态
-	 *
-	 * 1启用
-	 *
-	 * 0禁用
-	 */
 	private Integer status;
 
 	/*-----分割线-----*/
