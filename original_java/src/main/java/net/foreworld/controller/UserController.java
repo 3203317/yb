@@ -5,8 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import net.abc.service.IHelloWorld;
 import net.foreworld.model.ResultMap;
 import net.foreworld.model.User;
 import net.foreworld.service.UserService;
@@ -29,6 +31,9 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
+
+	@Resource(name = "helloWorld")
+	private IHelloWorld helloWorld;
 
 	/**
 	 * 验证令牌
@@ -109,6 +114,10 @@ public class UserController {
 	 */
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.GET)
 	public String _i_loginUI(HttpSession session, Map<String, Object> map) {
+
+		System.out.println(helloWorld.say("haha"));
+		System.out.println(helloWorld.say("haha", 88));
+
 		map.put("verify_token", genVerifyToken(session));
 		return "i/user/1.0.1/login";
 	}

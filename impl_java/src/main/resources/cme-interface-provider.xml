@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- - Copyright 1999-2011 Alibaba Group. - - Licensed under the Apache License,
+	Version 2.0 (the "License"); - you may not use this file except in compliance
+	with the License. - You may obtain a copy of the License at - - http://www.apache.org/licenses/LICENSE-2.0
+	- - Unless required by applicable law or agreed to in writing, software -
+	distributed under the License is distributed on an "AS IS" BASIS, - WITHOUT
+	WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. - See the
+	License for the specific language governing permissions and - limitations
+	under the License. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+	<dubbo:application name="cme-provider" owner="programmer"
+		organization="dubbox" />
+
+	<!--redis作为服务中心，username随便写，password写对 -->
+	<!-- <dubbo:registry address="redis://10.0.4.235:6379" username="xxxx" password="12345678"
+		/> -->
+	<!--zookeeper作为服务中心 -->
+	<dubbo:registry address="zookeeper://10.0.4.32:2181" />
+
+	<!--uncomment this if you want to test dubbo's monitor -->
+	<!--<dubbo:monitor protocol="registry"/> -->
+
+	<!-- here we demonstrate both annotation-based and xml-based configs -->
+
+
+
+	<!--<dubbo:protocol name="dubbo" serialization="fst" optimizer="com.alibaba.dubbo.demo.SerializationOptimizerImpl"/> -->
+
+	<!--<dubbo:protocol name="dubbo" serialization="nativejava"/> -->
+	<!--<dubbo:protocol name="dubbo" serialization="hessian2"/> -->
+	<!--<dubbo:protocol name="dubbo" serialization="fastjson"/> -->
+	<!--<dubbo:protocol name="dubbo" serialization="dubbo"/> -->
+
+
+	<!--TODO according to the spring convention, we should use something like
+		keep-alive -->
+	<!-- use netty server -->
+	<!--<dubbo:protocol name="rest" port="9888" keepalive="true" server="netty"
+		iothreads="5" threads="100" contextpath="services"/> -->
+
+	<!-- use tjws server -->
+	<!--<dubbo:protocol name="rest" port="9888" server="tjws" contextpath="services"/> -->
+
+	<!-- use tomcat server -->
+	<!-- <dubbo:protocol name="rest" port="9888" threads="500" contextpath="services"
+		server="tomcat" accepts="500" extension="com.alibaba.dubbo.demo.extension.TraceInterceptor,
+		com.alibaba.dubbo.demo.extension.TraceFilter, com.alibaba.dubbo.demo.extension.ClientTraceFilter,
+		com.alibaba.dubbo.demo.extension.DynamicTraceBinding, com.alibaba.dubbo.demo.extension.CustomExceptionMapper,
+		com.alibaba.dubbo.rpc.protocol.rest.support.LoggingFilter"/> -->
+
+	<dubbo:protocol name="rest" port="9888" threads="500"
+		contextpath="services" server="tomcat" accepts="500" host="10.0.4.119" />
+	<!-- use the external tomcat or other server with the servlet approach;
+		the port and contextpath must be exactly the same as those in external server -->
+	<!--<dubbo:protocol name="rest" port="9888" contextpath="services" server="servlet"/> -->
+
+	<dubbo:protocol name="http" port="9889" host="10.0.4.119" />
+	<!-- <dubbo:protocol name="hessian" port="9890" host="10.0.4.119" />
+	<dubbo:protocol name="webservice" port="9892" host="10.0.4.119" />
+	<dubbo:protocol name="dubbo" port="9893" host="10.0.4.119" /> -->
+
+	<!-- <dubbo:protocol name="dubbo" port="9893" serialization="kryo" optimizer="com.cme.dubbo.SerializationOptimizerImpl"
+		host="10.0.4.211"/> -->
+
+
+
+	<!--********例子****** <bean id="testService" class="com.alibaba.dubbo.demo.ymj.impl.TestServiceImpl"
+		/> <dubbo:service interface="com.alibaba.dubbo.demo.ymj.TestService" ref="testService"
+		protocol="dubbo" /> -->
+	<!--**************************** -->
+
+
+	<!--********例子****** -->
+	<bean id="helloWorld" class="net.abc.service.impl.HelloWorld" />
+
+	<dubbo:service interface="net.abc.service.IHelloWorld" ref="helloWorld" protocol="dubbo" version="1.2" group="hx" />
+	<!--**************************** -->
+
+
+
+
+
+</beans>
