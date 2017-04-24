@@ -5,7 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class DubboServer {
 	public static ApplicationContext context = new ClassPathXmlApplicationContext(
-			"classpath*:/cme-interface-provider.xml");
+			"classpath*:/interface-provider.xml");
 
 	public static void main(String[] args) {
 		while (true) {
