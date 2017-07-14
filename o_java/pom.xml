@@ -3,7 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.foreworld</groupId>
-	<artifactId>original_java</artifactId>
+	<artifactId>o_java</artifactId>
 	<packaging>war</packaging>
 	<version>1.0.1</version>
 	<name>proto :: web</name>
