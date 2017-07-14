@@ -70,8 +70,7 @@ public class VerifyCodeUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String outputVerifyImage(int w, int h, File outputFile,
-			int verifySize) throws IOException {
+	public static String outputVerifyImage(int w, int h, File outputFile, int verifySize) throws IOException {
 		String verifyCode = generateVerifyCode(verifySize);
 		outputImage(w, h, outputFile, verifyCode);
 		return verifyCode;
@@ -87,8 +86,7 @@ public class VerifyCodeUtil {
 	 * @return
 	 * @throws IOException
 	 */
-	public static String outputVerifyImage(int w, int h, OutputStream os,
-			int verifySize) throws IOException {
+	public static String outputVerifyImage(int w, int h, OutputStream os, int verifySize) throws IOException {
 		String verifyCode = generateVerifyCode(verifySize);
 		outputImage(w, h, os, verifyCode);
 		return verifyCode;
@@ -103,8 +101,7 @@ public class VerifyCodeUtil {
 	 * @param code
 	 * @throws IOException
 	 */
-	public static void outputImage(int w, int h, File outputFile, String code)
-			throws IOException {
+	public static void outputImage(int w, int h, File outputFile, String code) throws IOException {
 		if (outputFile == null) {
 			return;
 		}
@@ -131,19 +128,15 @@ public class VerifyCodeUtil {
 	 * @param code
 	 * @throws IOException
 	 */
-	public static void outputImage(int w, int h, OutputStream os, String code)
-			throws IOException {
+	public static void outputImage(int w, int h, OutputStream os, String code) throws IOException {
 		int verifySize = code.length();
-		BufferedImage image = new BufferedImage(w, h,
-				BufferedImage.TYPE_INT_RGB);
+		BufferedImage image = new BufferedImage(w, h, BufferedImage.TYPE_INT_RGB);
 		Random rand = new Random();
 		Graphics2D g2 = image.createGraphics();
-		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
-				RenderingHints.VALUE_ANTIALIAS_ON);
+		g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
 		Color[] colors = new Color[5];
-		Color[] colorSpaces = new Color[] { Color.WHITE, Color.CYAN,
-				Color.GRAY, Color.LIGHT_GRAY, Color.MAGENTA, Color.ORANGE,
-				Color.PINK, Color.YELLOW };
+		Color[] colorSpaces = new Color[] { Color.WHITE, Color.CYAN, Color.GRAY, Color.LIGHT_GRAY, Color.MAGENTA,
+				Color.ORANGE, Color.PINK, Color.YELLOW };
 		float[] fractions = new float[colors.length];
 		for (int i = 0; i < colors.length; i++) {
 			colors[i] = colorSpaces[rand.nextInt(colorSpaces.length)];
@@ -188,13 +181,10 @@ public class VerifyCodeUtil {
 		char[] chars = code.toCharArray();
 		for (int i = 0; i < verifySize; i++) {
 			AffineTransform affine = new AffineTransform();
-			affine.setToRotation(
-					Math.PI / 4 * rand.nextDouble()
-							* (rand.nextBoolean() ? 1 : -1), (w / verifySize)
-							* i + fontSize / 2, h / 2);
+			affine.setToRotation(Math.PI / 4 * rand.nextDouble() * (rand.nextBoolean() ? 1 : -1),
+					(w / verifySize) * i + fontSize / 2, h / 2);
 			g2.setTransform(affine);
-			g2.drawChars(chars, i, 1, ((w - 10) / verifySize) * i + 5, h / 2
-					+ fontSize / 2 - 10);
+			g2.drawChars(chars, i, 1, ((w - 10) / verifySize) * i + 5, h / 2 + fontSize / 2 - 10);
 		}
 
 		g2.dispose();
@@ -245,9 +235,7 @@ public class VerifyCodeUtil {
 
 		for (int i = 0; i < h1; i++) {
 			double d = (double) (period >> 1)
-					* Math.sin((double) i / (double) period
-							+ (6.2831853071795862D * (double) phase)
-							/ (double) frames);
+					* Math.sin((double) i / (double) period + (6.2831853071795862D * (double) phase) / (double) frames);
 			g.copyArea(0, i, w1, 1, (int) d, 0);
 			if (borderGap) {
 				g.setColor(color);
@@ -267,9 +255,7 @@ public class VerifyCodeUtil {
 		int phase = 7;
 		for (int i = 0; i < w1; i++) {
 			double d = (double) (period >> 1)
-					* Math.sin((double) i / (double) period
-							+ (6.2831853071795862D * (double) phase)
-							/ (double) frames);
+					* Math.sin((double) i / (double) period + (6.2831853071795862D * (double) phase) / (double) frames);
 			g.copyArea(i, 0, 1, h1, 0, (int) d);
 			if (borderGap) {
 				g.setColor(color);

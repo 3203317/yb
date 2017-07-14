@@ -7,8 +7,7 @@ import org.junit.Test;
 
 public class TestT extends BasicTest {
 
-	private static final SimpleDateFormat sdf = new SimpleDateFormat(
-			"yyyyMMddHHmmss");
+	private static final SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmmss");
 
 	@Test
 	public void testAdd() {

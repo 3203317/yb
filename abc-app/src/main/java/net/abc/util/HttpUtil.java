@@ -18,8 +18,7 @@ public class HttpUtil extends AbstractHttpUtil {
 	}
 
 	public static HttpServletRequest getRequest() {
-		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes();
+		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 		return attrs.getRequest();
 	}
 }

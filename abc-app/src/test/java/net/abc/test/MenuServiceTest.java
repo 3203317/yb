@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import net.abc.model.Menu;
 import net.abc.model.ResultMap;
 import net.abc.service.MenuService;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 public class MenuServiceTest extends BasicTest {
 

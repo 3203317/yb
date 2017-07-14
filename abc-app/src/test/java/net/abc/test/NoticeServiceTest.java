@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 import net.abc.model.Notice;
 import net.abc.model.ResultMap;
 import net.abc.service.NoticeService;
-
-import org.junit.Assert;
-import org.junit.Test;
 
 /**
  *
@@ -23,8 +23,7 @@ public class NoticeServiceTest extends BasicTest {
 
 	@Test
 	public void test_findBySysCfg() {
-		List<Notice> list = noticeService.findByNotice(null, 1,
-				Integer.MAX_VALUE);
+		List<Notice> list = noticeService.findByNotice(null, 1, Integer.MAX_VALUE);
 		System.out.println("-----" + list.size());
 	}
 
@@ -53,15 +52,13 @@ public class NoticeServiceTest extends BasicTest {
 
 	@Test
 	public void test_remove() {
-		ResultMap<Void> map = noticeService
-				.remove("289490d1bde64aaaa58c64bed93ba5cb");
+		ResultMap<Void> map = noticeService.remove("289490d1bde64aaaa58c64bed93ba5cb");
 		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
 	public void test_viewById() {
-		Notice notice = noticeService
-				.viewById("d575c5a7788e4650927a04580fc4b34a");
+		Notice notice = noticeService.viewById("d575c5a7788e4650927a04580fc4b34a");
 		System.out.println("-----" + notice.getView_count());
 	}
 
