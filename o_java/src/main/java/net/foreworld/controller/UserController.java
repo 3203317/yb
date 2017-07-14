@@ -5,13 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
-
-import net.abc.service.IHelloWorld;
-import net.foreworld.model.ResultMap;
-import net.foreworld.model.User;
-import net.foreworld.service.UserService;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,6 +14,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
+
+import net.foreworld.model.ResultMap;
+import net.foreworld.model.User;
+import net.foreworld.service.UserService;
 
 /**
  *
@@ -31,9 +29,6 @@ public class UserController {
 
 	@Autowired
 	private UserService userService;
-
-	@Resource(name = "helloWorld")
-	private IHelloWorld helloWorld;
 
 	/**
 	 * 验证令牌
@@ -114,20 +109,14 @@ public class UserController {
 	 */
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.GET)
 	public String _i_loginUI(HttpSession session, Map<String, Object> map) {
-
-		System.out.println(helloWorld.say("haha"));
-		System.out.println(helloWorld.say("haha", 88));
-
 		map.put("verify_token", genVerifyToken(session));
 		return "i/user/1.0.1/login";
 	}
 
 	@ResponseBody
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> _i_login(HttpSession session,
-			@RequestParam(required = true) String verify_token,
-			@RequestParam(required = true) String user_name,
-			@RequestParam(required = true) String user_pass) {
+	public Map<String, Object> _i_login(HttpSession session, @RequestParam(required = true) String verify_token,
+			@RequestParam(required = true) String user_name, @RequestParam(required = true) String user_pass) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
@@ -186,10 +175,8 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = { "/user/changePwd" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> _i_changePwd(HttpSession session,
-			@RequestParam(required = true) String verify_token,
-			@RequestParam(required = true) String old_pass,
-			@RequestParam(required = true) String new_pass) {
+	public Map<String, Object> _i_changePwd(HttpSession session, @RequestParam(required = true) String verify_token,
+			@RequestParam(required = true) String old_pass, @RequestParam(required = true) String new_pass) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
@@ -200,8 +187,7 @@ public class UserController {
 			return result;
 		}
 
-		ResultMap<Void> changePwd = userService.changePwd(
-				session.getAttribute("session.user.id").toString(), old_pass,
+		ResultMap<Void> changePwd = userService.changePwd(session.getAttribute("session.user.id").toString(), old_pass,
 				new_pass);
 
 		if (!changePwd.getSuccess()) {
@@ -225,8 +211,7 @@ public class UserController {
 
 		map.put("verify_token", genVerifyToken(session));
 
-		User user = userService.selectByKey(session.getAttribute(
-				"session.user.id").toString());
+		User user = userService.selectByKey(session.getAttribute("session.user.id").toString());
 		map.put("data_user", user);
 
 		map.put("session_user", session.getAttribute("session.user"));
@@ -236,8 +221,7 @@ public class UserController {
 
 	@ResponseBody
 	@RequestMapping(value = { "/user/profile" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> _i_profile(HttpSession session,
-			@RequestParam(required = true) String verify_token,
+	public Map<String, Object> _i_profile(HttpSession session, @RequestParam(required = true) String verify_token,
 			@RequestParam(required = true) String verify_imgCode, User user) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -277,8 +261,7 @@ public class UserController {
 	 * @return
 	 */
 	@RequestMapping(path = "/user/changeAvatar", method = RequestMethod.POST)
-	public Map<String, Object> _i_changeAvatar(HttpSession session,
-			@RequestParam(value = "file") MultipartFile file) {
+	public Map<String, Object> _i_changeAvatar(HttpSession session, @RequestParam(value = "file") MultipartFile file) {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 		return result;
@@ -287,8 +270,7 @@ public class UserController {
 	@RequestMapping(value = { "/manage/user/" }, method = RequestMethod.GET)
 	public String _m_indexUI(HttpSession session, Map<String, Object> map,
 			@RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "100") int rows,
-			User user) {
+			@RequestParam(required = false, defaultValue = "100") int rows, User user) {
 
 		List<User> list = userService.findByUser(user, page, rows);
 		map.put("data_list", list);
@@ -324,8 +306,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = { "/manage/user/edit" }, method = RequestMethod.GET)
-	public String _m_editUI(HttpSession session, Map<String, Object> map,
-			@RequestParam(required = true) String id) {
+	public String _m_editUI(HttpSession session, Map<String, Object> map, @RequestParam(required = true) String id) {
 
 		User user = userService.selectByKey(id);
 
