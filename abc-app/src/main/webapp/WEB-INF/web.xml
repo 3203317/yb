@@ -5,7 +5,7 @@
             http://java.sun.com/xml/ns/javaee
             http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
 	version="3.0">
-	<display-name>original_java</display-name>
+	<display-name>abc-app</display-name>
 
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
@@ -42,7 +42,7 @@
 
 	<servlet>
 		<servlet-name>AuthImage</servlet-name>
-		<servlet-class>net.foreworld.util.verifyCode.AuthImage</servlet-class>
+		<servlet-class>net.abc.util.verifyCode.AuthImage</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>AuthImage</servlet-name>
@@ -51,7 +51,7 @@
 
 	<filter>
 		<filter-name>PermitFilter</filter-name>
-		<filter-class>net.foreworld.filter.PermitFilter</filter-class>
+		<filter-class>net.abc.filter.PermitFilter</filter-class>
 		<init-param>
 			<param-name>url-suffix</param-name>
 			<param-value>js,css,html,jpg,ico</param-value>
