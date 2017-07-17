@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.abc.model.Notice;
 import net.abc.model.ResultMap;
-import net.abc.service.NoticeService;
+import net.abc.xxx.model.Notice;
+import net.abc.xxx.service.NoticeService;
 
 /**
  *

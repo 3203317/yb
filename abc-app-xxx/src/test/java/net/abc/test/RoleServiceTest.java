@@ -10,8 +10,8 @@ import org.junit.Test;
 import org.springframework.test.annotation.Rollback;
 
 import net.abc.model.ResultMap;
-import net.abc.model.Role;
-import net.abc.service.RoleService;
+import net.abc.xxx.model.Role;
+import net.abc.xxx.service.RoleService;
 
 public class RoleServiceTest extends BasicTest {
 

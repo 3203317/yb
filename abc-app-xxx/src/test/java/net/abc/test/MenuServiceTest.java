@@ -7,9 +7,9 @@ import javax.annotation.Resource;
 import org.junit.Assert;
 import org.junit.Test;
 
-import net.abc.model.Menu;
 import net.abc.model.ResultMap;
-import net.abc.service.MenuService;
+import net.abc.xxx.model.Menu;
+import net.abc.xxx.service.MenuService;
 
 public class MenuServiceTest extends BasicTest {
 

@@ -8,8 +8,8 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import net.abc.model.ResultMap;
-import net.abc.model.SysCfg;
-import net.abc.service.SysCfgService;
+import net.abc.xxx.model.SysCfg;
+import net.abc.xxx.service.SysCfgService;
 
 public class SysCfgServiceTest extends BasicTest {
 
