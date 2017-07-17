@@ -1,6 +1,6 @@
 package net.abc.xxx.mapper;
 
-import net.abc.util.MyMapper;
+import net.abc.mapper.MyMapper;
 import net.abc.xxx.model.SysCfg;
 
 /**
