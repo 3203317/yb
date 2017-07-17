@@ -1,8 +1,8 @@
 package net.abc.service;
 
-import java.awt.Menu;
 import java.util.List;
 
+import net.abc.model.Menu;
 import net.abc.model.ResultMap;
 
 /**
