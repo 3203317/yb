@@ -1,1 +1,0 @@
-package net.abc.mapper;import net.abc.model.User;import net.abc.util.MyMapper;/** * * @author Administrator * */public interface UserMapper extends MyMapper<User> {}
