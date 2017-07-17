@@ -1,8 +1,8 @@
 package net.abc.model;
 
 /**
- *
- * @author Administrator
+ * 
+ * @author huangxin
  *
  */
 public class QueryModel {

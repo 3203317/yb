@@ -14,6 +14,20 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public interface IService<T> {
 
+	public enum Status {
+		START(1), STOP(0);
+
+		private int value = 0;
+
+		private Status(int value) {
+			this.value = value;
+		}
+
+		public int value() {
+			return this.value;
+		}
+	}
+
 	T selectByKey(Object key);
 
 	T getById(Object key);
