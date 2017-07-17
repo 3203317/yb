@@ -4,7 +4,6 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.abc</groupId>
 	<artifactId>abc-util</artifactId>
-	<packaging>war</packaging>
 	<version>1.0.1</version>
 	<name>abc :: util</name>
 	<url>http://www.abc.net/</url>

@@ -286,6 +286,11 @@
 			<artifactId>abc-model</artifactId>
 			<version>1.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>net.abc</groupId>
+			<artifactId>abc-util</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>
