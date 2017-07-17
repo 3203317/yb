@@ -3,9 +3,9 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>net.abc</groupId>
-	<artifactId>abc-biz-impl</artifactId>
+	<artifactId>abc-biz-xxx-impl</artifactId>
 	<version>1.0.1</version>
-	<name>abc :: biz :: impl</name>
+	<name>abc :: biz :: xxx :: impl</name>
 	<url>http://www.abc.net/</url>
 
 	<properties>
