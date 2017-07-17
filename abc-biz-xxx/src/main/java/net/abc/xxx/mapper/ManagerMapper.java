@@ -1,0 +1,1 @@
+package net.abc.xxx.mapper;import net.abc.util.MyMapper;import net.abc.xxx.model.Manager;/** *  * @author huangxin <3203317@qq.com> * */public interface ManagerMapper extends MyMapper<Manager> {}

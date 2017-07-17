@@ -1,0 +1,1 @@
+package net.abc.xxx.mapper;import net.abc.util.MyMapper;import net.abc.xxx.model.Menu;/** *  * @author huangxin <3203317@qq.com> * */public interface MenuMapper extends MyMapper<Menu> {}
