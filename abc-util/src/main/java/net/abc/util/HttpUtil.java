@@ -7,8 +7,8 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
- *
- * @author Administrator
+ * 
+ * @author huangxin <3203317@qq.com>
  *
  */
 public class HttpUtil extends AbstractHttpUtil {

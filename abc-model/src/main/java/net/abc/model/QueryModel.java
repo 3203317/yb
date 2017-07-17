@@ -2,7 +2,7 @@ package net.abc.model;
 
 /**
  * 
- * @author huangxin
+ * @author huangxin <3203317@qq.com>
  *
  */
 public class QueryModel {

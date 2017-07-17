@@ -17,8 +17,8 @@ import java.util.Random;
 import javax.imageio.ImageIO;
 
 /**
- *
- * @author Administrator
+ * 
+ * @author huangxin <3203317@qq.com>
  *
  */
 public class VerifyCodeUtil {
