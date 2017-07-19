@@ -16,7 +16,7 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
-    <context:component-scan base-package="net.abc.service"/>
+    <context:component-scan base-package="net.abc.xxx.service"/>
 
     <context:property-placeholder location="classpath:config.properties"/>
 
@@ -49,7 +49,7 @@
                 <value>classpath:mapper/*.xml</value>
             </array>
         </property>
-        <property name="typeAliasesPackage" value="net.abc.model"/>
+        <property name="typeAliasesPackage" value="net.abc.xxx.model"/>
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageHelper">
@@ -69,9 +69,9 @@
     </bean>
 
     <bean class="tk.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="net.abc.mapper"/>
+        <property name="basePackage" value="net.abc.xxx.mapper"/>
         <!-- 3.2.2版本新特性，markerInterface可以起到mappers配置的作用，详细情况需要看Marker接口类 -->
-        <property name="markerInterface" value="net.abc.util.MyMapper"/>
+        <property name="markerInterface" value="net.abc.mapper.MyMapper"/>
         <!-- 通用Mapper通过属性注入进行配置，默认不配置时会注册Mapper<T>接口
         <property name="properties">
             <value>
@@ -88,7 +88,7 @@
     <aop:aspectj-autoproxy/>
 
     <aop:config>
-        <aop:pointcut id="appService" expression="execution(* net.abc.service..*Service*.*(..))"/>
+        <aop:pointcut id="appService" expression="execution(* net.abc.xxx.service..*Service*.*(..))"/>
         <aop:advisor advice-ref="txAdvice" pointcut-ref="appService"/>
     </aop:config>
 

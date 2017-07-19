@@ -51,7 +51,7 @@
 
 	<filter>
 		<filter-name>PermitFilter</filter-name>
-		<filter-class>net.abc.filter.PermitFilter</filter-class>
+		<filter-class>net.abc.xxx.filter.PermitFilter</filter-class>
 		<init-param>
 			<param-name>url-suffix</param-name>
 			<param-value>js,css,html,jpg,ico</param-value>
