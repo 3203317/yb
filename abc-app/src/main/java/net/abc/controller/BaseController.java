@@ -1,4 +1,4 @@
-package net.abc.xxx.controller;
+package net.abc.controller;
 
 /**
  * 

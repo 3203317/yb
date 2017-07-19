@@ -282,6 +282,11 @@
 			<artifactId>abc-biz-xxx-impl</artifactId>
 			<version>1.0.1</version>
 		</dependency>
+		<dependency>
+			<groupId>net.abc</groupId>
+			<artifactId>abc-app</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<dependencyManagement>

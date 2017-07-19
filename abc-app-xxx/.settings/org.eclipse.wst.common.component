@@ -22,6 +22,9 @@
         <dependent-module archiveName="abc-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model/abc-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="abc-app-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-app/abc-app">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="java-output-path" value="/foundation-cppt/src/main/webapp/WEB-INF/classes"/>
         <property name="context-root" value="abc-app-xxx"/>
     </wb-module>

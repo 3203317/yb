@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import net.abc.controller.BaseController;
 import net.abc.xxx.model.Menu;
 import net.abc.xxx.service.MenuService;
 
@@ -19,7 +20,7 @@ import net.abc.xxx.service.MenuService;
  *
  */
 @Controller
-public class MenuController {
+public class MenuController extends BaseController {
 
 	@Autowired
 	private MenuService menuService;

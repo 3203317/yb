@@ -8,13 +8,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import net.abc.controller.BaseController;
+
 /**
  *
  * @author Administrator
  *
  */
 @Controller
-public class DefaultController {
+public class DefaultController extends BaseController {
 
 	/**
 	 * 用户首页
