@@ -1,12 +1,16 @@
 package net.abc.model;
 
+import java.io.Serializable;
+
 /**
  * 
  * @author huangxin <3203317@qq.com>
  *
  * @param <T>
  */
-public class ResultMap<T> {
+public class ResultMap<T> implements Serializable {
+
+	private static final long serialVersionUID = -6162240726324772880L;
 
 	private T data;
 	private Boolean success;
