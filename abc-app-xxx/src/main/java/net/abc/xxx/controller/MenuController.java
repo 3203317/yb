@@ -26,7 +26,7 @@ public class MenuController extends BaseController {
 	private MenuService menuService;
 
 	@RequestMapping(value = { "/manage/menu/" }, method = RequestMethod.GET)
-	public String _m_indexUI(HttpSession session, Map<String, Object> map) {
+	public String indexUI(HttpSession session, Map<String, Object> map) {
 
 		List<Menu> list = menuService.findByMenu(null, 1, Integer.MAX_VALUE);
 		map.put("data_list", list);
