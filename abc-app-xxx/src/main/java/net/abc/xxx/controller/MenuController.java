@@ -33,6 +33,6 @@ public class MenuController extends BaseController {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",08,0803,");
-		return "m/Menu/index";
+		return "menu/index";
 	}
 }
