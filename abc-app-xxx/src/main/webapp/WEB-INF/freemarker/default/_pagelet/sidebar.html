@@ -120,6 +120,31 @@
 			</ul>
 		</li>
 
+		<li<#if nav_choose?? && nav_choose?index_of(",04,") != -1> class='active open'</#if>>
+			<a href='javascript:;' class="dropdown-toggle">
+				<i class="icon-cog"></i>
+				<span class="menu-text"> 代码生成 </span>
+
+				<b class="arrow icon-angle-down"></b>
+			</a>
+
+			<ul class="submenu">
+				<li<#if nav_choose?? && nav_choose?index_of(",0401,") != -1> class='active'</#if>>
+					<a href="/codeGen/db/">
+						<i class="icon-double-angle-right"></i>
+						数据库
+					</a>
+				</li>
+
+				<li<#if nav_choose?? && nav_choose?index_of(",0402,") != -1> class='active'</#if>>
+					<a href="/codeGen/db_table/">
+						<i class="icon-double-angle-right"></i>
+						表
+					</a>
+				</li>
+			</ul>
+		</li>
+
 		<li>
 			<a href="/user/logout">
 				<i class="icon-lock"></i>
