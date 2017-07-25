@@ -21,7 +21,7 @@
 					<ul class="breadcrumb">
 						<li>
 							<i class="icon-home home-icon"></i>
-							<a href="/manage/">首页</a>
+							<a href="/">首页</a>
 
 							<span class="divider">
 								<i class="icon-angle-right arrow-icon"></i>
@@ -132,7 +132,7 @@
 			}
 
 			$.ajax({
-				url : '${(conf_html_virtualPath)!}manage/settings/edit',
+				url : '${(conf_html_virtualPath)!}settings/edit',
 				type : 'POST',
 				dataType : 'JSON',
 				data : {
@@ -141,10 +141,10 @@
 				},
 				success : function(data) {
 					if (data.success){
-						return location.href = '${(conf_html_virtualPath)!}manage/settings/';
+						return location.href = '${(conf_html_virtualPath)!}settings/';
 					}
 					if (data.msg) alert(data.msg);
-					location.href = '${(conf_html_virtualPath)!}manage/settings/';
+					location.href = '${(conf_html_virtualPath)!}settings/';
 				},
 				error : function() {
 					alert(arguments[2]);
