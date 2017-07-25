@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -29,11 +29,9 @@ import net.abc.xxx.service.UserService;
  */
 
 @Controller
-
 public class UserController extends BaseController {
 
-	@Autowired
-
+	@Resource
 	private UserService userService;
 
 	/**
@@ -173,7 +171,6 @@ public class UserController extends BaseController {
 		if (!verifyImg.getSuccess()) {
 			result.put("msg", verifyImg.getMsg());
 			return result;
-
 		}
 
 		// 设置主键
