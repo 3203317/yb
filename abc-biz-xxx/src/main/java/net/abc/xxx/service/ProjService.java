@@ -5,7 +5,6 @@ import java.util.List;
 import net.abc.model.ResultMap;
 import net.abc.service.IService;
 import net.abc.xxx.model.Proj;
-import net.abc.xxx.model.User;
 
 /**
  *
@@ -14,7 +13,7 @@ import net.abc.xxx.model.User;
  */
 public interface ProjService extends IService<Proj> {
 
-	List<User> findByProj(Proj entity, int page, int rows);
+	List<Proj> findByProj(Proj entity, int page, int rows);
 
 	/**
 	 * 
