@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import net.abc.controller.BaseController;
 import net.abc.util.StringUtil;
 import net.abc.xxx.model.Proj;
+import net.abc.xxx.model.ProjEntity;
+import net.abc.xxx.service.ProjEntityService;
 import net.abc.xxx.service.ProjService;
 
 /**
@@ -26,6 +28,9 @@ public class ProjController extends BaseController {
 
 	@Resource
 	private ProjService projService;
+
+	@Resource
+	private ProjEntityService projEntityService;
 
 	/**
 	 * 
@@ -87,8 +92,15 @@ public class ProjController extends BaseController {
 		map.put("nav_choose", ",05,0503,");
 
 		Proj p = projService.getById(id);
-
 		map.put("data_proj", p);
+
+		//
+
+		ProjEntity pe = new ProjEntity();
+		pe.setProj_id(id);
+
+		List<ProjEntity> list_pe = projEntityService.findByProjEntity(pe, 1, Integer.MAX_VALUE);
+		map.put("data_list_pe", list_pe);
 
 		return "codeGen/project/templet_choose_codeGen";
 	}
