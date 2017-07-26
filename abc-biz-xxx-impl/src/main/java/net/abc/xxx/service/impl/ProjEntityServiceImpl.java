@@ -9,7 +9,6 @@ import com.github.pagehelper.PageHelper;
 import net.abc.model.ResultMap;
 import net.abc.service.impl.BaseService;
 import net.abc.util.StringUtil;
-import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.service.ProjEntityService;
 import tk.mybatis.mapper.entity.Example;
@@ -25,7 +24,7 @@ public class ProjEntityServiceImpl extends BaseService<ProjEntity> implements Pr
 	@Override
 	public List<ProjEntity> findByProjEntity(ProjEntity entity, int page, int rows) {
 
-		Example example = new Example(Proj.class);
+		Example example = new Example(ProjEntity.class);
 		example.setOrderByClause("create_time desc");
 
 		if (null != entity) {
