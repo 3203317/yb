@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.abc.controller.BaseController;
+import net.abc.util.StringUtil;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.service.ProjService;
 
@@ -51,21 +52,44 @@ public class ProjController extends BaseController {
 	 * 
 	 * @param session
 	 * @param map
+	 * @param id
 	 * @return
 	 */
 	@RequestMapping(value = { "/codeGen/entity_prop/" }, method = RequestMethod.GET)
-	public String entity_propUI(HttpSession session, Map<String, Object> map) {
-		return "redirect:/codeGen/proj_create/";
+	public String entity_propUI(HttpSession session, Map<String, Object> map,
+			@RequestParam(required = false) String id) {
+
+		id = StringUtil.isEmpty(id);
+
+		if (null == id)
+			return "redirect:/codeGen/proj_create/";
+
+		return "codeGen/project/entity_prop";
 	}
 
 	/**
 	 * 
 	 * @param session
 	 * @param map
+	 * @param id
 	 * @return
 	 */
 	@RequestMapping(value = { "/codeGen/templet_choose_codeGen/" }, method = RequestMethod.GET)
-	public String templet_choose_codeGenUI(HttpSession session, Map<String, Object> map) {
-		return "redirect:/codeGen/proj_create/";
+	public String templet_choose_codeGenUI(HttpSession session, Map<String, Object> map,
+			@RequestParam(required = false) String id) {
+
+		id = StringUtil.isEmpty(id);
+
+		if (null == id)
+			return "redirect:/codeGen/proj_create/";
+
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",05,0503,");
+
+		Proj p = projService.getById(id);
+
+		map.put("data_proj", p);
+
+		return "codeGen/project/templet_choose_codeGen";
 	}
 }
