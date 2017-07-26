@@ -7,21 +7,21 @@
 	</head>
 
 	<body>
-		<#include "/m/default/_pagelet/nav.html"/>
+		<#include "/default/_pagelet/nav.html"/>
 
 		<div class="main-container container-fluid">
 			<a class="menu-toggler" id="menu-toggler" href='javascript:;'>
 				<span class="menu-text"></span>
 			</a>
 
-			<#include "/m/default/_pagelet/sidebar.html"/>
+			<#include "/default/_pagelet/sidebar.html"/>
 
 			<div class="main-content">
 				<div class="breadcrumbs" id="breadcrumbs">
 					<ul class="breadcrumb">
 						<li>
 							<i class="icon-home home-icon"></i>
-							<a href="/manage/">首页</a>
+							<a href="/">首页</a>
 
 							<span class="divider">
 								<i class="icon-angle-right arrow-icon"></i>
@@ -29,12 +29,12 @@
 						</li>
 
 						<li>
-							会员管理
+							代码生成
 							<span class="divider">
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
 						</li>
-						<li class="active">会员资料</li>
+						<li class="active">项目创建</li>
 					</ul><!--.breadcrumb-->
 
 					<div class="nav-search" id="nav-search">
@@ -51,10 +51,10 @@
 
 					<div class="page-header position-relative">
 						<h1>
-							用户管理
+							项目创建
 							<small>
 								<i class="icon-double-angle-right"></i>
-								User
+								Project
 							</small>
 						</h1>
 					</div><!--/.page-header-->
@@ -93,13 +93,13 @@
 										删除
 									</a>
 
-									<a href='javascript:;' class="btn btn-app btn-grey btn-mini radius-4">
+									<#-- <!-- <a href='javascript:;' class="btn btn-app btn-grey btn-mini radius-4">
 										<i class="icon-flag bigger-160"></i>
 										状态
 										<span class="badge badge-transparent">
 											<i class="light-red icon-asterisk"></i>
 										</span>
-									</a>
+									</a> -->
 								</p>
 							</div><!-- buttons -->
 
@@ -116,16 +116,12 @@
 														<span class="lbl"></span>
 													</label>
 												</th>
-												<th>用户名</th>
-												<th class="hidden-480">姓名</th>
+												<th>项目名称</th>
+												<th class="hidden-480">项目描述</th>
 
 												<th class="hidden-phone">
 													<i class="icon-time bigger-110 hidden-phone"></i>
 													创建时间
-												</th>
-												<th>
-													<i class="icon-flag bigger-110"></i>
-													状态
 												</th>
 
 												<th>操作</th>
@@ -134,7 +130,7 @@
 
 										<tbody>
 										<#import "/_macro/status.html" as status>
-										<#list data_list! as doc>
+										<#list data_proj_list! as doc>
 											<tr>
 												<td class="center">
 													<label>
@@ -143,13 +139,9 @@
 													</label>
 												</td>
 
-												<td>${(doc.user_name)!}</a></td>
-												<td class="hidden-480">${(doc.real_name)!}</td>
+												<td>${(doc.proj_name)!}</a></td>
+												<td class="hidden-480">${(doc.proj_desc)!}</td>
 												<td class="hidden-phone">${(doc.create_time?string("yyyy-MM-dd HH:mm:ss"))!}</td>
-
-												<td>
-													<span class="label<#if doc.status=1> label-success<#else> label-warning</#if>"><@status.m status="${(doc.status)!}"/></span>
-												</td>
 
 												<td>
 													<div class="hidden-phone visible-desktop btn-group">
@@ -162,9 +154,6 @@
 															<i class="icon-trash bigger-120"></i>
 														</a>
 
-														<button class="btn btn-mini<#if doc.status=1> btn-success<#else> btn-warning</#if>" title='更改状态'>
-															<i class="icon-flag bigger-120"></i>
-														</button>
 													</div>
 
 													<div class="hidden-desktop visible-phone">
@@ -187,14 +176,6 @@
 																	<a href='./del?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="删除">
 																		<span class="red">
 																			<i class="icon-trash bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href='javascript:;' class="tooltip-info" data-rel="tooltip" title="更改状态">
-																		<span class="<#if doc.status=1>green<#else>orange</#if>">
-																			<i class="icon-flag bigger-120"></i>
 																		</span>
 																	</a>
 																</li>

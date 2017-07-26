@@ -34,7 +34,7 @@ public class ProjController extends BaseController {
 	@RequestMapping(value = { "/codeGen/proj_create/" }, method = RequestMethod.GET)
 	public String createUI(HttpSession session, Map<String, Object> map) {
 		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",05,");
+		map.put("nav_choose", ",05,0501,");
 
 		List<Proj> proj_list = projService.selectByExample(null);
 		map.put("data_proj_list", proj_list);
