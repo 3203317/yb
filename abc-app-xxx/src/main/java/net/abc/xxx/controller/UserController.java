@@ -107,7 +107,7 @@ public class UserController extends BaseController {
 	public String changePwdUI(HttpSession session, Map<String, Object> map) {
 		map.put("verify_token", genVerifyToken(session));
 		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",03,0302,");
+		map.put("nav_choose", ",04,0402,");
 		return "user/changePwd";
 
 	}
@@ -149,7 +149,7 @@ public class UserController extends BaseController {
 		User user = userService.selectByKey(session.getAttribute("session.user.id").toString());
 		map.put("data_user", user);
 		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",03,0301,");
+		map.put("nav_choose", ",04,0401,");
 		return "user/1.0.2/profile";
 	}
 
