@@ -57,4 +57,15 @@ public class ProjController extends BaseController {
 	public String entity_propUI(HttpSession session, Map<String, Object> map) {
 		return "redirect:/codeGen/proj_create/";
 	}
+
+	/**
+	 * 
+	 * @param session
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/codeGen/templet_choose_codeGen/" }, method = RequestMethod.GET)
+	public String templet_choose_codeGenUI(HttpSession session, Map<String, Object> map) {
+		return "redirect:/codeGen/proj_create/";
+	}
 }
