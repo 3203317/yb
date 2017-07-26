@@ -29,6 +29,8 @@ public class ProjController extends BaseController {
 	/**
 	 * 
 	 * @param session
+	 * @param page
+	 * @param rows
 	 * @param map
 	 * @return
 	 */
@@ -43,5 +45,16 @@ public class ProjController extends BaseController {
 		map.put("data_proj_list", proj_list);
 
 		return "codeGen/project/index";
+	}
+
+	/**
+	 * 
+	 * @param session
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/codeGen/entity_prop/" }, method = RequestMethod.GET)
+	public String entity_propUI(HttpSession session, Map<String, Object> map) {
+		return "redirect:/codeGen/proj_create/";
 	}
 }

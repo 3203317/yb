@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
-		<title>用户管理 | 系统管理 | 后台管理</title>
+		<title>项目创建 | 代码生成 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
 	</head>
 
@@ -54,7 +54,7 @@
 							项目创建
 							<small>
 								<i class="icon-double-angle-right"></i>
-								Project
+								Project Create
 							</small>
 						</h1>
 					</div><!--/.page-header-->
@@ -152,6 +152,10 @@
 
 														<a class="btn btn-mini btn-danger" title='删除' href='./del?id=${(doc.id)!}'>
 															<i class="icon-trash bigger-120"></i>
+														</a>
+
+														<a class="btn btn-mini btn-primary" title='实体及属性设置' href='./set?id=${(doc.id)!}'>
+															<i class="icon-cogs bigger-120"></i>
 														</a>
 
 													</div>
