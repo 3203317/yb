@@ -1,7 +1,9 @@
 package net.abc.xxx.controller;
 
+import java.util.List;
 import java.util.Map;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import net.abc.controller.BaseController;
+import net.abc.xxx.model.Proj;
+import net.abc.xxx.service.ProjService;
 
 /**
  * 
@@ -16,7 +20,10 @@ import net.abc.controller.BaseController;
  *
  */
 @Controller
-public class ProjectController extends BaseController {
+public class ProjController extends BaseController {
+
+	@Resource
+	private ProjService projService;
 
 	/**
 	 * 
@@ -28,6 +35,10 @@ public class ProjectController extends BaseController {
 	public String createUI(HttpSession session, Map<String, Object> map) {
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,");
+
+		List<Proj> proj_list = projService.selectByExample(null);
+		map.put("data_proj_list", proj_list);
+
 		return "codeGen/project/index";
 	}
 }
