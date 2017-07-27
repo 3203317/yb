@@ -287,12 +287,10 @@ public class DefaultController extends BaseController {
 	<script type='text/javascript'>
 	$(function(){
 		SyntaxHighlighter.all();
+		window.onload = function(){
+		  parent.resize(document.body.offsetHeight + 30);
+		};
 	});
-	window.onload = function(){
-		setTimeout(function(){
-			parent.resize(document.body.offsetHeight + 30);
-		}, 1000);
-	};
 	</script>	
 </body>
 </html>
