@@ -202,7 +202,7 @@
 													</tbody>
 												</table><!-- table -->
 												
-												<iframe id='inn' style='width:100%;height:3250px' src='/static/codeGen.html'></iframe>
+												<iframe id='inn' style='display:none;width:100%' src=''></iframe>
 											</div>
 											
 										</div>
@@ -228,8 +228,9 @@
 			var lang = $('#choose_lang').val();
 			var db   = $('#choose_db').val();
 			
-			console.log(lang, db);
-			
+			// console.log(lang, db);
+			$("#inn").css('display', 'block'); 
+			$('#inn').attr('src', '/codeGen/genCode/?lang_id='+ lang +'&db_id='+ db +'&entity_id='+ entity_id);
 		}
 		
 		function resize(h){

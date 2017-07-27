@@ -33,6 +33,24 @@ public class ProjController extends BaseController {
 	private ProjEntityService projEntityService;
 
 	/**
+	 * 展示生成代码
+	 * 
+	 * @param session
+	 * @param lang_id
+	 * @param db_id
+	 * @param entity_id
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/codeGen/genCode/" }, method = RequestMethod.GET)
+	public String genCodeUI(HttpSession session, @RequestParam(required = true) String lang_id,
+			@RequestParam(required = true) String db_id, @RequestParam(required = true) String entity_id,
+			Map<String, Object> map) {
+
+		return "codeGen/project/genCode";
+	}
+
+	/**
 	 * 
 	 * @param session
 	 * @param page
