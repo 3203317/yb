@@ -1,5 +1,6 @@
 package net.abc.xxx.controller;
 
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,8 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import freemarker.core.ParseException;
+import freemarker.template.MalformedTemplateNameException;
+import freemarker.template.TemplateException;
 import net.abc.controller.BaseController;
 import net.abc.util.StringUtil;
+import net.abc.util.freemarker.Processor;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjEntityProp;
@@ -47,11 +52,16 @@ public class ProjController extends BaseController {
 	 * @param entity_id
 	 * @param map
 	 * @return
+	 * @throws MalformedTemplateNameException
+	 * @throws ParseException
+	 * @throws IOException
+	 * @throws TemplateException
 	 */
 	@RequestMapping(value = { "/codeGen/genCode/" }, method = RequestMethod.GET)
 	public String genCodeUI(HttpSession session, @RequestParam(required = true) String lang_id,
 			@RequestParam(required = true) String db_id, @RequestParam(required = true) String proj_id,
-			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
+			@RequestParam(required = true) String entity_id, Map<String, Object> map)
+			throws MalformedTemplateNameException, ParseException, IOException, TemplateException {
 
 		Proj p = projService.getById(proj_id);
 
@@ -66,6 +76,16 @@ public class ProjController extends BaseController {
 		model.put("data_p", p);
 		model.put("data_pe", pe);
 		model.put("data_list_pep", list_pep);
+
+		map.put("temp_java_model", Processor.getResult("java_model.html", model));
+		map.put("temp_java_mapper", Processor.getResult("java_mapper.html", model));
+		map.put("temp_java_biz", Processor.getResult("java_biz.html", model));
+		map.put("temp_java_biz_impl", Processor.getResult("java_biz_impl.html", model));
+		map.put("temp_java_controller", Processor.getResult("java_controller.html", model));
+
+		map.put("temp_html_index", Processor.getResult("html_index.html", model));
+		map.put("temp_html_add", Processor.getResult("html_add.html", model));
+		map.put("temp_html_edit", Processor.getResult("html_edit.html", model));
 
 		return "codeGen/project/genCode";
 	}
