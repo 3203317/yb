@@ -13,7 +13,7 @@ import freemarker.template.Template;
 import freemarker.template.TemplateNotFoundException;
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -30,7 +30,7 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 *
+	 * 
 	 * @return
 	 */
 	public static TemplateUtil getDefault() {
@@ -45,7 +45,7 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param id
 	 * @param template
 	 * @throws TemplateNotFoundException
@@ -56,7 +56,7 @@ public final class TemplateUtil {
 	public void putTemplate(String id, String template)
 			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
 
-		if (null == getTemplate(id))
+		if (null != getTemplate(id))
 			return;
 
 		StringTemplateLoader loader = new StringTemplateLoader();
@@ -66,7 +66,7 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param id
 	 * @throws IOException
 	 */
@@ -77,17 +77,18 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 *
+	 * 
 	 * @param id
 	 * @return
-	 * @throws TemplateNotFoundException
 	 * @throws MalformedTemplateNameException
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	public Template getTemplate(String id)
-			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
-		return config.getTemplate(id, "UTF-8");
+	public Template getTemplate(String id) throws MalformedTemplateNameException, ParseException, IOException {
+		try {
+			return config.getTemplate(id, "UTF-8");
+		} catch (TemplateNotFoundException e) {
+			return null;
+		}
 	}
-
 }
