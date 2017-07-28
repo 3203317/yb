@@ -184,7 +184,7 @@
 			
 													<tbody>
 													<#list data_list_pe! as doc>
-														<tr onclick='load_entity_templet("${(doc.id)!}")'>
+														<tr onclick='load_entity_templet("${(doc.proj_id)!}", "${(doc.id)!}")'>
 															<td class="center">
 																<label>
 																	<input type="checkbox" value='${(doc.id)!}' />
@@ -224,13 +224,13 @@
 		<#include "/_pagelet/js.html"/>
 
 		<script>
-		function load_entity_templet(entity_id){			
+		function load_entity_templet(proj_id, entity_id){			
 			var lang = $('#choose_lang').val();
 			var db   = $('#choose_db').val();
 			
 			// console.log(lang, db);
 			$("#inn").css('display', 'block'); 
-			$('#inn').attr('src', '/codeGen/genCode/?lang_id='+ lang +'&db_id='+ db +'&entity_id='+ entity_id);
+			$('#inn').attr('src', '/codeGen/genCode/?lang_id='+ lang +'&db_id='+ db +'&proj_id='+ proj_id +'&entity_id='+ entity_id);
 		}
 		
 		function resize(h){

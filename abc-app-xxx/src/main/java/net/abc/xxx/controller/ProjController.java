@@ -1,5 +1,6 @@
 package net.abc.xxx.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,8 @@ import net.abc.controller.BaseController;
 import net.abc.util.StringUtil;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
+import net.abc.xxx.model.ProjEntityProp;
+import net.abc.xxx.service.ProjEntityPropService;
 import net.abc.xxx.service.ProjEntityService;
 import net.abc.xxx.service.ProjService;
 
@@ -32,20 +35,37 @@ public class ProjController extends BaseController {
 	@Resource
 	private ProjEntityService projEntityService;
 
+	@Resource
+	private ProjEntityPropService projEntityPropService;
+
 	/**
-	 * 展示生成代码
 	 * 
 	 * @param session
 	 * @param lang_id
 	 * @param db_id
+	 * @param proj_id
 	 * @param entity_id
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/codeGen/genCode/" }, method = RequestMethod.GET)
 	public String genCodeUI(HttpSession session, @RequestParam(required = true) String lang_id,
-			@RequestParam(required = true) String db_id, @RequestParam(required = true) String entity_id,
-			Map<String, Object> map) {
+			@RequestParam(required = true) String db_id, @RequestParam(required = true) String proj_id,
+			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
+
+		Proj p = projService.getById(proj_id);
+
+		ProjEntity pe = projEntityService.getById(entity_id);
+
+		ProjEntityProp pep = new ProjEntityProp();
+		pep.setEntity_id(entity_id);
+
+		List<ProjEntityProp> list_pep = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("data_p", p);
+		model.put("data_pe", pe);
+		model.put("data_list_pep", list_pep);
 
 		return "codeGen/project/genCode";
 	}
