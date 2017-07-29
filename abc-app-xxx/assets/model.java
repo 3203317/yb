@@ -1,4 +1,4 @@
-package net.abc.xxx.model;
+package ${(data_p.package_name)!};
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,7 +13,7 @@ import javax.persistence.Table;
  * @author huangxin <3203317@qq.com>
  *
  */
-@Table(name = "t_table")
+@Table(name = "${(data_pe.db_name)!}")
 public class ${(data_pe.entity_name)!} implements Serializable {
 
   private static final long serialVersionUID = 4204799309802253673L;

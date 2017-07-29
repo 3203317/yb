@@ -29,6 +29,16 @@ public class ProjEntity implements Serializable {
 
 	private String proj_id;
 
+	private String db_name;
+
+	public String getDb_name() {
+		return db_name;
+	}
+
+	public void setDb_name(String db_name) {
+		this.db_name = db_name;
+	}
+
 	public String getId() {
 		return id;
 	}
