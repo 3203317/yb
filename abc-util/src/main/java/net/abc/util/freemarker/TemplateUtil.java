@@ -105,7 +105,7 @@ public final class TemplateUtil {
 	 * @param id
 	 * @return
 	 */
-	public String getTemplateFile(String id) {
+	public String getTemplateSource(String id) {
 		return map.get(id);
 	}
 }
