@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.TemplateException;
+import freemarker.template.TemplateNotFoundException;
 import net.abc.controller.BaseController;
 import net.abc.util.StringUtil;
 import net.abc.util.freemarker.Processor;
+import net.abc.xxx.init.FreemarkerTemplateResource;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjEntityProp;
@@ -33,6 +35,9 @@ import net.abc.xxx.service.ProjService;
  */
 @Controller
 public class ProjController extends BaseController {
+
+	@Resource
+	private FreemarkerTemplateResource freemarkerTemplateResource;
 
 	@Resource
 	private ProjService projService;
@@ -52,6 +57,7 @@ public class ProjController extends BaseController {
 	 * @param entity_id
 	 * @param map
 	 * @return
+	 * @throws TemplateNotFoundException
 	 * @throws MalformedTemplateNameException
 	 * @throws ParseException
 	 * @throws IOException
@@ -60,8 +66,8 @@ public class ProjController extends BaseController {
 	@RequestMapping(value = { "/codeGen/genCode/" }, method = RequestMethod.GET)
 	public String genCodeUI(HttpSession session, @RequestParam(required = true) String lang_id,
 			@RequestParam(required = true) String db_id, @RequestParam(required = true) String proj_id,
-			@RequestParam(required = true) String entity_id, Map<String, Object> map)
-			throws MalformedTemplateNameException, ParseException, IOException, TemplateException {
+			@RequestParam(required = true) String entity_id, Map<String, Object> map) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException, TemplateException {
 
 		Proj p = projService.getById(proj_id);
 
@@ -76,6 +82,8 @@ public class ProjController extends BaseController {
 		model.put("data_p", p);
 		model.put("data_pe", pe);
 		model.put("data_list_pep", list_pep);
+
+		freemarkerTemplateResource.reload();
 
 		map.put("temp_java_model", Processor.getResult("java_model.html", model));
 		map.put("temp_java_mapper", Processor.getResult("java_mapper.html", model));

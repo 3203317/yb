@@ -1,11 +1,15 @@
 package net.abc.xxx.init;
 
 import java.io.File;
+import java.io.IOException;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
+import freemarker.core.ParseException;
+import freemarker.template.MalformedTemplateNameException;
+import freemarker.template.TemplateNotFoundException;
 import net.abc.util.FileUtil;
 import net.abc.util.freemarker.TemplateUtil;
 
@@ -21,7 +25,7 @@ public class FreemarkerTemplateResource {
 	@Value("${res.path}")
 	private String res_path;
 
-	public void init() throws Exception {
+	public void init() throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
 
 		File file = new File(res_path);
 
@@ -32,6 +36,10 @@ public class FreemarkerTemplateResource {
 			String fileName = fileList[i].getName();
 			TemplateUtil.getDefault().putTemplate(fileName, FileUtil.read(res_path + fileName));
 		}
+	}
+
+	public void reload() throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
+		init();
 	}
 
 }
