@@ -56,8 +56,9 @@ public final class TemplateUtil {
 	public void putTemplate(String id, String template)
 			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
 
-		if (null != getTemplate(id))
-			return;
+		if (null != getTemplate(id)) {
+			removeTemplate(id);
+		}
 
 		StringTemplateLoader loader = new StringTemplateLoader();
 		loader.putTemplate(id, template);

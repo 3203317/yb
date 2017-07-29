@@ -85,15 +85,15 @@ public class ProjController extends BaseController {
 
 		freemarkerTemplateResource.reload();
 
-		map.put("temp_java_model", Processor.getResult("java_model.html", model));
-		map.put("temp_java_mapper", Processor.getResult("java_mapper.html", model));
-		map.put("temp_java_biz", Processor.getResult("java_biz.html", model));
-		map.put("temp_java_biz_impl", Processor.getResult("java_biz_impl.html", model));
-		map.put("temp_java_controller", Processor.getResult("java_controller.html", model));
+		map.put("temp_" + lang_id + "_model", Processor.getResult("model.java", model));
+		map.put("temp_" + lang_id + "_" + db_id + "_mapper", Processor.getResult("mapper.java", model));
+		map.put("temp_" + lang_id + "_biz", Processor.getResult("biz.java", model));
+		map.put("temp_" + lang_id + "_biz_impl", Processor.getResult("biz_impl.java", model));
+		map.put("temp_" + lang_id + "_controller", Processor.getResult("controller.java", model));
 
-		map.put("temp_html_index", Processor.getResult("html_index.html", model));
-		map.put("temp_html_add", Processor.getResult("html_add.html", model));
-		map.put("temp_html_edit", Processor.getResult("html_edit.html", model));
+		map.put("temp_html_index", Processor.getResult("index.html", model));
+		map.put("temp_html_add", Processor.getResult("add.html", model));
+		map.put("temp_html_edit", Processor.getResult("edit.html", model));
 
 		return "codeGen/project/genCode";
 	}
