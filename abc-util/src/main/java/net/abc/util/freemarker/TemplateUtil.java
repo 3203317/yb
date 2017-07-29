@@ -1,6 +1,8 @@
 package net.abc.util.freemarker;
 
 import java.io.IOException;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,8 +27,11 @@ public final class TemplateUtil {
 
 	private Configuration config;
 
+	private Map<String, String> map;
+
 	private TemplateUtil() {
 		config = new Configuration(Configuration.VERSION_2_3_23);
+		map = new ConcurrentHashMap<String, String>();
 	}
 
 	/**
@@ -63,6 +68,7 @@ public final class TemplateUtil {
 		StringTemplateLoader loader = new StringTemplateLoader();
 		loader.putTemplate(id, template);
 		config.setTemplateLoader(loader);
+		map.put(id, template);
 
 	}
 
@@ -75,6 +81,7 @@ public final class TemplateUtil {
 		if (null == getTemplate(id))
 			return;
 		config.removeTemplateFromCache(id);
+		map.remove(id);
 	}
 
 	/**
@@ -91,5 +98,14 @@ public final class TemplateUtil {
 		} catch (TemplateNotFoundException e) {
 			return null;
 		}
+	}
+
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public String getTemplateFile(String id) {
+		return map.get(id);
 	}
 }
