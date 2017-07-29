@@ -17,8 +17,8 @@ import org.apache.log4j.Logger;
 import net.abc.util.HttpUtil;
 
 /**
- *
- * @author Administrator
+ * 
+ * @author huangxin <3203317@qq.com>
  *
  */
 public class PermitFilter implements Filter {

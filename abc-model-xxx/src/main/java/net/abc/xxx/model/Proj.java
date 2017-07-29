@@ -27,6 +27,16 @@ public class Proj implements Serializable {
 	private String proj_desc;
 	private Date create_time;
 
+	private String package_name;
+
+	public String getPackage_name() {
+		return package_name;
+	}
+
+	public void setPackage_name(String package_name) {
+		this.package_name = package_name;
+	}
+
 	public String getId() {
 		return id;
 	}
