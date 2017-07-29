@@ -16,7 +16,7 @@ import javax.persistence.Table;
 @Table(name = "${(data_pe.db_name)!}")
 public class ${(data_pe.entity_name)!} implements Serializable {
 
-  private static final long serialVersionUID = 4204799309802253673L;
+  private static final long serialVersionUID = -1L;
 
 <#list data_list_pep! as doc>  private String ${(doc.prop_name)!};  // ${(doc.prop_desc)!}
 </#list>

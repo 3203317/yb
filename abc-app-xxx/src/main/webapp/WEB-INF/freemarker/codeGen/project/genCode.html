@@ -56,9 +56,12 @@ if(isIE()){
 	<script type='text/javascript' src='http://www.foreworld.net/js/respond/1.4.2/respond.min.js'></script>
 <![endif]-->	
 <link href="/static/3rd/SyntaxHighlighter/css/shCore.css" rel="stylesheet" type="text/css" />
-<link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body><pre class="brush: java">
+<link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body><#if temp_JAVA_model ??><pre class="brush: java">
 ${(temp_JAVA_model)!}
-</pre><#include "/_pagelet/js.html"/>
+</pre></#if>
+<#if temp_JAVA_model ??><pre class="brush: java">
+${(temp_JAVA_model)!}
+</pre></#if><#include "/_pagelet/js.html"/>
 <script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shCore.js"></script>
 <script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJScript.js"></script>
 <script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJava.js"></script>
