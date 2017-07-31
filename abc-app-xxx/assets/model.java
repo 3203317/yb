@@ -25,8 +25,8 @@ public class ${(data_pe.entity_name)!} implements Serializable {
 
   <#list data_list_pep! as doc>
 
-  public <@data_type.m name="${(doc.prop_type)!}"/> get${(doc.prop_name)?cap_first}() {
-    return ${(doc.prop_name)!};
+  public <@data_type.m name="${(doc.prop_type)!}"/> set${(doc.prop_name)?cap_first}(<@data_type.m name="${(doc.prop_type)!}"/> ${(doc.prop_name)!}) {
+    this.${(doc.prop_name)!} = ${(doc.prop_name)!};
   }
 
   public <@data_type.m name="${(doc.prop_type)!}"/> get${(doc.prop_name)?cap_first}() {
