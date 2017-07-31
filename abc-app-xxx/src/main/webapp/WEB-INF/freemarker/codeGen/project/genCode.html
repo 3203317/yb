@@ -57,7 +57,8 @@ if(isIE()){
 <![endif]-->	
 <link href="/static/3rd/SyntaxHighlighter/css/shCore.css" rel="stylesheet" type="text/css" />
 <link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body>
-<#if temp_JAVA_model ??><pre class="brush: java">
+<#if temp_JAVA_model ??>
+<pre class="brush: java; ruler: true;">
 ${(temp_JAVA_model)!}
 </pre></#if>
 <#if temp_JAVA_biz ??><pre class="brush: java">
