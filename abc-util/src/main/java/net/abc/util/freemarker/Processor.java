@@ -67,12 +67,12 @@ public final class Processor {
 
 		TemplateUtil.getDefault().putTemplate("Demo", file);
 
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("nav_choose", ",05,0501,");
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("nav_choose", ",05,0501,");
 
-		String result = getResult("Demo", map);
+		String result = getResult("Demo", model);
 
-		System.out.println(result);
+		System.err.println(result);
 
 	}
 

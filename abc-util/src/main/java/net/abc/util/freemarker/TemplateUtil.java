@@ -1,8 +1,6 @@
 package net.abc.util.freemarker;
 
 import java.io.IOException;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,12 +24,12 @@ public final class TemplateUtil {
 	private static volatile TemplateUtil instance;
 
 	private Configuration config;
-
-	private Map<String, String> map;
+	private StringTemplateLoader loader;
 
 	private TemplateUtil() {
 		config = new Configuration(Configuration.VERSION_2_3_23);
-		map = new ConcurrentHashMap<String, String>();
+		loader = new StringTemplateLoader();
+		config.setTemplateLoader(loader);
 	}
 
 	/**
@@ -51,61 +49,28 @@ public final class TemplateUtil {
 
 	/**
 	 * 
-	 * @param id
+	 * @param name
 	 * @param template
-	 * @throws TemplateNotFoundException
-	 * @throws MalformedTemplateNameException
-	 * @throws ParseException
-	 * @throws IOException
 	 */
-	public void putTemplate(String id, String template)
-			throws TemplateNotFoundException, MalformedTemplateNameException, ParseException, IOException {
-
-		if (null != getTemplate(id)) {
-			removeTemplate(id);
-		}
-
-		StringTemplateLoader loader = new StringTemplateLoader();
-		loader.putTemplate(id, template);
-		config.setTemplateLoader(loader);
-		map.put(id, template);
-
+	public void putTemplate(String name, String template) {
+		loader.putTemplate(name, template);
 	}
 
 	/**
 	 * 
-	 * @param id
-	 * @throws IOException
-	 */
-	public void removeTemplate(String id) throws IOException {
-		if (null == getTemplate(id))
-			return;
-		config.removeTemplateFromCache(id);
-		map.remove(id);
-	}
-
-	/**
-	 * 
-	 * @param id
+	 * @param name
 	 * @return
 	 * @throws MalformedTemplateNameException
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	public Template getTemplate(String id) throws MalformedTemplateNameException, ParseException, IOException {
+	public Template getTemplate(String name) throws MalformedTemplateNameException, ParseException, IOException {
+
 		try {
-			return config.getTemplate(id, "UTF-8");
+			return config.getTemplate(name, "UTF-8");
 		} catch (TemplateNotFoundException e) {
 			return null;
 		}
 	}
 
-	/**
-	 * 
-	 * @param id
-	 * @return
-	 */
-	public String getTemplateSource(String id) {
-		return map.get(id);
-	}
 }

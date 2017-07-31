@@ -34,7 +34,10 @@ public class FreemarkerTemplateResource {
 		for (int i = 0, j = fileList.length; i < j; i++) {
 
 			String fileName = fileList[i].getName();
-			TemplateUtil.getDefault().putTemplate(fileName, FileUtil.read(res_path + fileName));
+
+			String name = fileName.replaceAll("\\.", "_");
+
+			TemplateUtil.getDefault().putTemplate(name, FileUtil.read(res_path + fileName));
 		}
 	}
 

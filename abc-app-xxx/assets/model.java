@@ -18,7 +18,9 @@ public class ${(data_pe.entity_name)!} implements Serializable {
 
   private static final long serialVersionUID = -1L;
 
-<#list data_list_pep! as doc>  private ${(doc.prop_type)!} ${(doc.prop_name)!};  // ${(doc.prop_desc)!}
+  <#import "data_type_java" as data_type>
+
+<#list data_list_pep! as doc>  private <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.prop_name)!};  // ${(doc.prop_desc)!}
 </#list>
 
   <#list data_list_pep! as doc>
