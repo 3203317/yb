@@ -57,12 +57,12 @@ if(isIE()){
 <![endif]-->	
 <link href="/static/3rd/SyntaxHighlighter/css/shCore.css" rel="stylesheet" type="text/css" />
 <link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body>
-<#if temp_JAVA_model ??>
+<#if temp_java_model ??>
 <pre class="brush: java; ruler: true;">
-${(temp_JAVA_model)!}
+${(temp_java_model)!}
 </pre></#if>
-<#if temp_JAVA_biz ??><pre class="brush: java">
-${(temp_JAVA_biz)!}
+<#if temp_java_biz ??><pre class="brush: java">
+${(temp_java_biz)!}
 </pre></#if><#include "/_pagelet/js.html"/>
 <script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shCore.js"></script>
 <script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJScript.js"></script>

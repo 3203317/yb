@@ -85,6 +85,9 @@ public class ProjController extends BaseController {
 
 		freemarkerTemplateResource.reload();
 
+		lang_id = lang_id.toLowerCase();
+		db_id = db_id.toLowerCase();
+
 		map.put("temp_" + lang_id + "_model", Processor.getResult("model_" + lang_id, model));
 		// map.put("temp_" + lang_id + "_" + db_id + "_mapper",
 		// Processor.getResult("mapper.java", model));
