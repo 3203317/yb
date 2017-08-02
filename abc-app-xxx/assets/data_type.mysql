@@ -1,0 +1,1 @@
+<#macro m name><#if name="number">int<#elseif name="varchar">varchar<#elseif name="date">datetime<#else>未知</#if></#macro>
