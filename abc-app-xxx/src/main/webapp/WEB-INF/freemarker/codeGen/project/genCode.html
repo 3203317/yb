@@ -54,22 +54,55 @@ if(isIE()){
 	<script type='text/javascript' src='http://www.foreworld.net/js/jquery/1.11.3/jquery.min.js'></script>
 	<script type='text/javascript' src='http://www.foreworld.net/js/html5shiv/3.7.2/html5shiv.min.js'></script>
 	<script type='text/javascript' src='http://www.foreworld.net/js/respond/1.4.2/respond.min.js'></script>
-<![endif]-->	
-<link href="/static/3rd/SyntaxHighlighter/css/shCore.css" rel="stylesheet" type="text/css" />
-<link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body>
+<![endif]-->
+<link href="http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body>
 <#if temp_java_model ??>
 <pre class="brush: java; ruler: true;">
 ${(temp_java_model)!}
 </pre></#if>
 <#if temp_java_biz ??><pre class="brush: java">
 ${(temp_java_biz)!}
-</pre></#if><#include "/_pagelet/js.html"/>
-<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shCore.js"></script>
-<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJScript.js"></script>
-<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJava.js"></script>
-<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushXml.js"></script>
+</pre></#if>
+<#if temp_mysql ??><pre class="brush: sql">
+${(temp_mysql)!}
+</pre></#if>
+<#include "/_pagelet/js.html"/>
+
+<script type="text/javascript" src="http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/xregexp-min.js?t=1451964199000"></script>
+<script type="text/javascript" src="http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shCore.min.js?t=1451964199000"></script>
+<script type="text/javascript" src="http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shAutoloader.js?t=1451964199000"></script>
+
 	<script type='text/javascript'>
 	$(function(){
+
+	    SyntaxHighlighter.autoloader(
+	            'applescript			http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushAppleScript.js?t=1451964199000',
+	            'actionscript3 as3		http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushAS3.js?t=1451964199000',
+	            'bash shell				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushBash.js?t=1451964199000',
+	            'coldfusion cf			http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushColdFusion.js?t=1451964199000',
+	            'cpp c					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushCpp.js?t=1451964199000',
+	            'obj-c objc				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushObjC.js?t=1451964199000',
+	            'c# c-sharp csharp		http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushCSharp.js?t=1451964199000',
+	            'css					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushCss.js?t=1451964199000',
+	            'delphi pascal			http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushDelphi.js?t=1451964199000',
+	            'diff patch pas			http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushDiff.js?t=1451964199000',
+	            'erl erlang				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushErlang.js?t=1451964199000',
+	            'groovy					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushGroovy.js?t=1451964199000',
+	            'haxe hx				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushHaxe.js?t=1451964199000',
+	            'java					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushJava.js?t=1451964199000',
+	            'jfx javafx				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushJavaFX.js?t=1451964199000',
+	            'js jscript javascript	http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushJScript.js?t=1451964199000',
+	            'perl pl				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushPerl.js?t=1451964199000',
+	            'php					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushPhp.js?t=1451964199000',
+	            'text plain				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushPlain.js?t=1451964199000',
+	            'py python				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushPython.js?t=1451964199000',
+	            'ruby rails ror rb		http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushRuby.js?t=1451964199000',
+	            'scala					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushScala.js?t=1451964199000',
+	            'sql					http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushSql.js?t=1451964199000',
+	            'vb vbnet				http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushVb.js?t=1451964199000',
+	            'xml xhtml xslt html	http://www.foreworld.net/js/SyntaxHighlighter/3.0.9/js/shBrushXml.js?t=1451964199000'
+	    );
 		SyntaxHighlighter.all();
 		window.onload = function(){
 		  parent.resize(document.body.offsetHeight + 30);

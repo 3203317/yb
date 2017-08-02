@@ -92,6 +92,8 @@ public class ProjController extends BaseController {
 		// map.put("temp_" + lang_id + "_" + db_id + "_mapper",
 		// Processor.getResult("mapper.java", model));
 		map.put("temp_" + lang_id + "_biz", Processor.getResult("biz_" + lang_id, model));
+
+		map.put("temp_" + db_id, Processor.getResult(db_id + "_sql", model));
 		// map.put("temp_" + lang_id + "_controller",
 		// Processor.getResult("controller.java", model));
 		//
