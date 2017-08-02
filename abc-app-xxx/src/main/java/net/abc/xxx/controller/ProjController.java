@@ -88,18 +88,11 @@ public class ProjController extends BaseController {
 		lang_id = lang_id.toLowerCase();
 		db_id = db_id.toLowerCase();
 
-		map.put("temp_" + lang_id + "_model", Processor.getResult("model_" + lang_id, model));
-		// map.put("temp_" + lang_id + "_" + db_id + "_mapper",
-		// Processor.getResult("mapper.java", model));
-		map.put("temp_" + lang_id + "_biz", Processor.getResult("biz_" + lang_id, model));
+		map.put("random", "");
 
+		map.put("temp_" + lang_id + "_model", Processor.getResult("model_" + lang_id, model));
+		map.put("temp_" + lang_id + "_biz", Processor.getResult("biz_" + lang_id, model));
 		map.put("temp_" + db_id, Processor.getResult(db_id + "_sql", model));
-		// map.put("temp_" + lang_id + "_controller",
-		// Processor.getResult("controller.java", model));
-		//
-		// map.put("temp_html_index", Processor.getResult("index.html", model));
-		// map.put("temp_html_add", Processor.getResult("add.html", model));
-		// map.put("temp_html_edit", Processor.getResult("edit.html", model));
 
 		return "codeGen/project/genCode";
 	}
