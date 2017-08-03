@@ -30,7 +30,28 @@ public class ProjEntityProp implements Serializable {
 	private String proj_id;
 	private String entity_id;
 	private String prop_type;
-	private Integer prop_len;
+
+	private Integer prop_min;
+	private Integer prop_max;
+
+	private Integer is_uuid;
+	private String validate_msg;
+
+	public String getValidate_msg() {
+		return validate_msg;
+	}
+
+	public void setValidate_msg(String validate_msg) {
+		this.validate_msg = validate_msg;
+	}
+
+	public Integer getIs_uuid() {
+		return is_uuid;
+	}
+
+	public void setIs_uuid(Integer is_uuid) {
+		this.is_uuid = is_uuid;
+	}
 
 	public String getId() {
 		return id;
@@ -88,12 +109,20 @@ public class ProjEntityProp implements Serializable {
 		this.prop_type = prop_type;
 	}
 
-	public Integer getProp_len() {
-		return prop_len;
+	public Integer getProp_min() {
+		return prop_min;
 	}
 
-	public void setProp_len(Integer prop_len) {
-		this.prop_len = prop_len;
+	public void setProp_min(Integer prop_min) {
+		this.prop_min = prop_min;
+	}
+
+	public Integer getProp_max() {
+		return prop_max;
+	}
+
+	public void setProp_max(Integer prop_max) {
+		this.prop_max = prop_max;
 	}
 
 }

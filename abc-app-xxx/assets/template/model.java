@@ -1,12 +1,15 @@
 package ${(data_p.package_name)!}.model;
 
 import java.io.Serializable;
+
 import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.validator.constraints.Length;
 
 /**
  *
@@ -20,7 +23,10 @@ public class ${(data_pe.entity_name)!} implements Serializable {
 
   <#import "data_type_java" as data_type>
 
-<#list data_list_pep! as doc>  private <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.prop_name)!};  // ${(doc.prop_desc)!}
+<#list data_list_pep! as doc>  @Length(min = ${(doc.prop_min)!}, max = ${(doc.prop_max)!}, message = "${(doc.validate_msg)!}")
+  @Column(name = "${(doc.prop_name)!}")
+  private <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.prop_name)!};  // ${(doc.prop_desc)!}
+
 </#list>
 
   <#list data_list_pep! as doc>
