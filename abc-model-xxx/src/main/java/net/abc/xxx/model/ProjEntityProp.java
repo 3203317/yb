@@ -37,6 +37,26 @@ public class ProjEntityProp implements Serializable {
 	private Integer is_uuid;
 	private String validate_msg;
 
+	private Integer is_not_null;
+
+	private String is_regex;
+
+	public String getIs_regex() {
+		return is_regex;
+	}
+
+	public void setIs_regex(String is_regex) {
+		this.is_regex = is_regex;
+	}
+
+	public Integer getIs_not_null() {
+		return is_not_null;
+	}
+
+	public void setIs_not_null(Integer is_not_null) {
+		this.is_not_null = is_not_null;
+	}
+
 	public String getValidate_msg() {
 		return validate_msg;
 	}
