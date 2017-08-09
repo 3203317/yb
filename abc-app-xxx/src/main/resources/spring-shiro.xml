@@ -17,16 +17,11 @@
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
 		<property name="securityManager" ref="securityManager" />
-		<property name="loginUrl" value="/login" />
-		<property name="successUrl" value="/user/list" />
-		<property name="unauthorizedUrl" value="/login" />
+		<property name="loginUrl" value="/user/login" />
+		<property name="successUrl" value="/" />
+		<property name="unauthorizedUrl" value="/user/login" />
 		<property name="filterChainDefinitions">
 			<value>
-				/login = anon
-				/user/** = authc
-				/role/edit/* = perms[role:edit]
-				/role/save = perms[role:edit]
-				/role/list = perms[role:view]
 				/** = authc
 			</value>
 		</property>
@@ -48,6 +43,16 @@
 	</bean>
 
 	<bean id="userRealm" class="net.abc.xxx.security.UserRealm">
+	</bean>
+
+	<bean
+		class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.apache.shiro.authz.UnauthorizedException">/unauthorized</prop>
+				<prop key="org.apache.shiro.authz.UnauthenticatedException">/unauthenticated</prop>
+			</props>
+		</property>
 	</bean>
 
 </beans>
