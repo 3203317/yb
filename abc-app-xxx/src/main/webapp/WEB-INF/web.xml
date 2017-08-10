@@ -19,14 +19,9 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- <filter>
-		<filter-name>springSessionRepositoryFilter</filter-name>
-		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>springSessionRepositoryFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
+	<!-- <filter> <filter-name>springSessionRepositoryFilter</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
+		</filter> <filter-mapping> <filter-name>springSessionRepositoryFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
 
 	<servlet>
 		<servlet-name>mybatis</servlet-name>
@@ -47,37 +42,26 @@
 		<servlet-name>AuthImage</servlet-name>
 		<servlet-class>net.abc.util.verifyCode.AuthImage</servlet-class>
 	</servlet>
-	
+
 	<servlet-mapping>
 		<servlet-name>AuthImage</servlet-name>
 		<url-pattern>/verifyCode.jpg</url-pattern>
 	</servlet-mapping>
 
-	<!-- <filter>
-		<filter-name>PermitFilter</filter-name>
-		<filter-class>net.abc.xxx.filter.PermitFilter</filter-class>
-		<init-param>
-			<param-name>url-suffix</param-name>
-			<param-value>js,css,html,jpg,ico</param-value>
-		</init-param>
-	</filter>
-	
-	<filter-mapping>
-		<filter-name>PermitFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
-	
-	<filter>  
-		<filter-name>shiroFilter</filter-name>  
-		<filter-class>
-			org.springframework.web.filter.DelegatingFilterProxy  
-		</filter-class>  
+	<!-- <filter> <filter-name>PermitFilter</filter-name> <filter-class>net.abc.xxx.filter.PermitFilter</filter-class> 
+		<init-param> <param-name>url-suffix</param-name> <param-value>js,css,html,jpg,ico</param-value> 
+		</init-param> </filter> <filter-mapping> <filter-name>PermitFilter</filter-name> 
+		<url-pattern>/*</url-pattern> </filter-mapping> -->
+
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 
-	<filter-mapping>  
-		<filter-name>shiroFilter</filter-name>  
-		<url-pattern>/*</url-pattern>  
-	</filter-mapping> 
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
 
 	<filter>
 		<filter-name>SpringEncodingFilter</filter-name>
@@ -91,7 +75,7 @@
 			<param-value>true</param-value>
 		</init-param>
 	</filter>
-	
+
 	<filter-mapping>
 		<filter-name>SpringEncodingFilter</filter-name>
 		<url-pattern>/*</url-pattern>
@@ -100,4 +84,5 @@
 	<session-config>
 		<session-timeout>10</session-timeout>
 	</session-config>
+
 </web-app>

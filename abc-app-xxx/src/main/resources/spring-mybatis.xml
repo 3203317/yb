@@ -8,12 +8,15 @@
        http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context-4.0.xsd">
+
 	<mvc:default-servlet-handler />
+
 	<!-- 静态资源配置 -->
 	<mvc:resources location="static/images/" mapping="static/images/**" />
 	<mvc:resources location="static/js/" mapping="static/js/**" />
 	<mvc:resources location="static/css/" mapping="static/css/**" />
 	<!-- 静态资源配置 结束 -->
+
 	<mvc:annotation-driven>
 		<mvc:message-converters>
 			<ref bean="stringHttpMessageConverter" />
@@ -21,12 +24,15 @@
 			<ref bean="mappingJackson2HttpMessageConverter" />
 		</mvc:message-converters>
 	</mvc:annotation-driven>
-<!-- 如果这个配置扫描  -->
+
+	<!-- 如果这个配置扫描 -->
 	<context:component-scan base-package="net.abc.xxx.controller" />
 	<bean
 		class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter" />
+
 	<bean id="stringHttpMessageConverter"
 		class="org.springframework.http.converter.StringHttpMessageConverter" />
+
 	<bean id="marshallingHttpMessageConverter"
 		class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
 		<property name="marshaller" ref="castorMarshaller" />
@@ -51,8 +57,8 @@
 	<bean
 		class="org.springframework.web.servlet.view.ContentNegotiatingViewResolver">
 		<property name="order" value="1" />
-		<!-- <property name="mediaTypes"> <map> <entry key="xml" value="application/xml"
-			/> <entry key="html" value="text/html" /> <entry key="json" value="application/json"
+		<!-- <property name="mediaTypes"> <map> <entry key="xml" value="application/xml" 
+			/> <entry key="html" value="text/html" /> <entry key="json" value="application/json" 
 			/> </map> </property> -->
 		<property name="viewResolvers">
 			<list>
@@ -67,16 +73,15 @@
 			</list>
 		</property>
 	</bean>
+
 	<!-- jsp视图解析器 -->
-	<!-- <bean id="jspViewResolver"
-		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="viewClass"
-			value="org.springframework.web.servlet.view.JstlView" />
-		<property name="prefix" value="/WEB-INF/jsp/" />
-		<property name="suffix" value=".jsp" />
-		<property name="order" value="2"></property>
-	</bean> -->
+	<!-- <bean id="jspViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver"> 
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" 
+		/> <property name="prefix" value="/WEB-INF/jsp/" /> <property name="suffix" 
+		value=".jsp" /> <property name="order" value="2"></property> </bean> -->
+
 	<bean id="fmXmlEscape" class="freemarker.template.utility.XmlEscape" />
+
 	<!-- freemarker的配置 -->
 	<bean id="freemarkerConfigurer"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
@@ -105,6 +110,7 @@
 			</props>
 		</property>
 	</bean>
+
 	<!-- FreeMarker视图解析 在这里配置后缀名ftl和视图解析器。。 -->
 	<bean id="freeMarkerViewResolver"
 		class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
@@ -117,7 +123,6 @@
 		<property name="exposeSessionAttributes" value="true" />
 		<property name="exposeSpringMacroHelpers" value="true" />
 	</bean>
-
 
 	<!--国际化 -->
 	<bean id="messageSource"
@@ -135,4 +140,5 @@
 		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
 		<property name="maxUploadSize" value="9999999" />
 	</bean>
+
 </beans>

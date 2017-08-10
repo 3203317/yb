@@ -13,8 +13,13 @@
        http://www.springframework.org/schema/task/spring-task-3.0.xsd
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd
-        http://www.springframework.org/schema/util
-        http://www.springframework.org/schema/util/spring-util.xsd">
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
+	<bean id="userLoginAuthFilter" class="net.abc.xxx.security.UserLoginAuthFilter">
+		<property name="usernameParam" value="user_name" />
+		<property name="passwordParam" value="user_pass" />
+	</bean>
 
 	<!-- Shiro Filter -->
 	<bean id="shiroFilter" class="org.apache.shiro.spring.web.ShiroFilterFactoryBean">
@@ -22,11 +27,22 @@
 		<property name="loginUrl" value="/user/login" />
 		<property name="successUrl" value="/" />
 		<property name="unauthorizedUrl" value="/user/login" />
+		<property name="filters">
+			<util:map>
+				<entry key="logout" value-ref="logoutFilter" />
+				<entry key="authc" value-ref="userLoginAuthFilter" />
+			</util:map>
+		</property>
 		<property name="filterChainDefinitions">
 			<value>
 				/** = authc
+				/logout = logout
 			</value>
 		</property>
+	</bean>
+
+	<bean id="logoutFilter" class="net.abc.xxx.security.UserLogoutFilter">
+		<property name="redirectUrl" value="${shiro.logout.url}" />
 	</bean>
 
 	<!-- 安全管理器 -->
