@@ -21,6 +21,8 @@ public class UserLoginAuthFilter extends FormAuthenticationFilter {
 	@Override
 	protected boolean onLoginSuccess(AuthenticationToken token, Subject subject, ServletRequest request,
 			ServletResponse response) throws Exception {
+		
+		System.err.println(123321);
 		return false;
 	}
 }

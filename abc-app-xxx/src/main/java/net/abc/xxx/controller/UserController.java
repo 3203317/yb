@@ -1,6 +1,5 @@
 package net.abc.xxx.controller;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,46 +43,6 @@ public class UserController extends BaseController {
 	public String loginUI(HttpSession session, Map<String, Object> map) {
 		map.put("verify_token", genVerifyToken(session));
 		return "user/login";
-	}
-
-	/**
-	 * 
-	 * @param session
-	 * @param verify_token
-	 * @param user_name
-	 * @param user_pass
-	 * @return
-	 */
-	@ResponseBody
-	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> login(HttpSession session, @RequestParam(required = true) String verify_token,
-			@RequestParam(required = true) String user_name, @RequestParam(required = true) String user_pass) {
-		Map<String, Object> result = new HashMap<String, Object>();
-		result.put("success", false);
-		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
-
-		if (!verifyToken.getSuccess()) {
-			result.put("msg", verifyToken.getMsg());
-			return result;
-		}
-
-		ResultMap<User> map = userService.login(user_name, user_pass);
-
-		if (!map.getSuccess()) {
-			result.put("msg", map.getMsg());
-			return result;
-		}
-
-		// 获取用户对象
-
-		User user = map.getData();
-
-		session.setAttribute("session.user", user);
-		session.setAttribute("session.user.id", user.getId());
-		session.setAttribute("session.time", (new Date()).toString());
-
-		result.put("success", true);
-		return result;
 	}
 
 	/**

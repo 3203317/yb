@@ -35,14 +35,14 @@
 		</property>
 		<property name="filterChainDefinitions">
 			<value>
-				/** = authc
+				/user/login = authc
 				/logout = logout
 			</value>
 		</property>
 	</bean>
 
 	<bean id="logoutFilter" class="net.abc.xxx.security.UserLogoutFilter">
-		<property name="redirectUrl" value="${shiro.logout.url}" />
+		<property name="redirectUrl" value="${shiro.logout.backUrl}" />
 	</bean>
 
 	<!-- 安全管理器 -->
