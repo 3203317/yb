@@ -29,7 +29,6 @@ public class UserRealm extends AuthorizingRealm {
 				new RedisSimpleByteSource("1"), getName());
 
 		return info;
-
 	}
 
 }
