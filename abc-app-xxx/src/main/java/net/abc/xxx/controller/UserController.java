@@ -1,5 +1,6 @@
 package net.abc.xxx.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -32,6 +33,38 @@ public class UserController extends BaseController {
 
 	@Resource
 	private UserService userService;
+
+	@ResponseBody
+	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> login(HttpSession session, @RequestParam(required = true) String verify_token,
+			@RequestParam(required = true) String user_name, @RequestParam(required = true) String user_pass) {
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+
+		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
+		if (!verifyToken.getSuccess()) {
+			result.put("msg", verifyToken.getMsg());
+			return result;
+		}
+
+		ResultMap<User> login = userService.login(user_name, user_pass);
+
+		if (!login.getSuccess()) {
+			result.put("msg", login.getMsg());
+			return result;
+		}
+
+		// 获取用户对象
+		User user = login.getData();
+
+		session.setAttribute("session.user", user);
+		session.setAttribute("session.user.id", user.getId());
+		session.setAttribute("session.time", (new Date()).toString());
+
+		result.put("success", true);
+		return result;
+	}
 
 	/**
 	 * 
