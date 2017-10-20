@@ -87,16 +87,6 @@ public class PermitFilter implements Filter {
 		return (null == suffix) ? true : (urlSuffix.indexOf("," + suffix.toLowerCase() + ",") == -1);
 	}
 
-	// /**
-	// * 判断是后台
-	// *
-	// * @param uri
-	// * @return
-	// */
-	// private boolean isManage(String uri) {
-	// return 0 == uri.indexOf("/manage/");
-	// }
-
 	/**
 	 * 判断是静态资源
 	 *
