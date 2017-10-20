@@ -174,12 +174,7 @@
 												data-olx-type='olx.grid' data-current='1' data-pagesize='20' data-count='561'>
 													<thead>
 														<tr>
-															<th class="center">
-																<label>
-																	<input type="checkbox" />
-																	<span class="lbl"></span>
-																</label>
-															</th>
+															<th class="center">#</th>
 															<th>实体名称</th>
 															<th class="hidden-480">实体描述</th>
 			
@@ -194,12 +189,7 @@
 													<tbody>
 													<#list data_list_pe! as doc>
 														<tr onclick='load_entity_templet("${(doc.proj_id)!}", "${(doc.id)!}")'>
-															<td class="center">
-																<label>
-																	<input type="checkbox" value='${(doc.id)!}' />
-																	<span class="lbl"></span>
-																</label>
-															</td>
+															<td class="center">${doc_index+1}</td>
 			
 															<td>${(doc.entity_name)!}</a></td>
 															<td class="hidden-480">${(doc.entity_desc)!}</td>
