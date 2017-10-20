@@ -6,10 +6,12 @@ import net.abc.model.ResultMap;
 
 /**
  * 
- * @author huangxin
+ * @author huangxin <3203317@qq.com>
  *
  */
 public abstract class BaseController {
+
+	private static String VERIFY_TOKEN = "verify.token";
 
 	/**
 	 * 图形验证码
@@ -51,7 +53,7 @@ public abstract class BaseController {
 		ResultMap<Void> map = new ResultMap<Void>();
 		map.setSuccess(false);
 
-		Object verify = session.getAttribute("verify.token");
+		Object verify = session.getAttribute(VERIFY_TOKEN);
 
 		if (null == verify) {
 			map.setMsg("请刷新页面");
@@ -60,12 +62,12 @@ public abstract class BaseController {
 
 		if (verify.toString().equals(token)) {
 			map.setSuccess(true);
-			session.removeAttribute("verify.token");
+			session.removeAttribute(VERIFY_TOKEN);
 			return map;
 		}
 
 		map.setMsg("请刷新页面");
-		session.removeAttribute("verify.token");
+		session.removeAttribute(VERIFY_TOKEN);
 		return map;
 	}
 
@@ -77,7 +79,7 @@ public abstract class BaseController {
 	 */
 	protected String genVerifyToken(HttpSession session) {
 		int i = (int) ((Math.random() * 5 + 1) * 1000);
-		session.setAttribute("verify.token", String.valueOf(i));
-		return session.getAttribute("verify.token").toString();
+		session.setAttribute(VERIFY_TOKEN, String.valueOf(i));
+		return session.getAttribute(VERIFY_TOKEN).toString();
 	}
 }

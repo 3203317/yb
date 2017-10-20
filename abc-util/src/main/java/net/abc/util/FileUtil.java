@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+import org.apache.commons.lang.CharEncoding;
+
 /**
  * 
  * @author huangxin <3203317@qq.com>
@@ -14,20 +16,21 @@ public final class FileUtil {
 
 	/**
 	 * 
-	 * @param file_path
+	 * @param filePath
 	 * @return
 	 */
-	@SuppressWarnings("null")
-	public static String read(String file_path) {
+	public static String read(String filePath) {
 		BufferedInputStream is = null;
 		try {
-			File file = new File(file_path);
+			File file = new File(filePath);
 			is = new BufferedInputStream(new FileInputStream(file));
+
 			int len;
 			byte[] bytes = new byte[1024];
 			StringBuilder content = new StringBuilder();
-			while ((len = is.read(bytes)) != -1) {
-				content.append(new String(bytes, 0, len, "utf-8"));
+
+			while (-1 != (len = is.read(bytes))) {
+				content.append(new String(bytes, 0, len, CharEncoding.UTF_8));
 			}
 
 			return content.toString();
@@ -35,7 +38,6 @@ public final class FileUtil {
 		} catch (IOException e) {
 			e.printStackTrace();
 		} finally {
-
 			if (null != is) {
 				try {
 					is.close();
@@ -49,6 +51,6 @@ public final class FileUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(read("e:/demo.html"));
+		System.out.println(read("/home/huangxin/my/git/3203317/yb/abc-util/src/main/java/net/abc/util/FileUtil.java"));
 	}
 }
