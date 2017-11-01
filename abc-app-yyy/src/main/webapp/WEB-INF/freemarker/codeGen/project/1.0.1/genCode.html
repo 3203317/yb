@@ -1,0 +1,296 @@
+<#include "/_pagelet/constant.html"/>
+<!DOCTYPE html>
+<html lang='zh-CN'>
+	<head>
+		<title>档案馆 | FOREWORLD 洪荒</title>
+<meta charset='utf-8' />
+<meta name='robots' content='all' />
+<meta name='author' content='3203317@qq.com,新' />
+<meta name='copyright' content='Foreworld.Net copyright 2014' />
+<meta name='description' content='http://www.foreworld.net/' />
+<meta name='keywords' content='http://www.foreworld.net/,档案馆,个人博客,Blog,Bootstrap3,nodejs,express,css,javascript,java,aspx,html5' />
+<meta name='generator' content='Foreworld' />
+<meta http-equiv='content-type' content='text/html;charset=utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<link rel='shortcut icon' href='/public/assets/images/favicon.png?v1' />
+<!--[if lte IE 9]>
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/bsie/0.0.0/css/bootstrap-ie6.css' />
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/bsie/0.0.0/css/ie.css' />
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/verybsie/1.0.0/css/bootstrap-verybsie.css' />
+<![endif]-->
+<!--[if lte IE 7]>
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/verybsie/1.0.0/css/bootstrap-verybsie.css' />
+<![endif]-->
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/bootstrap/3.2.0/dist/css/bootstrap.min.css?v3.2.0' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/bootstrap/3.2.0/dist/css/bootstrap-theme.min.css?v3.2.0' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/font-awesome/4.1.0/css/font-awesome.min.css' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/public/assets/css/olx/olx.css?v3' />
+<script type='text/javascript'>
+function isIE(){
+	return (!!window.ActiveXObject || 'ActiveXObject' in window);
+}
+function img404(event){
+	// 获取img对象，火狐是event.target ，IE及谷歌其他是event.srcElement
+	var img = event.srcElement || event.target;
+	img.src = '/public/assets/images/img404.jpg';
+	img.onerror = null;
+}
+if(isIE()){
+	// console.log('I use IE.');
+}else{
+	document.write("<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/pace/1.0.2/themes/pace-theme-barber-shop.css' \/>");
+	document.write("<script type='text/javascript' src='http://www.foreworld.net/js/pace/1.0.2/pace.min.js'><\/script>");
+	document.write("<script type='text/javascript' src='http://www.foreworld.net/js/jquery/2.0.2/jquery.min.js?v2.0.2'><\/script>");
+}
+</script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if gte IE 9]>
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/pace/1.0.2/themes/pace-theme-barber-shop.css' />
+	<script type='text/javascript' src='http://www.foreworld.net/js/pace/1.0.2/pace.min.js'></script>
+	<script type='text/javascript' src='http://www.foreworld.net/js/jquery/2.0.2/jquery.min.js'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script type='text/javascript' src='http://www.foreworld.net/js/jquery/1.11.3/jquery.min.js'></script>
+	<script type='text/javascript' src='http://www.foreworld.net/js/html5shiv/3.7.2/html5shiv.min.js'></script>
+	<script type='text/javascript' src='http://www.foreworld.net/js/respond/1.4.2/respond.min.js'></script>
+<![endif]-->	
+<link href="/static/3rd/SyntaxHighlighter/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body><pre class="brush: js">
+function foo()
+{
+}
+</pre>
+
+<pre class="brush: java; auto-links: false;">
+package net.abc.xxx.controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import net.abc.controller.BaseController;
+
+/**
+ * 
+ * @author huangxin <3203317@qq.com>
+ *
+ */
+@Controller
+public class DefaultController extends BaseController {
+
+	/**
+	 * 
+	 * @param session
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String indexUI(HttpSession session, Map&lt;String, Object&gt; map) {
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",01,");
+		return "default/index";
+	}
+
+}
+</pre>
+
+<pre class="brush: html; auto-links: false;">
+
+<!DOCTYPE html>
+<html lang='zh-CN'>
+	<head>
+		<title>档案馆 | FOREWORLD 洪荒</title>
+<meta charset='utf-8' />
+<meta name='robots' content='all' />
+<meta name='author' content='3203317@qq.com,新' />
+<meta name='copyright' content='Foreworld.Net copyright 2014' />
+<meta name='description' content='http://www.foreworld.net/' />
+<meta name='keywords' content='http://www.foreworld.net/,档案馆,个人博客,Blog,Bootstrap3,nodejs,express,css,javascript,java,aspx,html5' />
+<meta name='generator' content='Foreworld' />
+<meta http-equiv='content-type' content='text/html;charset=utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<link rel='shortcut icon' href='/public/assets/images/favicon.png?v1' />
+<!--[if lte IE 9]>
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/bsie/0.0.0/css/bootstrap-ie6.css' />
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/bsie/0.0.0/css/ie.css' />
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/verybsie/1.0.0/css/bootstrap-verybsie.css' />
+<![endif]-->
+<!--[if lte IE 7]>
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/verybsie/1.0.0/css/bootstrap-verybsie.css' />
+<![endif]-->
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/flexslider/2.2.2/flexslider.css' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/bootstrap/3.2.0/dist/css/bootstrap.min.css?v3.2.0' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/bootstrap/3.2.0/dist/css/bootstrap-theme.min.css?v3.2.0' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/js/font-awesome/4.1.0/css/font-awesome.min.css' />
+<link rel='stylesheet' type='text/css' media='screen' href='http://www.foreworld.net/public/assets/css/olx/olx.css?v3' />
+<script type='text/javascript'>
+function isIE(){
+	return (!!window.ActiveXObject || 'ActiveXObject' in window);
+}
+function img404(event){
+	// 获取img对象，火狐是event.target ，IE及谷歌其他是event.srcElement
+	var img = event.srcElement || event.target;
+	img.src = '/public/assets/images/img404.jpg';
+	img.onerror = null;
+}
+if(isIE()){
+	// console.log('I use IE.');
+}else{
+	document.write("<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/pace/1.0.2/themes/pace-theme-barber-shop.css' \/>");
+	document.write("<script type='text/javascript' src='http://www.foreworld.net/js/pace/1.0.2/pace.min.js'><\/script>");
+	document.write("<script type='text/javascript' src='http://www.foreworld.net/js/jquery/2.0.2/jquery.min.js?v2.0.2'><\/script>");
+}
+</script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if gte IE 9]>
+	<link rel='stylesheet' type='text/css' href='http://www.foreworld.net/js/pace/1.0.2/themes/pace-theme-barber-shop.css' />
+	<script type='text/javascript' src='http://www.foreworld.net/js/pace/1.0.2/pace.min.js'></script>
+	<script type='text/javascript' src='http://www.foreworld.net/js/jquery/2.0.2/jquery.min.js'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script type='text/javascript' src='http://www.foreworld.net/js/jquery/1.11.3/jquery.min.js'></script>
+	<script type='text/javascript' src='http://www.foreworld.net/js/html5shiv/3.7.2/html5shiv.min.js'></script>
+	<script type='text/javascript' src='http://www.foreworld.net/js/respond/1.4.2/respond.min.js'></script>
+<![endif]-->	</head>
+	<body>
+
+
+
+<!-- Include required JS files -->
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shCore.js"></script>
+ 
+<!--
+    At least one brush, here we choose JS. You need to include a brush for every
+    language you want to highlight
+-->
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJScript.js"></script>
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJava.js"></script>
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushXml.js"></script>
+ 
+<!-- Include *at least* the core style and default theme -->
+<link href="/static/3rd/SyntaxHighlighter/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="/static/3rd/SyntaxHighlighter/css/shThemeDefault.css" rel="stylesheet" type="text/css" />
+ 
+<!-- You also need to add some content to highlight, but that is covered elsewhere. -->
+<pre class="brush: js">
+function foo()
+{
+}
+</pre>
+
+<pre class="brush: java; auto-links: false;">
+package net.abc.xxx.controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import net.abc.controller.BaseController;
+
+/**
+ * 
+ * @author huangxin <3203317@qq.com>
+ *
+ */
+@Controller
+public class DefaultController extends BaseController {
+
+	/**
+	 * 
+	 * @param session
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String indexUI(HttpSession session, Map<String, Object> map) {
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",01,");
+		return "default/index";
+	}
+
+}
+</pre>
+
+<pre class="brush: java; auto-links: false;">
+package net.abc.xxx.controller;
+
+import java.util.Map;
+
+import javax.servlet.http.HttpSession;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import net.abc.controller.BaseController;
+
+/**
+ * 
+ * @author huangxin <3203317@qq.com>
+ *
+ */
+@Controller
+public class DefaultController extends BaseController {
+
+	/**
+	 * 
+	 * @param session
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
+	public String indexUI(HttpSession session, Map<String, Object> map) {
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",01,");
+		return "default/index";
+	}
+
+}
+</pre>
+ 
+<!-- Finally, to actually run the highlighter, you need to include this JS on your page -->
+<script type="text/javascript">
+     SyntaxHighlighter.all()
+</script>
+
+
+<!-- Bootstrap -->
+<script type='text/javascript' src='http://www.foreworld.net/js/jquery/ext/jquery.pin.js'></script>
+<script type='text/javascript' src='http://www.foreworld.net/js/jquery/ext/ext.form.js'></script>
+<script type='text/javascript' src='http://www.foreworld.net/js/underscore/1.5.1/underscore.min.js'></script>
+<script type='text/javascript' src='http://www.foreworld.net/js/bootstrap/3.2.0/dist/js/bootstrap.min.js?v3.2.0'></script>
+<script type='text/javascript' src='http://www.foreworld.net/js/flexslider/2.2.2/jquery.flexslider-min.js' defer></script>
+<!-- Olx -->
+<script type='text/javascript' src='http://www.foreworld.net/js/olx/1.0.0/js/olx.min.js'></script>
+<!-- [if lte IE 7]>
+	<script type='text/javascript' src='http://www.foreworld.net/js/verybsie/1.0.0/js/bootstrap-verybsie.js'></script>
+<![endif] -->		<!-- Own -->
+		<script type='text/javascript'>
+
+</script>	</body>
+</html>
+</pre><#include "/_pagelet/js.html"/>
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shCore.js"></script>
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJScript.js"></script>
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushJava.js"></script>
+<script type="text/javascript" src="/static/3rd/SyntaxHighlighter/js/shBrushXml.js"></script>
+	<script type='text/javascript'>
+	$(function(){
+		SyntaxHighlighter.all();
+		window.onload = function(){
+		  parent.resize(document.body.offsetHeight + 30);
+		};
+	});
+	</script>	
+</body>
+</html>
