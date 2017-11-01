@@ -10,9 +10,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  * 
+ * 
+ * 
  * @author huangxin <3203317@qq.com>
  *
+ * 
+ * 
  */
+
 @Controller
 public class UserController {
 
@@ -22,9 +27,8 @@ public class UserController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping(value = { "/user/login" }, method = RequestMethod.GET)
-	public String loginUI(HttpSession session, Map<String, Object> map) {
-		return "user/login";
+	@RequestMapping(value = { "/login" }, method = RequestMethod.GET)
+	public String login() {
+		return "/login";
 	}
-
 }
