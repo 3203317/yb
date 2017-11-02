@@ -12,17 +12,17 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
-		<spring.version>1.5.3.RELEASE</spring.version>
+		<spring.version>1.5.8.RELEASE</spring.version>
 	</properties>
 
 	<dependencies>
 
 
-<dependency>    
-        <groupId>org.springframework.boot</groupId>    
-        <artifactId>spring-boot-starter-web</artifactId>   
+<dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
 			<version>${spring.version}</version>
-    </dependency>  
+    </dependency>
 
 
 		<dependency>
@@ -45,9 +45,10 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-			<version>1.5.3.RELEASE</version>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
+
 	</dependencies>
 
 
@@ -80,10 +81,10 @@
                 <plugin>
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
-                    <version>1.5.3.RELEASE</version>
+					<version>${spring.version}</version>
                 </plugin>
             </plugins>
         </pluginManagement>
     </build>
-    
+
 </project>
