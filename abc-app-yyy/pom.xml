@@ -39,6 +39,11 @@
 			<artifactId>spring-boot-devtools</artifactId>
 			<optional>true</optional>
 		</dependency>
+		<dependency>
+			<groupId>net.abc</groupId>
+			<artifactId>abc-model</artifactId>
+			<version>1.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<!-- Package as an executable jar -->
