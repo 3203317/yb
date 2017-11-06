@@ -8,13 +8,12 @@ management:
 spring:
   freemarker:
     enabled: true
+    suffix: .html
+    template-loader-path: classpath:/WEB-INF/view/
   profiles:
     active: dev
   mvc:
     static-path-pattern: /static/**
-    view:
-      suffix: .html
-      prefix: /WEB-INF/view
   http:
     converters:
       preferred-json-mapper: fastjson
@@ -25,8 +24,6 @@ spring:
     restart:
       enabled: false
       additional-paths: src/main/java
-      exclude: static/**,WEB-INF/view/**
+      exclude: /static/**
   aop:
     proxy-target-class: true
-
-    
