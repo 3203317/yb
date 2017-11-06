@@ -9,7 +9,7 @@ spring:
   freemarker:
     enabled: true
     suffix: .html
-    template-loader-path: classpath:/WEB-INF/view/
+    template-loader-path: classpath:/WEB-INF/freemarker/
   profiles:
     active: dev
   mvc:
