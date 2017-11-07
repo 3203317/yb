@@ -62,7 +62,7 @@
 																<span class="lbl"> 记住我</span>
 															</label>
 
-															<button id='btn_login' onclick="return false;" class="width-35 pull-right btn btn-small btn-primary">
+															<button id='btn_login' class="width-35 pull-right btn btn-small btn-primary">
 																<i class="icon-key"></i>
 																登陆
 															</button>
@@ -241,21 +241,8 @@
 			}
 
 			$(function() {
-				$('#btn_login').click(function() {
-					$.ajax({
-						url : '${(conf_html_virtualPath)!}user/login',
-						type : 'POST',
-						dataType : 'JSON',
-						data : $('#loginFrm').serializeObjectForm(),
-						success : function(data) {
-							if (data.success) return location.href = '${(conf_html_virtualPath)!}';
-							if (data.msg) alert(data.msg);
-							location.href = '${(conf_html_virtualPath)!}user/login';
-						},
-						error : function() {
-							alert(arguments[2]);
-						}
-					});
+				$('#btn_login').click(function(){
+					location.href = '/';
 				});
 			});
 		</script>
