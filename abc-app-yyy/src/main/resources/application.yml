@@ -27,3 +27,9 @@ spring:
       exclude: /static/**
   aop:
     proxy-target-class: true
+  datasource:
+    url: jdbc:mysql://127.0.0.1:12306/yyy?autoReconnect=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull
+    username: root
+    password: password
+    filters: log4j,wall,mergeStat
+
