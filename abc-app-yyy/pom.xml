@@ -12,6 +12,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jdk.version>1.8</jdk.version>
 		<druid.version>1.0.28</druid.version>
+		<mybatis-spring-boot.version>1.2.1</mybatis-spring-boot.version>
+		<abc-model.version>1.0.1</abc-model.version>
 	</properties>
 
 	<!-- Inherit defaults from Spring Boot -->
@@ -43,7 +45,7 @@
 		<dependency>
 			<groupId>net.abc</groupId>
 			<artifactId>abc-model</artifactId>
-			<version>1.0.1</version>
+			<version>${abc-model.version}</version>
 		</dependency>
 
 		<dependency>
@@ -62,6 +64,16 @@
 			<version>${druid.version}</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-autoconfigure</artifactId>
+			<version>${mybatis-spring-boot.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis-spring-boot.version}</version>
+		</dependency>
 	</dependencies>
 
 	<!-- Package as an executable jar -->
