@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
-		<title>项目创建 | 代码生成 | 后台管理</title>
+		<title>项目实体 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
 	</head>
 
@@ -34,7 +34,7 @@
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
 						</li>
-						<li class="active">项目创建</li>
+						<li class="active">项目实体</li>
 					</ul><!--.breadcrumb-->
 
 					<div class="nav-search" id="nav-search">
@@ -51,10 +51,10 @@
 
 					<div class="page-header position-relative">
 						<h1>
-							项目创建
+							项目实体
 							<small>
 								<i class="icon-double-angle-right"></i>
-								Project Create
+								Project Entity Create
 							</small>
 						</h1>
 					</div><!--/.page-header-->
@@ -116,8 +116,8 @@
 														<span class="lbl"></span>
 													</label>
 												</th>
-												<th>项目名称</th>
-												<th class="hidden-480">项目描述</th>
+												<th>实体名称</th>
+												<th class="hidden-480">实体描述</th>
 
 												<th class="hidden-phone">
 													<i class="icon-time bigger-110 hidden-phone"></i>
@@ -130,7 +130,7 @@
 
 										<tbody>
 										<#import "/_macro/status.html" as status>
-										<#list data_proj_list! as doc>
+										<#list data_list_pe! as doc>
 											<tr>
 												<td class="center">
 													<label>
@@ -139,8 +139,8 @@
 													</label>
 												</td>
 
-												<td>${(doc.proj_name)!}</a></td>
-												<td class="hidden-480">${(doc.proj_desc)!}</td>
+												<td>${(doc.entity_name)!}</a></td>
+												<td class="hidden-480">${(doc.entity_desc)!}</td>
 												<td class="hidden-phone">${(doc.create_time?string("yyyy-MM-dd HH:mm:ss"))!}</td>
 
 												<td>
@@ -154,12 +154,8 @@
 															<i class="icon-trash bigger-120"></i>
 														</a>
 
-														<a class="btn btn-mini btn-primary" title='实体及属性设置' href='/proj/entity/?proj_id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-primary" title='属性设置' href='./set?id=${(doc.id)!}'>
 															<i class="icon-cogs bigger-120"></i>
-														</a>
-
-														<a class="btn btn-mini btn-primary" title='模版选择及生成' href='/codeGen/templet_choose_codeGen/?id=${(doc.id)!}'>
-															<i class="icon-gift bigger-120"></i>
 														</a>
 
 													</div>
@@ -189,17 +185,9 @@
 																</li>
 
 																<li>
-																	<a href='/proj/entity/?proj_id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="实体及属性设置">
+																	<a href='./set?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="属性设置">
 																		<span class="red">
 																			<i class="icon-cogs bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href='/codeGen/templet_choose_codeGen/?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="模版选择及生成">
-																		<span class="red">
-																			<i class="icon-gift bigger-120"></i>
 																		</span>
 																	</a>
 																</li>
