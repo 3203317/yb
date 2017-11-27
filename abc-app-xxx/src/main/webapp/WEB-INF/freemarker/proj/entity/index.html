@@ -110,12 +110,7 @@
 											data-olx-type='olx.grid' data-current='1' data-pagesize='20' data-count='561'>
 										<thead>
 											<tr>
-												<th class="center">
-													<label>
-														<input type="checkbox" />
-														<span class="lbl"></span>
-													</label>
-												</th>
+												<th class="center">#</th>
 												<th>实体名称</th>
 												<th class="hidden-480">实体描述</th>
 
@@ -132,12 +127,7 @@
 										<#import "/_macro/status.html" as status>
 										<#list data_list_pe! as doc>
 											<tr>
-												<td class="center">
-													<label>
-														<input type="checkbox" value='${(doc.id)!}' />
-														<span class="lbl"></span>
-													</label>
-												</td>
+												<td class="center">${doc_index+1}</td>
 
 												<td>${(doc.entity_name)!}</a></td>
 												<td class="hidden-480">${(doc.entity_desc)!}</td>
@@ -202,28 +192,6 @@
 										</tbody>
 									</table><!-- table -->
 
-									<div class="pagination">
-										<ul>
-											<li class="disabled">
-												<a href='javascript:;'>
-													<i class="icon-double-angle-left"></i>
-												</a>
-											</li>
-
-											<li class="active"><a href='javascript:;'>1</a></li>
-
-											<li><a href='javascript:;'>2</a></li>
-											<li><a href='javascript:;'>3</a></li>
-											<li><a href='javascript:;'>4</a></li>
-											<li><a href='javascript:;'>5</a></li>
-
-											<li>
-												<a href='javascript:;'>
-													<i class="icon-double-angle-right"></i>
-												</a>
-											</li>
-										</ul>
-									</div><!-- pagination -->
 								</div>
 							</div>
 
