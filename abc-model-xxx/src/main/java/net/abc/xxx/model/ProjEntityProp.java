@@ -34,10 +34,10 @@ public class ProjEntityProp implements Serializable {
 	private Integer prop_min;
 	private Integer prop_max;
 
-	private Integer is_uuid;
+	private String def_val;
 	private String valid_msg;
 
-	private Integer is_not_null;
+	private Integer is_null;
 
 	private String regex;
 
@@ -49,14 +49,6 @@ public class ProjEntityProp implements Serializable {
 		this.regex = regex;
 	}
 
-	public Integer getIs_not_null() {
-		return is_not_null;
-	}
-
-	public void setIs_not_null(Integer is_not_null) {
-		this.is_not_null = is_not_null;
-	}
-
 	public String getValid_msg() {
 		return valid_msg;
 	}
@@ -65,12 +57,20 @@ public class ProjEntityProp implements Serializable {
 		this.valid_msg = valid_msg;
 	}
 
-	public Integer getIs_uuid() {
-		return is_uuid;
+	public String getDef_val() {
+		return def_val;
 	}
 
-	public void setIs_uuid(Integer is_uuid) {
-		this.is_uuid = is_uuid;
+	public void setDef_val(String def_val) {
+		this.def_val = def_val;
+	}
+
+	public Integer getIs_null() {
+		return is_null;
+	}
+
+	public void setIs_null(Integer is_null) {
+		this.is_null = is_null;
 	}
 
 	public String getId() {
