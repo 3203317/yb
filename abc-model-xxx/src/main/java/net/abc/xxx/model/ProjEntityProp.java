@@ -35,18 +35,18 @@ public class ProjEntityProp implements Serializable {
 	private Integer prop_max;
 
 	private Integer is_uuid;
-	private String validate_msg;
+	private String valid_msg;
 
 	private Integer is_not_null;
 
-	private String is_regex;
+	private String regex;
 
-	public String getIs_regex() {
-		return is_regex;
+	public String getRegex() {
+		return regex;
 	}
 
-	public void setIs_regex(String is_regex) {
-		this.is_regex = is_regex;
+	public void setRegex(String regex) {
+		this.regex = regex;
 	}
 
 	public Integer getIs_not_null() {
@@ -57,12 +57,12 @@ public class ProjEntityProp implements Serializable {
 		this.is_not_null = is_not_null;
 	}
 
-	public String getValidate_msg() {
-		return validate_msg;
+	public String getValid_msg() {
+		return valid_msg;
 	}
 
-	public void setValidate_msg(String validate_msg) {
-		this.validate_msg = validate_msg;
+	public void setValid_msg(String valid_msg) {
+		this.valid_msg = valid_msg;
 	}
 
 	public Integer getIs_uuid() {

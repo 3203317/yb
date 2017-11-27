@@ -30,18 +30,18 @@ public class ProjEntityController extends BaseController {
 	/**
 	 * 
 	 * @param session
-	 * @param proj_id
+	 * @param id
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/entity/" }, method = RequestMethod.GET)
-	public String indexUI(HttpSession session, @RequestParam(required = true) String proj_id, Map<String, Object> map) {
+	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,0502,");
 
 		ProjEntity pe = new ProjEntity();
-		pe.setProj_id(proj_id);
+		pe.setProj_id(id);
 
 		List<ProjEntity> list = projEntityService.findByProjEntity(pe, 1, Integer.MAX_VALUE);
 		map.put("data_list_pe", list);
