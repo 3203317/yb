@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
-		<title>项目实体 | 后台管理</title>
+		<title>实体属性 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
 	</head>
 
@@ -34,7 +34,7 @@
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
 						</li>
-						<li class="active">项目实体</li>
+						<li class="active">实体属性</li>
 					</ul><!--.breadcrumb-->
 
 					<div class="nav-search" id="nav-search">
@@ -51,10 +51,10 @@
 
 					<div class="page-header position-relative">
 						<h1>
-							项目实体
+							实体属性
 							<small>
 								<i class="icon-double-angle-right"></i>
-								Project Entity Create
+								Entity Prop Create
 							</small>
 						</h1>
 					</div><!--/.page-header-->
@@ -111,8 +111,10 @@
 										<thead>
 											<tr>
 												<th class="center">#</th>
-												<th>实体名称</th>
-												<th class="hidden-480">实体描述</th>
+												<th>属性名称</th>
+												<th class="hidden-480">属性描述</th>
+												<th>数据类型</th>
+												<th>验证消息</th>
 
 												<th class="hidden-phone">
 													<i class="icon-time bigger-110 hidden-phone"></i>
@@ -125,12 +127,15 @@
 
 										<tbody>
 										<#import "/_macro/status.html" as status>
-										<#list data_list_pe! as doc>
+										<#list data_list_pep! as doc>
 											<tr>
 												<td class="center">${doc_index+1}</td>
 
-												<td>${(doc.entity_name)!}</a></td>
-												<td class="hidden-480">${(doc.entity_desc)!}</td>
+												<td>${(doc.prop_name)!}</a></td>
+												<td class="hidden-480">${(doc.prop_desc)!}</td>
+												<td>${(doc.prop_type)!}</a></td>
+												<td>${(doc.validate_msg)!}</a></td>
+												
 												<td class="hidden-phone">${(doc.create_time?string("yyyy-MM-dd HH:mm:ss"))!}</td>
 
 												<td>
@@ -142,10 +147,6 @@
 
 														<a class="btn btn-mini btn-danger" title='删除' href='./del?id=${(doc.id)!}'>
 															<i class="icon-trash bigger-120"></i>
-														</a>
-
-														<a class="btn btn-mini btn-primary" title='属性设置' href='/proj/entity/prop/?entity_id=${(doc.id)!}'>
-															<i class="icon-cogs bigger-120"></i>
 														</a>
 
 													</div>
@@ -170,14 +171,6 @@
 																	<a href='./del?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="删除">
 																		<span class="red">
 																			<i class="icon-trash bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href='proj/entity/prop/?entity_id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="属性设置">
-																		<span class="red">
-																			<i class="icon-cogs bigger-120"></i>
 																		</span>
 																	</a>
 																</li>
