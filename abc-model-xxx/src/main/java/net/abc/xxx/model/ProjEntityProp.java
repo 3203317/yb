@@ -41,6 +41,16 @@ public class ProjEntityProp implements Serializable {
 
 	private String regex;
 
+	private Integer is_transient;
+
+	public Integer getIs_transient() {
+		return is_transient;
+	}
+
+	public void setIs_transient(Integer is_transient) {
+		this.is_transient = is_transient;
+	}
+
 	public String getRegex() {
 		return regex;
 	}
