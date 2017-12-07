@@ -43,6 +43,19 @@ public class ProjEntityProp implements Serializable {
 
 	private Integer is_transient;
 
+	/**
+	 * 'table'.field
+	 */
+	private String r_entity_name;
+
+	public String getR_entity_name() {
+		return r_entity_name;
+	}
+
+	public void setR_entity_name(String r_entity_name) {
+		this.r_entity_name = r_entity_name;
+	}
+
 	public Integer getIs_transient() {
 		return is_transient;
 	}
