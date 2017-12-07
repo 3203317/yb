@@ -36,14 +36,14 @@ public class ProjEntity implements Serializable {
 	 */
 	private Integer is_real;
 
-	private String sql;
+	private String sqls;
 
-	public String getSql() {
-		return sql;
+	public String getSqls() {
+		return sqls;
 	}
 
-	public void setSql(String sql) {
-		this.sql = sql;
+	public void setSqls(String sqls) {
+		this.sqls = sqls;
 	}
 
 	public Integer getIs_real() {
