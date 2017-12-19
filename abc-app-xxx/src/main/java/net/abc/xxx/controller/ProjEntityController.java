@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
 import net.abc.xxx.model.ProjEntity;
+import net.abc.xxx.model.ProjEntityProp;
+import net.abc.xxx.service.ProjEntityPropService;
 import net.abc.xxx.service.ProjEntityService;
 
 /**
@@ -32,6 +34,9 @@ public class ProjEntityController extends BaseController {
 
 	@Resource
 	private ProjEntityService projEntityService;
+
+	@Resource
+	private ProjEntityPropService projEntityPropService;
 
 	/**
 	 * 
@@ -82,18 +87,45 @@ public class ProjEntityController extends BaseController {
 		conn.close();
 	}
 
+	private void create_table(String table_name, List<ProjEntityProp> list) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+
+		String url = "jdbc:mysql://127.0.0.1:3306/yb?useUnicode=true&characterEncoding=utf-8";
+		Connection conn = DriverManager.getConnection(url, "root", "123456");
+		Statement stat = conn.createStatement();
+		stat = conn.createStatement();
+
+		stat.execute("DROP TABLE IF EXISTS " + table_name);
+
+		// 创建表
+		stat.executeUpdate("CREATE TABLE " + table_name + " (id int, name varchar(80))");
+
+		stat.close();
+		conn.close();
+	}
+
 	/**
 	 * 
 	 * @param session
 	 * @param id
 	 * @return
+	 * @throws Exception
 	 */
 	@ResponseBody
 	@RequestMapping(value = { "/entity/create" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> create(HttpSession session, @RequestParam(required = true) String id) {
+	public Map<String, Object> create(HttpSession session, @RequestParam(required = true) String id) throws Exception {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
+
+		ProjEntity pe = projEntityService.getById(id);
+
+		ProjEntityProp pep = new ProjEntityProp();
+		pep.setEntity_id(id);
+
+		List<ProjEntityProp> list_pep = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+
+		create_table(pe.getId() + "_" + pe.getDb_name(), list_pep);
 
 		result.put("success", true);
 		return result;
