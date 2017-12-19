@@ -31,11 +31,6 @@ public class ProjEntity implements Serializable {
 
 	private String db_name;
 
-	/**
-	 * 1实表 2虚表
-	 */
-	private Integer is_real;
-
 	private String sqls;
 
 	public String getSqls() {
@@ -44,14 +39,6 @@ public class ProjEntity implements Serializable {
 
 	public void setSqls(String sqls) {
 		this.sqls = sqls;
-	}
-
-	public Integer getIs_real() {
-		return is_real;
-	}
-
-	public void setIs_real(Integer is_real) {
-		this.is_real = is_real;
 	}
 
 	public String getDb_name() {

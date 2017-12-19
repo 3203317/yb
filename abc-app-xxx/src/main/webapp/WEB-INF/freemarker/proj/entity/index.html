@@ -151,6 +151,12 @@
 														<a class="btn btn-mini btn-primary" title='属性设置' href='/proj/entity/prop/?id=${(doc.id)!}'>
 															<i class="icon-cogs bigger-120"></i>
 														</a>
+														
+														<#if ((doc.sqls)??) && ((doc.sqls)?trim != "")>
+														<a class="btn btn-mini btn-primary" title='字段生成' href='/proj/entity/prop/gen?id=${(doc.id)!}'>
+															<i class="icon-fire bigger-120"></i>
+														</a>
+														</#if>
 
 													</div>
 
