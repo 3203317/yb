@@ -153,8 +153,13 @@
 														</a>
 														
 														<#if ((doc.sqls)??) && ((doc.sqls)?trim != "")>
-														<a class="btn btn-mini btn-primary" title='字段生成' href='/proj/entity/prop/gen?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-primary" title='字段生成' href='/proj/entity/gen?id=${(doc.id)!}'>
 															<i class="icon-fire bigger-120"></i>
+														</a>
+														<#else>
+
+														<a class="btn btn-mini btn-primary" title='创建表' href='javascript:create("${(doc.id)!}")'>
+															<i class="icon-download bigger-120"></i>
 														</a>
 														</#if>
 
@@ -217,4 +222,23 @@
 		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
 	</body>
+	
+	<script>
+	function create(id){
+		$.ajax({
+			url : '${(conf_html_virtualPath)!}proj/entity/create',
+			type : 'POST',
+			dataType : 'JSON',
+			data : {
+				id: id
+			},
+			success : function(data) {
+				console.log(data)
+			},
+			error : function() {
+				alert(arguments[2]);
+			}
+		});
+	}
+	</script>
 </html>
