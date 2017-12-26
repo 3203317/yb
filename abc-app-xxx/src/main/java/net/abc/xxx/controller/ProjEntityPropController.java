@@ -62,10 +62,12 @@ public class ProjEntityPropController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-	public String profileUI(HttpSession session, @RequestParam(required = true) String pe_id, Map<String, Object> map) {
+	public String addUI(HttpSession session, @RequestParam(required = true) String pe_id, Map<String, Object> map) {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,0502,");
+
+		map.put("data_pe_id", pe_id);
 
 		return "proj/entity/prop/add";
 	}

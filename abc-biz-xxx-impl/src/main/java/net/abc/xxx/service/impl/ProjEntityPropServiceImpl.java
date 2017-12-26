@@ -30,7 +30,6 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 
 	@Override
 	public int save(ProjEntityProp entity) {
-		entity.setId(null);
 		entity.setCreate_time(new Date());
 		return super.save(entity);
 	}

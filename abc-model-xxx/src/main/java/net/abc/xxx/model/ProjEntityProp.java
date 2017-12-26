@@ -3,8 +3,6 @@ package net.abc.xxx.model;
 import java.io.Serializable;
 import java.util.Date;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -19,15 +17,12 @@ public class ProjEntityProp implements Serializable {
 	private static final long serialVersionUID = -3442427685161741989L;
 
 	@Id
-	@Column(name = "id")
-	@GeneratedValue(generator = "UUID")
 	private String id;
-
-	private String prop_name;
 	private String prop_desc;
 	private Date create_time;
 
 	private String proj_id;
+	@Id
 	private String entity_id;
 	private String prop_type;
 
@@ -102,14 +97,6 @@ public class ProjEntityProp implements Serializable {
 
 	public void setId(String id) {
 		this.id = id;
-	}
-
-	public String getProp_name() {
-		return prop_name;
-	}
-
-	public void setProp_name(String prop_name) {
-		this.prop_name = prop_name;
 	}
 
 	public String getProp_desc() {
