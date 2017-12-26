@@ -43,11 +43,6 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 		if (null != entity) {
 			Example.Criteria criteria = example.createCriteria();
 
-			String proj_id = StringUtil.isEmpty(entity.getProj_id());
-			if (null != proj_id) {
-				criteria.andEqualTo("proj_id", proj_id);
-			}
-
 			String entity_id = StringUtil.isEmpty(entity.getEntity_id());
 			if (null != entity_id) {
 				criteria.andEqualTo("entity_id", entity_id);

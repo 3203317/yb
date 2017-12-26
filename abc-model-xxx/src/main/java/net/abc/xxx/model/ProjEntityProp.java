@@ -21,7 +21,6 @@ public class ProjEntityProp implements Serializable {
 	private String prop_desc;
 	private Date create_time;
 
-	private String proj_id;
 	@Id
 	private String entity_id;
 	private String prop_type;
@@ -113,14 +112,6 @@ public class ProjEntityProp implements Serializable {
 
 	public void setCreate_time(Date create_time) {
 		this.create_time = create_time;
-	}
-
-	public String getProj_id() {
-		return proj_id;
-	}
-
-	public void setProj_id(String proj_id) {
-		this.proj_id = proj_id;
 	}
 
 	public String getEntity_id() {

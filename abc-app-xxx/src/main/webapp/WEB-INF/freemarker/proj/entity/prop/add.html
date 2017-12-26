@@ -109,6 +109,98 @@
 														</div>
 													</div>
 
+													<div class="control-group">
+														<label class="control-label" for="frm_prop_desc">属性描述</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_prop_desc" name='prop_desc' placeholder="属性描述" value='' />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_id">数据类型</label>
+
+														<div class="controls">
+															<select name="prop_type">
+																<option value="varchar" />varchar
+																<option value="number" />number
+																<option value="date" />date
+															</select>
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_id">最大</label>
+
+														<div class="controls">
+															<input type='text' class='input-large' name='prop_max' id='frm_prop_max' value='' />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_id">最小</label>
+
+														<div class="controls">
+															<input type='text' class='input-large' name='prop_min' id='frm_prop_min' value='' />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_regex">正则</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_regex" name='regex' placeholder="正则" value='' />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label">允许空</label>
+
+														<div class="controls">
+															<label>
+																<input name="is_null" type="radio" value='1' checked />
+																<span class="lbl"> 是</span>
+															</label>
+
+															<label>
+																<input name="is_null" type="radio" value='0' />
+																<span class="lbl"> 否</span>
+															</label>
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label">@Transient</label>
+
+														<div class="controls">
+															<label>
+																<input name="is_transient" type="radio" value='1' checked />
+																<span class="lbl"> 是</span>
+															</label>
+
+															<label>
+																<input name="is_transient" type="radio" value='0' />
+																<span class="lbl"> 否</span>
+															</label>
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_def_val">默认值</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_def_val" name='def_val' placeholder="默认值" value='' />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_valid_msg">验证消息</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_valid_msg" name='valid_msg' placeholder="验证消息" value='' />
+														</div>
+													</div>
+
 													<div class="form-actions">
 														<button class="btn btn-info" onclick="return false;" id='btn_submit'>
 															<i class="icon-ok bigger-110"></i>
@@ -149,8 +241,34 @@
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/x-editable/bootstrap-editable.min.js"></script>
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/x-editable/ace-editable.min.js"></script>
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/jquery.maskedinput.min.js"></script>
+		
+		<script src='${(conf_html_cdn)!}js/ace/1.1.2/assets/js/fuelux/fuelux.spinner.min.js'></script>
 
 		<script>
+
+		$(function(){
+		  $('#frm_prop_max').ace_spinner({
+		    value: 0,
+		    min: 0,
+		    max: 10000,
+		    step: 1,
+		    icon_up: 'icon-plus',
+		    icon_down: 'icon-minus',
+		    btn_up_class: 'btn-success' ,
+		    btn_down_class: 'btn-danger'
+		  });
+
+		  $('#frm_prop_min').ace_spinner({
+		    value: 0,
+		    min: 0,
+		    max: 10000,
+		    step: 1,
+		    icon_up: 'icon-plus',
+		    icon_down: 'icon-minus',
+		    btn_up_class: 'btn-success' ,
+		    btn_down_class: 'btn-danger'
+		  });
+		})
 
 		$(function(){
 
