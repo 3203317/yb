@@ -1,5 +1,6 @@
 package net.abc.xxx.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -20,6 +21,19 @@ import tk.mybatis.mapper.entity.Example;
  */
 @Service("projEntityPropService")
 public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> implements ProjEntityPropService {
+
+	@Override
+	public int updateNotNull(ProjEntityProp entity) {
+		entity.setCreate_time(null);
+		return super.updateNotNull(entity);
+	}
+
+	@Override
+	public int save(ProjEntityProp entity) {
+		entity.setId(null);
+		entity.setCreate_time(new Date());
+		return super.save(entity);
+	}
 
 	@Override
 	public List<ProjEntityProp> findByProjEntityProp(ProjEntityProp entity, int page, int rows) {
@@ -46,15 +60,25 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 	}
 
 	@Override
-	public ResultMap<Void> editInfo(ProjEntityProp entity) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResultMap<ProjEntityProp> editInfo(ProjEntityProp entity) {
+
+		updateNotNull(entity);
+
+		ResultMap<ProjEntityProp> map = new ResultMap<ProjEntityProp>();
+		map.setData(entity);
+		map.setSuccess(true);
+		return map;
 	}
 
 	@Override
 	public ResultMap<ProjEntityProp> saveNew(ProjEntityProp entity) {
-		// TODO Auto-generated method stub
-		return null;
+
+		save(entity);
+
+		ResultMap<ProjEntityProp> map = new ResultMap<ProjEntityProp>();
+		map.setData(entity);
+		map.setSuccess(true);
+		return map;
 	}
 
 }

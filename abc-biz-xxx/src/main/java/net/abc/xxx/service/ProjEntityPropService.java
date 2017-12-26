@@ -20,7 +20,7 @@ public interface ProjEntityPropService extends IService<ProjEntityProp> {
 	 * @param entity
 	 * @return
 	 */
-	ResultMap<Void> editInfo(ProjEntityProp entity);
+	ResultMap<ProjEntityProp> editInfo(ProjEntityProp entity);
 
 	/**
 	 * 

@@ -1,5 +1,6 @@
 package net.abc.xxx.controller;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -10,8 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
+import net.abc.model.ResultMap;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.service.ProjEntityPropService;
 
@@ -67,4 +70,21 @@ public class ProjEntityPropController extends BaseController {
 		return "proj/entity/prop/add";
 	}
 
+	@ResponseBody
+	@RequestMapping(value = { "/add" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> add(HttpSession session, ProjEntityProp entity) {
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+
+		ResultMap<ProjEntityProp> saveInfo = projEntityPropService.saveNew(entity);
+
+		if (!saveInfo.getSuccess()) {
+			result.put("msg", saveInfo.getMsg());
+			return result;
+		}
+
+		result.put("success", true);
+		return result;
+	}
 }
