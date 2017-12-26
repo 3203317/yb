@@ -118,10 +118,10 @@
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_id">数据类型</label>
+														<label class="control-label" for="frm_prop_type">数据类型</label>
 
 														<div class="controls">
-															<select name="prop_type">
+															<select name="prop_type" id="frm_prop_type">
 																<option value="varchar" />varchar
 																<option value="number" />number
 																<option value="date" />date
@@ -130,7 +130,7 @@
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_id">最大</label>
+														<label class="control-label" for="frm_prop_max">最大</label>
 
 														<div class="controls">
 															<input type='text' class='input-large' name='prop_max' id='frm_prop_max' value='' />
@@ -138,7 +138,7 @@
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_id">最小</label>
+														<label class="control-label" for="frm_prop_min">最小</label>
 
 														<div class="controls">
 															<input type='text' class='input-large' name='prop_min' id='frm_prop_min' value='' />
@@ -295,7 +295,11 @@
 					dataType : 'JSON',
 					data : $('#frm').serializeObjectForm(),
 					success : function(data) {
-						console.log(data)
+						if (data.success){
+							alert('添加成功');
+							return;
+						}
+						if (data.msg) alert(data.msg);
 					},
 					error : function() {
 						alert(arguments[2]);
