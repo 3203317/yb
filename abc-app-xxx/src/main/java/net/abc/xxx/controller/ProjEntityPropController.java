@@ -20,7 +20,7 @@ import net.abc.xxx.service.ProjEntityPropService;
  * @author huangxin <3203317@qq.com>
  *
  */
-@RequestMapping(value = { "/proj/entity" })
+@RequestMapping(value = { "/proj/entity/prop" })
 @Controller
 public class ProjEntityPropController extends BaseController {
 
@@ -34,7 +34,7 @@ public class ProjEntityPropController extends BaseController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping(value = { "/prop/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
 
 		map.put("session_user", session.getAttribute("session.user"));
@@ -46,7 +46,25 @@ public class ProjEntityPropController extends BaseController {
 		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 		map.put("data_list_pep", list);
 
+		map.put("data_pe_id", id);
+
 		return "proj/entity/prop/index";
+	}
+
+	/**
+	 * 
+	 * @param session
+	 * @param pe_id
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
+	public String profileUI(HttpSession session, @RequestParam(required = true) String pe_id, Map<String, Object> map) {
+
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",05,0502,");
+
+		return "proj/entity/prop/add";
 	}
 
 }

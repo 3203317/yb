@@ -28,7 +28,7 @@ import net.abc.xxx.service.ProjEntityService;
  * @author huangxin <3203317@qq.com>
  *
  */
-@RequestMapping(value = { "/proj/" })
+@RequestMapping(value = { "/proj/entity" })
 @Controller
 public class ProjEntityController extends BaseController {
 
@@ -45,7 +45,7 @@ public class ProjEntityController extends BaseController {
 	 * @param map
 	 * @return
 	 */
-	@RequestMapping(value = { "/entity/" }, method = RequestMethod.GET)
+	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
 
 		map.put("session_user", session.getAttribute("session.user"));
@@ -112,7 +112,7 @@ public class ProjEntityController extends BaseController {
 	 * @throws Exception
 	 */
 	@ResponseBody
-	@RequestMapping(value = { "/entity/create" }, method = RequestMethod.POST, produces = "application/json")
+	@RequestMapping(value = { "/create" }, method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> create(HttpSession session, @RequestParam(required = true) String id) throws Exception {
 
 		Map<String, Object> result = new HashMap<String, Object>();
