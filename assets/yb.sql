@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2017-12-26 17:00:45
+Date: 2017-12-26 18:02:45
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -112,7 +112,6 @@ CREATE TABLE `gen_proj_entity_prop` (
   `is_null` int(1) DEFAULT NULL,
   `regex` varchar(255) DEFAULT NULL,
   `is_transient` int(1) DEFAULT NULL,
-  `r_entity_name` varchar(32) DEFAULT NULL,
   `is_pk` int(1) DEFAULT NULL,
   PRIMARY KEY (`id`,`entity_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -120,12 +119,11 @@ CREATE TABLE `gen_proj_entity_prop` (
 -- ----------------------------
 -- Records of gen_proj_entity_prop
 -- ----------------------------
-INSERT INTO `gen_proj_entity_prop` VALUES ('1', '2', '2017-12-26 16:58:28', '1', 'date', '2', '2', '123', '123', '1', '123', '0', null, null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', null, null, '0', null, null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', null, null, '0', null, null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '3', '1', '33', null, null, '0', null, null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '1', '1', '11', null, null, '0', null, null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'number', '32', '2', '0', '22', null, null, '0', null, null);
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', null, null, '0', null);
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', null, null, '0', null);
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '3', '1', '33', null, null, '0', null);
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '1', '1', '11', null, null, '0', null);
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'number', '32', '2', '0', '22', null, null, '0', null);
 
 -- ----------------------------
 -- Table structure for `gen_type_db`
@@ -273,18 +271,3 @@ CREATE TABLE `s_user_friends` (
 -- Records of s_user_friends
 -- ----------------------------
 INSERT INTO `s_user_friends` VALUES ('f8910bf315d647e089445b19d80b1237', 'hx', 'wy', null, null, '1', '2017-06-07 14:51:35', 'i want', null);
-
--- ----------------------------
--- Table structure for `test`
--- ----------------------------
-DROP TABLE IF EXISTS `test`;
-CREATE TABLE `test` (
-  `id` int(11) DEFAULT NULL,
-  `name` varchar(80) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- ----------------------------
--- Records of test
--- ----------------------------
-INSERT INTO `test` VALUES ('1', '张三');
-INSERT INTO `test` VALUES ('2', '李四');
