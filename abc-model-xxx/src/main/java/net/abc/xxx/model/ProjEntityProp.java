@@ -37,10 +37,20 @@ public class ProjEntityProp implements Serializable {
 
 	private Integer is_transient;
 
+	private Integer is_pk;
+
 	/**
 	 * 'table'.field
 	 */
 	private String r_entity_name;
+
+	public Integer getIs_pk() {
+		return is_pk;
+	}
+
+	public void setIs_pk(Integer is_pk) {
+		this.is_pk = is_pk;
+	}
 
 	public String getR_entity_name() {
 		return r_entity_name;
