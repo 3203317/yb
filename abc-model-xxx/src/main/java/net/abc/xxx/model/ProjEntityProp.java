@@ -25,8 +25,8 @@ public class ProjEntityProp implements Serializable {
 	private String entity_id;
 	private String prop_type;
 
-	private Integer prop_min;
-	private Integer prop_max;
+	private Integer len_min;
+	private Integer len_max;
 
 	private String def_val;
 	private String valid_msg;
@@ -127,20 +127,20 @@ public class ProjEntityProp implements Serializable {
 		this.prop_type = prop_type;
 	}
 
-	public Integer getProp_min() {
-		return prop_min;
+	public Integer getLen_min() {
+		return len_min;
 	}
 
-	public void setProp_min(Integer prop_min) {
-		this.prop_min = prop_min;
+	public void setLen_min(Integer len_min) {
+		this.len_min = len_min;
 	}
 
-	public Integer getProp_max() {
-		return prop_max;
+	public Integer getLen_max() {
+		return len_max;
 	}
 
-	public void setProp_max(Integer prop_max) {
-		this.prop_max = prop_max;
+	public void setLen_max(Integer len_max) {
+		this.len_max = len_max;
 	}
 
 }

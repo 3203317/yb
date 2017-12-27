@@ -130,18 +130,18 @@
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_prop_max">最大</label>
+														<label class="control-label" for="frm_len_max">最大</label>
 
 														<div class="controls">
-															<input type='text' class='input-large' name='prop_max' id='frm_prop_max' value='' />
+															<input type='text' class='input-large' name='len_max' id='frm_len_max' value='' />
 														</div>
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_prop_min">最小</label>
+														<label class="control-label" for="frm_len_min">最小</label>
 
 														<div class="controls">
-															<input type='text' class='input-large' name='prop_min' id='frm_prop_min' value='' />
+															<input type='text' class='input-large' name='len_min' id='frm_len_min' value='' />
 														</div>
 													</div>
 
@@ -190,12 +190,12 @@
 
 														<div class="controls">
 															<label>
-																<input name="is_pk" type="radio" value='1' checked />
+																<input name="is_pk" type="radio" value='1' />
 																<span class="lbl"> 是</span>
 															</label>
 
 															<label>
-																<input name="is_pk" type="radio" value='0' />
+																<input name="is_pk" type="radio" value='0' checked />
 																<span class="lbl"> 否</span>
 															</label>
 														</div>
@@ -263,7 +263,7 @@
 		<script>
 
 		$(function(){
-		  $('#frm_prop_max').ace_spinner({
+		  $('#frm_len_max').ace_spinner({
 		    value: 0,
 		    min: 0,
 		    max: 10000,
@@ -274,7 +274,7 @@
 		    btn_down_class: 'btn-danger'
 		  });
 
-		  $('#frm_prop_min').ace_spinner({
+		  $('#frm_len_min').ace_spinner({
 		    value: 0,
 		    min: 0,
 		    max: 10000,
