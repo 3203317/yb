@@ -156,7 +156,7 @@
 															<i class="icon-edit bigger-120"></i>
 														</a>
 
-														<a class="btn btn-mini btn-danger" title='删除' href='./del?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-danger" title='删除' href='javascript:del("${(doc.id)!}", "${(doc.entity_id)!}")'>
 															<i class="icon-trash bigger-120"></i>
 														</a>
 
@@ -211,4 +211,32 @@
 		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
 	</body>
+	
+	<script>
+	
+	function del(id, entity_id){
+		if(confirm('你确定要执行该操作吗？')){
+			$.ajax({
+				url : './del',
+				type : 'POST',
+				dataType : 'JSON',
+				data : {
+					id: id,
+					entity_id: entity_id,
+				},
+				success : function(data) {
+					if (data.success){
+						alert('操作成功');
+						location.reload();
+						return;
+					}
+					if (data.msg) alert(data.msg);
+				},
+				error : function() {
+					alert(arguments[2]);
+				}
+			});
+		}
+	}
+	</script>
 </html>

@@ -79,10 +79,29 @@ public class ProjEntityPropController extends BaseController {
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 
-		ResultMap<ProjEntityProp> saveInfo = projEntityPropService.saveNew(entity);
+		ResultMap<ProjEntityProp> optR = projEntityPropService.saveNew(entity);
 
-		if (!saveInfo.getSuccess()) {
-			result.put("msg", saveInfo.getMsg());
+		if (!optR.getSuccess()) {
+			result.put("msg", optR.getMsg());
+			return result;
+		}
+
+		result.put("success", true);
+		return result;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/del" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> del(HttpSession session, @RequestParam(required = true) String id,
+			@RequestParam(required = true) String entity_id) {
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", false);
+
+		ResultMap<Void> optR = projEntityPropService.remove(id, entity_id);
+
+		if (!optR.getSuccess()) {
+			result.put("msg", optR.getMsg());
 			return result;
 		}
 

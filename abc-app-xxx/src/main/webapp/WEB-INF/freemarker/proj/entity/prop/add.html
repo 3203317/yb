@@ -297,6 +297,7 @@
 					success : function(data) {
 						if (data.success){
 							alert('添加成功');
+							history.go(-1);
 							return;
 						}
 						if (data.msg) alert(data.msg);

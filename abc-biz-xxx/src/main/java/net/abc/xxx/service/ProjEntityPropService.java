@@ -29,4 +29,12 @@ public interface ProjEntityPropService extends IService<ProjEntityProp> {
 	 */
 	ResultMap<ProjEntityProp> saveNew(ProjEntityProp entity);
 
+	/**
+	 * 
+	 * @param id
+	 * @param entity_id
+	 * @return
+	 */
+	ResultMap<Void> remove(String id, String entity_id);
+
 }

@@ -75,4 +75,18 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 		return map;
 	}
 
+	@Override
+	public ResultMap<Void> remove(String id, String entity_id) {
+
+		ProjEntityProp entity = new ProjEntityProp();
+		entity.setId(id);
+		entity.setEntity_id(entity_id);
+
+		delete(entity);
+
+		ResultMap<Void> map = new ResultMap<Void>();
+		map.setSuccess(true);
+		return map;
+	}
+
 }
