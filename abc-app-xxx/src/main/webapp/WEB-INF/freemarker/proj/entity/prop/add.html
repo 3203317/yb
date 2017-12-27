@@ -297,7 +297,7 @@
 					success : function(data) {
 						if (data.success){
 							alert('添加成功');
-							history.go(-1);
+							location.href = './?id=${(data_pe_id)!}'
 							return;
 						}
 						if (data.msg) alert(data.msg);
