@@ -1,6 +1,7 @@
 package net.abc.xxx.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -82,6 +83,8 @@ public class ProjController extends BaseController {
 		model.put("data_p", p);
 		model.put("data_pe", pe);
 		model.put("data_list_pep", list_pep);
+		model.put("data_list_pep_db", getPepDb(list_pep));
+		model.put("data_list_pep_db_pk", getPepKeys(list_pep));
 
 		freemarkerTemplateResource.reload();
 
@@ -95,6 +98,44 @@ public class ProjController extends BaseController {
 		map.put("temp_" + db_id, Processor.getResult(db_id + "_sql", model));
 
 		return "codeGen/project/genCode";
+	}
+
+	/**
+	 * 
+	 * @param list
+	 * @return
+	 */
+	private List<ProjEntityProp> getPepKeys(List<ProjEntityProp> list) {
+
+		List<ProjEntityProp> newList = new ArrayList<ProjEntityProp>();
+
+		for (int i = 0; i < list.size(); i++) {
+			ProjEntityProp pep = list.get(i);
+
+			if (1 == pep.getIs_pk())
+				newList.add(pep);
+		}
+
+		return newList;
+	}
+
+	/**
+	 * 
+	 * @param list
+	 * @return
+	 */
+	private List<ProjEntityProp> getPepDb(List<ProjEntityProp> list) {
+
+		List<ProjEntityProp> newList = new ArrayList<ProjEntityProp>();
+
+		for (int i = 0; i < list.size(); i++) {
+			ProjEntityProp pep = list.get(i);
+
+			if (0 == pep.getIs_transient())
+				newList.add(pep);
+		}
+
+		return newList;
 	}
 
 	/**
