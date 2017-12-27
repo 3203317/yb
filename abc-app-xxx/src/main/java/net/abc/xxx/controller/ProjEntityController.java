@@ -143,7 +143,27 @@ public class ProjEntityController extends BaseController {
 		conn.close();
 	}
 
-	private void create_table(String table_name, List<ProjEntityProp> list) throws Exception {
+	private String create_table_primary(List<ProjEntityProp> list) {
+
+		String sql = "";
+
+		for (int i = 0; i < list.size(); i++) {
+			ProjEntityProp pep = list.get(i);
+
+			if (1 == pep.getIs_transient())
+				continue;
+
+			if (1 == pep.getIs_pk())
+				sql += pep.getId() + ", ";
+		}
+
+		if ("".equals(sql))
+			return sql;
+
+		return ", primary key (" + sql.substring(0, sql.length() - 2) + ")";
+	}
+
+	private void create_table(ProjEntity pe, List<ProjEntityProp> list) throws Exception {
 		Class.forName("com.mysql.jdbc.Driver");
 
 		String url = "jdbc:mysql://127.0.0.1:3306/yb?useUnicode=true&characterEncoding=utf-8";
@@ -151,10 +171,38 @@ public class ProjEntityController extends BaseController {
 		Statement stat = conn.createStatement();
 		stat = conn.createStatement();
 
-		stat.execute("DROP TABLE IF EXISTS " + table_name);
+		stat.execute("DROP TABLE IF EXISTS _" + pe.getId());
+
+		String sql = "CREATE TABLE _" + pe.getId() + " (";
+
+		for (int i = 0; i < list.size(); i++) {
+			ProjEntityProp pep = list.get(i);
+
+			if (1 == pep.getIs_transient())
+				continue;
+
+			sql += pep.getId();
+
+			sql += " " + pep.getProp_type();
+
+			if (1 == pep.getIs_null())
+				sql += " not null";
+
+			sql += " comment '" + pep.getProp_desc() + "'";
+
+			sql += ", ";
+		}
+
+		sql = sql.substring(0, sql.length() - 2);
+
+		sql += create_table_primary(list);
+
+		sql += ")";
 
 		// 创建表
-		stat.executeUpdate("CREATE TABLE " + table_name + " (id int, name varchar(80))");
+		// stat.executeUpdate(sql);
+
+		System.err.println(sql);
 
 		stat.close();
 		conn.close();
@@ -179,9 +227,8 @@ public class ProjEntityController extends BaseController {
 		ProjEntityProp pep = new ProjEntityProp();
 		pep.setEntity_id(id);
 
-		List<ProjEntityProp> list_pep = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
-
-		create_table(pe.getId() + "_" + pe.getDb_name(), list_pep);
+		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+		create_table(pe, list);
 
 		result.put("success", true);
 		return result;

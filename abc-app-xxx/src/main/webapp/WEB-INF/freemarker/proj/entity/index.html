@@ -226,14 +226,18 @@
 	<script>
 	function create(id){
 		$.ajax({
-			url : '${(conf_html_virtualPath)!}proj/entity/create',
+			url : './create',
 			type : 'POST',
 			dataType : 'JSON',
 			data : {
 				id: id
 			},
 			success : function(data) {
-				console.log(data)
+				if (data.success){
+					alert('操作成功');
+					return;
+				}
+				if (data.msg) alert(data.msg);
 			},
 			error : function() {
 				alert(arguments[2]);
