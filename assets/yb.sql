@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2017-12-26 18:02:45
+Date: 2017-12-28 11:17:54
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -105,8 +105,8 @@ CREATE TABLE `gen_proj_entity_prop` (
   `create_time` datetime DEFAULT NULL,
   `entity_id` varchar(32) NOT NULL DEFAULT '',
   `prop_type` varchar(255) DEFAULT NULL,
-  `prop_min` int(11) DEFAULT NULL,
-  `prop_max` int(11) DEFAULT NULL,
+  `len_min` int(11) DEFAULT NULL,
+  `len_max` int(11) DEFAULT NULL,
   `def_val` varchar(255) DEFAULT NULL COMMENT '是否生成UUID',
   `valid_msg` varchar(64) DEFAULT NULL,
   `is_null` int(1) DEFAULT NULL,
@@ -119,11 +119,12 @@ CREATE TABLE `gen_proj_entity_prop` (
 -- ----------------------------
 -- Records of gen_proj_entity_prop
 -- ----------------------------
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', null, null, '0', null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', null, null, '0', null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '3', '1', '33', null, null, '0', null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '1', '1', '11', null, null, '0', null);
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'number', '32', '2', '0', '22', null, null, '0', null);
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2017-12-27 17:37:40', '1', 'varchar', '32', '32', '', '', '1', '', '0', '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', '1', null, '1', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '3', '1', '33', '1', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '1', '1', '11', '1', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'number', '32', '2', '0', '22', '0', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for `gen_type_db`
