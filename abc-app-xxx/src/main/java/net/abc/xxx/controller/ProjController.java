@@ -1,7 +1,5 @@
 package net.abc.xxx.controller;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,10 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import freemarker.core.ParseException;
-import freemarker.template.MalformedTemplateNameException;
-import freemarker.template.TemplateException;
-import freemarker.template.TemplateNotFoundException;
 import net.abc.controller.BaseController;
 import net.abc.util.StringUtil;
 import net.abc.util.freemarker.Processor;
@@ -28,6 +22,7 @@ import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.service.ProjEntityPropService;
 import net.abc.xxx.service.ProjEntityService;
 import net.abc.xxx.service.ProjService;
+import net.abc.xxx.util.TempUtil;
 
 /**
  * 
@@ -58,17 +53,12 @@ public class ProjController extends BaseController {
 	 * @param entity_id
 	 * @param map
 	 * @return
-	 * @throws TemplateNotFoundException
-	 * @throws MalformedTemplateNameException
-	 * @throws ParseException
-	 * @throws IOException
-	 * @throws TemplateException
+	 * @throws Exception
 	 */
 	@RequestMapping(value = { "/codeGen/genCode/" }, method = RequestMethod.GET)
 	public String genCodeUI(HttpSession session, @RequestParam(required = true) String lang_id,
 			@RequestParam(required = true) String db_id, @RequestParam(required = true) String proj_id,
-			@RequestParam(required = true) String entity_id, Map<String, Object> map) throws TemplateNotFoundException,
-			MalformedTemplateNameException, ParseException, IOException, TemplateException {
+			@RequestParam(required = true) String entity_id, Map<String, Object> map) throws Exception {
 
 		Proj p = projService.getById(proj_id);
 
@@ -83,8 +73,6 @@ public class ProjController extends BaseController {
 		model.put("data_p", p);
 		model.put("data_pe", pe);
 		model.put("data_list_pep", list_pep);
-		model.put("data_list_pep_db", getPepDb(list_pep));
-		model.put("data_list_pep_db_pk", getPepKeys(list_pep));
 
 		freemarkerTemplateResource.reload();
 
@@ -95,47 +83,9 @@ public class ProjController extends BaseController {
 
 		map.put("temp_" + lang_id + "_model", Processor.getResult("model_" + lang_id, model));
 		map.put("temp_" + lang_id + "_biz", Processor.getResult("biz_" + lang_id, model));
-		map.put("temp_" + db_id, Processor.getResult(db_id + "_sql", model));
+		map.put("temp_" + db_id, TempUtil.genSQLCreateTable(db_id, pe, list_pep));
 
 		return "codeGen/project/genCode";
-	}
-
-	/**
-	 * 
-	 * @param list
-	 * @return
-	 */
-	private List<ProjEntityProp> getPepKeys(List<ProjEntityProp> list) {
-
-		List<ProjEntityProp> newList = new ArrayList<ProjEntityProp>();
-
-		for (int i = 0; i < list.size(); i++) {
-			ProjEntityProp pep = list.get(i);
-
-			if (1 == pep.getIs_pk())
-				newList.add(pep);
-		}
-
-		return newList;
-	}
-
-	/**
-	 * 
-	 * @param list
-	 * @return
-	 */
-	private List<ProjEntityProp> getPepDb(List<ProjEntityProp> list) {
-
-		List<ProjEntityProp> newList = new ArrayList<ProjEntityProp>();
-
-		for (int i = 0; i < list.size(); i++) {
-			ProjEntityProp pep = list.get(i);
-
-			if (0 == pep.getIs_transient())
-				newList.add(pep);
-		}
-
-		return newList;
 	}
 
 	/**
