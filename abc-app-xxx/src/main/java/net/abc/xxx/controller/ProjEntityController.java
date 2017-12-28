@@ -165,9 +165,11 @@ public class ProjEntityController extends BaseController {
 
 		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 
+		pe.setDb_name("_" + pe.getId());
+
 		String sql = TempUtil.genSQLCreateTable("mysql", pe, list);
 
-		System.err.println(sql);
+		TempUtil.createSQLTable(sql);
 
 		result.put("success", true);
 		return result;

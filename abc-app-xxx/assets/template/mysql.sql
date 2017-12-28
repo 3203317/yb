@@ -1,5 +1,4 @@
 drop table if exists ${(data_pe.db_name)!};
-
 /**
  * Table: ${(data_pe.db_name)!}
  */

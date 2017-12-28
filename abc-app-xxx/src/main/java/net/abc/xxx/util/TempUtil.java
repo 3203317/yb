@@ -1,5 +1,8 @@
 package net.abc.xxx.util;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -70,6 +73,31 @@ public final class TempUtil {
 		model.put("data_list_pep_db_pk", getPepKeys(list));
 
 		return Processor.getResult(db_type + "_sql", model);
+	}
+
+	/**
+	 * 
+	 * @param sql
+	 * @throws Exception
+	 */
+	public static void createSQLTable(String sql) throws Exception {
+		Class.forName("com.mysql.jdbc.Driver");
+
+		String url = "jdbc:mysql://127.0.0.1:3306/yb?useUnicode=true&characterEncoding=utf-8";
+		Connection conn = DriverManager.getConnection(url, "root", "123456");
+		Statement stat = conn.createStatement();
+		stat = conn.createStatement();
+
+		String[] strs = sql.split(";");
+
+		for (int i = 0, j = strs.length; i < j; i++) {
+			String s = strs[i].trim();
+			if (!"".equals(s))
+				stat.executeUpdate(s);
+		}
+
+		stat.close();
+		conn.close();
 	}
 
 }
