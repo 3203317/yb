@@ -108,4 +108,18 @@ public class ProjEntityPropController extends BaseController {
 		result.put("success", true);
 		return result;
 	}
+
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
+	public String editUI(HttpSession session, @RequestParam(required = true) String id,
+			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
+
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",05,0502,");
+
+		ProjEntityProp pep = projEntityPropService.getById(id, entity_id);
+
+		map.put("data_pep", pep);
+
+		return "proj/entity/prop/edit";
+	}
 }

@@ -37,4 +37,12 @@ public interface ProjEntityPropService extends IService<ProjEntityProp> {
 	 */
 	ResultMap<Void> remove(String id, String entity_id);
 
+	/**
+	 * 
+	 * @param id
+	 * @param entity_id
+	 * @return
+	 */
+	ProjEntityProp getById(String id, String entity_id);
+
 }

@@ -89,4 +89,13 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 		return map;
 	}
 
+	@Override
+	public ProjEntityProp getById(String id, String entity_id) {
+		ProjEntityProp entity = new ProjEntityProp();
+		entity.setId(id);
+		entity.setEntity_id(entity_id);
+
+		return selectByKey(entity);
+	}
+
 }
