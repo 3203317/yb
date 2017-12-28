@@ -1,5 +1,6 @@
 package net.abc.xxx.util;
 
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.Statement;
@@ -7,6 +8,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 
 import net.abc.util.freemarker.Processor;
 import net.abc.xxx.model.ProjEntity;
@@ -81,10 +83,16 @@ public final class TempUtil {
 	 * @throws Exception
 	 */
 	public static void createSQLTable(String sql) throws Exception {
-		Class.forName("com.mysql.jdbc.Driver");
 
-		String url = "jdbc:mysql://127.0.0.1:3306/yb?useUnicode=true&characterEncoding=utf-8";
-		Connection conn = DriverManager.getConnection(url, "root", "123456");
+		Properties prop = new Properties();
+		// 装载配置文件
+		InputStream is = TempUtil.class.getClassLoader().getResourceAsStream("/config.properties");
+		prop.load(is);
+
+		Class.forName(prop.getProperty("jdbc.driverClass"));
+
+		Connection conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.user"),
+				prop.getProperty("jdbc.password"));
 		Statement stat = conn.createStatement();
 		stat = conn.createStatement();
 
