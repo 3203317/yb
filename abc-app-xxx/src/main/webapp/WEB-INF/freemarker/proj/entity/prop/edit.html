@@ -229,7 +229,7 @@
 															重置
 														</button>
 													</div>
-													
+
 												</form>
 											</div>
 										</div>
@@ -257,14 +257,14 @@
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/x-editable/bootstrap-editable.min.js"></script>
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/x-editable/ace-editable.min.js"></script>
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/jquery.maskedinput.min.js"></script>
-		
+
 		<script src='${(conf_html_cdn)!}js/ace/1.1.2/assets/js/fuelux/fuelux.spinner.min.js'></script>
 
 		<script>
 
 		$(function(){
 		  $('#frm_len_max').ace_spinner({
-		    value: 0,
+		    value: ${(data_pep.len_max)!},
 		    min: 0,
 		    max: 10000,
 		    step: 1,
@@ -275,7 +275,7 @@
 		  });
 
 		  $('#frm_len_min').ace_spinner({
-		    value: 0,
+		    value: ${(data_pep.len_min)!},
 		    min: 0,
 		    max: 10000,
 		    step: 1,
@@ -290,13 +290,13 @@
 
 			$('#btn_submit').click(function(){
 				$.ajax({
-					url : './add',
+					url : './edit',
 					type : 'POST',
 					dataType : 'JSON',
 					data : $('#frm').serializeObjectForm(),
 					success : function(data) {
 						if (data.success){
-							alert('添加成功');
+							alert('修改成功');
 							location.href = './?id=${(data_pe_id)!}'
 							return;
 						}
