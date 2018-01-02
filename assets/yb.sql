@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2018-01-02 10:48:44
+Date: 2018-01-02 12:03:40
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -166,23 +166,45 @@ CREATE TABLE `gen_proj_entity_prop` (
 -- Records of gen_proj_entity_prop
 -- ----------------------------
 INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', null, '2018-01-02 10:43:18', '3', 'date', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', null, '2018-01-02 11:15:55', '3', 'date', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2017-12-27 17:37:40', '1', 'varchar', '32', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-02 08:50:33', '2', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', null, '2018-01-02 11:15:55', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', '1', null, '1', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', null, '2018-01-02 11:15:55', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', null, '2018-01-02 11:15:55', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', '', '2018-01-02 08:56:55', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '64', '1', '33', '1', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', null, '2018-01-02 11:15:55', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('sex', '', '2018-01-02 10:26:50', '1', 'number', '0', '1', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('sex', null, '2018-01-02 10:43:18', '3', 'number', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sex', null, '2018-01-02 11:15:55', '3', 'number', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('user_id', '', '2018-01-02 08:56:34', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '64', '1', '11', '1', '123', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', null, '2018-01-02 11:15:55', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'varchar', '32', '64', '0', '22', '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', null, '2018-01-02 11:15:55', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+
+-- ----------------------------
+-- Table structure for `gen_proj_form`
+-- ----------------------------
+DROP TABLE IF EXISTS `gen_proj_form`;
+CREATE TABLE `gen_proj_form` (
+  `proj_id` varchar(32) DEFAULT '',
+  `id` varchar(64) NOT NULL DEFAULT '',
+  `form_name` varchar(32) DEFAULT NULL,
+  `form_desc` varchar(64) DEFAULT NULL,
+  `create_time` datetime DEFAULT NULL,
+  `form_type` int(1) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of gen_proj_form
+-- ----------------------------
+INSERT INTO `gen_proj_form` VALUES ('1', '1', 'User', '用户', '2017-06-06 10:29:31', '1');
+INSERT INTO `gen_proj_form` VALUES ('1', '2', 'Role', '角色', '2017-06-06 10:29:44', '2');
+INSERT INTO `gen_proj_form` VALUES ('1', '3', 'LoginUser', '登陆用户', '2017-12-19 11:51:46', '3');
+INSERT INTO `gen_proj_form` VALUES ('1', '4', 'UserRole', null, '2018-01-02 08:55:08', '4');
 
 -- ----------------------------
 -- Table structure for `gen_type_db`
