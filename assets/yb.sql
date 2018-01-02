@@ -10,10 +10,55 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2017-12-28 11:17:54
+Date: 2018-01-02 10:48:44
 */
 
 SET FOREIGN_KEY_CHECKS=0;
+
+-- ----------------------------
+-- Table structure for `_1`
+-- ----------------------------
+DROP TABLE IF EXISTS `_1`;
+CREATE TABLE `_1` (
+  `sex` int(11) NOT NULL,
+  `id` varchar(32) NOT NULL,
+  `create_time` datetime DEFAULT NULL COMMENT '注册日期',
+  `user_pass` varchar(64) DEFAULT NULL COMMENT '密码',
+  `user_name` varchar(64) NOT NULL COMMENT '用户名',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of _1
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `_2`
+-- ----------------------------
+DROP TABLE IF EXISTS `_2`;
+CREATE TABLE `_2` (
+  `id` varchar(32) NOT NULL,
+  `role_name` varchar(64) NOT NULL COMMENT '角色名称',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of _2
+-- ----------------------------
+
+-- ----------------------------
+-- Table structure for `_4`
+-- ----------------------------
+DROP TABLE IF EXISTS `_4`;
+CREATE TABLE `_4` (
+  `role_id` varchar(32) NOT NULL,
+  `user_id` varchar(32) NOT NULL,
+  PRIMARY KEY (`role_id`,`user_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of _4
+-- ----------------------------
 
 -- ----------------------------
 -- Table structure for `gen_lang`
@@ -93,7 +138,8 @@ CREATE TABLE `gen_proj_entity` (
 -- ----------------------------
 INSERT INTO `gen_proj_entity` VALUES ('1', '1', 'User', '用户', '2017-06-06 10:29:31', 's_user', null);
 INSERT INTO `gen_proj_entity` VALUES ('1', '2', 'Role', '角色', '2017-06-06 10:29:44', 's_role', null);
-INSERT INTO `gen_proj_entity` VALUES ('1', '3', 'LoginUser', '登陆用户', '2017-12-19 11:51:46', 'v_login_user', '1');
+INSERT INTO `gen_proj_entity` VALUES ('1', '3', 'LoginUser', '登陆用户', '2017-12-19 11:51:46', 'v_login_user', 'SELECT \'\' role_desc, a.role_id, b.*, c.role_name FROM _4 a LEFT JOIN _1 b ON (a.user_id=b.id) LEFT JOIN _2 c ON (a.role_id=c.id) WHERE b.id IS NOT NULL AND c.id IS NOT NULL ORDER BY b.create_time');
+INSERT INTO `gen_proj_entity` VALUES ('1', '4', 'UserRole', null, '2018-01-02 08:55:08', 's_user_role', null);
 
 -- ----------------------------
 -- Table structure for `gen_proj_entity_prop`
@@ -120,11 +166,23 @@ CREATE TABLE `gen_proj_entity_prop` (
 -- Records of gen_proj_entity_prop
 -- ----------------------------
 INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', null, '2018-01-02 10:43:18', '3', 'date', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2017-12-27 17:37:40', '1', 'varchar', '32', '32', '', '', '1', '', '0', '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-02 08:50:33', '2', 'varchar', '0', '32', '', '', '1', '', '0', '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', '1', null, '1', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '3', '1', '33', '1', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '1', '1', '11', '1', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'number', '32', '2', '0', '22', '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', '', '2018-01-02 08:56:55', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '64', '1', '33', '1', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sex', '', '2018-01-02 10:26:50', '1', 'number', '0', '1', '', '', '1', '', '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sex', null, '2018-01-02 10:43:18', '3', 'number', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_id', '', '2018-01-02 08:56:34', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '64', '1', '11', '1', '123', '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'varchar', '32', '64', '0', '22', '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', null, '2018-01-02 10:43:18', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
 
 -- ----------------------------
 -- Table structure for `gen_type_db`
@@ -272,3 +330,18 @@ CREATE TABLE `s_user_friends` (
 -- Records of s_user_friends
 -- ----------------------------
 INSERT INTO `s_user_friends` VALUES ('f8910bf315d647e089445b19d80b1237', 'hx', 'wy', null, null, '1', '2017-06-07 14:51:35', 'i want', null);
+
+-- ----------------------------
+-- Table structure for `test`
+-- ----------------------------
+DROP TABLE IF EXISTS `test`;
+CREATE TABLE `test` (
+  `id` int(11) DEFAULT NULL,
+  `name` varchar(80) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of test
+-- ----------------------------
+INSERT INTO `test` VALUES ('1', '张三');
+INSERT INTO `test` VALUES ('2', '李四');
