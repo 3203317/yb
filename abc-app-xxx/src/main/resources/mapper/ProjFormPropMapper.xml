@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.abc.xxx.mapper.ProjFormPropMapper">
+
+	<!-- <select id="findByFormId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT c.prop_type, a.* FROM (SELECT * FROM
+		gen_proj_form_prop WHERE form_id=#{form_id}) a LEFT JOIN gen_proj_form
+		b ON (a.form_id=b.id) LEFT JOIN gen_proj_entity_prop c ON
+		(c.entity_id=b.rela_entity_id AND c.id=a.id) ORDER BY a.sort
+	</select> -->
+</mapper>
