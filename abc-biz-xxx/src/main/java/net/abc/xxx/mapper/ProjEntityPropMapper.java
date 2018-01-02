@@ -10,4 +10,6 @@ import net.abc.xxx.model.ProjEntityProp;
  */
 public interface ProjEntityPropMapper extends MyMapper<ProjEntityProp> {
 
+	int deleteByEntityId(String entity_id);
+
 }

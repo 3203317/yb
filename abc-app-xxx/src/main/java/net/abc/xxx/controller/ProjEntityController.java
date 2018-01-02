@@ -189,14 +189,12 @@ public class ProjEntityController extends BaseController {
 	@RequestMapping(value = { "/gen" }, method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> gen(HttpSession session, @RequestParam(required = true) String id) throws Exception {
 
+		projEntityPropService.remove(id);
+
 		Properties prop = new Properties();
 		// 装载配置文件
 		InputStream is = TempUtil.class.getClassLoader().getResourceAsStream("/config.properties");
 		prop.load(is);
-
-		ProjEntityProp p = new ProjEntityProp();
-		p.setEntity_id(id);
-		projEntityPropService.delete(p);
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);

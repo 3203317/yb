@@ -3,6 +3,8 @@ package net.abc.xxx.service.impl;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -10,6 +12,7 @@ import com.github.pagehelper.PageHelper;
 import net.abc.model.ResultMap;
 import net.abc.service.impl.BaseService;
 import net.abc.util.StringUtil;
+import net.abc.xxx.mapper.ProjEntityPropMapper;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.service.ProjEntityPropService;
 import tk.mybatis.mapper.entity.Example;
@@ -96,6 +99,22 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 		entity.setEntity_id(entity_id);
 
 		return selectByKey(entity);
+	}
+
+	@Resource
+	private ProjEntityPropMapper projEntityPropMapper;
+
+	@Override
+	public ResultMap<Void> remove(String entity_id) {
+
+		ProjEntityProp entity = new ProjEntityProp();
+		entity.setEntity_id(entity_id);
+
+		projEntityPropMapper.deleteByEntityId(entity_id);
+
+		ResultMap<Void> map = new ResultMap<Void>();
+		map.setSuccess(true);
+		return map;
 	}
 
 }
