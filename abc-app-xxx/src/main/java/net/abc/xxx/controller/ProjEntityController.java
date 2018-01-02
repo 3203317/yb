@@ -217,15 +217,30 @@ public class ProjEntityController extends BaseController {
 			ProjEntityProp pep = new ProjEntityProp();
 			pep.setId(data.getColumnLabel(i));
 			pep.setEntity_id(id);
-			pep.setProp_type(data.getColumnTypeName(i));
+			pep.setProp_type(comp(data.getColumnTypeName(i)));
 			pep.setIs_null(0);
 			pep.setIs_transient(0);
 			pep.setIs_pk(0);
+			pep.setLen_max(0);
+			pep.setLen_min(0);
 			projEntityPropService.saveNew(pep);
 		}
 
 		result.put("success", true);
 		return result;
+	}
+
+	private String comp(String type) {
+		switch (type) {
+		case "DATETIME":
+			return "date";
+		case "VARCHAR":
+			return "varchar";
+		case "INT":
+			return "number";
+		default:
+			return "";
+		}
 	}
 
 	public static void main(String[] args) throws Exception {
