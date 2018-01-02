@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
-		<title>项目实体 | 后台管理</title>
+		<title>项目表单 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
 	</head>
 
@@ -34,7 +34,7 @@
 								<i class="icon-angle-right arrow-icon"></i>
 							</span>
 						</li>
-						<li class="active">项目实体</li>
+						<li class="active">项目表单</li>
 					</ul><!--.breadcrumb-->
 
 					<div class="nav-search" id="nav-search">
@@ -51,7 +51,7 @@
 
 					<div class="page-header position-relative">
 						<h1>
-							项目实体
+							项目表单
 							<small>
 								<i class="icon-double-angle-right"></i>
 								Project Entity Create
@@ -111,10 +111,10 @@
 										<thead>
 											<tr>
 												<th class="center">#</th>
-												<th>实体名称</th>
-												<th>表名</th>
+												<th>表单名称</th>
+												<th>表单类型</th>
 												
-												<th class="hidden-480">实体描述</th>
+												<th class="hidden-480">表单描述</th>
 
 												<th class="hidden-phone">
 													<i class="icon-time bigger-110 hidden-phone"></i>
@@ -132,7 +132,7 @@
 												<td class="center">${doc_index+1}</td>
 
 												<td>${(doc.form_name)!}</a></td>
-												<td>${(doc.db_name)!}</a></td>
+												<td>${(doc.form_type)!}</a></td>
 												
 												<td class="hidden-480">${(doc.form_desc)!}</td>
 												<td class="hidden-phone">${(doc.create_time?string("yyyy-MM-dd HH:mm:ss"))!}</td>
@@ -148,21 +148,10 @@
 															<i class="icon-trash bigger-120"></i>
 														</a>
 
-														<a class="btn btn-mini btn-primary" title='属性设置' href='/proj/entity/prop/?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-primary" title='属性设置' href='/proj/form/prop/?id=${(doc.id)!}'>
 															<i class="icon-cogs bigger-120"></i>
 														</a>
 														
-														<#if ((doc.sqls)??) && ((doc.sqls)?trim != "")>
-														<a class="btn btn-mini btn-primary" title="${(doc.sqls)!}" href='javascript:gen("${(doc.id)!}")'>
-															<i class="icon-fire bigger-120"></i>
-														</a>
-														<#else>
-
-														<a class="btn btn-mini btn-primary" title='创建表' href='javascript:create("${(doc.id)!}")'>
-															<i class="icon-download bigger-120"></i>
-														</a>
-														</#if>
-
 													</div>
 
 													<div class="hidden-desktop visible-phone">
@@ -185,14 +174,6 @@
 																	<a href='./del?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="删除">
 																		<span class="red">
 																			<i class="icon-trash bigger-120"></i>
-																		</span>
-																	</a>
-																</li>
-
-																<li>
-																	<a href='proj/entity/prop/?id=${(doc.id)!}' class="tooltip-error" data-rel="tooltip" title="属性设置">
-																		<span class="red">
-																			<i class="icon-cogs bigger-120"></i>
 																		</span>
 																	</a>
 																</li>
@@ -224,46 +205,5 @@
 	</body>
 	
 	<script>
-	function create(id){
-		$.ajax({
-			url : './create',
-			type : 'POST',
-			dataType : 'JSON',
-			data : {
-				id: id
-			},
-			success : function(data) {
-				if (data.success){
-					alert('操作成功');
-					return;
-				}
-				if (data.msg) alert(data.msg);
-			},
-			error : function() {
-				alert(arguments[2]);
-			}
-		});
-	}
-	
-	function gen(id){
-		$.ajax({
-			url : './gen',
-			type : 'POST',
-			dataType : 'JSON',
-			data : {
-				id: id
-			},
-			success : function(data) {
-				if (data.success){
-					alert('操作成功');
-					return;
-				}
-				if (data.msg) alert(data.msg);
-			},
-			error : function() {
-				alert(arguments[2]);
-			}
-		});
-	}
 	</script>
 </html>

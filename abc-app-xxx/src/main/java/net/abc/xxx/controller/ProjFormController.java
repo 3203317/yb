@@ -25,7 +25,7 @@ import net.abc.xxx.service.ProjFormService;
 public class ProjFormController extends BaseController {
 
 	@Resource
-	private ProjFormService projEntityService;
+	private ProjFormService projFormService;
 
 	/**
 	 * 
@@ -43,7 +43,7 @@ public class ProjFormController extends BaseController {
 		ProjForm pf = new ProjForm();
 		pf.setProj_id(id);
 
-		List<ProjForm> list = projEntityService.findByProjForm(pf, 1, Integer.MAX_VALUE);
+		List<ProjForm> list = projFormService.findByProjForm(pf, 1, Integer.MAX_VALUE);
 		map.put("data_list_pf", list);
 
 		return "proj/form/index";

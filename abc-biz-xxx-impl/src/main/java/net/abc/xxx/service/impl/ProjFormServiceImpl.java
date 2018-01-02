@@ -20,7 +20,7 @@ import tk.mybatis.mapper.entity.Example;
  *
  */
 @Service("projFormService")
-public class ProjEntityFormImpl extends BaseService<ProjForm> implements ProjFormService {
+public class ProjFormServiceImpl extends BaseService<ProjForm> implements ProjFormService {
 
 	@Override
 	public List<ProjForm> findByProjForm(ProjForm entity, int page, int rows) {
