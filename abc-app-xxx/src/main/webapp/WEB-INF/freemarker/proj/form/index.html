@@ -114,6 +114,8 @@
 												<th>表单名称</th>
 												<th>表单类型</th>
 												
+												<th>关联实体</th>
+												
 												<th class="hidden-480">表单描述</th>
 
 												<th class="hidden-phone">
@@ -131,8 +133,10 @@
 											<tr>
 												<td class="center">${doc_index+1}</td>
 
-												<td>${(doc.form_name)!}</a></td>
-												<td>${(doc.form_type)!}</a></td>
+												<td>${(doc.form_name)!}</td>
+												<td>${(doc.form_type)!}</td>
+												
+												<td>${(doc.rela_entity_name)!}</td>
 												
 												<td class="hidden-480">${(doc.form_desc)!}</td>
 												<td class="hidden-phone">${(doc.create_time?string("yyyy-MM-dd HH:mm:ss"))!}</td>

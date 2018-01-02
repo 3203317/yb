@@ -2,11 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="net.abc.xxx.mapper.ProjEntityPropMapper">
 
-	<select id="findByProjId" parameterType="java.lang.String"
-		resultType="java.util.Map">
-		SELECT b.entity_name, a.* FROM gen_proj_form a LEFT JOIN
-		gen_proj_entity b
-		ON (a.rela_entity_id=b.id) WHERE b.id IS NOT NULL AND
-		a.proj_id=#{proj_id} ORDER BY a.create_time
-	</select>
+	<delete id="deleteByEntityId" parameterType="java.lang.String">
+		DELETE FROM
+		gen_proj_entity_prop WHERE entity_id=#{entity_id}
+	</delete>
 </mapper>
