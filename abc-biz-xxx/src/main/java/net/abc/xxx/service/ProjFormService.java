@@ -29,4 +29,11 @@ public interface ProjFormService extends IService<ProjForm> {
 	 */
 	ResultMap<ProjForm> saveNew(ProjForm entity);
 
+	/**
+	 * 
+	 * @param proj_id
+	 * @return
+	 */
+	List<ProjForm> findByProjId(String proj_id);
+
 }

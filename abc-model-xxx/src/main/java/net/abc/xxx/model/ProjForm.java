@@ -7,6 +7,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -30,6 +31,27 @@ public class ProjForm implements Serializable {
 	private String proj_id;
 
 	private Integer form_type;
+
+	private String rela_entity_id;
+
+	@Transient
+	private String rela_entity_name;
+
+	public String getRela_entity_name() {
+		return rela_entity_name;
+	}
+
+	public void setRela_entity_name(String rela_entity_name) {
+		this.rela_entity_name = rela_entity_name;
+	}
+
+	public String getRela_entity_id() {
+		return rela_entity_id;
+	}
+
+	public void setRela_entity_id(String rela_entity_id) {
+		this.rela_entity_id = rela_entity_id;
+	}
 
 	public Integer getForm_type() {
 		return form_type;

@@ -2,6 +2,8 @@ package net.abc.xxx.service.impl;
 
 import java.util.List;
 
+import javax.annotation.Resource;
+
 import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
@@ -9,6 +11,7 @@ import com.github.pagehelper.PageHelper;
 import net.abc.model.ResultMap;
 import net.abc.service.impl.BaseService;
 import net.abc.util.StringUtil;
+import net.abc.xxx.mapper.ProjFormMapper;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjForm;
 import net.abc.xxx.service.ProjFormService;
@@ -51,5 +54,13 @@ public class ProjFormServiceImpl extends BaseService<ProjForm> implements ProjFo
 	public ResultMap<ProjForm> saveNew(ProjForm entity) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Resource
+	private ProjFormMapper projFormMapper;
+
+	@Override
+	public List<ProjForm> findByProjId(String proj_id) {
+		return projFormMapper.findByProjId(proj_id);
 	}
 }

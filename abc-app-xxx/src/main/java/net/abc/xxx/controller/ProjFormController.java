@@ -40,10 +40,7 @@ public class ProjFormController extends BaseController {
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,0504,");
 
-		ProjForm pf = new ProjForm();
-		pf.setProj_id(id);
-
-		List<ProjForm> list = projFormService.findByProjForm(pf, 1, Integer.MAX_VALUE);
+		List<ProjForm> list = projFormService.findByProjId(id);
 		map.put("data_list_pf", list);
 
 		return "proj/form/index";
