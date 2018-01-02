@@ -1,5 +1,7 @@
 package net.abc.xxx.mapper;
 
+import java.util.List;
+
 import net.abc.mapper.MyMapper;
 import net.abc.xxx.model.ProjFormProp;
 
@@ -9,5 +11,7 @@ import net.abc.xxx.model.ProjFormProp;
  *
  */
 public interface ProjFormPropMapper extends MyMapper<ProjFormProp> {
+
+	List<ProjFormProp> findByFormId(String form_id);
 
 }

@@ -5,6 +5,7 @@ import java.util.Date;
 
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 /**
  * 
@@ -25,6 +26,17 @@ public class ProjFormProp implements Serializable {
 	private String form_id;
 
 	private Integer sort;
+
+	@Transient
+	private String prop_type;
+
+	public String getProp_type() {
+		return prop_type;
+	}
+
+	public void setProp_type(String prop_type) {
+		this.prop_type = prop_type;
+	}
 
 	public String getId() {
 		return id;

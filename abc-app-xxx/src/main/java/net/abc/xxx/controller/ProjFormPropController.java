@@ -1,5 +1,6 @@
 package net.abc.xxx.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import net.abc.controller.BaseController;
+import net.abc.xxx.model.ProjFormProp;
 import net.abc.xxx.service.ProjFormPropService;
 
 /**
@@ -37,6 +39,9 @@ public class ProjFormPropController extends BaseController {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,0504,");
+
+		List<ProjFormProp> list = projFormPropService.findByFormId(id);
+		map.put("data_list_pfp", list);
 
 		return "proj/form/prop/index";
 	}
