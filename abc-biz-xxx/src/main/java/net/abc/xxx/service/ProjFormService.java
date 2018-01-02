@@ -4,7 +4,6 @@ import java.util.List;
 
 import net.abc.model.ResultMap;
 import net.abc.service.IService;
-import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjForm;
 
 /**
@@ -14,7 +13,7 @@ import net.abc.xxx.model.ProjForm;
  */
 public interface ProjFormService extends IService<ProjForm> {
 
-	List<ProjForm> findByProjForm(ProjEntity entity, int page, int rows);
+	List<ProjForm> findByProjForm(ProjForm entity, int page, int rows);
 
 	/**
 	 * 

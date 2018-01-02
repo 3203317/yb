@@ -23,7 +23,7 @@ import tk.mybatis.mapper.entity.Example;
 public class ProjEntityFormImpl extends BaseService<ProjForm> implements ProjFormService {
 
 	@Override
-	public List<ProjForm> findByProjForm(ProjEntity entity, int page, int rows) {
+	public List<ProjForm> findByProjForm(ProjForm entity, int page, int rows) {
 
 		Example example = new Example(ProjEntity.class);
 		example.setOrderByClause("create_time desc");
