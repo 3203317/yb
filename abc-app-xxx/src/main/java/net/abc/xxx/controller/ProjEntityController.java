@@ -217,6 +217,10 @@ public class ProjEntityController extends BaseController {
 			ProjEntityProp pep = new ProjEntityProp();
 			pep.setId(data.getColumnLabel(i));
 			pep.setEntity_id(id);
+			pep.setProp_type(data.getColumnTypeName(i));
+			pep.setIs_null(0);
+			pep.setIs_transient(0);
+			pep.setIs_pk(0);
 			projEntityPropService.saveNew(pep);
 		}
 
