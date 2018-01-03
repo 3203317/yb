@@ -31,7 +31,7 @@
 
 	<ul class="nav nav-list">
 		<li<#if nav_choose?? && nav_choose?index_of(",01,") != -1> class='active'</#if>>
-			<a href="/">
+			<a href="#page/welcome">
 				<i class="icon-dashboard"></i>
 				<span class="menu-text"> 系统首页 </span>
 			</a>
@@ -105,14 +105,14 @@
 
 			<ul class="submenu">
 				<li<#if nav_choose?? && nav_choose?index_of(",0401,") != -1> class='active'</#if>>
-					<a href="/user/profile">
+					<a href="#page/user/profile">
 						<i class="icon-double-angle-right"></i>
 						修改资料
 					</a>
 				</li>
 
 				<li<#if nav_choose?? && nav_choose?index_of(",0402,") != -1> class='active'</#if>>
-					<a href="/user/changePwd">
+					<a href="#page/user/changePwd">
 						<i class="icon-double-angle-right"></i>
 						变更密码
 					</a>

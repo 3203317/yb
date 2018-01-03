@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="zh">
 	<head>
-		<title>修改资料 | 帐户管理 | 系统原型</title>
+		<title></title>
 		<link rel="stylesheet" href="${(conf_html_cdn)!}js/ace/1.1.2/assets/css/jquery.gritter.css" />
 		<#include "/_pagelet/header.html"/>
 		<link rel="stylesheet" href="${(conf_html_cdn)!}js/ace/1.1.2/assets/css/bootstrap-editable.css" />
@@ -11,19 +11,11 @@
 			background: url('${(conf_html_cdn)!}js/ace/1.1.2/assets/css/images/loading.gif') center center no-repeat;
 		}
 		</style>
+		<link rel='stylesheet' type='text/css' media='screen' href='/static/css/iframe.css' />
 	</head>
 
 	<body>
-		<#include "/default/_pagelet/nav.html"/>
-
-		<div class="main-container container-fluid">
-			<a class="menu-toggler" id="menu-toggler" href="#">
-				<span class="menu-text"></span>
-			</a>
-
-			<#include "/default/_pagelet/sidebar.html"/>
-
-			<div class="main-content">
+			<div>
 				<div class="breadcrumbs" id="breadcrumbs">
 					<ul class="breadcrumb">
 						<li>
@@ -192,7 +184,6 @@
 
 				<#include "/_pagelet/settings.html"/>
 			</div><!--/.main-content-->
-		</div><!--/.main-container-->
 
 		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
@@ -206,6 +197,8 @@
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/x-editable/ace-editable.min.js"></script>
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/jquery.maskedinput.min.js"></script>
 		<script src='${(conf_html_cdn)!}js/jquery/fileupload/jquery.fileupload.js'></script>
+
+		<script type='text/javascript' src='/static/js/iframe.js'></script>
 
 		<script>
 		$('#img_verifyCode').click(function(){
