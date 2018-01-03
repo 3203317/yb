@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
+import net.abc.util.freemarker.Processor;
+import net.abc.xxx.init.FreemarkerTemplateResource;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.model.ProjForm;
 import net.abc.xxx.model.ProjFormProp;
@@ -40,15 +42,20 @@ public class ProjFormPropController extends BaseController {
 	@Resource
 	private ProjEntityPropService projEntityPropService;
 
+	@Resource
+	private FreemarkerTemplateResource freemarkerTemplateResource;
+
 	/**
 	 * 
 	 * @param session
 	 * @param id
 	 * @param map
 	 * @return
+	 * @throws Exception
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
+	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map)
+			throws Exception {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,0504,");
@@ -57,6 +64,13 @@ public class ProjFormPropController extends BaseController {
 		map.put("data_list_pfp", list);
 
 		map.put("data_pf_id", id);
+
+		freemarkerTemplateResource.reload();
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("data_list_pfp", list);
+
+		map.put("temp_frm_html", Processor.getResult("frm_html", model));
 
 		return "proj/form/prop/index";
 	}

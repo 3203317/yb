@@ -4,6 +4,8 @@
 	<head>
 		<title>实体属性 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
+<link href="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body>
 	</head>
 
 	<body>
@@ -180,6 +182,15 @@
 
 								</div>
 							</div>
+			
+							<div class="row-fluid">
+								<div class="span12">				
+<#if temp_frm_html ??>
+<pre class="brush: html; ruler: true;">
+${(temp_frm_html)!}
+</pre></#if>
+								</div>
+							</div>
 
 							<!--PAGE CONTENT ENDS-->
 						</div><!--/.span-->
@@ -220,5 +231,46 @@
 			});
 		}
 	}
+	</script>
+	
+<script type="text/javascript" src="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/xregexp-min.js?t=${(random)!}"></script>
+<script type="text/javascript" src="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shCore.min.js?t=${(random)!}"></script>
+<script type="text/javascript" src="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shAutoloader.js?t=${(random)!}"></script>
+
+	<script type='text/javascript'>
+	$(function(){
+
+	    SyntaxHighlighter.autoloader(
+	            'applescript			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushAppleScript.js?t=${(random)!}',
+	            'actionscript3 as3		${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushAS3.js?t=${(random)!}',
+	            'bash shell				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushBash.js?t=${(random)!}',
+	            'coldfusion cf			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushColdFusion.js?t=${(random)!}',
+	            'cpp c					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushCpp.js?t=${(random)!}',
+	            'obj-c objc				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushObjC.js?t=${(random)!}',
+	            'c# c-sharp csharp		${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushCSharp.js?t=${(random)!}',
+	            'css					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushCss.js?t=${(random)!}',
+	            'delphi pascal			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushDelphi.js?t=${(random)!}',
+	            'diff patch pas			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushDiff.js?t=${(random)!}',
+	            'erl erlang				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushErlang.js?t=${(random)!}',
+	            'groovy					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushGroovy.js?t=${(random)!}',
+	            'haxe hx				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushHaxe.js?t=${(random)!}',
+	            'java					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushJava.js?t=${(random)!}',
+	            'jfx javafx				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushJavaFX.js?t=${(random)!}',
+	            'js jscript javascript	${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushJScript.js?t=${(random)!}',
+	            'perl pl				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPerl.js?t=${(random)!}',
+	            'php					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPhp.js?t=${(random)!}',
+	            'text plain				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPlain.js?t=${(random)!}',
+	            'py python				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPython.js?t=${(random)!}',
+	            'ruby rails ror rb		${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushRuby.js?t=${(random)!}',
+	            'scala					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushScala.js?t=${(random)!}',
+	            'sql					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushSql.js?t=${(random)!}',
+	            'vb vbnet				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushVb.js?t=${(random)!}',
+	            'xml xhtml xslt html	${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushXml.js?t=${(random)!}'
+	    );
+		SyntaxHighlighter.all();
+
+		window.onload = function(){
+		};
+	});
 	</script>
 </html>
