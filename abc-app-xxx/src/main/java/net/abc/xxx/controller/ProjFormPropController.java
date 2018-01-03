@@ -1,5 +1,6 @@
 package net.abc.xxx.controller;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,8 +15,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
+import net.abc.xxx.model.ProjEntityProp;
+import net.abc.xxx.model.ProjForm;
 import net.abc.xxx.model.ProjFormProp;
+import net.abc.xxx.service.ProjEntityPropService;
 import net.abc.xxx.service.ProjFormPropService;
+import net.abc.xxx.service.ProjFormService;
 
 /**
  * 
@@ -27,7 +32,13 @@ import net.abc.xxx.service.ProjFormPropService;
 public class ProjFormPropController extends BaseController {
 
 	@Resource
+	private ProjFormService projFormService;
+
+	@Resource
 	private ProjFormPropService projFormPropService;
+
+	@Resource
+	private ProjEntityPropService projEntityPropService;
 
 	/**
 	 * 
@@ -44,6 +55,8 @@ public class ProjFormPropController extends BaseController {
 
 		List<ProjFormProp> list = projFormPropService.findByFormId(id);
 		map.put("data_list_pfp", list);
+
+		map.put("data_pf_id", id);
 
 		return "proj/form/prop/index";
 	}
@@ -93,6 +106,45 @@ public class ProjFormPropController extends BaseController {
 	public Map<String, Object> edit(HttpSession session, ProjFormProp entity) {
 
 		projFormPropService.updateNotNull(entity);
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", true);
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param session
+	 * @param id
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
+	public String addUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
+
+		map.put("session_user", session.getAttribute("session.user"));
+		map.put("nav_choose", ",05,0504,");
+
+		ProjForm pf = projFormService.getById(id);
+
+		ProjEntityProp pep = new ProjEntityProp();
+		pep.setEntity_id(pf.getRela_entity_id());
+
+		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+		map.put("data_list_pep", list);
+
+		map.put("data_pf_id", id);
+
+		return "proj/form/prop/add";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/add" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> add(HttpSession session, ProjFormProp entity) {
+
+		entity.setCreate_time(new Date());
+
+		projFormPropService.save(entity);
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", true);
