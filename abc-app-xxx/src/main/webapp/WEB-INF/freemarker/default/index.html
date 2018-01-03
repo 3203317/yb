@@ -4,6 +4,12 @@
 	<head>
 		<title>后台管理 | 系统原型</title>
 		<#include "/_pagelet/header.html"/>
+		<style type='text/css'>
+		#innerPage {
+			border: 0;
+			width: 100%;
+		}
+		</style>
 	</head>
 
 	<body>
@@ -17,52 +23,37 @@
 			<#include "./_pagelet/sidebar.html"/>
 
 			<div class="main-content">
-				<div class="breadcrumbs" id="breadcrumbs">
-					<ul class="breadcrumb">
-						<li>
-							<i class="icon-home home-icon"></i>
-							<a href="/">首页</a>
-
-							<!-- <span class="divider">
-								<i class="icon-angle-right arrow-icon"></i>
-							</span> -->
-						</li>
-
-						<!-- <li>
-							<a href="#">Other Pages</a>
-
-							<span class="divider">
-								<i class="icon-angle-right arrow-icon"></i>
-							</span>
-						</li>
-						<li class="active">Blank Page</li> -->
-					</ul><!--.breadcrumb-->
-
-					<div class="nav-search" id="nav-search">
-						<form class="form-search" />
-							<span class="input-icon">
-								<input type="text" placeholder="搜索" class="input-small nav-search-input" id="nav-search-input" autocomplete="off" />
-								<i class="icon-search nav-search-icon"></i>
-							</span>
-						</form>
-					</div><!--#nav-search-->
-				</div>
-
-				<div class="page-content">
-					<div class="row-fluid">
-						<div class="span12">
-							<!--PAGE CONTENT BEGINS-->
-
-							<!--PAGE CONTENT ENDS-->
-						</div><!--/.span-->
-					</div><!--/.row-fluid-->
-				</div><!--/.page-content-->
-
-				<#include "/_pagelet/settings.html"/>
+				<iframe id='innerPage' src='' scrolling='no'></iframe>
 			</div><!--/.main-content-->
 		</div><!--/.main-container-->
 
 		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
+		<script type='text/javascript' src='${(conf_html_cdn)!}js/backbone/1.0.0/backbone.min.js?v1.0.0'></script>
 	</body>
+	<script type='text/javascript'>
+	(function($){
+		var innerPage = $('#innerPage');
+		var Router = Backbone.Router.extend({
+			routes: {
+				'': '_showDefPage',
+				'page/*path': '_showPage'
+			},
+			initialize: function(){
+				/* console.log('initialize'); */
+			},
+			_showDefPage: function(){
+				this._showPage('welcome');
+			},
+			_showPage: function(url){
+				innerPage.attr('src', url);
+			}
+		});
+		new Router();
+		Backbone.history.start();
+	})($);
+	function resizeInnerPage(obj){
+		document.getElementById('innerPage').height = obj.height();
+	}
+	</script>
 </html>
