@@ -3,7 +3,16 @@
   <div>
     <label for='frm_${(doc.id)!}'>${(doc.prop_desc)!}</label>
     <div>
+      <#switch doc.control_type>
+      <#case 1>
       <input type='text' id='frm_${(doc.id)!}' name='${(doc.id)!}' />
+      <#break>
+      <#case 11>
+      <input type='password' id='frm_${(doc.id)!}' name='${(doc.id)!}' />
+      <#break>
+      <#default>
+      <input type='text' id='frm_${(doc.id)!}' name='${(doc.id)!}' />
+      </#switch>
     </div>
   </div>
 </#list>
