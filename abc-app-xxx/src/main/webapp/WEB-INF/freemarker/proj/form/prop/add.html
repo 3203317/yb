@@ -140,6 +140,7 @@
 																<option value="3" />tree
 																<option value="4" />table
 																<option value="5" />date
+																<option value="6" />file
 															</select>
 														</div>
 													</div>
@@ -188,9 +189,9 @@
 		<script src='${(conf_html_cdn)!}js/ace/1.1.2/assets/js/fuelux/fuelux.spinner.min.js'></script>
 
 		<script>
-		
+
 		$(function(){
-			
+
 			$('#frm_id').change(function(){
 				$('#frm_prop_desc').val($("#frm_id option:selected").data("prop_desc"))
 			})
