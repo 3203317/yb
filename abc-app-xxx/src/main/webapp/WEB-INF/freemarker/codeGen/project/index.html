@@ -132,7 +132,7 @@
 										<tbody>
 										<#import "/_macro/status.html" as status>
 										<#list data_proj_list! as doc>
-											<tr>
+											<tr title='${(doc.driverClass)!}&#10;${(doc.url)!}&#13;${(doc.user)!}&#13;${(doc.password)!}'>
 												<td class="center">
 													<label>
 														<input type="checkbox" value='${(doc.id)!}' />

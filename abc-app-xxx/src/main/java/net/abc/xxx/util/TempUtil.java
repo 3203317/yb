@@ -80,19 +80,25 @@ public final class TempUtil {
 	/**
 	 * 
 	 * @param sql
+	 * @param driverClass
+	 * @param url
+	 * @param user
+	 * @param password
 	 * @throws Exception
 	 */
-	public static void createSQLTable(String sql) throws Exception {
+	public static void createSQLTable(String sql, String driverClass, String url, String user, String password)
+			throws Exception {
 
 		Properties prop = new Properties();
 		// 装载配置文件
 		InputStream is = TempUtil.class.getClassLoader().getResourceAsStream("/config.properties");
 		prop.load(is);
 
-		Class.forName(prop.getProperty("jdbc.driverClass"));
+		// Class.forName(prop.getProperty("jdbc.driverClass"));
 
-		Connection conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.user"),
-				prop.getProperty("jdbc.password"));
+		Class.forName(driverClass);
+
+		Connection conn = DriverManager.getConnection(url, user, password);
 		Statement stat = conn.createStatement();
 		stat = conn.createStatement();
 

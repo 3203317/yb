@@ -29,6 +29,7 @@ public class Proj implements Serializable {
 
 	private String package_name;
 
+	@Column(name = "driverClass")
 	private String driverClass;
 	private String url;
 	private String user;

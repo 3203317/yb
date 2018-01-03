@@ -1,6 +1,5 @@
 package net.abc.xxx.controller;
 
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -9,7 +8,6 @@ import java.sql.Statement;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Properties;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
@@ -21,10 +19,12 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
+import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.service.ProjEntityPropService;
 import net.abc.xxx.service.ProjEntityService;
+import net.abc.xxx.service.ProjService;
 import net.abc.xxx.util.TempUtil;
 
 /**
@@ -35,6 +35,9 @@ import net.abc.xxx.util.TempUtil;
 @RequestMapping(value = { "/proj/entity" })
 @Controller
 public class ProjEntityController extends BaseController {
+
+	@Resource
+	private ProjService projService;
 
 	@Resource
 	private ProjEntityService projEntityService;
@@ -168,11 +171,13 @@ public class ProjEntityController extends BaseController {
 
 		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 
-		pe.setDb_name("_" + pe.getId());
+		// pe.setDb_name("_" + pe.getId());
 
 		String sql = TempUtil.genSQLCreateTable("mysql", pe, list);
 
-		TempUtil.createSQLTable(sql);
+		Proj p = projService.getById(pe.getProj_id());
+
+		TempUtil.createSQLTable(sql, p.getDriverClass(), p.getUrl(), p.getUser(), p.getPassword());
 
 		result.put("success", true);
 		return result;
@@ -191,20 +196,16 @@ public class ProjEntityController extends BaseController {
 
 		projEntityPropService.remove(id);
 
-		Properties prop = new Properties();
-		// 装载配置文件
-		InputStream is = TempUtil.class.getClassLoader().getResourceAsStream("/config.properties");
-		prop.load(is);
-
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
 
 		ProjEntity pe = projEntityService.getById(id);
 
-		Class.forName(prop.getProperty("jdbc.driverClass"));
+		Proj p = projService.getById(pe.getProj_id());
 
-		Connection conn = DriverManager.getConnection(prop.getProperty("jdbc.url"), prop.getProperty("jdbc.user"),
-				prop.getProperty("jdbc.password"));
+		Class.forName(p.getDriverClass());
+
+		Connection conn = DriverManager.getConnection(p.getUrl(), p.getUser(), p.getPassword());
 		Statement stat = conn.createStatement();
 		stat = conn.createStatement();
 
