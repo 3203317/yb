@@ -27,6 +27,16 @@ public class ProjFormProp implements Serializable {
 
 	private Integer sort;
 
+	private Integer control_type;
+
+	public Integer getControl_type() {
+		return control_type;
+	}
+
+	public void setControl_type(Integer control_type) {
+		this.control_type = control_type;
+	}
+
 	@Transient
 	private String prop_type;
 

@@ -1,8 +1,10 @@
-<form>
+<form id='frm'>
+<#list data_list_pfp! as doc>
   <div>
-    <label for="frm_id">属性名称</label>
+    <label for='frm_${(doc.id)!}'>${(doc.prop_desc)!}</label>
     <div>
-      <input type="text" />
+      <input type='text' id='frm_${(doc.id)!}' name='${(doc.id)!}' />
     </div>
   </div>
+</#list>
 </form>
