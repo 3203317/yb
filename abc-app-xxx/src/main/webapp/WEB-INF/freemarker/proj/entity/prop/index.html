@@ -4,19 +4,12 @@
 	<head>
 		<title>实体属性 | 后台管理</title>
 		<#include "/_pagelet/header.html"/>
+		<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_virtualPath)!}static/css/iframe.css' />
 	</head>
 
 	<body>
-		<#include "/default/_pagelet/nav.html"/>
 
-		<div class="main-container container-fluid">
-			<a class="menu-toggler" id="menu-toggler" href='javascript:;'>
-				<span class="menu-text"></span>
-			</a>
-
-			<#include "/default/_pagelet/sidebar.html"/>
-
-			<div class="main-content">
+			<div>
 				<div class="breadcrumbs" id="breadcrumbs">
 					<ul class="breadcrumb">
 						<li>
@@ -76,7 +69,7 @@
 
 							<div class="row-fluid">
 								<p>
-									<a href='./add?pe_id=${(data_pe_id)!}' class="btn btn-app btn-info btn-mini">
+									<a href='javascript:parent.jump("#page/proj/entity/prop/add?pe_id=${(data_pe_id)!}")' class="btn btn-app btn-info btn-mini">
 										<i class="icon-save bigger-200"></i>
 										添加
 										<span class="label label-inverse arrowed-in">6+</span>
@@ -154,7 +147,7 @@
 												<td>
 													<div class="hidden-phone visible-desktop btn-group">
 
-														<a class="btn btn-mini btn-info" title='编辑' href='./edit?id=${(doc.id)!}&entity_id=${(doc.entity_id)!}'>
+														<a class="btn btn-mini btn-info" title='编辑' href='javascript:parent.jump("#page/proj/entity/prop/edit?id=${(doc.id)!}&entity_id=${(doc.entity_id)!}")'>
 															<i class="icon-edit bigger-120"></i>
 														</a>
 
@@ -208,10 +201,9 @@
 
 				<#include "/_pagelet/settings.html"/>
 			</div><!--/.main-content-->
-		</div><!--/.main-container-->
 
-		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
+		<script type='text/javascript' src='${(conf_html_virtualPath)!}static/js/iframe.js'></script>
 	</body>
 
 	<script>
