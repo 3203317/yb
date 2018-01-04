@@ -56,5 +56,9 @@
 	function resizeInnerPage(obj){
 		document.getElementById('innerPage').height = obj.height();
 	}
+	
+	function jump(url){
+		location.href = location.origin + location.pathname + url;
+	}
 	</script>
 </html>

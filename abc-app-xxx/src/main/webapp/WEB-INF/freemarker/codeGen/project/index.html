@@ -4,7 +4,7 @@
 	<head>
 		<title></title>
 		<#include "/_pagelet/header.html"/>
-		<link rel='stylesheet' type='text/css' media='screen' href='/static/css/iframe.css' />
+		<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_virtualPath)!}static/css/iframe.css' />
 	</head>
 
 	<body>
@@ -150,15 +150,15 @@
 															<i class="icon-trash bigger-120"></i>
 														</a>
 
-														<a class="btn btn-mini btn-primary" title='实体及属性设置' href='/proj/entity/?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-primary" title='实体及属性设置' href='javascript:parent.jump("#page/proj/entity/?id=${(doc.id)!}")'>
 															<i class="icon-cogs bigger-120"></i>
 														</a>
 
-														<a class="btn btn-mini btn-primary" title='模版选择及生成' href='/codeGen/templet_choose_codeGen/?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-primary" title='模版选择及生成' href='javascript:parent.jump("#page/codeGen/templet_choose_codeGen/?id=${(doc.id)!}")'>
 															<i class="icon-gift bigger-120"></i>
 														</a>
 
-														<a class="btn btn-mini btn-primary" title='表单设置' href='/proj/form/?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-primary" title='表单设置' href='javascript:parent.jump("/#page/proj/form/?id=${(doc.id)!}")'>
 															<i class="icon-food bigger-120"></i>
 														</a>
 
@@ -244,11 +244,10 @@
 					</div><!--/.row-fluid-->
 				</div><!--/.page-content-->
 
-				<#include "/_pagelet/settings.html"/>
 			</div><!--/.main-content-->
 
 		<#include "/_pagelet/footer.html"/>
 		<#include "/_pagelet/js.html"/>
-		<script type='text/javascript' src='/static/js/iframe.js'></script>
+		<script type='text/javascript' src='${(conf_html_virtualPath)!}static/js/iframe.js'></script>
 	</body>
 </html>
