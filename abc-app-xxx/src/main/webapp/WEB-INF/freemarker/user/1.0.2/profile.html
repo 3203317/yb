@@ -11,7 +11,7 @@
 			background: url('${(conf_html_cdn)!}js/ace/1.1.2/assets/css/images/loading.gif') center center no-repeat;
 		}
 		</style>
-		<link rel='stylesheet' type='text/css' media='screen' href='/static/css/iframe.css' />
+		<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_virtualPath)!}static/css/iframe.css' />
 	</head>
 
 	<body>
@@ -182,7 +182,6 @@
 					</div><!--/.row-fluid-->
 				</div><!--/.page-content-->
 
-				<#include "/_pagelet/settings.html"/>
 			</div><!--/.main-content-->
 
 		<#include "/_pagelet/footer.html"/>
@@ -198,7 +197,7 @@
 		<script src="${(conf_html_cdn)!}js/ace/1.1.2/assets/js/jquery.maskedinput.min.js"></script>
 		<script src='${(conf_html_cdn)!}js/jquery/fileupload/jquery.fileupload.js'></script>
 
-		<script type='text/javascript' src='/static/js/iframe.js'></script>
+		<script type='text/javascript' src='${(conf_html_virtualPath)!}static/js/iframe.js'></script>
 
 		<script>
 		$('#img_verifyCode').click(function(){
