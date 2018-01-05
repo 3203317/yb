@@ -82,7 +82,8 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = { "/user/logout" }, method = RequestMethod.GET)
 	public String logoutUI(HttpSession session) {
-		session.invalidate();
+		// session.invalidate();
+		SecurityUtils.getSubject().logout();
 		return "redirect:/user/login";
 	}
 
