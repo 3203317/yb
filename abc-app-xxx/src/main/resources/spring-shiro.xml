@@ -20,6 +20,7 @@
 
 	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
 		<property name="realm" ref="userRealm" />
+		<property name="cacheManager" ref="cacheManager" />
 	</bean>
 
 	<!-- Shiro Filter -->
@@ -33,7 +34,7 @@
 				/static/** = anon
 				/user/login = anon
 				/user/logout = logout
-				/** = authc
+				/**=authc
 			</value>
 		</property>
 	</bean>
@@ -55,6 +56,10 @@
 	<bean
 		class="org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor">
 		<property name="securityManager" ref="securityManager" />
+	</bean>
+
+	<bean id="cacheManager" class="org.apache.shiro.cache.ehcache.EhCacheManager">
+		<property name="cacheManagerConfigFile" value="classpath:shiro-ehcache.xml" />
 	</bean>
 
 </beans>
