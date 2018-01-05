@@ -15,9 +15,10 @@ public class EhcacheUtil {
 
 	public static void main(String[] args) {
 
-		InputStream is = EhcacheUtil.class.getResourceAsStream("/ehcache.xml");
+		InputStream is = EhcacheUtil.class
+				.getResourceAsStream("/ehcache-shiro.xml");
 		CacheManager mgr = CacheManager.create(is);
-		Cache cache = mgr.getCache("test_ehcache");
+		Cache cache = mgr.getCache("test");
 		Element ele = new Element("a", "b");
 		cache.put(ele);
 
