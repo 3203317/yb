@@ -4,11 +4,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
-import net.abc.controller.BaseController;
-
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import net.abc.controller.BaseController;
 
 /**
  *
@@ -19,15 +20,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class DefaultController extends BaseController {
 
 	/**
-	 *
+	 * 
 	 * @param session
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, Map<String, Object> map) {
-		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",01,");
+		Object user = SecurityUtils.getSubject().getPrincipal();
+		map.put("session_user", user);
 		return "default/index";
 	}
 

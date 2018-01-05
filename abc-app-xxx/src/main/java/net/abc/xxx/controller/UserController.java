@@ -71,6 +71,12 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.GET)
 	public String loginUI(HttpSession session, Map<String, Object> map) {
+
+		Subject sub = SecurityUtils.getSubject();
+
+		if (null != sub && sub.isAuthenticated())
+			return "redirect:/";
+
 		map.put("verify_token", genVerifyToken(session));
 		return "user/login";
 	}
