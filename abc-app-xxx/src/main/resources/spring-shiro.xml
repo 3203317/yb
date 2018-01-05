@@ -30,6 +30,7 @@
 		<property name="unauthorizedUrl" value="/unauthorizedUrl.html" />
 		<property name="filterChainDefinitions">
 			<value>
+				/static/** = anon
 				/user/login = anon
 				/user/logout = logout
 				/** = authc

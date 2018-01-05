@@ -75,17 +75,12 @@ public class UserController extends BaseController {
 		return "user/login";
 	}
 
-	/**
-	 * 
-	 * @param session
-	 * @return
-	 */
-	@RequestMapping(value = { "/user/logout" }, method = RequestMethod.GET)
-	public String logoutUI(HttpSession session) {
-		// session.invalidate();
-		SecurityUtils.getSubject().logout();
-		return "redirect:/user/login";
-	}
+	// @RequestMapping(value = { "/user/logout" }, method = RequestMethod.GET)
+	// public String logoutUI(HttpSession session) {
+	// // session.invalidate();
+	// SecurityUtils.getSubject().logout();
+	// return "redirect:/user/login";
+	// }
 
 	/**
 	 * 
