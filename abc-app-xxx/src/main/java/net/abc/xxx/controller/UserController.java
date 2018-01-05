@@ -7,6 +7,9 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.authc.UsernamePasswordToken;
+import org.apache.shiro.subject.Subject;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -15,19 +18,15 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
 import net.abc.model.ResultMap;
+import net.abc.util.encryptUtil.MD5;
 import net.abc.xxx.model.User;
 import net.abc.xxx.service.UserService;
 
 /**
  * 
- * 
- * 
  * @author huangxin <3203317@qq.com>
  *
- * 
- * 
  */
-
 @Controller
 public class UserController extends BaseController {
 
@@ -48,15 +47,13 @@ public class UserController extends BaseController {
 			return result;
 		}
 
-		ResultMap<User> login = userService.login(user_name, user_pass);
+		UsernamePasswordToken token = new UsernamePasswordToken(user_name, MD5.encode(user_pass));
 
-		if (!login.getSuccess()) {
-			result.put("msg", login.getMsg());
-			return result;
-		}
+		Subject sub = SecurityUtils.getSubject();
 
-		// 获取用户对象
-		User user = login.getData();
+		sub.login(token);
+
+		User user = (User) SecurityUtils.getSubject().getPrincipal();
 
 		session.setAttribute("session.user", user);
 		session.setAttribute("session.user.id", user.getId());
