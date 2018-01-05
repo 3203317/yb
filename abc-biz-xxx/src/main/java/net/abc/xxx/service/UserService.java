@@ -75,6 +75,13 @@ public interface UserService extends IService<User> {
 	User getByUser(User entity);
 
 	/**
+	 * 
+	 * @param user_name
+	 * @return
+	 */
+	User getByName(String user_name);
+
+	/**
 	 *
 	 * @param id
 	 * @param old_pass
