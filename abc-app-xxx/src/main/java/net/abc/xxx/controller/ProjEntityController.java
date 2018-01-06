@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.Statement;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +13,7 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -55,14 +57,17 @@ public class ProjEntityController extends BaseController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
 
-		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",05,0502,");
+		Object user = SecurityUtils.getSubject().getPrincipal();
+
+		map.put("session_user", user);
 
 		ProjEntity pe = new ProjEntity();
 		pe.setProj_id(id);
 
 		List<ProjEntity> list = projEntityService.findByProjEntity(pe, 1, Integer.MAX_VALUE);
 		map.put("data_list_pe", list);
+
+		map.put("data_proj_id", id);
 
 		return "proj/entity/index";
 	}
@@ -316,6 +321,68 @@ public class ProjEntityController extends BaseController {
 		rs.close();
 		stat.close();
 		conn.close();
+	}
+
+	/**
+	 * 
+	 * @param session
+	 * @param id
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
+	public String addUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
+
+		Object user = SecurityUtils.getSubject().getPrincipal();
+
+		map.put("session_user", user);
+
+		map.put("data_proj_id", id);
+
+		return "proj/entity/add";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/add" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> add(HttpSession session, ProjEntity entity) {
+
+		entity.setCreate_time(new Date());
+
+		projEntityService.save(entity);
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", true);
+		return result;
+	}
+
+	/**
+	 * 
+	 * @param session
+	 * @param id
+	 * @param map
+	 * @return
+	 */
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
+	public String editUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
+
+		ProjEntity pe = new ProjEntity();
+		pe.setId(id);
+		pe = projEntityService.selectByKey(pe);
+
+		map.put("data_pe", pe);
+
+		return "proj/entity/edit";
+	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> edit(HttpSession session, ProjEntity entity) {
+
+		projEntityService.updateNotNull(entity);
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", true);
+		return result;
 	}
 
 }

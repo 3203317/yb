@@ -69,7 +69,7 @@
 
 							<div class="row-fluid">
 								<p>
-									<a href='./add' class="btn btn-app btn-info btn-mini">
+									<a href='javascript:parent.jump("#page/proj/entity/add?id=${(data_proj_id)!}")' class="btn btn-app btn-info btn-mini">
 										<i class="icon-save bigger-200"></i>
 										添加
 										<span class="label label-inverse arrowed-in">6+</span>
@@ -133,7 +133,7 @@
 												<td>
 													<div class="hidden-phone visible-desktop btn-group">
 
-														<a class="btn btn-mini btn-info" title='编辑' href='./edit?id=${(doc.id)!}'>
+														<a class="btn btn-mini btn-info" title='编辑' href='javascript:parent.jump("#page/proj/entity/edit?id=${(doc.id)!}")'>
 															<i class="icon-edit bigger-120"></i>
 														</a>
 
