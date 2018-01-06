@@ -1,1 +1,1 @@
-<#macro m name len><#if name="number">int<#elseif name="varchar">varchar(${len})<#elseif name="date">datetime<#else>未知</#if></#macro>
+<#macro m name len><#if name="number">int(${len})<#elseif name="varchar">varchar(${len})<#elseif name="date">datetime<#else>未知</#if></#macro>
