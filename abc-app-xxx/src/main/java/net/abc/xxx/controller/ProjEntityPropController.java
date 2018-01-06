@@ -122,4 +122,15 @@ public class ProjEntityPropController extends BaseController {
 
 		return "proj/entity/prop/edit";
 	}
+
+	@ResponseBody
+	@RequestMapping(value = { "/edit" }, method = RequestMethod.POST, produces = "application/json")
+	public Map<String, Object> edit(HttpSession session, ProjEntityProp entity) {
+
+		projEntityPropService.updateNotNull(entity);
+
+		Map<String, Object> result = new HashMap<String, Object>();
+		result.put("success", true);
+		return result;
+	}
 }
