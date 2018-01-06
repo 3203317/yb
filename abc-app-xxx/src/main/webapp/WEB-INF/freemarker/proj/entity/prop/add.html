@@ -290,7 +290,7 @@
 					success : function(data) {
 						if (data.success){
 							alert('添加成功');
-							location.href = './?id=${(data_pe_id)!}'
+							parent.jump("#page/proj/entity/prop/?id=${(data_pe_id)!}");
 							return;
 						}
 						if (data.msg) alert(data.msg);
