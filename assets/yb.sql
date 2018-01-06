@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2018-01-06 11:19:26
+Date: 2018-01-06 11:48:34
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -95,14 +95,14 @@ CREATE TABLE `gen_proj_entity` (
 -- ----------------------------
 -- Records of gen_proj_entity
 -- ----------------------------
-INSERT INTO `gen_proj_entity` VALUES ('2', '050ea4f310274a4e8b8ccf89d2d4add7', '用户角色', '用户角色关系表', '2018-01-06 11:14:41', 's_user_role', '');
-INSERT INTO `gen_proj_entity` VALUES ('2', '0ed88389148f4bd9b37a3b53a8800973', '角色', '角色', '2018-01-06 10:41:51', 's_role', '');
+INSERT INTO `gen_proj_entity` VALUES ('2', '050ea4f310274a4e8b8ccf89d2d4add7', 'UserRole', '用户角色', '2018-01-06 11:14:41', 's_user_role', '');
+INSERT INTO `gen_proj_entity` VALUES ('2', '0ed88389148f4bd9b37a3b53a8800973', 'Role', '角色', '2018-01-06 10:41:51', 's_role', '');
 INSERT INTO `gen_proj_entity` VALUES ('1', '1', 'User', '用户', '2017-06-06 10:29:31', 's_user', null);
 INSERT INTO `gen_proj_entity` VALUES ('1', '2', 'Role', '角色', '2017-06-06 10:29:44', 's_role', null);
 INSERT INTO `gen_proj_entity` VALUES ('1', '3', 'LoginUser', '登陆用户', '2017-12-19 11:51:46', 'v_login_user', 'SELECT \'\' role_desc, a.role_id, b.*, c.role_name FROM s_user_role a LEFT JOIN s_user b ON (a.user_id=b.id) LEFT JOIN s_role c ON (a.role_id=c.id) WHERE b.id IS NOT NULL AND c.id IS NOT NULL ORDER BY b.create_time');
 INSERT INTO `gen_proj_entity` VALUES ('1', '4', 'UserRole', null, '2018-01-02 08:55:08', 's_user_role', null);
-INSERT INTO `gen_proj_entity` VALUES ('2', '95b4a66b2d9f47809132fb35fdf8feb5', '组织', '', '2018-01-06 10:42:41', 's_org', '');
-INSERT INTO `gen_proj_entity` VALUES ('2', '95e4e52ed0574a7c8ae334637b2e0e62', '用户', '', '2018-01-06 10:32:33', 's_user', '');
+INSERT INTO `gen_proj_entity` VALUES ('2', '95b4a66b2d9f47809132fb35fdf8feb5', 'Org', '组织', '2018-01-06 10:42:41', 's_org', '');
+INSERT INTO `gen_proj_entity` VALUES ('2', '95e4e52ed0574a7c8ae334637b2e0e62', 'User', '用户', '2018-01-06 10:32:33', 's_user', '');
 
 -- ----------------------------
 -- Table structure for `gen_proj_entity_prop`
@@ -138,9 +138,11 @@ INSERT INTO `gen_proj_entity_prop` VALUES ('id', 'id', '2018-01-06 11:12:41', '0
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2017-12-27 17:37:40', '1', 'varchar', '32', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-02 08:50:33', '2', 'varchar', '0', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 11:47:03', '95b4a66b2d9f47809132fb35fdf8feb5', 'varchar', '0', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 10:47:00', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '1');
 INSERT INTO `gen_proj_entity_prop` VALUES ('mobile', '手机', '2018-01-06 10:52:09', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('nickname', '昵称', '2018-01-06 10:53:04', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('org_name', '组织名称', '2018-01-06 11:47:15', '95b4a66b2d9f47809132fb35fdf8feb5', 'varchar', '0', '32', '', '', '1', '', '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('p_id', '推荐人', '2018-01-06 11:08:01', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('qq', 'QQ', '2018-01-06 10:52:30', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
 INSERT INTO `gen_proj_entity_prop` VALUES ('real_name', '真实姓名', '2018-01-06 10:54:48', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
