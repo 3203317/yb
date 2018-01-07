@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2018-01-06 11:48:34
+Date: 2018-01-07 20:25:14
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -74,35 +74,38 @@ CREATE TABLE `gen_proj` (
 -- ----------------------------
 -- Records of gen_proj
 -- ----------------------------
-INSERT INTO `gen_proj` VALUES ('1', '项目名称1', '项目描述1', '2017-06-06 10:29:31', 'net.abc', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/yb_1?useUnicode=true&characterEncoding=utf-8', 'root', '123456');
-INSERT INTO `gen_proj` VALUES ('2', '项目名称2', '项目描述2', '2017-06-06 10:29:44', 'net.foreworld.hd', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:3306/yb_2?useUnicode=true&characterEncoding=utf-8', 'root', '123456');
+INSERT INTO `gen_proj` VALUES ('1', '测试系统', '测试系统', '2017-06-06 10:29:31', 'net.abc', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:12306/yb_1?useUnicode=true&characterEncoding=utf-8', 'root', 'password');
+INSERT INTO `gen_proj` VALUES ('2', '系统原型', '系统原型', '2017-06-06 10:29:44', 'net.abc.xxx', 'com.mysql.jdbc.Driver', 'jdbc:mysql://127.0.0.1:12306/yb_2?useUnicode=true&characterEncoding=utf-8', 'root', 'password');
 
 -- ----------------------------
 -- Table structure for `gen_proj_entity`
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_proj_entity`;
 CREATE TABLE `gen_proj_entity` (
-  `proj_id` varchar(32) DEFAULT '',
-  `id` varchar(64) NOT NULL DEFAULT '',
+  `proj_id` varchar(32) NOT NULL DEFAULT '',
+  `id` varchar(32) NOT NULL DEFAULT '',
   `entity_name` varchar(32) DEFAULT NULL,
-  `entity_desc` varchar(64) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
-  `db_name` varchar(64) DEFAULT NULL,
-  `sqls` varchar(1024) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `db_tab_name` varchar(64) DEFAULT NULL,
+  `sqls` varchar(2048) DEFAULT NULL,
+  `entity_desc` varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`id`,`proj_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of gen_proj_entity
 -- ----------------------------
-INSERT INTO `gen_proj_entity` VALUES ('2', '050ea4f310274a4e8b8ccf89d2d4add7', 'UserRole', '用户角色', '2018-01-06 11:14:41', 's_user_role', '');
-INSERT INTO `gen_proj_entity` VALUES ('2', '0ed88389148f4bd9b37a3b53a8800973', 'Role', '角色', '2018-01-06 10:41:51', 's_role', '');
-INSERT INTO `gen_proj_entity` VALUES ('1', '1', 'User', '用户', '2017-06-06 10:29:31', 's_user', null);
-INSERT INTO `gen_proj_entity` VALUES ('1', '2', 'Role', '角色', '2017-06-06 10:29:44', 's_role', null);
-INSERT INTO `gen_proj_entity` VALUES ('1', '3', 'LoginUser', '登陆用户', '2017-12-19 11:51:46', 'v_login_user', 'SELECT \'\' role_desc, a.role_id, b.*, c.role_name FROM s_user_role a LEFT JOIN s_user b ON (a.user_id=b.id) LEFT JOIN s_role c ON (a.role_id=c.id) WHERE b.id IS NOT NULL AND c.id IS NOT NULL ORDER BY b.create_time');
-INSERT INTO `gen_proj_entity` VALUES ('1', '4', 'UserRole', null, '2018-01-02 08:55:08', 's_user_role', null);
-INSERT INTO `gen_proj_entity` VALUES ('2', '95b4a66b2d9f47809132fb35fdf8feb5', 'Org', '组织', '2018-01-06 10:42:41', 's_org', '');
-INSERT INTO `gen_proj_entity` VALUES ('2', '95e4e52ed0574a7c8ae334637b2e0e62', 'User', '用户', '2018-01-06 10:32:33', 's_user', '');
+INSERT INTO `gen_proj_entity` VALUES ('1', 'LoginUser', '登陆用户', '2017-12-19 11:51:46', 'v_login_user', 'SELECT \'\' role_desc, a.role_id, b.*, c.role_name FROM s_user_role a LEFT JOIN s_user b ON (a.user_id=b.id) LEFT JOIN s_role c ON (a.role_id=c.id) WHERE b.id IS NOT NULL AND c.id IS NOT NULL ORDER BY b.create_time', null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'Org', '组织', '2018-01-06 10:42:41', 's_org', '', null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'Proj', '项目', '2018-01-06 22:49:14', 'gen_proj', '', null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'ProjEntity', '项目实体', '2018-01-06 22:30:07', 'gen_proj_entity', '', null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'ProjEntityProp', '项目实体属性', '2018-01-07 09:35:53', 'gen_proj_entity_prop', '', null);
+INSERT INTO `gen_proj_entity` VALUES ('1', 'Role', '角色', '2017-06-06 10:29:44', 's_role', null, null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'Role', '角色', '2018-01-06 10:41:51', 's_role', '', null);
+INSERT INTO `gen_proj_entity` VALUES ('1', 'User', '用户', '2017-06-06 10:29:31', 's_user', null, null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'User', '用户', '2018-01-06 10:32:33', 's_user', '', null);
+INSERT INTO `gen_proj_entity` VALUES ('1', 'UserRole', null, '2018-01-02 08:55:08', 's_user_role', null, null);
+INSERT INTO `gen_proj_entity` VALUES ('2', 'UserRole', '用户角色', '2018-01-06 11:14:41', 's_user_role', '', null);
 
 -- ----------------------------
 -- Table structure for `gen_proj_entity_prop`
@@ -122,53 +125,86 @@ CREATE TABLE `gen_proj_entity_prop` (
   `regex` varchar(255) DEFAULT NULL,
   `is_transient` int(1) DEFAULT NULL,
   `is_pk` int(1) DEFAULT NULL,
-  PRIMARY KEY (`id`,`entity_id`)
+  `is_uuid` int(1) DEFAULT NULL,
+  `proj_id` varchar(32) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`,`entity_id`,`proj_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of gen_proj_entity_prop
 -- ----------------------------
-INSERT INTO `gen_proj_entity_prop` VALUES ('alipay_account', '支付宝', '2018-01-06 10:55:34', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '64', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '创建时间', '2018-01-06 11:13:29', '0ed88389148f4bd9b37a3b53a8800973', 'date', '0', '0', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', null, '2018-01-04 15:56:41', '3', 'date', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册时间', '2018-01-06 10:53:48', '95e4e52ed0574a7c8ae334637b2e0e62', 'date', '0', '0', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('email', '电子邮箱', '2018-01-06 10:53:21', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '256', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', 'id', '2018-01-06 11:12:41', '0ed88389148f4bd9b37a3b53a8800973', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2017-12-27 17:37:40', '1', 'varchar', '32', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-02 08:50:33', '2', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 11:47:03', '95b4a66b2d9f47809132fb35fdf8feb5', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 10:47:00', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('mobile', '手机', '2018-01-06 10:52:09', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('nickname', '昵称', '2018-01-06 10:53:04', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('org_name', '组织名称', '2018-01-06 11:47:15', '95b4a66b2d9f47809132fb35fdf8feb5', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('p_id', '推荐人', '2018-01-06 11:08:01', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('qq', 'QQ', '2018-01-06 10:52:30', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('real_name', '真实姓名', '2018-01-06 10:54:48', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2018-01-06 11:13:13', '0ed88389148f4bd9b37a3b53a8800973', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', '1', null, '1', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', '角色Id', '2018-01-06 11:15:35', '050ea4f310274a4e8b8ccf89d2d4add7', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', '', '2018-01-02 08:56:55', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2018-01-06 11:12:59', '0ed88389148f4bd9b37a3b53a8800973', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '64', '1', '33', '1', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('sex', '', '2018-01-02 10:26:50', '1', 'number', '0', '1', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('sex', null, '2018-01-04 15:56:41', '3', 'number', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('sex', '性别', '2018-01-06 10:51:44', '95e4e52ed0574a7c8ae334637b2e0e62', 'number', '0', '1', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('status', '状态', '2018-01-06 11:13:50', '0ed88389148f4bd9b37a3b53a8800973', 'number', '0', '1', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('status', '状态', '2018-01-06 10:54:03', '95e4e52ed0574a7c8ae334637b2e0e62', 'number', '0', '1', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_id', '用户Id', '2018-01-06 11:15:11', '050ea4f310274a4e8b8ccf89d2d4add7', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_id', '', '2018-01-02 08:56:34', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '64', '1', '11', '1', '123', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2018-01-06 10:48:51', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'varchar', '32', '64', '0', '22', '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2018-01-06 10:51:23', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '64', '', '', '1', '', '0', '0');
-INSERT INTO `gen_proj_entity_prop` VALUES ('weixin_account', '微信', '2018-01-06 11:06:53', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '64', '', '', '1', '', '0', '0');
+INSERT INTO `gen_proj_entity_prop` VALUES ('alipay_account', '支付宝', '2018-01-06 10:55:34', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '64', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '创建时间', '2018-01-06 11:13:29', '0ed88389148f4bd9b37a3b53a8800973', 'date', '0', '0', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册日期', '2017-07-31 15:41:15', '1', 'date', '0', '5', '0', '55', '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', null, '2018-01-04 15:56:41', '3', 'date', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '注册时间', '2018-01-06 10:53:48', '95e4e52ed0574a7c8ae334637b2e0e62', 'date', '0', '0', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '创建时间', '2018-01-06 22:50:41', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '0', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '', '2018-01-06 22:31:13', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'date', '0', '0', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('create_time', '', '2018-01-07 09:38:38', 'ProjEntityProp', 'date', '0', '0', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('db_tab_name', '表名', '2018-01-06 22:31:41', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'varchar', '0', '64', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('def_val', '默认值', '2018-01-07 09:40:11', 'ProjEntityProp', 'varchar', '0', '256', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('driverClass', '', '2018-01-06 22:51:15', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '256', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('email', '电子邮箱', '2018-01-06 10:53:21', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '256', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('entity_desc', '实体描述', '2018-01-06 22:31:05', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'varchar', '0', '256', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('entity_id', '', '2018-01-07 09:38:07', 'ProjEntityProp', 'varchar', '0', '32', '', '', '1', '', '0', '1', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('entity_name', '实体标签', '2018-01-06 22:30:40', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', 'id', '2018-01-06 11:12:41', '0ed88389148f4bd9b37a3b53a8800973', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2017-12-27 17:37:40', '1', 'varchar', '32', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-02 08:50:33', '2', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 11:47:03', '95b4a66b2d9f47809132fb35fdf8feb5', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 10:47:00', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '', '2018-01-06 22:49:31', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '实体名称', '2018-01-06 22:30:25', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('id', '属性名称', '2018-01-07 09:36:23', 'ProjEntityProp', 'varchar', '0', '32', '', '属性名称不能为空', '1', '', '0', '1', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('is_null', '允许空', '2018-01-07 09:40:29', 'ProjEntityProp', 'number', '0', '1', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('is_pk', '主键', '2018-01-07 09:40:48', 'ProjEntityProp', 'number', '0', '1', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('is_transient', '排除', '2018-01-07 09:40:42', 'ProjEntityProp', 'number', '0', '1', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('is_uuid', 'UUID', '2018-01-07 10:17:30', 'ProjEntityProp', 'number', '0', '1', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('len_max', '最大', '2018-01-07 09:39:52', 'ProjEntityProp', 'number', '0', '11', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('len_min', '最小', '2018-01-07 09:39:38', 'ProjEntityProp', 'number', '0', '11', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('mobile', '手机', '2018-01-06 10:52:09', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('nickname', '昵称', '2018-01-06 10:53:04', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('org_name', '组织名称', '2018-01-06 11:47:15', '95b4a66b2d9f47809132fb35fdf8feb5', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('package_name', '包名', '2018-01-06 22:50:56', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '128', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('password', '', '2018-01-06 22:51:45', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '64', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('proj_desc', '项目描述', '2018-01-06 22:50:27', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '256', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('proj_id', '', '2018-01-06 22:31:22', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('proj_id', '', '2018-01-07 09:37:42', 'ProjEntityProp', 'varchar', '0', '32', '', '', '1', '', '0', '1', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('proj_name', '项目名称', '2018-01-06 22:50:07', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('prop_desc', '属性描述', '2018-01-07 09:38:28', 'ProjEntityProp', 'varchar', '0', '256', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('prop_type', '数据类型', '2018-01-07 09:38:55', 'ProjEntityProp', 'varchar', '0', '32', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('p_id', '推荐人', '2018-01-06 11:08:01', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('qq', 'QQ', '2018-01-06 10:52:30', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('real_name', '真实姓名', '2018-01-06 10:54:48', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('regex', '正则', '2018-01-07 09:40:36', 'ProjEntityProp', 'varchar', '0', '256', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2018-01-06 11:13:13', '0ed88389148f4bd9b37a3b53a8800973', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', '角色描述', '2017-07-26 16:22:55', '2', 'varchar', '32', '4', '0', '44', '1', null, '1', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_desc', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', '角色Id', '2018-01-06 11:15:35', '050ea4f310274a4e8b8ccf89d2d4add7', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_id', '', '2018-01-02 08:56:55', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2018-01-06 11:12:59', '0ed88389148f4bd9b37a3b53a8800973', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', '角色名称', '2017-07-26 16:22:19', '2', 'varchar', '16', '64', '1', '33', '1', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('role_name', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sex', '', '2018-01-02 10:26:50', '1', 'number', '0', '1', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sex', null, '2018-01-04 15:56:41', '3', 'number', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sex', '性别', '2018-01-06 10:51:44', '95e4e52ed0574a7c8ae334637b2e0e62', 'number', '0', '1', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('sqls', 'SQL语句', '2018-01-06 22:31:58', 'fbe29a44f62d4252b3fa81ea804f2bf8', 'varchar', '0', '2048', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('status', '状态', '2018-01-06 11:13:50', '0ed88389148f4bd9b37a3b53a8800973', 'number', '0', '1', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('status', '状态', '2018-01-06 10:54:03', '95e4e52ed0574a7c8ae334637b2e0e62', 'number', '0', '1', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('url', '', '2018-01-06 22:51:26', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '1024', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user', '', '2018-01-06 22:51:36', 'c9848993ac4447b1a785128aa9e64210', 'varchar', '0', '64', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_id', '用户Id', '2018-01-06 11:15:11', '050ea4f310274a4e8b8ccf89d2d4add7', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_id', '', '2018-01-02 08:56:34', '4', 'varchar', '0', '32', '', '', '1', '', '0', '1', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2017-06-06 10:29:31', '1', 'varchar', '32', '64', '1', '11', '1', '123', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_name', '用户名', '2018-01-06 10:48:51', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '32', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2017-06-06 10:29:44', '1', 'varchar', '32', '64', '0', '22', '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', null, '2018-01-04 15:56:41', '3', 'varchar', '0', '0', null, null, '0', null, '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('user_pass', '密码', '2018-01-06 10:51:23', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '64', '', '', '1', '', '0', '0', null, '1');
+INSERT INTO `gen_proj_entity_prop` VALUES ('valid_msg', '验证消息', '2018-01-07 09:40:21', 'ProjEntityProp', 'varchar', '0', '256', '', '', '1', '', '0', '0', '0', '2');
+INSERT INTO `gen_proj_entity_prop` VALUES ('weixin_account', '微信', '2018-01-06 11:06:53', '95e4e52ed0574a7c8ae334637b2e0e62', 'varchar', '0', '64', '', '', '1', '', '0', '0', null, '1');
 
 -- ----------------------------
 -- Table structure for `gen_proj_form`

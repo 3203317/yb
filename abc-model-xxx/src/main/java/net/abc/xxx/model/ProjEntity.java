@@ -4,12 +4,11 @@ import java.io.Serializable;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -20,7 +19,6 @@ public class ProjEntity implements Serializable {
 
 	@Id
 	@Column(name = "id")
-	@GeneratedValue(generator = "UUID")
 	private String id;
 
 	private String entity_name;
@@ -29,7 +27,7 @@ public class ProjEntity implements Serializable {
 
 	private String proj_id;
 
-	private String db_name;
+	private String db_tab_name;
 
 	private String sqls;
 
@@ -41,12 +39,12 @@ public class ProjEntity implements Serializable {
 		this.sqls = sqls;
 	}
 
-	public String getDb_name() {
-		return db_name;
+	public String getDb_tab_name() {
+		return db_tab_name;
 	}
 
-	public void setDb_name(String db_name) {
-		this.db_name = db_name;
+	public void setDb_tab_name(String db_tab_name) {
+		this.db_tab_name = db_tab_name;
 	}
 
 	public String getId() {
