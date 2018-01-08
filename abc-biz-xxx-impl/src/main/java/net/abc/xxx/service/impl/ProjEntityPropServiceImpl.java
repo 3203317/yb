@@ -50,6 +50,11 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 			if (null != entity_id) {
 				criteria.andEqualTo("entity_id", entity_id);
 			}
+
+			String proj_id = StringUtil.isEmpty(entity.getProj_id());
+			if (null != proj_id) {
+				criteria.andEqualTo("proj_id", proj_id);
+			}
 		}
 
 		PageHelper.startPage(page, rows);

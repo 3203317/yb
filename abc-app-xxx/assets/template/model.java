@@ -9,29 +9,29 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.hibernate.validator.constraints.Length;
+<#--import org.hibernate.validator.constraints.Length;-->
 
 /**
  *
  * @author huangxin <3203317@qq.com>
  *
  */
-@Table(name = "${(data_pe.db_name)!}")
-public class ${(data_pe.entity_name)!} implements Serializable {
+@Table(name = "${(data_pe.db_tab_name)!}")
+public class ${(data_pe.id)!} implements Serializable {
 
   private static final long serialVersionUID = -1L;
 
   <#import "data_type_java" as data_type>
 
-<#list data_list_pep! as doc>  // ${(doc.prop_desc)!}
-  @Length(min = ${(doc.len_min)!}, max = ${(doc.len_max)!}, message = "${(doc.valid_msg)!}")
+<#list data_list_pep! as doc>  // ${(doc.prop_desc)!}<#if 1==doc.is_pk>
+  @Id</#if>
   @Column(name = "${(doc.id)!}")
   private <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.id)!};
 
 </#list>
 
   <#list data_list_pep! as doc>
-  public <@data_type.m name="${(doc.prop_type)!}"/> set${(doc.id)?cap_first}(<@data_type.m name="${(doc.prop_type)!}"/> ${(doc.id)!}) {
+  public void set${(doc.id)?cap_first}(<@data_type.m name="${(doc.prop_type)!}"/> ${(doc.id)!}) {
     this.${(doc.id)!} = ${(doc.id)!};
   }
 

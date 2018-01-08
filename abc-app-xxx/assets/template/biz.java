@@ -4,14 +4,14 @@ import java.util.List;
 
 import net.abc.model.ResultMap;
 import net.abc.service.IService;
-import ${(data_p.package_name)!}.model.${(data_pe.entity_name)!};
+import ${(data_p.package_name)!}.model.${(data_pe.id)!};
 
 /**
  * 
  * @author huangxin <3203317@qq.com>
  *
  */
-public interface ${(data_pe.entity_name)!}Service extends IService&lt;${(data_pe.entity_name)!}&gt; {
+public interface ${(data_pe.id)!}Service extends IService&lt;${(data_pe.id)!}&gt; {
 
 	/**
 	 *
@@ -25,7 +25,7 @@ public interface ${(data_pe.entity_name)!}Service extends IService&lt;${(data_pe
 	 * @param entity
 	 * @return
 	 */
-	ResultMap&lt;Void&gt; editInfo(${(data_pe.entity_name)!} entity);
+	ResultMap&lt;Void&gt; editInfo(${(data_pe.id)!} entity);
 
 	/**
 	 *
@@ -34,13 +34,13 @@ public interface ${(data_pe.entity_name)!}Service extends IService&lt;${(data_pe
 	 * @param rows
 	 * @return
 	 */
-	List&lt;${(data_pe.entity_name)!}&gt; findBy${(data_pe.entity_name)!}(${(data_pe.entity_name)!} entity, int page, int rows);
+	List&lt;${(data_pe.id)!}&gt; findBy${(data_pe.id)!}(${(data_pe.id)!} entity, int page, int rows);
 
 	/**
 	 *
 	 * @param entity
 	 * @return
 	 */
-	${(data_pe.entity_name)!} getBy${(data_pe.entity_name)!}(${(data_pe.entity_name)!} entity);
+	${(data_pe.id)!} getBy${(data_pe.id)!}(${(data_pe.id)!} entity);
 
 }

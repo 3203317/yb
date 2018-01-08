@@ -1,8 +1,8 @@
-drop table if exists ${(data_pe.db_name)!};
+drop table if exists ${(data_pe.db_tab_name)!};
 /**
  * Table: ${(data_pe.db_name)!}
  */
-create table ${(data_pe.db_name)!}
+create table ${(data_pe.db_tab_name)!}
 (
 <#if (0 < data_list_pep_db_pk?size)>
   primary key (<#list data_list_pep_db_pk! as doc><#if 1==doc.is_pk>`${(doc.id)!}`<#if doc_has_next>, </#if></#if></#list>),

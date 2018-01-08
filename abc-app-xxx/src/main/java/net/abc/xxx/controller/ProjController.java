@@ -62,10 +62,15 @@ public class ProjController extends BaseController {
 
 		Proj p = projService.getById(proj_id);
 
-		ProjEntity pe = projEntityService.getById(entity_id);
+		ProjEntity pe = new ProjEntity();
+		pe.setProj_id(proj_id);
+		pe.setId(entity_id);
+
+		pe = projEntityService.selectByKey(pe);
 
 		ProjEntityProp pep = new ProjEntityProp();
-		pep.setEntity_id(entity_id);
+		pep.setProj_id(proj_id);
+		pep.setEntity_id(pe.getId());
 
 		List<ProjEntityProp> list_pep = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 
