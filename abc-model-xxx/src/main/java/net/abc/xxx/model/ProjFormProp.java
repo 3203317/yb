@@ -22,6 +22,10 @@ public class ProjFormProp implements Serializable {
   private static final long serialVersionUID = -1L;
  
  
+  // prop_type
+  @Transient
+  private String prop_type;
+ 
   // 控件类型
   @Column(name = "control_type")
   private Integer control_type;
@@ -48,6 +52,14 @@ public class ProjFormProp implements Serializable {
   @Column(name = "id")
   private String id;
  
+ 
+  public void setProp_type(String prop_type) {
+    this.prop_type = prop_type;
+  }
+ 
+  public String getProp_type() {
+    return prop_type;
+  }
  
   public void setControl_type(Integer control_type) {
     this.control_type = control_type;

@@ -57,13 +57,13 @@ public class ProjFormPropController extends BaseController {
 	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map)
 			throws Exception {
 
-		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",05,0504,");
-
 		List<ProjFormProp> list = projFormPropService.findByFormId(id);
 		map.put("data_list_pfp", list);
 
-		map.put("data_pf_id", id);
+		ProjFormProp pfp = new ProjFormProp();
+		pfp.setForm_id(id);
+
+		map.put("data_pfp", pfp);
 
 		freemarkerTemplateResource.reload();
 
