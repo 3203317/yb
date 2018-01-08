@@ -92,13 +92,21 @@
 											<div id="home" class="tab-pane in active">
 
 												<form id='frm' role='form' class="form-horizontal">
-													<input type="hidden" name='proj_id' value='${(data_proj_id)!}' />
+													<input type="hidden" name='proj_id' value='${(data_pe.proj_id)!}' />
 
 													<div class="control-group">
-														<label class="control-label" for="frm_entity_name">实体名称</label>
+														<label class="control-label" for="frm_id">实体名称</label>
 
 														<div class="controls">
-															<input type="text" class='input-large' id="frm_entity_name" name='entity_name' placeholder="实体名称" value='' />
+															<input type="text" class='input-large' id="frm_id" name='id' placeholder="实体名称" value='' />
+														</div>
+													</div>
+
+													<div class="control-group">
+														<label class="control-label" for="frm_entity_name">实体标签</label>
+
+														<div class="controls">
+															<input type="text" class='input-large' id="frm_entity_name" name='entity_name' placeholder="实体标签" value='' />
 														</div>
 													</div>
 
@@ -111,10 +119,10 @@
 													</div>
 
 													<div class="control-group">
-														<label class="control-label" for="frm_db_name">表名</label>
+														<label class="control-label" for="frm_db_tab_name">表名</label>
 
 														<div class="controls">
-															<input type="text" class='input-large' id="frm_db_name" name='db_name' placeholder="表名" value='' />
+															<input type="text" class='input-large' id="frm_db_tab_name" name='db_tab_name' placeholder="表名" value='' />
 														</div>
 													</div>
 

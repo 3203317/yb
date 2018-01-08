@@ -37,8 +37,6 @@ public class ProjFormController extends BaseController {
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
 
-		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",05,0504,");
 
 		List<ProjForm> list = projFormService.findByProjId(id);
 		map.put("data_list_pf", list);

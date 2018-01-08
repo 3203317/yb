@@ -34,15 +34,13 @@ public class ProjEntityPropController extends BaseController {
 	 * 
 	 * @param session
 	 * @param proj_id
+	 * @param entity_id
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, @RequestParam(required = true) String proj_id,
 			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
-
-		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",05,0502,");
 
 		ProjEntityProp pep = new ProjEntityProp();
 		pep.setEntity_id(entity_id);
@@ -51,7 +49,7 @@ public class ProjEntityPropController extends BaseController {
 		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 		map.put("data_list_pep", list);
 
-		map.put("data_pe_id", proj_id);
+		map.put("data_pep", pep);
 
 		return "proj/entity/prop/index";
 	}
@@ -59,17 +57,20 @@ public class ProjEntityPropController extends BaseController {
 	/**
 	 * 
 	 * @param session
-	 * @param pe_id
+	 * @param proj_id
+	 * @param entity_id
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-	public String addUI(HttpSession session, @RequestParam(required = true) String pe_id, Map<String, Object> map) {
+	public String addUI(HttpSession session, @RequestParam(required = true) String proj_id,
+			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
 
-		map.put("session_user", session.getAttribute("session.user"));
-		map.put("nav_choose", ",05,0502,");
+		ProjEntityProp pep = new ProjEntityProp();
+		pep.setEntity_id(entity_id);
+		pep.setProj_id(proj_id);
 
-		map.put("data_pe_id", pe_id);
+		map.put("data_pep", pep);
 
 		return "proj/entity/prop/add";
 	}

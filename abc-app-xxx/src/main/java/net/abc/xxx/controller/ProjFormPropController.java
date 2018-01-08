@@ -142,7 +142,7 @@ public class ProjFormPropController extends BaseController {
 		ProjForm pf = projFormService.getById(id);
 
 		ProjEntityProp pep = new ProjEntityProp();
-		pep.setEntity_id(pf.getRela_entity_id());
+		pep.setEntity_id(pf.getEntity_id());
 
 		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 		map.put("data_list_pep", list);

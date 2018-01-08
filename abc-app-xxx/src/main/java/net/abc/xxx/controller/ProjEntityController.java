@@ -337,7 +337,10 @@ public class ProjEntityController extends BaseController {
 
 		map.put("session_user", user);
 
-		map.put("data_proj_id", id);
+		ProjEntity pe = new ProjEntity();
+		pe.setProj_id(id);
+
+		map.put("data_pe", pe);
 
 		return "proj/entity/add";
 	}
