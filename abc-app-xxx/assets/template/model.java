@@ -24,7 +24,8 @@ public class ${(data_pe.id)!} implements Serializable {
   <#import "data_type_java" as data_type>
 
 <#list data_list_pep! as doc>  // ${(doc.prop_desc)!}<#if 1==doc.is_pk>
-  @Id</#if>
+  @Id</#if><#if 1==doc.is_uuid>
+  @GeneratedValue(generator = "UUID")</#if>
   @Column(name = "${(doc.id)!}")
   private <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.id)!};
 
