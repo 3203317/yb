@@ -24,7 +24,7 @@ public class ProjForm implements Serializable {
  
   // 
   @Column(name = "form_type")
-  private Integer form_type;
+  private String form_type;
  
   // 
   @Column(name = "create_time")
@@ -55,11 +55,11 @@ public class ProjForm implements Serializable {
   private String id;
  
  
-  public void setForm_type(Integer form_type) {
+  public void setForm_type(String form_type) {
     this.form_type = form_type;
   }
  
-  public Integer getForm_type() {
+  public String getForm_type() {
     return form_type;
   }
  

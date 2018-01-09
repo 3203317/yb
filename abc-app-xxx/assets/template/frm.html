@@ -1,7 +1,10 @@
-<form id='frm'>
+<form id='frm_${(data_pf.id)!}'>
 <#list data_list_pfp! as doc>
+<#if 14 == doc.control_type>
+  <input type='hidden' id='frm_${(doc.id)!}' name='${(doc.id)!}' value='doc.${(doc.id)!}' />
+<#else>
   <div>
-    <label for='frm_${(doc.id)!}'>${(doc.prop_desc)!}</label>
+    <label for='frm_${(doc.id)!}'>${(doc.prop_name)!}</label>
     <div>
       <#switch doc.control_type>
       <#case 1>
@@ -10,10 +13,14 @@
       <#case 11>
       <input type='password' id='frm_${(doc.id)!}' name='${(doc.id)!}' />
       <#break>
+      <#case 12>
+      <textarea id='frm_${(doc.id)!}' name='${(doc.id)!}'></textarea>
+      <#break>
       <#default>
       <input type='text' id='frm_${(doc.id)!}' name='${(doc.id)!}' />
       </#switch>
     </div>
   </div>
+</#if>
 </#list>
 </form>

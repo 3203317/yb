@@ -11,15 +11,15 @@
 		<result column="proj_id" property="proj_id" jdbcType="VARCHAR" />
 		<result column="form_type" property="form_type" jdbcType="INTEGER" />
 		<result column="entity_id" property="entity_id" jdbcType="VARCHAR" />
-		<result column="entity_name" property="entity_name" jdbcType="VARCHAR" />
 	</resultMap>
 
 	<select id="findByProjId" parameterType="java.lang.String"
 		resultMap="BaseResultMap">
-		SELECT b.entity_name, a.* FROM
+		SELECT a.* FROM
 		gen_proj_form a LEFT JOIN
 		gen_proj_entity b
-		ON (a.entity_id=b.id AND a.proj_id=b.proj_id)
+		ON
+		(a.entity_id=b.id AND a.proj_id=b.proj_id)
 		WHERE
 		b.id IS NOT NULL AND
 		a.proj_id=#{proj_id} ORDER BY a.create_time

@@ -60,15 +60,13 @@ public class ProjFormPropController extends BaseController {
 		List<ProjFormProp> list = projFormPropService.findByFormId(id);
 		map.put("data_list_pfp", list);
 
-		ProjFormProp pfp = new ProjFormProp();
-		pfp.setForm_id(id);
-
-		map.put("data_pfp", pfp);
-
 		freemarkerTemplateResource.reload();
 
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("data_list_pfp", list);
+
+		ProjForm pf = projFormService.selectByKey(id);
+		model.put("data_pf", pf);
 
 		map.put("temp_frm_html", Processor.getResult("frm_html", model));
 
