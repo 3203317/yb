@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2018-01-09 12:47:55
+Date: 2018-01-09 17:44:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -210,12 +210,12 @@ INSERT INTO `gen_proj_entity_prop` VALUES ('数据类型', '0', '0', '0', '', '1
 INSERT INTO `gen_proj_entity_prop` VALUES ('正则', '0', '0', '0', '', '1', '', '', '256', '0', 'varchar', '2018-01-07 09:40:36', null, 'ProjEntityProp', '2', 'regex');
 INSERT INTO `gen_proj_entity_prop` VALUES ('验证消息', '0', '0', '0', '', '1', '', '', '256', '0', 'varchar', '2018-01-07 09:40:21', null, 'ProjEntityProp', '2', 'valid_msg');
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '0', '0', '', '1', '', '', '0', '0', 'date', '2018-01-08 14:33:18', null, 'ProjForm', '2', 'create_time');
-INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:31:51', null, 'ProjForm', '2', 'entity_id');
+INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '0', '0', '', '0', '', '', '32', '0', 'varchar', '2018-01-08 14:31:51', null, 'ProjForm', '2', 'entity_id');
 INSERT INTO `gen_proj_entity_prop` VALUES ('表单描述', '0', '0', '0', '', '1', '', '', '256', '0', 'varchar', '2018-01-08 14:32:57', null, 'ProjForm', '2', 'form_desc');
 INSERT INTO `gen_proj_entity_prop` VALUES ('表单名称', '0', '0', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:32:34', null, 'ProjForm', '2', 'form_name');
 INSERT INTO `gen_proj_entity_prop` VALUES ('表单类型', '0', '0', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:33:39', null, 'ProjForm', '2', 'form_type');
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '1', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:27:30', null, 'ProjForm', '2', 'id');
-INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:31:03', null, 'ProjForm', '2', 'proj_id');
+INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '0', '0', '', '0', '', '', '32', '0', 'varchar', '2018-01-08 14:31:03', null, 'ProjForm', '2', 'proj_id');
 INSERT INTO `gen_proj_entity_prop` VALUES ('控件类型', '0', '0', '0', '', '1', '', '', '2', '0', 'number', '2018-01-08 15:04:16', null, 'ProjFormProp', '2', 'control_type');
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '0', '0', '', '1', '', '', '0', '0', 'date', '2018-01-08 15:03:24', null, 'ProjFormProp', '2', 'create_time');
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 15:01:29', null, 'ProjFormProp', '2', 'form_id');
@@ -236,17 +236,17 @@ CREATE TABLE `gen_proj_form` (
   `entity_id` varchar(32) NOT NULL DEFAULT '',
   `proj_id` varchar(32) NOT NULL DEFAULT '',
   `id` varchar(32) NOT NULL DEFAULT '',
-  PRIMARY KEY (`entity_id`,`proj_id`,`id`)
+  PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of gen_proj_form
 -- ----------------------------
+INSERT INTO `gen_proj_form` VALUES ('1', '2017-06-06 10:29:31', '用户', '添加用户', 'User', '1', '1');
 INSERT INTO `gen_proj_form` VALUES ('2', '2017-06-06 10:29:44', '角色', '删除角色', '2', '1', '2');
 INSERT INTO `gen_proj_form` VALUES ('3', '2017-12-19 11:51:46', '登陆用户', '修改登陆用户', '3', '1', '3');
 INSERT INTO `gen_proj_form` VALUES ('4', '2018-01-02 08:55:08', null, '查询用户角色', '4', '1', '4');
-INSERT INTO `gen_proj_form` VALUES ('1', null, '项目', '添加项目实体', 'ProjEntity', '2', '5');
-INSERT INTO `gen_proj_form` VALUES ('1', '2017-06-06 10:29:31', '用户', '添加用户', 'User', '1', '1');
+INSERT INTO `gen_proj_form` VALUES ('add', null, '项目', '添加项目实体', 'ProjEntity', '2', '5');
 
 -- ----------------------------
 -- Table structure for `gen_proj_form_prop`
@@ -284,7 +284,7 @@ INSERT INTO `gen_proj_form_prop` VALUES ('1', '4', null, '表名', '5', 'db_tab_
 INSERT INTO `gen_proj_form_prop` VALUES ('1', '3', null, '实体描述', '5', 'entity_desc');
 INSERT INTO `gen_proj_form_prop` VALUES ('1', '2', null, '实体标签', '5', 'entity_name');
 INSERT INTO `gen_proj_form_prop` VALUES ('1', '1', null, '实体名称', '5', 'id');
-INSERT INTO `gen_proj_form_prop` VALUES ('14', '1', null, null, '5', 'proj_id');
+INSERT INTO `gen_proj_form_prop` VALUES ('14', '0', null, null, '5', 'proj_id');
 INSERT INTO `gen_proj_form_prop` VALUES ('12', '5', null, 'SQL语句', '5', 'sqls');
 
 -- ----------------------------
