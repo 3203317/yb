@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50623
 File Encoding         : 65001
 
-Date: 2018-01-09 09:57:53
+Date: 2018-01-09 12:47:55
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -213,7 +213,7 @@ INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '0', '0', '', '1', '', '', '
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:31:51', null, 'ProjForm', '2', 'entity_id');
 INSERT INTO `gen_proj_entity_prop` VALUES ('表单描述', '0', '0', '0', '', '1', '', '', '256', '0', 'varchar', '2018-01-08 14:32:57', null, 'ProjForm', '2', 'form_desc');
 INSERT INTO `gen_proj_entity_prop` VALUES ('表单名称', '0', '0', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:32:34', null, 'ProjForm', '2', 'form_name');
-INSERT INTO `gen_proj_entity_prop` VALUES ('表单类型', '0', '0', '0', '', '1', '', '', '2', '0', 'number', '2018-01-08 14:33:39', null, 'ProjForm', '2', 'form_type');
+INSERT INTO `gen_proj_entity_prop` VALUES ('表单类型', '0', '0', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:33:39', null, 'ProjForm', '2', 'form_type');
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '1', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:27:30', null, 'ProjForm', '2', 'id');
 INSERT INTO `gen_proj_entity_prop` VALUES ('', '0', '1', '0', '', '1', '', '', '32', '0', 'varchar', '2018-01-08 14:31:03', null, 'ProjForm', '2', 'proj_id');
 INSERT INTO `gen_proj_entity_prop` VALUES ('控件类型', '0', '0', '0', '', '1', '', '', '2', '0', 'number', '2018-01-08 15:04:16', null, 'ProjFormProp', '2', 'control_type');
@@ -229,7 +229,7 @@ INSERT INTO `gen_proj_entity_prop` VALUES ('排序', '0', '0', '0', '', '1', '',
 -- ----------------------------
 DROP TABLE IF EXISTS `gen_proj_form`;
 CREATE TABLE `gen_proj_form` (
-  `form_type` int(2) DEFAULT NULL,
+  `form_type` varchar(32) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `form_desc` varchar(256) DEFAULT NULL,
   `form_name` varchar(32) DEFAULT NULL,
@@ -245,7 +245,7 @@ CREATE TABLE `gen_proj_form` (
 INSERT INTO `gen_proj_form` VALUES ('2', '2017-06-06 10:29:44', '角色', '删除角色', '2', '1', '2');
 INSERT INTO `gen_proj_form` VALUES ('3', '2017-12-19 11:51:46', '登陆用户', '修改登陆用户', '3', '1', '3');
 INSERT INTO `gen_proj_form` VALUES ('4', '2018-01-02 08:55:08', null, '查询用户角色', '4', '1', '4');
-INSERT INTO `gen_proj_form` VALUES ('1', null, '项目', '添加项目', 'Proj', '2', '5');
+INSERT INTO `gen_proj_form` VALUES ('1', null, '项目', '添加项目实体', 'ProjEntity', '2', '5');
 INSERT INTO `gen_proj_form` VALUES ('1', '2017-06-06 10:29:31', '用户', '添加用户', 'User', '1', '1');
 
 -- ----------------------------
@@ -280,7 +280,12 @@ INSERT INTO `gen_proj_form_prop` VALUES ('1', '3', '2018-01-02 14:24:03', null, 
 INSERT INTO `gen_proj_form_prop` VALUES ('1', '3', '2018-01-02 14:24:03', null, '3', 'user_pass');
 INSERT INTO `gen_proj_form_prop` VALUES ('1', '3', '2018-01-02 08:56:55', '', '4', 'role_id');
 INSERT INTO `gen_proj_form_prop` VALUES ('1', '3', '2018-01-02 08:56:34', '', '4', 'user_id');
-INSERT INTO `gen_proj_form_prop` VALUES ('1', '1', null, '项目名称', '5', 'proj_name');
+INSERT INTO `gen_proj_form_prop` VALUES ('1', '4', null, '表名', '5', 'db_tab_name');
+INSERT INTO `gen_proj_form_prop` VALUES ('1', '3', null, '实体描述', '5', 'entity_desc');
+INSERT INTO `gen_proj_form_prop` VALUES ('1', '2', null, '实体标签', '5', 'entity_name');
+INSERT INTO `gen_proj_form_prop` VALUES ('1', '1', null, '实体名称', '5', 'id');
+INSERT INTO `gen_proj_form_prop` VALUES ('14', '1', null, null, '5', 'proj_id');
+INSERT INTO `gen_proj_form_prop` VALUES ('12', '5', null, 'SQL语句', '5', 'sqls');
 
 -- ----------------------------
 -- Table structure for `gen_type_db`
