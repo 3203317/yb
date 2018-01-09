@@ -1,13 +1,14 @@
 $(function(){
-  $('#frm_${(data_pf.id)!}_btn_sub').click(function(){
+  $('#frm_5_btn_sub').click(function(){
     $.ajax({
-      url: './${(data_pf.form_type)!}',
+      url: './add',
       type: 'POST',
       dataType: 'JSON',
-      data: $('#frm_${(data_pf.id)!}').serializeObjectForm(),
+      data: $('#frm_5').serializeObjectForm(),
       success: function(data){
         if(data.success){
           alert('操作成功');
+          parent.jump("#page/proj/entity/?id=${(data_frm_5.proj_id)!}")
           return;
         }
         if(data.msg) alert(data.msg);

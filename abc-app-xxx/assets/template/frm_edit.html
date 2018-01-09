@@ -8,16 +8,16 @@
     <div class="controls">
       <#switch doc.control_type>
       <#case 1>
-      <input class='input-large' type='text' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}" />
+      <input class='input-large' type='text' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}" value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
       <#break>
       <#case 11>
-      <input class='input-large' type='password' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}" />
+      <input class='input-large' type='password' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}" value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
       <#break>
       <#case 12>
-      <textarea class='input-large' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}"></textarea>
+      <textarea class='input-large' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}">${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}</textarea>
       <#break>
       <#default>
-      <input class='input-large' type='text' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}" />
+      <input class='input-large' type='text' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="${(doc.prop_name)!}" value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
       </#switch>
     </div>
   </div>

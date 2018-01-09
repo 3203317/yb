@@ -1,6 +1,6 @@
 <#import "data_type_java" as data_type>  
-  @RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-  public String addUI(<#list data_list_pfp! as doc><#if 14 == doc.control_type>@RequestParam(required = true) <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.id)!}, </#if></#list>
+  @RequestMapping(value = { "/${(data_pf.form_type)!}" }, method = RequestMethod.GET)
+  public String ${(data_pf.form_type)!}UI(<#list data_list_pfp! as doc><#if 14 == doc.control_type>@RequestParam(required = true) <@data_type.m name="${(doc.prop_type)!}"/> ${(doc.id)!}, </#if></#list>
     HttpSession session, Map&lt;String, Object&gt; map) {
 
     ${(data_pf.entity_id)!} data_frm_${(data_pf.id)!} = new ${(data_pf.entity_id)!}();
@@ -13,5 +13,5 @@
     map.put("data_frm_${(data_pf.id)!}", data_frm_${(data_pf.id)!});
 
     map.put("session_user", SecurityUtils.getSubject().getPrincipal());
-    return "add";
+    return "${(data_pf.form_type)!}";
   }

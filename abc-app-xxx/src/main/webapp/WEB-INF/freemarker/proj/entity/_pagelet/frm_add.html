@@ -1,0 +1,51 @@
+<form class="form-horizontal" role="form" onsubmit="return false;" id="frm_5">
+  <input type="hidden" id="frm_5_proj_id" name="proj_id" value="${(data_frm_5.proj_id)!}">
+ 
+  <div class="control-group">
+    <label class="control-label" for="frm_5_id">实体名称</label>
+    <div class="controls">
+      <input class="input-large" type="text" id="frm_5_id" name="id" placeholder="实体名称">
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <label class="control-label" for="frm_5_entity_name">实体标签</label>
+    <div class="controls">
+      <input class="input-large" type="text" id="frm_5_entity_name" name="entity_name" placeholder="实体标签">
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <label class="control-label" for="frm_5_entity_desc">实体描述</label>
+    <div class="controls">
+      <input class="input-large" type="text" id="frm_5_entity_desc" name="entity_desc" placeholder="实体描述">
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <label class="control-label" for="frm_5_db_tab_name">表名</label>
+    <div class="controls">
+      <input class="input-large" type="text" id="frm_5_db_tab_name" name="db_tab_name" placeholder="表名">
+    </div>
+  </div>
+ 
+  <div class="control-group">
+    <label class="control-label" for="frm_5_sqls">SQL语句</label>
+    <div class="controls">
+      <textarea class="input-large" id="frm_5_sqls" name="sqls" placeholder="SQL语句"></textarea>
+    </div>
+  </div>
+ 
+ 
+  <div class="form-actions">
+    <button class="btn btn-info" onclick="return false;" id="frm_5_btn_sub">
+      <i class="icon-ok bigger-110"></i>
+        提交
+    </button>
+        
+    <button class="btn" type="reset">
+      <i class="icon-undo bigger-110"></i>
+        重置
+    </button>
+  </div>
+</form>

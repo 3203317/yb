@@ -90,64 +90,7 @@
 
 										<div class="tab-content">
 											<div id="home" class="tab-pane in active">
-
-												<form id='frm' role='form' class="form-horizontal">
-													<input type="hidden" name='proj_id' value='${(data_pe.proj_id)!}' />
-
-													<div class="control-group">
-														<label class="control-label" for="frm_id">实体名称</label>
-
-														<div class="controls">
-															<input type="text" class='input-large' id="frm_id" name='id' placeholder="实体名称" value='' />
-														</div>
-													</div>
-
-													<div class="control-group">
-														<label class="control-label" for="frm_entity_name">实体标签</label>
-
-														<div class="controls">
-															<input type="text" class='input-large' id="frm_entity_name" name='entity_name' placeholder="实体标签" value='' />
-														</div>
-													</div>
-
-													<div class="control-group">
-														<label class="control-label" for="frm_entity_desc">实体描述</label>
-
-														<div class="controls">
-															<input type="text" class='input-large' id="frm_entity_desc" name='entity_desc' placeholder="实体描述" value='' />
-														</div>
-													</div>
-
-													<div class="control-group">
-														<label class="control-label" for="frm_db_tab_name">表名</label>
-
-														<div class="controls">
-															<input type="text" class='input-large' id="frm_db_tab_name" name='db_tab_name' placeholder="表名" value='' />
-														</div>
-													</div>
-
-													<div class="control-group">
-														<label class="control-label" for="frm_sqls">SQL语句</label>
-
-														<div class="controls">
-															<textarea class='input-large' id="frm_sqls" name='sqls' style='width:300px;height:100px'></textarea>
-														</div>
-													</div>
-
-													<div class="form-actions">
-														<button class="btn btn-info" onclick="return false;" id='btn_submit'>
-															<i class="icon-ok bigger-110"></i>
-															提交
-														</button>
-
-														&nbsp; &nbsp;
-														<button class="btn" type="reset">
-															<i class="icon-undo bigger-110"></i>
-															重置
-														</button>
-													</div>
-													
-												</form>
+												<#include "/proj/entity/_pagelet/frm_add.html"/>
 											</div>
 										</div>
 									</div>
@@ -178,30 +121,8 @@
 		<script type='text/javascript' src='${(conf_html_virtualPath)!}static/js/iframe.js'></script>
 		
 		<script>
-
-		$(function(){
-
-			$('#btn_submit').click(function(){
-				$.ajax({
-					url : './add',
-					type : 'POST',
-					dataType : 'JSON',
-					data : $('#frm').serializeObjectForm(),
-					success : function(data) {
-						if (data.success){
-							alert('操作成功');
-							parent.jump("#page/proj/entity/?id=${(data_proj_id)!}")
-							return;
-						}
-						if (data.msg) alert(data.msg);
-					},
-					error : function() {
-						alert(arguments[2]);
-					}
-				});
-			});
-		});
-
+		<#include "/proj/entity/_pagelet/frm_add_js.html"/>
 		</script>
+		
 	</body>
 </html>
