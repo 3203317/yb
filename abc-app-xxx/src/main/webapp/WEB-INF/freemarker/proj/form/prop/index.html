@@ -176,15 +176,36 @@
 
 								</div>
 							</div>
-			
+
+<#if temp_frm_html ??>			
 							<div class="row-fluid">
-								<div class="span12">				
-<#if temp_frm_html ??>
+								<div class="span12">
 <pre class="brush: html; ruler: true;">
 ${(temp_frm_html)!}
-</pre></#if>
+</pre>
 								</div>
 							</div>
+</#if>
+							
+<#if temp_frm_js ??>			
+							<div class="row-fluid">
+								<div class="span12">
+<pre class="brush: js; ruler: true;">
+${(temp_frm_js)!}
+</pre>
+								</div>
+							</div>
+</#if>
+
+<#if temp_frm_controller_java ??>			
+							<div class="row-fluid">
+								<div class="span12">
+<pre class="brush: java; ruler: true;">
+${(temp_frm_controller_java)!}
+</pre>
+								</div>
+							</div>
+</#if>
 
 							<!--PAGE CONTENT ENDS-->
 						</div><!--/.span-->

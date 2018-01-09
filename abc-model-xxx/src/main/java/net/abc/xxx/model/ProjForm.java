@@ -39,12 +39,10 @@ public class ProjForm implements Serializable {
   private String form_name;
  
   // 
-  @Id
   @Column(name = "entity_id")
   private String entity_id;
  
   // 
-  @Id
   @Column(name = "proj_id")
   private String proj_id;
  

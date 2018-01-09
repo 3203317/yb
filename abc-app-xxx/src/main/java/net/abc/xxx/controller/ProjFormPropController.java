@@ -68,7 +68,10 @@ public class ProjFormPropController extends BaseController {
 		ProjForm pf = projFormService.selectByKey(id);
 		model.put("data_pf", pf);
 
-		map.put("temp_frm_html", Processor.getResult("frm_html", model));
+		map.put("temp_frm_html", Processor.getResult("frm_" + pf.getForm_type() + "_html", model));
+		map.put("temp_frm_js", Processor.getResult("frm_" + pf.getForm_type() + "_js", model));
+		map.put("temp_frm_controller_java",
+				Processor.getResult("frm_" + pf.getForm_type() + "_controller_java", model));
 
 		return "proj/form/prop/index";
 	}

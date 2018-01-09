@@ -1,0 +1,39 @@
+<form class="form-horizontal" role='form' onsubmit='return false;' id='frm_${(data_pf.id)!}'>
+<#list data_list_pfp! as doc>
+<#if 14 == doc.control_type>
+  <input type='hidden' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
+<#else>
+  <div class="control-group">
+    <label class="control-label" for='frm_${(data_pf.id)!}_${(doc.id)!}'>${(doc.prop_name)!}</label>
+    <div class="controls">
+      <#switch doc.control_type>
+      <#case 1>
+      <input class='input-large' type='text' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="" value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
+      <#break>
+      <#case 11>
+      <input class='input-large' type='password' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="" value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
+      <#break>
+      <#case 12>
+      <textarea class='input-large' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="">${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}</textarea>
+      <#break>
+      <#default>
+      <input class='input-large' type='text' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' placeholder="" value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
+      </#switch>
+    </div>
+  </div>
+</#if>
+
+</#list>
+
+  <div class="form-actions">
+    <button class="btn btn-info" onclick="return false;" id="frm_${(data_pf.id)!}_btn_sub">
+      <i class="icon-ok bigger-110"></i>
+        提交
+    </button>
+    &nbsp; &nbsp;
+    <button class="btn" type="reset">
+      <i class="icon-undo bigger-110"></i>
+        重置
+    </button>
+  </div>
+</form>
