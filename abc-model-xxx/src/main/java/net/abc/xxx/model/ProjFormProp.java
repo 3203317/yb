@@ -22,15 +22,15 @@ public class ProjFormProp implements Serializable {
   private static final long serialVersionUID = -1L;
  
  
-  // prop_type
+  // 
   @Transient
   private String prop_type;
  
-  // 控件类型
+  // 
   @Column(name = "control_type")
   private Integer control_type;
  
-  // 排序
+  // 
   @Column(name = "sort")
   private Integer sort;
  
@@ -38,7 +38,7 @@ public class ProjFormProp implements Serializable {
   @Column(name = "create_time")
   private Date create_time;
  
-  // 属性名称
+  // 
   @Column(name = "prop_name")
   private String prop_name;
  

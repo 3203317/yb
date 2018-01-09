@@ -22,11 +22,7 @@ public class ProjForm implements Serializable {
   private static final long serialVersionUID = -1L;
  
  
-  // 实体名称
-  @Transient
-  private String entity_name;
- 
-  // 表单类型
+  // 
   @Column(name = "form_type")
   private Integer form_type;
  
@@ -34,11 +30,11 @@ public class ProjForm implements Serializable {
   @Column(name = "create_time")
   private Date create_time;
  
-  // 表单描述
+  // 
   @Column(name = "form_desc")
   private String form_desc;
  
-  // 表单名称
+  // 
   @Column(name = "form_name")
   private String form_name;
  
@@ -58,14 +54,6 @@ public class ProjForm implements Serializable {
   @Column(name = "id")
   private String id;
  
- 
-  public void setEntity_name(String entity_name) {
-    this.entity_name = entity_name;
-  }
- 
-  public String getEntity_name() {
-    return entity_name;
-  }
  
   public void setForm_type(Integer form_type) {
     this.form_type = form_type;

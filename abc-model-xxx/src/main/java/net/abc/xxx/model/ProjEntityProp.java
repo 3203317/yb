@@ -8,6 +8,7 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
  
  
 /**
@@ -20,6 +21,10 @@ public class ProjEntityProp implements Serializable {
  
   private static final long serialVersionUID = -1L;
  
+ 
+  // 属性标签
+  @Column(name = "prop_name")
+  private String prop_name;
  
   // UUID
   @Column(name = "is_uuid")
@@ -84,6 +89,14 @@ public class ProjEntityProp implements Serializable {
   @Column(name = "id")
   private String id;
  
+ 
+  public void setProp_name(String prop_name) {
+    this.prop_name = prop_name;
+  }
+ 
+  public String getProp_name() {
+    return prop_name;
+  }
  
   public void setIs_uuid(Integer is_uuid) {
     this.is_uuid = is_uuid;
