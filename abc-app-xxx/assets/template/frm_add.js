@@ -1,7 +1,7 @@
 $(function(){
   $('#frm_${(data_pf.id)!}').submit(function(){
     $.ajax({
-      url: './${(data_pf.form_type)!}',
+      url: './frm_${(data_pf.id)!}',
       type: 'POST',
       dataType: 'JSON',
       data: $('#frm_${(data_pf.id)!}').serializeObjectForm(),
