@@ -1,5 +1,6 @@
 <form class="form-horizontal" role='form' onsubmit='return false;' id='frm_${(data_pf.id)!}'>
 <#list data_list_pfp! as doc>
+
 <#if 14 == doc.control_type>
   <input type='hidden' id='frm_${(data_pf.id)!}_${(doc.id)!}' name='${(doc.id)!}' value="${r'${('}data_frm_${(data_pf.id)!}.${(doc.id)!}${r')!}'}" />
 <#else>
@@ -22,7 +23,6 @@
     </div>
   </div>
 </#if>
-
 </#list>
 
   <div class="form-actions">
