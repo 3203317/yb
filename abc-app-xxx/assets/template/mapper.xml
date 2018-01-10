@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 &lt;!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd"&gt;
 <mapper namespace="${(data_p.package_name)!}.mapper.${(data_pe.id)!}Mapper">
-
 <#import "data_type_mapper" as data_type>
 
   <resultMap id="BaseResultMap" type="${(data_p.package_name)!}.model.${(data_pe.id)!}">
