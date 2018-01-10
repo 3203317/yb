@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="${(data_p.package_name)!}.mapper.${(data_pe.id)!}Mapper">
+
+<#import "data_type_mapper" as data_type>
+
+  <resultMap id="BaseResultMap" type="${(data_p.package_name)!}.model.${(data_pe.id)!}">
+<#list data_list_pep! as doc><#if 0==doc.is_transient>
+    <<#if 1==doc.is_pk>id<#else>result</#if> column="${(doc.id)!}" property="${(doc.id)!}" jdbcType="<@data_type.m name="${(doc.prop_type)!}"/>"></<#if 1==doc.is_pk>id<#else>result</#if>>
+</#if></#list>
+  </resultMap>
+	
+  <resultMap id="ExtResultMap" type="${(data_p.package_name)!}.model.${(data_pe.id)!}" extends="BaseResultMap">
+<#list data_list_pep! as doc><#if 1==doc.is_transient>
+    <result column="${(doc.id)!}" property="${(doc.id)!}" jdbcType="<@data_type.m name="${(doc.prop_type)!}"/>"></result>
+</#if></#list>
+  </resultMap>
+
+</mapper>

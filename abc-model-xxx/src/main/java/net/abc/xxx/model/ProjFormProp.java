@@ -24,6 +24,10 @@ public class ProjFormProp implements Serializable {
  
   // 
   @Transient
+  private Integer is_pk;
+ 
+  // 
+  @Transient
   private String prop_type;
  
   // 
@@ -52,6 +56,14 @@ public class ProjFormProp implements Serializable {
   @Column(name = "id")
   private String id;
  
+ 
+  public void setIs_pk(Integer is_pk) {
+    this.is_pk = is_pk;
+  }
+ 
+  public Integer getIs_pk() {
+    return is_pk;
+  }
  
   public void setProp_type(String prop_type) {
     this.prop_type = prop_type;

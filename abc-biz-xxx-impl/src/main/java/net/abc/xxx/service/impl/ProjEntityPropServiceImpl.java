@@ -41,7 +41,7 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 	public List<ProjEntityProp> findByProjEntityProp(ProjEntityProp entity, int page, int rows) {
 
 		Example example = new Example(ProjEntityProp.class);
-		example.setOrderByClause("create_time desc");
+		example.setOrderByClause("is_pk desc");
 
 		if (null != entity) {
 			Example.Criteria criteria = example.createCriteria();

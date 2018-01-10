@@ -89,6 +89,7 @@ public class ProjController extends BaseController {
 		map.put("temp_" + lang_id + "_model", Processor.getResult("model_" + lang_id, model));
 		map.put("temp_" + lang_id + "_biz", Processor.getResult("biz_" + lang_id, model));
 		map.put("temp_" + db_id, TempUtil.genSQLCreateTable(db_id, pe, list_pep));
+		map.put("temp_" + lang_id + "_mapper", Processor.getResult("mapper_xml", model));
 
 		return "codeGen/project/genCode";
 	}
