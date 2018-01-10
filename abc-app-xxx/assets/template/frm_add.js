@@ -1,5 +1,5 @@
 $(function(){
-  $('#frm_${(data_pf.id)!}_btn_sub').click(function(){
+  $('#frm_${(data_pf.id)!}').submit(function(){
     $.ajax({
       url: './${(data_pf.form_type)!}',
       type: 'POST',
