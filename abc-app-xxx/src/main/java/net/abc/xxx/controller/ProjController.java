@@ -93,16 +93,21 @@ public class ProjController extends BaseController {
 		lang_id = lang_id.toLowerCase();
 		db_id = db_id.toLowerCase();
 
-		map.put("random", "");
+		String _s1 = Processor.getResult("model_" + lang_id, model);
+		if (null != _s1)
+			map.put("temp_" + lang_id + "_model", _s1);
 
-		map.put("temp_" + lang_id + "_model",
-				Processor.getResult("model_" + lang_id, model));
-		map.put("temp_" + lang_id + "_biz",
-				Processor.getResult("biz_" + lang_id, model));
-		map.put("temp_" + db_id,
-				TempUtil.genSQLCreateTable(db_id, pe, list_pep));
-		map.put("temp_" + lang_id + "_mapper",
-				Processor.getResult("mapper_xml", model));
+		String _s2 = Processor.getResult("biz_" + lang_id, model);
+		if (null != _s2)
+			map.put("temp_" + lang_id + "_biz", _s2);
+
+		String _s3 = TempUtil.genSQLCreateTable(db_id, pe, list_pep);
+		if (null != _s3)
+			map.put("temp_" + db_id, _s3);
+
+		String _s4 = Processor.getResult(lang_id + "_mapper_xml", model);
+		if (null != _s4)
+			map.put("temp_" + lang_id + "_mapper", _s4);
 
 		return "codeGen/project/genCode";
 	}
