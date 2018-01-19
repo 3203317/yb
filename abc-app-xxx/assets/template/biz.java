@@ -7,7 +7,7 @@ import net.abc.service.IService;
 import ${(data_p.package_name)!}.model.${(data_pe.id)!};
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -26,6 +26,13 @@ public interface ${(data_pe.id)!}Service extends IService&lt;${(data_pe.id)!}&gt
 	 * @return
 	 */
 	ResultMap&lt;Void&gt; editInfo(${(data_pe.id)!} entity);
+
+	/**
+	 *
+	 * @param entity
+	 * @return
+	 */
+	ResultMap&lt;${(data_pe.id)!}&gt; saveNew(${(data_pe.id)!} entity);
 
 	/**
 	 *
