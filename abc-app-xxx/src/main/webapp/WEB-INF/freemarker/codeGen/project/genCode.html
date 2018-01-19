@@ -62,8 +62,11 @@ ${(temp_java_biz)!}
 <#if temp_mysql ??><pre class="brush: sql">
 ${(temp_mysql)!}
 </pre></#if>
-<#if temp_java_mapper ??><pre class="brush: xml">
-${(temp_java_mapper)!}
+<#if temp_java_mapper_xml ??><pre class="brush: xml">
+${(temp_java_mapper_xml)!}
+</pre></#if>
+<#if temp_java_mapper_java ??><pre class="brush: java">
+${(temp_java_mapper_java)!}
 </pre></#if>
 <#include "/_pagelet/js.html"/>
 

@@ -107,7 +107,11 @@ public class ProjController extends BaseController {
 
 		String _s4 = Processor.getResult(lang_id + "_mapper_xml", model);
 		if (null != _s4)
-			map.put("temp_" + lang_id + "_mapper", _s4);
+			map.put("temp_" + lang_id + "_mapper_xml", _s4);
+
+		String _s5 = Processor.getResult(lang_id + "_mapper_java", model);
+		if (null != _s5)
+			map.put("temp_" + lang_id + "_mapper_java", _s5);
 
 		return "codeGen/project/genCode";
 	}
