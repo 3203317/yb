@@ -15,8 +15,10 @@ import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.model.ProjForm;
+import net.abc.xxx.model.ProjFormProp;
 import net.abc.xxx.service.ProjEntityPropService;
 import net.abc.xxx.service.ProjEntityService;
+import net.abc.xxx.service.ProjFormPropService;
 import net.abc.xxx.service.ProjFormService;
 import net.abc.xxx.service.ProjService;
 import net.abc.xxx.util.TempUtil;
@@ -48,6 +50,9 @@ public class ProjController extends BaseController {
 
 	@Resource
 	private ProjFormService projFormService;
+
+	@Resource
+	private ProjFormPropService projFormPropService;
 
 	/**
 	 *
@@ -83,39 +88,24 @@ public class ProjController extends BaseController {
 		List<ProjEntityProp> list_pep = projEntityPropService
 				.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
 
+		ProjFormProp pfp = new ProjFormProp();
+		pfp.setForm_id(form_id);
+		List<ProjFormProp> list_pfp = projFormPropService.findByProjFormProp(
+				pfp, 1, Integer.MAX_VALUE);
+
 		Map<String, Object> model = new HashMap<String, Object>();
 		model.put("data_p", p);
 		model.put("data_pe", pe);
 		model.put("data_list_pep", list_pep);
+		model.put("data_list_pfp", list_pfp);
 
 		freemarkerTemplateResource.reload();
 
 		lang_id = lang_id.toLowerCase();
 		db_id = db_id.toLowerCase();
 
-		String _s1 = Processor.getResult("model_" + lang_id, model);
-		if (null != _s1)
-			map.put("temp_" + lang_id + "_model", _s1);
-
-		String _s2 = Processor.getResult("biz_" + lang_id, model);
-		if (null != _s2)
-			map.put("temp_" + lang_id + "_biz", _s2);
-
-		String _s21 = Processor.getResult("biz_impl_" + lang_id, model);
-		if (null != _s21)
-			map.put("temp_" + lang_id + "_biz_impl", _s21);
-
-		String _s3 = TempUtil.genSQLCreateTable(db_id, pe, list_pep);
-		if (null != _s3)
-			map.put("temp_" + db_id, _s3);
-
-		String _s4 = Processor.getResult(lang_id + "_mapper_xml", model);
-		if (null != _s4)
-			map.put("temp_" + lang_id + "_mapper_xml", _s4);
-
-		String _s5 = Processor.getResult(lang_id + "_mapper_java", model);
-		if (null != _s5)
-			map.put("temp_" + lang_id + "_mapper_java", _s5);
+		map.put("temp_frm_html", Processor.getResult("frm_" + pf.getForm_type()
+				+ "_html", model));
 
 		return "codeGen/project/genForm";
 	}
