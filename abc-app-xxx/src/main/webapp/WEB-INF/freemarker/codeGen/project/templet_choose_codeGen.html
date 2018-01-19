@@ -99,7 +99,7 @@
 											<li>
 												<a data-toggle="tab" href="#form_prop">
 													表单
-													<span class="badge badge-important">0</span>
+													<span class="badge badge-important">${(data_list_pf?size)!}</span>
 												</a>
 											</li>
 
@@ -211,6 +211,8 @@
 														<tr>
 															<th class="center">#</th>
 															<th>表单名称</th>
+															<th>表单类型</th>
+															<th>关联实体</th>
 															<th class="hidden-480">表单描述</th>
 															<th class="hidden-phone">
 																<i class="icon-time bigger-110 hidden-phone"></i>
@@ -219,6 +221,17 @@
 														</tr>
 													</thead>
 													<tbody>
+													<#list data_list_pf! as doc>
+														<tr onclick='load_form_templet("${(doc.id)!}")'>
+															<td class="center">${doc_index+1}</td>
+
+															<td>${(doc.form_name)!}</td>
+															<td>${(doc.form_type)!}</td>
+															<td>${(doc.rela_entity_name)!}</td>
+															<td class="hidden-480">${(doc.form_desc)!}</td>
+															<td class="hidden-phone">${(doc.create_time?string("yyyy-MM-dd HH:mm:ss"))!}</td>
+														</tr>
+													</#list>
 													</tbody>
 												</table><!-- table -->
 
@@ -250,6 +263,15 @@
 			// console.log(lang, db);
 			$("#inn").css('display', 'block');
 			$('#inn').attr('src', '/codeGen/genCode/?lang_id='+ lang +'&db_id='+ db +'&proj_id='+ proj_id +'&entity_id='+ entity_id);
+		}
+
+		function load_form_templet(form_id){
+			var lang = $('#choose_lang').val();
+			var db   = $('#choose_db').val();
+
+			// console.log(lang, db);
+			$("#inn_form").css('display', 'block');
+			alert(form_id);
 		}
 
 		function resize(h){
