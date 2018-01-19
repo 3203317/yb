@@ -271,7 +271,7 @@
 
 			// console.log(lang, db);
 			$("#inn_form").css('display', 'block');
-			alert(form_id);
+			$('#inn_form').attr('src', '/codeGen/genForm/?lang_id='+ lang +'&db_id='+ db +'&form_id='+ form_id);
 		}
 
 		function resize(h){

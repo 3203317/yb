@@ -54,6 +54,25 @@ public class ProjController extends BaseController {
 	 * @param session
 	 * @param lang_id
 	 * @param db_id
+	 * @param form_id
+	 * @param map
+	 * @return
+	 * @throws Exception
+	 */
+	@RequestMapping(value = { "/codeGen/genForm/" }, method = RequestMethod.GET)
+	public String genFormUI(HttpSession session,
+			@RequestParam(required = true) String lang_id,
+			@RequestParam(required = true) String db_id,
+			@RequestParam(required = true) String form_id,
+			Map<String, Object> map) throws Exception {
+		return "codeGen/project/genForm";
+	}
+
+	/**
+	 *
+	 * @param session
+	 * @param lang_id
+	 * @param db_id
 	 * @param proj_id
 	 * @param entity_id
 	 * @param map

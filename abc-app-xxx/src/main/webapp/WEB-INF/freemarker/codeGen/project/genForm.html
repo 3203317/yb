@@ -1,0 +1,118 @@
+<#include "/_pagelet/constant.html"/>
+<!DOCTYPE html>
+<html lang='zh-CN'>
+	<head>
+		<title></title>
+<meta charset='utf-8' />
+<meta name='robots' content='all' />
+<meta http-equiv='content-type' content='text/html;charset=utf-8' />
+<meta name='viewport' content='width=device-width, initial-scale=1.0' />
+<link rel='shortcut icon' href='/public/assets/images/favicon.png?v1' />
+<!--[if lte IE 9]>
+	<link rel='stylesheet' type='text/css' href='${(conf_html_cdn)!}js/bsie/0.0.0/css/bootstrap-ie6.css' />
+	<link rel='stylesheet' type='text/css' href='${(conf_html_cdn)!}js/bsie/0.0.0/css/ie.css' />
+	<link rel='stylesheet' type='text/css' href='${(conf_html_cdn)!}js/verybsie/1.0.0/css/bootstrap-verybsie.css' />
+<![endif]-->
+<!--[if lte IE 7]>
+	<link rel='stylesheet' type='text/css' href='${(conf_html_cdn)!}js/verybsie/1.0.0/css/bootstrap-verybsie.css' />
+<![endif]-->
+<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_cdn)!}js/bootstrap/3.2.0/dist/css/bootstrap.min.css?v3.2.0' />
+<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_cdn)!}js/bootstrap/3.2.0/dist/css/bootstrap-theme.min.css?v3.2.0' />
+<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_cdn)!}js/font-awesome/4.1.0/css/font-awesome.min.css' />
+<link rel='stylesheet' type='text/css' media='screen' href='${(conf_html_cdn)!}public/assets/css/olx/olx.css?v3' />
+<script type='text/javascript'>
+function isIE(){
+	return (!!window.ActiveXObject || 'ActiveXObject' in window);
+}
+function img404(event){
+	// 获取img对象，火狐是event.target ，IE及谷歌其他是event.srcElement
+	var img = event.srcElement || event.target;
+	img.src = '/public/assets/images/img404.jpg';
+	img.onerror = null;
+}
+if(isIE()){
+	// console.log('I use IE.');
+}else{
+	document.write("<link rel='stylesheet' type='text/css' href='${(conf_html_cdn)!}js/pace/1.0.2/themes/pace-theme-barber-shop.css' \/>");
+	document.write("<script type='text/javascript' src='${(conf_html_cdn)!}js/pace/1.0.2/pace.min.js'><\/script>");
+	document.write("<script type='text/javascript' src='${(conf_html_cdn)!}js/jquery/2.0.2/jquery.min.js?v2.0.2'><\/script>");
+}
+</script>
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if gte IE 9]>
+	<link rel='stylesheet' type='text/css' href='${(conf_html_cdn)!}js/pace/1.0.2/themes/pace-theme-barber-shop.css' />
+	<script type='text/javascript' src='${(conf_html_cdn)!}js/pace/1.0.2/pace.min.js'></script>
+	<script type='text/javascript' src='${(conf_html_cdn)!}js/jquery/2.0.2/jquery.min.js'></script>
+<![endif]-->
+<!--[if lt IE 9]>
+	<script type='text/javascript' src='${(conf_html_cdn)!}js/jquery/1.11.3/jquery.min.js'></script>
+	<script type='text/javascript' src='${(conf_html_cdn)!}js/html5shiv/3.7.2/html5shiv.min.js'></script>
+	<script type='text/javascript' src='${(conf_html_cdn)!}js/respond/1.4.2/respond.min.js'></script>
+<![endif]-->
+<link href="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/css/shCore.css" rel="stylesheet" type="text/css" />
+<link href="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/css/shThemeDefault.css" rel="stylesheet" type="text/css" /></head><body>
+<#if temp_java_model ??>
+<pre class="brush: java; ruler: true;">
+${(temp_java_model)!}
+</pre></#if>
+<#if temp_java_biz ??><pre class="brush: java">
+${(temp_java_biz)!}
+</pre></#if>
+<#if temp_java_biz_impl ??><pre class="brush: java">
+${(temp_java_biz_impl)!}
+</pre></#if>
+<#if temp_mysql ??><pre class="brush: sql">
+${(temp_mysql)!}
+</pre></#if>
+<#if temp_java_mapper_xml ??><pre class="brush: xml">
+${(temp_java_mapper_xml)!}
+</pre></#if>
+<#if temp_java_mapper_java ??><pre class="brush: java">
+${(temp_java_mapper_java)!}
+</pre></#if>
+<#include "/_pagelet/js.html"/>
+
+<script type="text/javascript" src="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/xregexp-min.js?t=${(random)!}"></script>
+<script type="text/javascript" src="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shCore.min.js?t=${(random)!}"></script>
+<script type="text/javascript" src="${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shAutoloader.js?t=${(random)!}"></script>
+
+	<script type='text/javascript'>
+	$(function(){
+
+	    SyntaxHighlighter.autoloader(
+	            'applescript			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushAppleScript.js?t=${(random)!}',
+	            'actionscript3 as3		${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushAS3.js?t=${(random)!}',
+	            'bash shell				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushBash.js?t=${(random)!}',
+	            'coldfusion cf			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushColdFusion.js?t=${(random)!}',
+	            'cpp c					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushCpp.js?t=${(random)!}',
+	            'obj-c objc				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushObjC.js?t=${(random)!}',
+	            'c# c-sharp csharp		${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushCSharp.js?t=${(random)!}',
+	            'css					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushCss.js?t=${(random)!}',
+	            'delphi pascal			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushDelphi.js?t=${(random)!}',
+	            'diff patch pas			${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushDiff.js?t=${(random)!}',
+	            'erl erlang				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushErlang.js?t=${(random)!}',
+	            'groovy					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushGroovy.js?t=${(random)!}',
+	            'haxe hx				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushHaxe.js?t=${(random)!}',
+	            'java					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushJava.js?t=${(random)!}',
+	            'jfx javafx				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushJavaFX.js?t=${(random)!}',
+	            'js jscript javascript	${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushJScript.js?t=${(random)!}',
+	            'perl pl				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPerl.js?t=${(random)!}',
+	            'php					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPhp.js?t=${(random)!}',
+	            'text plain				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPlain.js?t=${(random)!}',
+	            'py python				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushPython.js?t=${(random)!}',
+	            'ruby rails ror rb		${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushRuby.js?t=${(random)!}',
+	            'scala					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushScala.js?t=${(random)!}',
+	            'sql					${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushSql.js?t=${(random)!}',
+	            'vb vbnet				${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushVb.js?t=${(random)!}',
+	            'xml xhtml xslt html	${(conf_html_cdn)!}js/SyntaxHighlighter/3.0.9/js/shBrushXml.js?t=${(random)!}'
+	    );
+		SyntaxHighlighter.all();
+
+		window.onload = function(){
+		  parent.resize(document.body.offsetHeight + 30);
+		};
+	});
+	</script>
+</body>
+</html>
