@@ -65,6 +65,58 @@ public class ProjController extends BaseController {
 			@RequestParam(required = true) String db_id,
 			@RequestParam(required = true) String form_id,
 			Map<String, Object> map) throws Exception {
+
+		ProjForm pf = projFormService.getById(form_id);
+
+		Proj p = projService.getById(pf.getProj_id());
+
+		ProjEntity pe = new ProjEntity();
+		pe.setProj_id(pf.getProj_id());
+		pe.setId(pf.getEntity_id());
+
+		pe = projEntityService.selectByKey(pe);
+
+		ProjEntityProp pep = new ProjEntityProp();
+		pep.setProj_id(pf.getProj_id());
+		pep.setEntity_id(pe.getId());
+
+		List<ProjEntityProp> list_pep = projEntityPropService
+				.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+
+		Map<String, Object> model = new HashMap<String, Object>();
+		model.put("data_p", p);
+		model.put("data_pe", pe);
+		model.put("data_list_pep", list_pep);
+
+		freemarkerTemplateResource.reload();
+
+		lang_id = lang_id.toLowerCase();
+		db_id = db_id.toLowerCase();
+
+		String _s1 = Processor.getResult("model_" + lang_id, model);
+		if (null != _s1)
+			map.put("temp_" + lang_id + "_model", _s1);
+
+		String _s2 = Processor.getResult("biz_" + lang_id, model);
+		if (null != _s2)
+			map.put("temp_" + lang_id + "_biz", _s2);
+
+		String _s21 = Processor.getResult("biz_impl_" + lang_id, model);
+		if (null != _s21)
+			map.put("temp_" + lang_id + "_biz_impl", _s21);
+
+		String _s3 = TempUtil.genSQLCreateTable(db_id, pe, list_pep);
+		if (null != _s3)
+			map.put("temp_" + db_id, _s3);
+
+		String _s4 = Processor.getResult(lang_id + "_mapper_xml", model);
+		if (null != _s4)
+			map.put("temp_" + lang_id + "_mapper_xml", _s4);
+
+		String _s5 = Processor.getResult(lang_id + "_mapper_java", model);
+		if (null != _s5)
+			map.put("temp_" + lang_id + "_mapper_java", _s5);
+
 		return "codeGen/project/genForm";
 	}
 
