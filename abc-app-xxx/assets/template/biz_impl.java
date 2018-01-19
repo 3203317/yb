@@ -43,10 +43,17 @@ public class ${(data_pe.id)!}ServiceImpl extends BaseService&lt;${(data_pe.id)!}
 		if (null != entity) {
 			Example.Criteria criteria = example.createCriteria();
 
-			String proj_id = StringUtil.isEmpty(entity.getProj_id());
-			if (null != proj_id) {
-				criteria.andEqualTo("proj_id", proj_id);
+			<#list data_list_pep! as doc>
+
+			<#if "varchar" == doc.prop_type>
+			String ${(doc.id)!} = StringUtil.isEmpty(entity.get${(doc.id)?cap_first}());
+			<#else>
+			Object ${(doc.id)!} = entity.get${(doc.id)?cap_first}();
+			</#if>
+			if (null != ${(doc.id)!}) {
+				criteria.andEqualTo("${(doc.id)!}", ${(doc.id)!});
 			}
+			</#list>
 		}
 
 		PageHelper.startPage(page, rows);
@@ -93,7 +100,11 @@ public class ${(data_pe.id)!}ServiceImpl extends BaseService&lt;${(data_pe.id)!}
 
 			<#list data_list_pep! as doc>
 
-			String ${(doc.id)!} = StringUtil.isEmpty(entity.getProj_id());
+			<#if "varchar" == doc.prop_type>
+			String ${(doc.id)!} = StringUtil.isEmpty(entity.get${(doc.id)?cap_first}());
+			<#else>
+			Object ${(doc.id)!} = entity.get${(doc.id)?cap_first}();
+			</#if>
 			if (null != ${(doc.id)!}) {
 				criteria.andEqualTo("${(doc.id)!}", ${(doc.id)!});
 			}
