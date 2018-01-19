@@ -101,6 +101,10 @@ public class ProjController extends BaseController {
 		if (null != _s2)
 			map.put("temp_" + lang_id + "_biz", _s2);
 
+		String _s21 = Processor.getResult("biz_impl_" + lang_id, model);
+		if (null != _s21)
+			map.put("temp_" + lang_id + "_biz_impl", _s21);
+
 		String _s3 = TempUtil.genSQLCreateTable(db_id, pe, list_pep);
 		if (null != _s3)
 			map.put("temp_" + db_id, _s3);
