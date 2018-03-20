@@ -268,7 +268,7 @@
 
 		<dependency>
 			<groupId>net.abc</groupId>
-			<artifactId>abc-biz-xxx-impl</artifactId>
+			<artifactId>abc-model</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
