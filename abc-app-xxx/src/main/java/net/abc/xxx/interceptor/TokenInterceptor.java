@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.abc.util.StringUtil;
+import net.abc.xxx.annotation.Token;
+
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
-import net.abc.util.StringUtil;
-import net.abc.xxx.annotation.Token;
-
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -26,53 +26,65 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 	@Resource
 	private MessageSourceAccessor msa;
 
-	private final String TOKEN = "__token";
+	public static final String TOKEN = "__token";
+
+	/**
+	 * 生成4位数字
+	 *
+	 * @return
+	 */
+	private double genRandom() {
+		return (Math.random() * 5 + 1) * 1000;
+	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
+			Object handler) throws Exception {
 
-		if (handler instanceof HandlerMethod) {
-
-			HandlerMethod handlerMethod = (HandlerMethod) handler;
-			Method method = handlerMethod.getMethod();
-			Token annotation = method.getAnnotation(Token.class);
-
-			if (null != annotation) {
-				boolean needSaveSession = annotation.save();
-
-				if (needSaveSession) {
-					HttpSession session = req.getSession(false);
-					if (null == session) {
-						session = req.getSession(true);
-					}
-					session.setAttribute(TOKEN, "UUID");
-				}
-
-				boolean needRemoveSession = annotation.remove();
-
-				if (needRemoveSession) {
-					if (isRepeatSubmit(req)) {
-						ResponseBody respBody = method.getAnnotation(ResponseBody.class);
-						if (respBody != null) {
-							resp.getWriter()
-									.write("{\"state\":0,\"message\":\"" + msa.getMessage("sys.data.resubmit") + "\"}");
-						} else {
-							resp.sendRedirect(
-									"error?message=" + URLEncoder.encode(msa.getMessage("sys.data.resubmit"), "utf-8"));
-						}
-						return false;
-					}
-				}
-			}
-
-			return true;
+		if (!(handler instanceof HandlerMethod)) {
+			return super.preHandle(req, resp, handler);
 		}
 
-		return super.preHandle(req, resp, handler);
+		HandlerMethod handlerMethod = (HandlerMethod) handler;
+		Method method = handlerMethod.getMethod();
+		Token annotation = method.getAnnotation(Token.class);
+
+		if (null == annotation)
+			return true;
+
+		boolean needSaveSession = annotation.save();
+
+		if (needSaveSession) {
+			HttpSession session = req.getSession(false);
+			if (null == session)
+				session = req.getSession(true);
+			session.setAttribute(TOKEN, genRandom());
+		}
+
+		boolean needRemoveSession = annotation.remove();
+
+		if (!needRemoveSession)
+			return true;
+
+		if (!isRepeatSubmit(req))
+			return true;
+
+		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
+
+		if (null == respBody) {
+			resp.sendRedirect("error?msg="
+					+ URLEncoder.encode(msa.getMessage("err_resubmit"), "utf-8"));
+		} else {
+			resp.getWriter().write(
+					"{\"error\":-1,\"msg\":\"" + msa.getMessage("err_resubmit")
+							+ "\"}");
+		}
+
+		return false;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param req
 	 * @return
 	 */
@@ -92,9 +104,6 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 		if (null == __token)
 			return true;
 
-		if (!_token.equals(__token))
-			return true;
-
-		return false;
+		return !_token.equals(__token);
 	}
 }
