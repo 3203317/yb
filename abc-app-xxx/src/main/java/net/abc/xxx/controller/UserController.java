@@ -35,6 +35,7 @@ public class UserController extends BaseController {
 	@Resource
 	private UserService userService;
 
+	@FormToken
 	@ResponseBody
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> login(HttpSession session, @RequestParam(required = true) String verify_token,

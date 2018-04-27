@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns="http://java.sun.com/xml/ns/javaee"
-	xsi:schemaLocation="
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="
             http://java.sun.com/xml/ns/javaee
-            http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
-	version="3.0">
+            http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd" version="3.0">
 	<display-name>abc-app-xxx</display-name>
 
 	<context-param>
@@ -19,9 +16,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 
-	<!-- <filter> <filter-name>springSessionRepositoryFilter</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> 
-		</filter> <filter-mapping> <filter-name>springSessionRepositoryFilter</filter-name> 
-		<url-pattern>/*</url-pattern> </filter-mapping> -->
+	<!-- <filter> <filter-name>springSessionRepositoryFilter</filter-name> <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class> </filter> <filter-mapping> <filter-name>springSessionRepositoryFilter</filter-name> <url-pattern>/*</url-pattern> </filter-mapping> -->
 
 	<servlet>
 		<servlet-name>mybatis</servlet-name>
@@ -40,7 +35,7 @@
 
 	<servlet>
 		<servlet-name>AuthImage</servlet-name>
-		<servlet-class>net.abc.util.verifyCode.AuthImage</servlet-class>
+		<servlet-class>net.abc.util.verifyCode.VerifyImage</servlet-class>
 	</servlet>
 
 	<servlet-mapping>
@@ -48,19 +43,7 @@
 		<url-pattern>/verifyCode.jpg</url-pattern>
 	</servlet-mapping>
 
-	<!-- <filter>
-		<filter-name>PermitFilter</filter-name>
-		<filter-class>net.abc.xxx.filter.PermitFilter</filter-class>
-		<init-param>
-			<param-name>url-suffix</param-name>
-			<param-value>js,css,html,jpg,ico</param-value>
-		</init-param>
-	</filter>
-
-	<filter-mapping>
-		<filter-name>PermitFilter</filter-name>
-		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
+	<!-- <filter> <filter-name>PermitFilter</filter-name> <filter-class>net.abc.xxx.filter.PermitFilter</filter-class> <init-param> <param-name>url-suffix</param-name> <param-value>js,css,html,jpg,ico</param-value> </init-param> </filter> <filter-mapping> <filter-name>PermitFilter</filter-name> <url-pattern>/*</url-pattern> </filter-mapping> -->
 
 	<filter>
 		<filter-name>shiroFilter</filter-name>

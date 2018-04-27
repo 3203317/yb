@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans" xsi:schemaLocation="http://www.springframework.org/schema/beans
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:task="http://www.springframework.org/schema/task" xmlns:context="http://www.springframework.org/schema/context" xmlns="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
        http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-4.0.xsd
        http://www.springframework.org/schema/tx
        http://www.springframework.org/schema/tx/spring-tx.xsd
        http://www.springframework.org/schema/aop
@@ -91,23 +94,8 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="formTokenInterceptor" class="net.abc.util.interceptor.FormTokenInterceptor" />
-	<bean id="verifyCodeInterceptor" class="net.abc.util.interceptor.VerifyCodeInterceptor" />
-
-	<mvc:interceptors>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/static/**" />
-			<ref bean="formTokenInterceptor" />
-		</mvc:interceptor>
-		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<mvc:exclude-mapping path="/static/**" />
-			<ref bean="verifyCodeInterceptor" />
-		</mvc:interceptor>
-	</mvc:interceptors>
-
 	<!-- spring session -->
 	<!-- <bean class="org.springframework.session.data.redis.config.annotation.web.http.RedisHttpSessionConfiguration" /> <bean id="redispoolConfig" class="redis.clients.jedis.JedisPoolConfig"> <property name="maxIdle" value="${redis.maxIdle}" /> <property name="maxTotal" value="${redis.maxActive}" /> <property name="maxWaitMillis" value="${redis.maxWait}" /> <property name="testOnBorrow" value="${redis.testOnBorrow}" /> </bean> <bean id="redisconnectionFactory" class="org.springframework.data.redis.connection.jedis.JedisConnectionFactory"> <property name="hostName" value="${redis.host}" /> <property name="port" value="${redis.port}" /> <property name="password" value="${redis.pass}"></property> <property name="poolConfig" ref="redispoolConfig"></property> </bean> 应用程序中使用redis的句柄 <bean id="redisTemplate" class="org.springframework.data.redis.core.StringRedisTemplate"> <property name="connectionFactory" ref="redisconnectionFactory" /> </bean> <task:annotation-driven scheduler="scheduler" /> 
 		<task:scheduler id="scheduler" pool-size="50" /> -->
+
 </beans>

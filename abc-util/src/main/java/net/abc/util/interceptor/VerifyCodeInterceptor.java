@@ -3,11 +3,9 @@ package net.abc.util.interceptor;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -21,9 +19,6 @@ import net.abc.util.annotation.VerifyCode;
  *
  */
 public class VerifyCodeInterceptor extends HandlerInterceptorAdapter {
-
-	@Resource
-	private MessageSourceAccessor msa;
 
 	public static final String TOKEN = "__verify_code";
 
@@ -49,9 +44,9 @@ public class VerifyCodeInterceptor extends HandlerInterceptorAdapter {
 		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
 
 		if (null == respBody) {
-			resp.sendRedirect("error?code=-2&msg=" + URLEncoder.encode(msa.getMessage("err_verifycode"), "utf-8"));
+			resp.sendRedirect("error?code=-2&msg=" + URLEncoder.encode("", "utf-8"));
 		} else {
-			resp.getWriter().write("{\"code\":-2,\"msg\":\"" + msa.getMessage("err_verifycode") + "\"}");
+			resp.getWriter().write("{\"code\":-2,\"msg\":\"" + "" + "\"}");
 		}
 
 		return false;
