@@ -110,12 +110,12 @@ public class UserController extends BaseController {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
-		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
-
-		if (!verifyToken.isValid()) {
-			result.put("msg", verifyToken.getMsg());
-			return result;
-		}
+		// ResultMap<Void> verifyToken = verifyToken(session, verify_token);
+		//
+		// if (!verifyToken.isValid()) {
+		// result.put("msg", verifyToken.getMsg());
+		// return result;
+		// }
 
 		ResultMap<Void> changePwd = userService.changePwd(session.getAttribute("session.user.id").toString(), old_pass,
 				new_pass);
@@ -151,18 +151,18 @@ public class UserController extends BaseController {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
-		ResultMap<Void> verifyToken = verifyToken(session, verify_token);
-		if (!verifyToken.isValid()) {
-			result.put("msg", verifyToken.getMsg());
-			return result;
-		}
-
-		ResultMap<Void> verifyImg = verifyImg(session, verify_imgCode);
-
-		if (!verifyImg.isValid()) {
-			result.put("msg", verifyImg.getMsg());
-			return result;
-		}
+		// ResultMap<Void> verifyToken = verifyToken(session, verify_token);
+		// if (!verifyToken.isValid()) {
+		// result.put("msg", verifyToken.getMsg());
+		// return result;
+		// }
+		//
+		// ResultMap<Void> verifyImg = verifyImg(session, verify_imgCode);
+		//
+		// if (!verifyImg.isValid()) {
+		// result.put("msg", verifyImg.getMsg());
+		// return result;
+		// }
 
 		// 设置主键
 		user.setId(session.getAttribute("session.user.id").toString());

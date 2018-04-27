@@ -12,18 +12,12 @@ import java.lang.annotation.Target;
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Token {
+public @interface FormToken {
 
 	/**
 	 * 
 	 * @return
 	 */
 	boolean save() default false;
-
-	/**
-	 * 
-	 * @return
-	 */
-	boolean remove() default false;
 
 }
