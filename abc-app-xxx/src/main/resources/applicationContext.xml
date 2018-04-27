@@ -91,13 +91,13 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="tokenInterceptor" class="net.abc.xxx.interceptor.FormTokenInterceptor" />
+	<bean id="formTokenInterceptor" class="net.abc.util.interceptor.FormTokenInterceptor" />
 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/static/**" />
-			<ref bean="tokenInterceptor" />
+			<ref bean="formTokenInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
