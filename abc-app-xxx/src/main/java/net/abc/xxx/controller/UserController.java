@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import net.abc.controller.BaseController;
 import net.abc.model.ResultMap;
+import net.abc.util.annotation.FormToken;
 import net.abc.util.encryptUtil.MD5;
+import net.abc.util.interceptor.FormTokenInterceptor;
 import net.abc.xxx.model.User;
 import net.abc.xxx.service.UserService;
 
@@ -69,6 +71,7 @@ public class UserController extends BaseController {
 	 * @param map
 	 * @return
 	 */
+	@FormToken(save = true)
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.GET)
 	public String loginUI(HttpSession session, Map<String, Object> map) {
 
@@ -77,7 +80,7 @@ public class UserController extends BaseController {
 		if (null != sub && sub.isAuthenticated())
 			return "redirect:/";
 
-		map.put("verify_token", genVerifyToken(session));
+		map.put("verify_token", session.getAttribute(FormTokenInterceptor.TOKEN));
 		return "user/login";
 	}
 
@@ -96,7 +99,7 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = { "/user/changePwd" }, method = RequestMethod.GET)
 	public String changePwdUI(HttpSession session, Map<String, Object> map) {
-		map.put("verify_token", genVerifyToken(session));
+		map.put("verify_token", session.getAttribute(FormTokenInterceptor.TOKEN));
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",04,0402,");
 		return "user/changePwd";
@@ -136,7 +139,7 @@ public class UserController extends BaseController {
 	 */
 	@RequestMapping(value = { "/user/profile" }, method = RequestMethod.GET)
 	public String profileUI(HttpSession session, Map<String, Object> map) {
-		map.put("verify_token", genVerifyToken(session));
+		map.put("verify_token", session.getAttribute(FormTokenInterceptor.TOKEN));
 		User user = userService.selectByKey(session.getAttribute("session.user.id").toString());
 		map.put("data_user", user);
 		map.put("session_user", session.getAttribute("session.user"));

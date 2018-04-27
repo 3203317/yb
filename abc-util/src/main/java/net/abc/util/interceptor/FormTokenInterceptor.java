@@ -15,6 +15,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import net.abc.util.StringUtil;
 import net.abc.util.annotation.FormToken;
+import net.abc.util.verifyCode.VerifyCodeUtil;
 
 /**
  *
@@ -27,15 +28,6 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 	private MessageSourceAccessor msa;
 
 	public static final String TOKEN = "__form_token";
-
-	/**
-	 * 生成4位数字
-	 *
-	 * @return
-	 */
-	private double genRandom() {
-		return (Math.random() * 5 + 1) * 1000;
-	}
 
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
@@ -55,12 +47,14 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 
 		if (needSave) {
 			HttpSession session = getSession(req);
-			session.setAttribute(TOKEN, genRandom());
+			session.setAttribute(TOKEN, VerifyCodeUtil.generateVerifyCode(4));
 			return true;
 		}
 
-		if (!isRepeatSubmit(req))
+		if (!isRepeatSubmit(req)) {
+			req.getSession(false).removeAttribute(TOKEN);
 			return true;
+		}
 
 		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
 

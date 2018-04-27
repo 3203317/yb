@@ -92,12 +92,18 @@
 	</bean>
 
 	<bean id="formTokenInterceptor" class="net.abc.util.interceptor.FormTokenInterceptor" />
+	<bean id="verifyCodeInterceptor" class="net.abc.util.interceptor.VerifyCodeInterceptor" />
 
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/static/**" />
 			<ref bean="formTokenInterceptor" />
+		</mvc:interceptor>
+		<mvc:interceptor>
+			<mvc:mapping path="/**" />
+			<mvc:exclude-mapping path="/static/**" />
+			<ref bean="verifyCodeInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
 
