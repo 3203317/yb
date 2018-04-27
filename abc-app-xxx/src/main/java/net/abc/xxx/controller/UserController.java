@@ -38,17 +38,11 @@ public class UserController extends BaseController {
 	@FormToken
 	@ResponseBody
 	@RequestMapping(value = { "/user/login" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> login(HttpSession session, @RequestParam(required = true) String verify_token,
-			@RequestParam(required = true) String user_name, @RequestParam(required = true) String user_pass) {
+	public Map<String, Object> login(HttpSession session, @RequestParam(required = true) String user_name,
+			@RequestParam(required = true) String user_pass) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
-
-		// ResultMap<Void> verifyToken = verifyToken(session, verify_token);
-		// if (!verifyToken.getSuccess()) {
-		// result.put("msg", verifyToken.getMsg());
-		// return result;
-		// }
 
 		UsernamePasswordToken token = new UsernamePasswordToken(user_name, MD5.encode(user_pass));
 

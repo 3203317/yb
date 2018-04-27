@@ -38,7 +38,7 @@
 												<div class="space-6"></div>
 
 												<form id='loginFrm' role='form' onsubmit='return false;'>
-													<input type="hidden" name='verify_token' value='${(verify_token)!}' />
+													<input type="hidden" name='__form_token' value='${(verify_token)!}' />
 													<fieldset>
 														<label>
 															<span class="block input-icon input-icon-right">
@@ -248,8 +248,8 @@
 						dataType : 'JSON',
 						data : $('#loginFrm').serializeObjectForm(),
 						success : function(data) {
-							if (data.success) return location.href = '${(conf_html_virtualPath)!}';
-							if (data.msg) alert(data.msg);
+							if (0 < data.code) return location.href = '${(conf_html_virtualPath)!}';
+							alert(data.msg);
 							location.href = '${(conf_html_virtualPath)!}user/login';
 						},
 						error : function() {
