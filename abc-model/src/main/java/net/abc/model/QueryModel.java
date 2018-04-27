@@ -5,7 +5,7 @@ package net.abc.model;
  * @author huangxin <3203317@qq.com>
  *
  */
-public class QueryModel {
+public final class QueryModel {
 
 	private Integer offset;
 	private Integer pageSize;

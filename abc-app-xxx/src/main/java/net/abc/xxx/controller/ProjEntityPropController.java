@@ -84,7 +84,7 @@ public class ProjEntityPropController extends BaseController {
 
 		ResultMap<ProjEntityProp> optR = projEntityPropService.saveNew(entity);
 
-		if (!optR.getSuccess()) {
+		if (!optR.isValid()) {
 			result.put("msg", optR.getMsg());
 			return result;
 		}
@@ -103,7 +103,7 @@ public class ProjEntityPropController extends BaseController {
 
 		ResultMap<Void> optR = projEntityPropService.remove(id, entity_id);
 
-		if (!optR.getSuccess()) {
+		if (!optR.isValid()) {
 			result.put("msg", optR.getMsg());
 			return result;
 		}

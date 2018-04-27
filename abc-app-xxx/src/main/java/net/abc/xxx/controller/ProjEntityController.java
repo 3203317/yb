@@ -324,16 +324,15 @@ public class ProjEntityController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-	public String addUI(@RequestParam(required = true) String proj_id,
-	  HttpSession session, Map<String, Object> map) {
-	 
-	  ProjEntity data_frm_5 = new ProjEntity();
-	  data_frm_5.setProj_id(proj_id);
-	 
-	  map.put("data_frm_5", data_frm_5);
-	 
-	  map.put("session_user", SecurityUtils.getSubject().getPrincipal());
-	  return "proj/entity/add";
+	public String addUI(@RequestParam(required = true) String proj_id, HttpSession session, Map<String, Object> map) {
+
+		ProjEntity data_frm_5 = new ProjEntity();
+		data_frm_5.setProj_id(proj_id);
+
+		map.put("data_frm_5", data_frm_5);
+
+		map.put("session_user", SecurityUtils.getSubject().getPrincipal());
+		return "proj/entity/add";
 	}
 
 	@ResponseBody

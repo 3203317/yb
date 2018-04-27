@@ -13,7 +13,6 @@ public class ResultMap<T> implements Serializable {
 	private static final long serialVersionUID = -6162240726324772880L;
 
 	private T data;
-	private Boolean success;
 	private String msg;
 	private String code;
 
@@ -23,14 +22,6 @@ public class ResultMap<T> implements Serializable {
 
 	public void setData(T data) {
 		this.data = data;
-	}
-
-	public Boolean getSuccess() {
-		return success;
-	}
-
-	public void setSuccess(Boolean success) {
-		this.success = success;
 	}
 
 	public String getMsg() {
@@ -47,6 +38,15 @@ public class ResultMap<T> implements Serializable {
 
 	public void setCode(String code) {
 		this.code = code;
+	}
+
+	/**
+	 * 检测数据有效性
+	 * 
+	 * @return
+	 */
+	public boolean isValid() {
+		return true;
 	}
 
 }

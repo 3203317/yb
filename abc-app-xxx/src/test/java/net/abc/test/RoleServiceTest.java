@@ -35,7 +35,7 @@ public class RoleServiceTest extends BasicTest {
 		entity.setStatus(RoleService.Status.START.value());
 
 		ResultMap<Role> map = roleService.saveNew(entity);
-		Assert.assertTrue(map.getMsg(), map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.isValid());
 	}
 
 	@Test
@@ -46,13 +46,13 @@ public class RoleServiceTest extends BasicTest {
 		entity.setStatus(RoleService.Status.STOP.value());
 
 		ResultMap<Void> map = roleService.editInfo(entity);
-		Assert.assertTrue(map.getMsg(), map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.isValid());
 	}
 
 	@Test
 	public void test_setStatus() {
 		ResultMap<Void> map = roleService.setStatus("ce2b91715e884800ad24bb5acba8cce2", RoleService.Status.STOP);
-		Assert.assertTrue(map.getMsg(), map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.isValid());
 	}
 
 }

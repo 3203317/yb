@@ -31,7 +31,7 @@ public class SysCfgServiceTest extends BasicTest {
 		entity.setComment("04");
 
 		ResultMap<Void> map = sysCfgService.editInfo(entity);
-		Assert.assertTrue(map.getMsg(), map.getSuccess());
+		Assert.assertTrue(map.getMsg(), map.isValid());
 	}
 
 }

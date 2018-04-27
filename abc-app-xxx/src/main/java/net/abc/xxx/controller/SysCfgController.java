@@ -48,7 +48,7 @@ public class SysCfgController extends BaseController {
 
 		ResultMap<Void> edit = sysCfgService.editInfo(sysCfg);
 
-		if (!edit.getSuccess()) {
+		if (!edit.isValid()) {
 			result.put("msg", edit.getMsg());
 			return result;
 		}

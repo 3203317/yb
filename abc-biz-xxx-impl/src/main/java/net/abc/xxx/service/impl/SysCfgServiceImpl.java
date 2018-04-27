@@ -39,7 +39,6 @@ public class SysCfgServiceImpl extends BaseService<SysCfg> implements SysCfgServ
 	public ResultMap<Void> editInfo(SysCfg entity) {
 		ResultMap<Void> map = new ResultMap<Void>();
 		updateNotNull(entity);
-		map.setSuccess(true);
 		return map;
 	}
 

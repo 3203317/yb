@@ -68,7 +68,6 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 
 		ResultMap<ProjEntityProp> map = new ResultMap<ProjEntityProp>();
 		map.setData(entity);
-		map.setSuccess(true);
 		return map;
 	}
 
@@ -79,7 +78,6 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 
 		ResultMap<ProjEntityProp> map = new ResultMap<ProjEntityProp>();
 		map.setData(entity);
-		map.setSuccess(true);
 		return map;
 	}
 
@@ -93,7 +91,6 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 		delete(entity);
 
 		ResultMap<Void> map = new ResultMap<Void>();
-		map.setSuccess(true);
 		return map;
 	}
 
@@ -118,7 +115,6 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 		projEntityPropMapper.deleteByEntityId(entity_id);
 
 		ResultMap<Void> map = new ResultMap<Void>();
-		map.setSuccess(true);
 		return map;
 	}
 

@@ -8,13 +8,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.abc.util.StringUtil;
-import net.abc.xxx.annotation.Token;
-
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
+
+import net.abc.util.StringUtil;
+import net.abc.xxx.annotation.Token;
 
 /**
  *
@@ -38,8 +38,7 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 	}
 
 	@Override
-	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
-			Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
 
 		if (!(handler instanceof HandlerMethod)) {
 			return super.preHandle(req, resp, handler);
@@ -72,12 +71,9 @@ public class TokenInterceptor extends HandlerInterceptorAdapter {
 		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
 
 		if (null == respBody) {
-			resp.sendRedirect("error?msg="
-					+ URLEncoder.encode(msa.getMessage("err_resubmit"), "utf-8"));
+			resp.sendRedirect("error?msg=" + URLEncoder.encode(msa.getMessage("err_resubmit"), "utf-8"));
 		} else {
-			resp.getWriter().write(
-					"{\"error\":-1,\"msg\":\"" + msa.getMessage("err_resubmit")
-							+ "\"}");
+			resp.getWriter().write("{\"error\":-1,\"msg\":\"" + msa.getMessage("err_resubmit") + "\"}");
 		}
 
 		return false;

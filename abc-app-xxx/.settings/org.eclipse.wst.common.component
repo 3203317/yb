@@ -4,7 +4,19 @@
         <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+        <dependent-module archiveName="abc-biz-xxx-impl-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz-xxx-impl/abc-biz-xxx-impl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="abc-biz-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz-xxx/abc-biz-xxx">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <dependent-module archiveName="abc-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util/abc-util">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="abc-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz/abc-biz">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="abc-model-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model-xxx/abc-model-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="abc-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model/abc-model">
