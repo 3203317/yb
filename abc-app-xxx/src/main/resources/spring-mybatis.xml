@@ -107,6 +107,11 @@
 		<property name="exposeSpringMacroHelpers" value="true" />
 	</bean>
 
+
+	<bean id="messageSourceAccessor" class="org.springframework.context.support.MessageSourceAccessor">
+		<constructor-arg ref="messageSource" />
+	</bean>
+
 	<!--国际化 -->
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="defaultEncoding" value="UTF-8" />

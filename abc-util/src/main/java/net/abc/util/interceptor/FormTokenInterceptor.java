@@ -3,10 +3,12 @@ package net.abc.util.interceptor;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
@@ -21,6 +23,9 @@ import net.abc.util.verifyCode.VerifyCodeUtil;
  *
  */
 public class FormTokenInterceptor extends HandlerInterceptorAdapter {
+
+	@Resource
+	private MessageSourceAccessor msa;
 
 	public static final String TOKEN = "__form_token";
 
@@ -54,9 +59,9 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
 
 		if (null == respBody) {
-			resp.sendRedirect("error?code=-1&msg=" + URLEncoder.encode("", "utf-8"));
+			resp.sendRedirect("error?code=-1&msg=" + URLEncoder.encode(msa.getMessage("err_form_resubmit"), "utf-8"));
 		} else {
-			resp.getWriter().write("{\"code\":-1,\"msg\":\"" + "" + "\"}");
+			resp.getWriter().write("{\"code\":-1,\"msg\":\"" + msa.getMessage("err_form_resubmit") + "\"}");
 		}
 
 		return false;
