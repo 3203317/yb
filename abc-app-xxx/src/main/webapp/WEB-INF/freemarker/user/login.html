@@ -248,7 +248,7 @@
 						dataType : 'JSON',
 						data : $('#loginFrm').serializeObjectForm(),
 						success : function(data) {
-							if (0 < data.code) return location.href = '${(conf_html_virtualPath)!}';
+							if(data.success) return location.href = '${(conf_html_virtualPath)!}';
 							alert(data.msg);
 							location.href = '${(conf_html_virtualPath)!}user/login';
 						},

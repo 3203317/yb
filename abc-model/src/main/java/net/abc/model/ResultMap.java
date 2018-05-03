@@ -3,7 +3,7 @@ package net.abc.model;
 import java.io.Serializable;
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  * @param <T>
@@ -15,6 +15,15 @@ public class ResultMap<T> implements Serializable {
 	private T data;
 	private String msg;
 	private String code;
+	private Boolean success;
+
+	public Boolean getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(Boolean success) {
+		this.success = success;
+	}
 
 	public T getData() {
 		return data;
@@ -42,7 +51,7 @@ public class ResultMap<T> implements Serializable {
 
 	/**
 	 * 检测数据有效性
-	 * 
+	 *
 	 * @return
 	 */
 	public boolean isValid() {
