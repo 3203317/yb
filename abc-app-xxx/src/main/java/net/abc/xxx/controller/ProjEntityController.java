@@ -13,13 +13,6 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.apache.shiro.SecurityUtils;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import net.abc.controller.BaseController;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
@@ -29,8 +22,15 @@ import net.abc.xxx.service.ProjEntityService;
 import net.abc.xxx.service.ProjService;
 import net.abc.xxx.util.TempUtil;
 
+import org.apache.shiro.SecurityUtils;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -48,14 +48,15 @@ public class ProjEntityController extends BaseController {
 	private ProjEntityPropService projEntityPropService;
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param id
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String indexUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
+	public String indexUI(HttpSession session,
+			@RequestParam(required = true) String id, Map<String, Object> map) {
 
 		Object user = SecurityUtils.getSubject().getPrincipal();
 
@@ -64,7 +65,8 @@ public class ProjEntityController extends BaseController {
 		ProjEntity pe = new ProjEntity();
 		pe.setProj_id(id);
 
-		List<ProjEntity> list = projEntityService.findByProjEntity(pe, 1, Integer.MAX_VALUE);
+		List<ProjEntity> list = projEntityService.findByProjEntity(pe, 1,
+				Integer.MAX_VALUE);
 		map.put("data_list_pe", list);
 
 		map.put("data_proj_id", id);
@@ -156,7 +158,7 @@ public class ProjEntityController extends BaseController {
 	// }
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param id
 	 * @return
@@ -164,7 +166,8 @@ public class ProjEntityController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = { "/create" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> create(HttpSession session, @RequestParam(required = true) String id) throws Exception {
+	public Map<String, Object> create(HttpSession session,
+			@RequestParam(required = true) String id) throws Exception {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
@@ -174,7 +177,8 @@ public class ProjEntityController extends BaseController {
 		ProjEntityProp pep = new ProjEntityProp();
 		pep.setEntity_id(id);
 
-		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(
+				pep, 1, Integer.MAX_VALUE);
 
 		// pe.setDb_name("_" + pe.getId());
 
@@ -182,14 +186,15 @@ public class ProjEntityController extends BaseController {
 
 		Proj p = projService.getById(pe.getProj_id());
 
-		TempUtil.createSQLTable(sql, p.getDriverClass(), p.getUrl(), p.getUser(), p.getPassword());
+		TempUtil.createSQLTable(sql, p.getDriverClass(), p.getUrl(),
+				p.getUser(), p.getPassword());
 
 		result.put("success", true);
 		return result;
 	}
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param id
 	 * @return
@@ -197,7 +202,8 @@ public class ProjEntityController extends BaseController {
 	 */
 	@ResponseBody
 	@RequestMapping(value = { "/gen" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> gen(HttpSession session, @RequestParam(required = true) String id) throws Exception {
+	public Map<String, Object> gen(HttpSession session,
+			@RequestParam(required = true) String id) throws Exception {
 
 		projEntityPropService.remove(id);
 
@@ -210,7 +216,8 @@ public class ProjEntityController extends BaseController {
 
 		Class.forName(p.getDriverClass());
 
-		Connection conn = DriverManager.getConnection(p.getUrl(), p.getUser(), p.getPassword());
+		Connection conn = DriverManager.getConnection(p.getUrl(), p.getUser(),
+				p.getPassword());
 		Statement stat = conn.createStatement();
 		stat = conn.createStatement();
 
@@ -224,7 +231,7 @@ public class ProjEntityController extends BaseController {
 			pep.setId(data.getColumnLabel(i));
 			pep.setEntity_id(id);
 			pep.setProp_type(comp(data.getColumnTypeName(i)));
-			pep.setIs_null(0);
+			pep.setAllow_null(0);
 			pep.setIs_transient(0);
 			pep.setIs_pk(0);
 			pep.setLen_max(0);
@@ -258,8 +265,8 @@ public class ProjEntityController extends BaseController {
 		stat = conn.createStatement();
 
 		// 查询数据
-		ResultSet rs = stat.executeQuery(
-				"SELECT '' role_desc, a.*, b.create_time, b.user_name, c.role_name FROM _4 a LEFT JOIN _1 b ON (a.user_id=b.id) LEFT JOIN _2 c ON (a.role_id=c.id) WHERE b.id IS NOT NULL AND c.id IS NOT NULL ORDER BY b.create_time");
+		ResultSet rs = stat
+				.executeQuery("SELECT '' role_desc, a.*, b.create_time, b.user_name, c.role_name FROM _4 a LEFT JOIN _1 b ON (a.user_id=b.id) LEFT JOIN _2 c ON (a.role_id=c.id) WHERE b.id IS NOT NULL AND c.id IS NOT NULL ORDER BY b.create_time");
 		while (rs.next()) {
 			System.err.println(rs.getInt("id") + " " + rs.getString("name"));
 		}
@@ -304,7 +311,8 @@ public class ProjEntityController extends BaseController {
 			System.out.println("获得列" + i + "的数据类型名: " + columnTypeName);
 			System.out.println("获得列" + i + "所在的Catalog名字: " + catalogName);
 			System.out.println("获得列" + i + "对应数据类型的类: " + columnClassName);
-			System.out.println("获得列" + i + "在数据库中类型的最大字符个数: " + columnDisplaySize);
+			System.out.println("获得列" + i + "在数据库中类型的最大字符个数: "
+					+ columnDisplaySize);
 			System.out.println("获得列" + i + "的默认的列的标题: " + columnLabel);
 			System.out.println("获得列" + i + "的模式: " + schemaName);
 			System.out.println("获得列" + i + "类型的精确度(类型的长度): " + precision);
@@ -324,7 +332,8 @@ public class ProjEntityController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-	public String addUI(@RequestParam(required = true) String proj_id, HttpSession session, Map<String, Object> map) {
+	public String addUI(@RequestParam(required = true) String proj_id,
+			HttpSession session, Map<String, Object> map) {
 
 		ProjEntity data_frm_5 = new ProjEntity();
 		data_frm_5.setProj_id(proj_id);
@@ -349,14 +358,15 @@ public class ProjEntityController extends BaseController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param id
 	 * @param map
 	 * @return
 	 */
 	@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
-	public String editUI(HttpSession session, @RequestParam(required = true) String id, Map<String, Object> map) {
+	public String editUI(HttpSession session,
+			@RequestParam(required = true) String id, Map<String, Object> map) {
 
 		ProjEntity pe = new ProjEntity();
 		pe.setId(id);

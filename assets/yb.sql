@@ -1,16 +1,16 @@
 /*
 Navicat MySQL Data Transfer
 
-Source Server         : 127.0.0.1
-Source Server Version : 50623
-Source Host           : 127.0.0.1:12306
+Source Server         : 127.0.0.1_win7
+Source Server Version : 50617
+Source Host           : 127.0.0.1:3306
 Source Database       : yb
 
 Target Server Type    : MYSQL
-Target Server Version : 50623
+Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2018-01-10 12:30:16
+Date: 2018-05-03 19:49:24
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -68,14 +68,15 @@ CREATE TABLE `gen_proj` (
   `proj_desc` varchar(256) DEFAULT NULL COMMENT '项目描述',
   `proj_name` varchar(32) DEFAULT NULL COMMENT '项目名称',
   `id` varchar(32) NOT NULL DEFAULT '',
+  `proj_name_en` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- ----------------------------
 -- Records of gen_proj
 -- ----------------------------
-INSERT INTO `gen_proj` VALUES ('password', 'root', 'jdbc:mysql://127.0.0.1:12306/yb_1?useUnicode=true&characterEncoding=utf-8', 'com.mysql.jdbc.Driver', 'net.abc', '2017-06-06 10:29:31', '测试系统', '测试系统', '1');
-INSERT INTO `gen_proj` VALUES ('password', 'root', 'jdbc:mysql://127.0.0.1:12306/yb_2?useUnicode=true&characterEncoding=utf-8', 'com.mysql.jdbc.Driver', 'net.abc.xxx', '2017-06-06 10:29:44', '系统原型', '系统原型', '2');
+INSERT INTO `gen_proj` VALUES ('password', 'root', 'jdbc:mysql://127.0.0.1:12306/yb_1?useUnicode=true&characterEncoding=utf-8', 'com.mysql.jdbc.Driver', 'net.abc', '2017-06-06 10:29:31', '测试系统', '测试系统', '1', null);
+INSERT INTO `gen_proj` VALUES ('password', 'root', 'jdbc:mysql://127.0.0.1:12306/yb_2?useUnicode=true&characterEncoding=utf-8', 'com.mysql.jdbc.Driver', 'net.abc.xxx', '2017-06-06 10:29:44', '系统原型', '系统原型', '2', null);
 
 -- ----------------------------
 -- Table structure for `gen_proj_entity`
@@ -119,7 +120,7 @@ CREATE TABLE `gen_proj_entity_prop` (
   `is_pk` int(1) DEFAULT NULL COMMENT '主键',
   `is_transient` int(1) DEFAULT NULL COMMENT '排除',
   `regex` varchar(256) DEFAULT NULL COMMENT '正则',
-  `is_null` int(1) DEFAULT NULL COMMENT '允许空',
+  `allow_null` int(1) DEFAULT NULL COMMENT '允许空',
   `valid_msg` varchar(256) DEFAULT NULL COMMENT '验证消息',
   `def_val` varchar(256) DEFAULT NULL COMMENT '默认值',
   `len_max` int(11) DEFAULT NULL COMMENT '最大',
@@ -345,7 +346,8 @@ CREATE TABLE `s_cfg` (
 -- ----------------------------
 -- Records of s_cfg
 -- ----------------------------
-INSERT INTO `s_cfg` VALUES ('1', '123', 'XX描述', '2017-06-06 10:29:31', '共和国建国和监管环境');
+INSERT INTO `s_cfg` VALUES ('1', 'value_', '参数1', '2017-06-06 10:29:31', '描述1');
+INSERT INTO `s_cfg` VALUES ('2', '456', '参数2', '2018-04-30 09:30:57', '描述2');
 
 -- ----------------------------
 -- Table structure for `s_group`
@@ -391,6 +393,7 @@ INSERT INTO `s_role` VALUES ('2', 'guest', '游客', '2017-06-06 10:29:44', '0')
 DROP TABLE IF EXISTS `s_user`;
 CREATE TABLE `s_user` (
   `id` varchar(32) NOT NULL DEFAULT '',
+  `pid` varchar(255) DEFAULT NULL,
   `user_name` varchar(64) DEFAULT NULL,
   `user_pass` varchar(64) DEFAULT NULL,
   `sex` int(2) DEFAULT NULL,
@@ -401,8 +404,6 @@ CREATE TABLE `s_user` (
   `email` varchar(255) DEFAULT NULL,
   `create_time` datetime DEFAULT NULL,
   `status` int(2) DEFAULT NULL,
-  `device_code` varchar(255) DEFAULT NULL,
-  `pid` varchar(255) DEFAULT NULL,
   `real_name` varchar(255) DEFAULT NULL,
   `alipay_account` varchar(255) DEFAULT NULL,
   `wx_account` varchar(255) DEFAULT NULL,
@@ -412,9 +413,9 @@ CREATE TABLE `s_user` (
 -- ----------------------------
 -- Records of s_user
 -- ----------------------------
-INSERT INTO `s_user` VALUES ('1', 'hx', 'e10adc3949ba59abbe56e057f20f883e', '1', '123', '1231', '23123', '就不告诉你', '2017-06-07 15:58:16', '2017-06-07 15:58:16', '1', null, null, '阿德斯', null, null);
-INSERT INTO `s_user` VALUES ('2', 'wy', '2017-06-06 10:29:44', '0', null, null, null, null, null, null, '1', null, null, null, null, null);
-INSERT INTO `s_user` VALUES ('22c14bc40b464618a7b1b4631e1e4b44', 'hxi', 'e10adc3949ba59abbe56e057f20f883e', null, null, null, null, null, null, '2017-06-07 15:58:16', '1', null, null, null, null, null);
+INSERT INTO `s_user` VALUES ('1', null, 'hx', 'e10adc3949ba59abbe56e057f20f883e', '1', '123', '1231', '23123', '就不告诉你', '2017-06-07 15:58:16', '2017-06-07 15:58:16', '1', '阿德斯', null, null);
+INSERT INTO `s_user` VALUES ('2', null, 'wy', '2017-06-06 10:29:44', '0', null, null, null, null, null, null, '1', null, null, null);
+INSERT INTO `s_user` VALUES ('22c14bc40b464618a7b1b4631e1e4b44', null, 'hxi', 'e10adc3949ba59abbe56e057f20f883e', null, null, null, null, null, null, '2017-06-07 15:58:16', '1', null, null, null);
 
 -- ----------------------------
 -- Table structure for `s_user_friends`
