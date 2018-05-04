@@ -1,7 +1,7 @@
 package net.abc.model;
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -11,7 +11,13 @@ public final class QueryModel {
 	private Integer pageSize;
 
 	public Integer getOffset() {
-		return null == offset ? 0 : offset;
+		if (null == offset)
+			return 0;
+
+		if (0 > offset)
+			return 0;
+
+		return offset;
 	}
 
 	public void setOffset(Integer offset) {
@@ -19,7 +25,13 @@ public final class QueryModel {
 	}
 
 	public Integer getPageSize() {
-		return null == pageSize ? Integer.MAX_VALUE : pageSize;
+		if (null == pageSize)
+			return Integer.MAX_VALUE;
+
+		if (1 > pageSize)
+			return Integer.MAX_VALUE;
+
+		return pageSize;
 	}
 
 	public void setPageSize(Integer pageSize) {
