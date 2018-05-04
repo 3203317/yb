@@ -56,11 +56,6 @@
 		<!-- Mybatis Generator -->
 		<!--分页插件 -->
 		<!--通用Mapper -->
-		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper</artifactId>
-			<version>${mapper.version}</version>
-		</dependency>
 		<!-- velocity -->
 		<!-- <dependency> <groupId>org.apache.velocity</groupId> <artifactId>velocity</artifactId> 
 			<version>1.7</version> </dependency> -->
@@ -73,17 +68,6 @@
 		</dependency>
 	</dependencies>
 
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.springframework</groupId>
-				<artifactId>spring-framework-bom</artifactId>
-				<version>${spring.version}</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 
 	<repositories>
 		<repository>
