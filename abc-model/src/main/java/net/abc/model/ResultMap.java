@@ -17,14 +17,6 @@ public class ResultMap<T> implements Serializable {
 	private String code;
 	private Boolean success;
 
-	public Boolean getSuccess() {
-		return success;
-	}
-
-	public void setSuccess(Boolean success) {
-		this.success = success;
-	}
-
 	public T getData() {
 		return data;
 	}
@@ -49,13 +41,12 @@ public class ResultMap<T> implements Serializable {
 		this.code = code;
 	}
 
-	/**
-	 * 检测数据有效性
-	 *
-	 * @return
-	 */
-	public boolean isValid() {
-		return true;
+	public Boolean getSuccess() {
+		return success;
+	}
+
+	public void setSuccess(Boolean success) {
+		this.success = success;
 	}
 
 }

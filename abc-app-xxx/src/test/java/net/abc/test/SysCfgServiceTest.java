@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import net.abc.model.ResultMap;
 import net.abc.xxx.model.SysCfg;
 import net.abc.xxx.service.SysCfgService;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class SysCfgServiceTest extends BasicTest {
 
@@ -18,7 +18,8 @@ public class SysCfgServiceTest extends BasicTest {
 
 	@Test
 	public void test_findBySysCfg() {
-		List<SysCfg> list = sysCfgService.findBySysCfg(null, 1, Integer.MAX_VALUE);
+		List<SysCfg> list = sysCfgService.findBySysCfg(null, 1,
+				Integer.MAX_VALUE);
 		System.out.println("-----" + list.size());
 	}
 
@@ -31,7 +32,7 @@ public class SysCfgServiceTest extends BasicTest {
 		entity.setComment("04");
 
 		ResultMap<Void> map = sysCfgService.editInfo(entity);
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 }

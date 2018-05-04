@@ -5,13 +5,13 @@ import java.util.List;
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
 
-import org.junit.Assert;
-import org.junit.Test;
-import org.springframework.test.annotation.Rollback;
-
 import net.abc.model.ResultMap;
 import net.abc.xxx.model.Role;
 import net.abc.xxx.service.RoleService;
+
+import org.junit.Assert;
+import org.junit.Test;
+import org.springframework.test.annotation.Rollback;
 
 public class RoleServiceTest extends BasicTest {
 
@@ -35,7 +35,7 @@ public class RoleServiceTest extends BasicTest {
 		entity.setStatus(RoleService.Status.START.value());
 
 		ResultMap<Role> map = roleService.saveNew(entity);
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
@@ -46,13 +46,14 @@ public class RoleServiceTest extends BasicTest {
 		entity.setStatus(RoleService.Status.STOP.value());
 
 		ResultMap<Void> map = roleService.editInfo(entity);
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
 	public void test_setStatus() {
-		ResultMap<Void> map = roleService.setStatus("ce2b91715e884800ad24bb5acba8cce2", RoleService.Status.STOP);
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		ResultMap<Void> map = roleService.setStatus(
+				"ce2b91715e884800ad24bb5acba8cce2", RoleService.Status.STOP);
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 }

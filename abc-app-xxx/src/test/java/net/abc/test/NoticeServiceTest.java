@@ -36,7 +36,7 @@ public class NoticeServiceTest extends BasicTest {
 		entity.setCreate_user_id("user_id");
 
 		ResultMap<Notice> map = noticeService.saveNew(entity);
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
@@ -48,14 +48,14 @@ public class NoticeServiceTest extends BasicTest {
 		entity.setCreate_user_id("3");
 
 		ResultMap<Void> map = noticeService.editInfo(entity);
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
 	public void test_remove() {
 		ResultMap<Void> map = noticeService
 				.remove("289490d1bde64aaaa58c64bed93ba5cb");
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test

@@ -7,19 +7,19 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
+import net.abc.controller.BaseController;
+import net.abc.model.ResultMap;
+import net.abc.xxx.model.ProjEntityProp;
+import net.abc.xxx.service.ProjEntityPropService;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import net.abc.controller.BaseController;
-import net.abc.model.ResultMap;
-import net.abc.xxx.model.ProjEntityProp;
-import net.abc.xxx.service.ProjEntityPropService;
-
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -31,7 +31,7 @@ public class ProjEntityPropController extends BaseController {
 	private ProjEntityPropService projEntityPropService;
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param proj_id
 	 * @param entity_id
@@ -39,14 +39,17 @@ public class ProjEntityPropController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/" }, method = RequestMethod.GET)
-	public String indexUI(HttpSession session, @RequestParam(required = true) String proj_id,
-			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
+	public String indexUI(HttpSession session,
+			@RequestParam(required = true) String proj_id,
+			@RequestParam(required = true) String entity_id,
+			Map<String, Object> map) {
 
 		ProjEntityProp pep = new ProjEntityProp();
 		pep.setEntity_id(entity_id);
 		pep.setProj_id(proj_id);
 
-		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(pep, 1, Integer.MAX_VALUE);
+		List<ProjEntityProp> list = projEntityPropService.findByProjEntityProp(
+				pep, 1, Integer.MAX_VALUE);
 		map.put("data_list_pep", list);
 
 		map.put("data_pep", pep);
@@ -55,7 +58,7 @@ public class ProjEntityPropController extends BaseController {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param session
 	 * @param proj_id
 	 * @param entity_id
@@ -63,8 +66,10 @@ public class ProjEntityPropController extends BaseController {
 	 * @return
 	 */
 	@RequestMapping(value = { "/add" }, method = RequestMethod.GET)
-	public String addUI(HttpSession session, @RequestParam(required = true) String proj_id,
-			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
+	public String addUI(HttpSession session,
+			@RequestParam(required = true) String proj_id,
+			@RequestParam(required = true) String entity_id,
+			Map<String, Object> map) {
 
 		ProjEntityProp pep = new ProjEntityProp();
 		pep.setEntity_id(entity_id);
@@ -84,7 +89,7 @@ public class ProjEntityPropController extends BaseController {
 
 		ResultMap<ProjEntityProp> optR = projEntityPropService.saveNew(entity);
 
-		if (!optR.isValid()) {
+		if (!optR.getSuccess()) {
 			result.put("msg", optR.getMsg());
 			return result;
 		}
@@ -95,7 +100,8 @@ public class ProjEntityPropController extends BaseController {
 
 	@ResponseBody
 	@RequestMapping(value = { "/del" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> del(HttpSession session, @RequestParam(required = true) String id,
+	public Map<String, Object> del(HttpSession session,
+			@RequestParam(required = true) String id,
 			@RequestParam(required = true) String entity_id) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
@@ -103,7 +109,7 @@ public class ProjEntityPropController extends BaseController {
 
 		ResultMap<Void> optR = projEntityPropService.remove(id, entity_id);
 
-		if (!optR.isValid()) {
+		if (!optR.getSuccess()) {
 			result.put("msg", optR.getMsg());
 			return result;
 		}
@@ -113,8 +119,10 @@ public class ProjEntityPropController extends BaseController {
 	}
 
 	@RequestMapping(value = { "/edit" }, method = RequestMethod.GET)
-	public String editUI(HttpSession session, @RequestParam(required = true) String id,
-			@RequestParam(required = true) String entity_id, Map<String, Object> map) {
+	public String editUI(HttpSession session,
+			@RequestParam(required = true) String id,
+			@RequestParam(required = true) String entity_id,
+			Map<String, Object> map) {
 
 		map.put("session_user", session.getAttribute("session.user"));
 		map.put("nav_choose", ",05,0502,");

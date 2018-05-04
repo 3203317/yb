@@ -7,18 +7,18 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-
 import net.abc.controller.BaseController;
 import net.abc.model.ResultMap;
 import net.abc.xxx.model.SysCfg;
 import net.abc.xxx.service.SysCfgService;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
@@ -31,7 +31,8 @@ public class SysCfgController extends BaseController {
 	@RequestMapping(value = { "/settings/" }, method = RequestMethod.GET)
 	public String indexUI(HttpSession session, Map<String, Object> map) {
 
-		List<SysCfg> list = sysCfgService.findBySysCfg(null, 1, Integer.MAX_VALUE);
+		List<SysCfg> list = sysCfgService.findBySysCfg(null, 1,
+				Integer.MAX_VALUE);
 		map.put("data_list", list);
 
 		map.put("session_user", session.getAttribute("session.user"));
@@ -48,7 +49,7 @@ public class SysCfgController extends BaseController {
 
 		ResultMap<Void> edit = sysCfgService.editInfo(sysCfg);
 
-		if (!edit.isValid()) {
+		if (!edit.getSuccess()) {
 			result.put("msg", edit.getMsg());
 			return result;
 		}

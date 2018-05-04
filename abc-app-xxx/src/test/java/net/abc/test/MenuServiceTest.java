@@ -4,12 +4,12 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.junit.Assert;
-import org.junit.Test;
-
 import net.abc.model.ResultMap;
 import net.abc.xxx.model.Menu;
 import net.abc.xxx.service.MenuService;
+
+import org.junit.Assert;
+import org.junit.Test;
 
 public class MenuServiceTest extends BasicTest {
 
@@ -41,7 +41,7 @@ public class MenuServiceTest extends BasicTest {
 
 		ResultMap<Menu> map = menuService.saveNew(menu);
 
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
@@ -57,13 +57,13 @@ public class MenuServiceTest extends BasicTest {
 
 		ResultMap<Void> map = menuService.editInfo(menu);
 
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 	@Test
 	public void test_remove() {
 		ResultMap<Void> map = menuService.remove("id");
-		Assert.assertTrue(map.getMsg(), map.isValid());
+		Assert.assertTrue(map.getMsg(), map.getSuccess());
 	}
 
 }
