@@ -6,22 +6,22 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
+import net.abc.util.FileUtil;
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 import freemarker.template.TemplateNotFoundException;
-import net.abc.util.FileUtil;
 
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
 public final class Processor {
 
 	/**
-	 * 
+	 *
 	 * @param templet_name
 	 * @param model
 	 * @return
@@ -31,7 +31,8 @@ public final class Processor {
 	 * @throws TemplateException
 	 */
 	public static String getResult(String templet_name, Map<?, ?> model)
-			throws MalformedTemplateNameException, ParseException, IOException, TemplateException {
+			throws MalformedTemplateNameException, ParseException, IOException,
+			TemplateException {
 
 		Template template = TemplateUtil.getDefault().getTemplate(templet_name);
 
@@ -60,8 +61,9 @@ public final class Processor {
 
 	}
 
-	public static void main(String[] args) throws TemplateNotFoundException, MalformedTemplateNameException,
-			ParseException, IOException, TemplateException {
+	public static void main(String[] args) throws TemplateNotFoundException,
+			MalformedTemplateNameException, ParseException, IOException,
+			TemplateException {
 
 		String file = FileUtil.read("e:/demo.html");
 
