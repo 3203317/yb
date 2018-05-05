@@ -14,6 +14,6 @@
             <dependency-type>consumes</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/foundation-cppt/src/main/webapp/WEB-INF/classes"/>
-        <property name="context-root" value="abc-biz"/>
+        <property name="context-root" value="foreworld-biz"/>
     </wb-module>
 </project-modules>

@@ -10,9 +10,6 @@
         <dependent-module archiveName="abc-biz-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz-xxx/abc-biz-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="abc-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz/abc-biz">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="abc-model-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model-xxx/abc-model-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
