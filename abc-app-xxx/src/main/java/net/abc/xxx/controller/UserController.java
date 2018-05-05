@@ -7,11 +7,11 @@ import java.util.Map;
 import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
-import net.abc.controller.BaseController;
 import net.abc.util.annotation.FormToken;
 import net.abc.util.interceptor.FormTokenInterceptor;
 import net.abc.xxx.model.User;
 import net.abc.xxx.service.UserService;
+import net.foreworld.controller.BaseController;
 import net.foreworld.model.ResultMap;
 import net.foreworld.util.encryptUtil.MD5;
 

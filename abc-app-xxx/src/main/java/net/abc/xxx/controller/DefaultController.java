@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import net.abc.controller.BaseController;
+import net.foreworld.controller.BaseController;
 
 /**
  *
