@@ -5,17 +5,17 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-import org.apache.commons.lang.CharEncoding;
-
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
 public final class FileUtil {
 
+	private static final String CHARSET = "UTF-8";
+
 	/**
-	 * 
+	 *
 	 * @param filePath
 	 * @return
 	 */
@@ -30,7 +30,7 @@ public final class FileUtil {
 			StringBuilder content = new StringBuilder();
 
 			while (-1 != (len = is.read(bytes))) {
-				content.append(new String(bytes, 0, len, CharEncoding.UTF_8));
+				content.append(new String(bytes, 0, len, CHARSET));
 			}
 
 			return content.toString();
@@ -51,6 +51,7 @@ public final class FileUtil {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(read("/home/huangxin/my/git/3203317/yb/abc-util/src/main/java/net/abc/util/FileUtil.java"));
+		System.out
+				.println(read("/home/huangxin/my/git/3203317/yb/abc-util/src/main/java/net/abc/util/FileUtil.java"));
 	}
 }

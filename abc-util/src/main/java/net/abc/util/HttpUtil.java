@@ -8,10 +8,6 @@ import java.util.Map;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
 
 /**
  *
@@ -140,14 +136,15 @@ public class HttpUtil {
 				url.lastIndexOf(".") + 1, url.length());
 	}
 
-	public static HttpSession getSession() {
-		HttpSession session = getRequest().getSession();
-		return session;
-	}
-
-	public static HttpServletRequest getRequest() {
-		ServletRequestAttributes attrs = (ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes();
-		return attrs.getRequest();
-	}
+	// public static HttpSession getSession() {
+	// HttpSession session = getRequest().getSession();
+	// return session;
+	// }
+	//
+	// public static HttpServletRequest getRequest() {
+	// ServletRequestAttributes attrs = (ServletRequestAttributes)
+	// RequestContextHolder
+	// .getRequestAttributes();
+	// return attrs.getRequest();
+	// }
 }
