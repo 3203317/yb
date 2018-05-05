@@ -1,4 +1,4 @@
-package net.abc.util.verifyCode;
+package net.foreworld.util.verifyCode;
 
 import java.awt.Color;
 import java.awt.Font;

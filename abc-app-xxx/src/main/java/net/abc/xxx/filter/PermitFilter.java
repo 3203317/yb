@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
-import net.abc.util.HttpUtil;
+import net.foreworld.util.HttpUtil;
 
 /**
  * 

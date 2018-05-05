@@ -1,4 +1,4 @@
-package net.abc.util;
+package net.foreworld.util;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

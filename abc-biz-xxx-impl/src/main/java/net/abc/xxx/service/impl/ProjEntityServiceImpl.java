@@ -9,9 +9,9 @@ import com.github.pagehelper.PageHelper;
 
 import net.abc.model.ResultMap;
 import net.abc.service.impl.BaseService;
-import net.abc.util.StringUtil;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.service.ProjEntityService;
+import net.foreworld.util.StringUtil;
 import tk.mybatis.mapper.entity.Example;
 
 /**

@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.TemplateNotFoundException;
-import net.abc.util.FileUtil;
 import net.abc.util.freemarker.TemplateUtil;
+import net.foreworld.util.FileUtil;
 
 /**
  * 

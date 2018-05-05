@@ -6,7 +6,7 @@ import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
 
-import net.abc.util.FileUtil;
+import net.foreworld.util.FileUtil;
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.Template;

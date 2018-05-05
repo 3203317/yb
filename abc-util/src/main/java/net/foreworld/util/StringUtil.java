@@ -1,4 +1,4 @@
-package net.abc.util;
+package net.foreworld.util;
 
 /**
  * 

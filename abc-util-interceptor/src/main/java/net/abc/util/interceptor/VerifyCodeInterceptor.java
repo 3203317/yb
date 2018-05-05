@@ -6,8 +6,8 @@ import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.abc.util.StringUtil;
 import net.abc.util.annotation.VerifyCode;
+import net.foreworld.util.StringUtil;
 
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
