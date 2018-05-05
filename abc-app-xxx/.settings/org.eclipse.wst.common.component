@@ -13,7 +13,7 @@
         <dependent-module archiveName="abc-model-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model-xxx/abc-model-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="foreworld-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model/abc-model">
+        <dependent-module archiveName="foreworld-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-model/foreworld-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="foreworld-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz/abc-biz">
