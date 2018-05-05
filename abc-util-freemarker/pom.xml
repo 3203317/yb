@@ -69,8 +69,8 @@
 		<!-- spring quartz -->
 
 		<dependency>
-			<groupId>net.abc</groupId>
-			<artifactId>abc-util</artifactId>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 	</dependencies>

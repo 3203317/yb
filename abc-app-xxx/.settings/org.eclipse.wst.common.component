@@ -25,7 +25,7 @@
         <dependent-module archiveName="abc-util-freemarker-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-freemarker/abc-util-freemarker">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="abc-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util/abc-util">
+        <dependent-module archiveName="foreworld-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util/abc-util">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="abc-util-interceptor-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-interceptor/abc-util-interceptor">
