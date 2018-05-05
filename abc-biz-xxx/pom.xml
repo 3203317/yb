@@ -268,17 +268,17 @@
 
 		<dependency>
 			<groupId>net.abc</groupId>
-			<artifactId>abc-biz</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-		<dependency>
-			<groupId>net.abc</groupId>
 			<artifactId>abc-model-xxx</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 		<dependency>
 			<groupId>net.foreworld</groupId>
 			<artifactId>foreworld-util</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-biz</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 	</dependencies>

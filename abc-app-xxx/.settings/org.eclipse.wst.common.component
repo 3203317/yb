@@ -10,25 +10,25 @@
         <dependent-module archiveName="abc-biz-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz-xxx/abc-biz-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="abc-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz/abc-biz">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="abc-model-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model-xxx/abc-model-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="abc-app-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-app/abc-app">
+        <dependent-module archiveName="foreworld-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz/abc-biz">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="foreworld-app-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-app/abc-app">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="abc-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model/abc-model">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="abc-util-freemarker-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-freemarker/abc-util-freemarker">
+        <dependent-module archiveName="foreworld-util-freemarker-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-freemarker/abc-util-freemarker">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="foreworld-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util/abc-util">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="abc-util-interceptor-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-interceptor/abc-util-interceptor">
+        <dependent-module archiveName="foreworld-util-interceptor-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-interceptor/abc-util-interceptor">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <property name="java-output-path" value="/foundation-cppt/src/main/webapp/WEB-INF/classes"/>

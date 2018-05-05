@@ -320,23 +320,23 @@
 			<version>1.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>net.abc</groupId>
-			<artifactId>abc-app</artifactId>
-			<version>1.0.1</version>
-		</dependency>
-		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 			<version>${spring.boot}</version>
 		</dependency>
 		<dependency>
-			<groupId>net.abc</groupId>
-			<artifactId>abc-util-freemarker</artifactId>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-app</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 		<dependency>
-			<groupId>net.abc</groupId>
-			<artifactId>abc-util-interceptor</artifactId>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util-freemarker</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util-interceptor</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 	</dependencies>

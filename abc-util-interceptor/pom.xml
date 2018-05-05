@@ -2,8 +2,8 @@
 	xmlns="http://maven.apache.org/POM/4.0.0"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>net.abc</groupId>
-	<artifactId>abc-util-interceptor</artifactId>
+	<groupId>net.foreworld</groupId>
+	<artifactId>foreworld-util-interceptor</artifactId>
 	<version>1.0.1</version>
 	<name>abc :: util</name>
 	<url>http://www.abc.net/</url>
