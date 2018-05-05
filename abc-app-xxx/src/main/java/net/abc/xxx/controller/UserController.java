@@ -13,7 +13,7 @@ import net.abc.xxx.model.User;
 import net.abc.xxx.service.UserService;
 import net.foreworld.controller.BaseController;
 import net.foreworld.model.ResultMap;
-import net.foreworld.util.encryptUtil.MD5;
+import net.foreworld.util.encrypt.MD5;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;

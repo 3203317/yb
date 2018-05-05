@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50617
 File Encoding         : 65001
 
-Date: 2018-05-03 19:49:24
+Date: 2018-05-05 23:33:36
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -396,6 +396,7 @@ CREATE TABLE `s_user` (
   `pid` varchar(255) DEFAULT NULL,
   `user_name` varchar(64) DEFAULT NULL,
   `user_pass` varchar(64) DEFAULT NULL,
+  `salt` varchar(32) DEFAULT NULL,
   `sex` int(2) DEFAULT NULL,
   `mobile` varchar(64) DEFAULT NULL,
   `qq` varchar(64) DEFAULT NULL,
@@ -413,9 +414,9 @@ CREATE TABLE `s_user` (
 -- ----------------------------
 -- Records of s_user
 -- ----------------------------
-INSERT INTO `s_user` VALUES ('1', null, 'hx', 'e10adc3949ba59abbe56e057f20f883e', '1', '123', '1231', '23123', '就不告诉你', '2017-06-07 15:58:16', '2017-06-07 15:58:16', '1', '阿德斯', null, null);
-INSERT INTO `s_user` VALUES ('2', null, 'wy', '2017-06-06 10:29:44', '0', null, null, null, null, null, null, '1', null, null, null);
-INSERT INTO `s_user` VALUES ('22c14bc40b464618a7b1b4631e1e4b44', null, 'hxi', 'e10adc3949ba59abbe56e057f20f883e', null, null, null, null, null, null, '2017-06-07 15:58:16', '1', null, null, null);
+INSERT INTO `s_user` VALUES ('1', null, 'hx', 'e10adc3949ba59abbe56e057f20f883e', null, '1', '123', '1231', '23123', '就不告诉你', '2017-06-07 15:58:16', '2017-06-07 15:58:16', '1', '阿德斯', null, null);
+INSERT INTO `s_user` VALUES ('2', null, 'wy', '2017-06-06 10:29:44', null, '0', null, null, null, null, null, null, '1', null, null, null);
+INSERT INTO `s_user` VALUES ('22c14bc40b464618a7b1b4631e1e4b44', null, 'hxi', 'e10adc3949ba59abbe56e057f20f883e', null, null, null, null, null, null, null, '2017-06-07 15:58:16', '1', null, null, null);
 
 -- ----------------------------
 -- Table structure for `s_user_friends`
