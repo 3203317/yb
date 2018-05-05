@@ -19,7 +19,7 @@
         <dependent-module archiveName="foreworld-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-biz/abc-biz">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="foreworld-app-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-app/abc-app">
+        <dependent-module archiveName="foreworld-app-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-app/foreworld-app">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="foreworld-util-freemarker-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-freemarker/abc-util-freemarker">
