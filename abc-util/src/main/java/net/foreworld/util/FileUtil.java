@@ -17,7 +17,7 @@ public final class FileUtil {
 	/**
 	 *
 	 * @param filePath
-	 * @return
+	 * @return 文件
 	 */
 	public static String read(String filePath) {
 		BufferedInputStream is = null;
@@ -52,6 +52,6 @@ public final class FileUtil {
 
 	public static void main(String[] args) {
 		System.out
-				.println(read("/home/huangxin/my/git/3203317/yb/abc-util/src/main/java/net/abc/util/FileUtil.java"));
+				.println(read("D:/github/3203317/yb/abc-util/src/main/java/net/foreworld/util/FileUtil.java"));
 	}
 }

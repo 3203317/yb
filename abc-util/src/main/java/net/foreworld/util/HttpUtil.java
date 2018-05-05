@@ -57,6 +57,11 @@ public class HttpUtil {
 		return null;
 	}
 
+	/**
+	 *
+	 * @param request
+	 * @return
+	 */
 	protected static Map<String, Cookie> readCookieMap(
 			HttpServletRequest request) {
 		Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
