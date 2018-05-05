@@ -2,9 +2,9 @@ package net.abc.xxx.service;
 
 import java.util.List;
 
-import net.abc.model.ResultMap;
 import net.abc.service.IService;
 import net.abc.xxx.model.ProjForm;
+import net.foreworld.model.ResultMap;
 
 /**
  *

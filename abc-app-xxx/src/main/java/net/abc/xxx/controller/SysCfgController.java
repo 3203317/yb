@@ -8,9 +8,9 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import net.abc.controller.BaseController;
-import net.abc.model.ResultMap;
 import net.abc.xxx.model.SysCfg;
 import net.abc.xxx.service.SysCfgService;
+import net.foreworld.model.ResultMap;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;

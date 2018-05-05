@@ -1,4 +1,4 @@
-package net.abc.model;
+package net.foreworld.model;
 
 import java.io.Serializable;
 

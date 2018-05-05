@@ -8,11 +8,11 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpSession;
 
 import net.abc.controller.BaseController;
-import net.abc.model.ResultMap;
 import net.abc.util.annotation.FormToken;
 import net.abc.util.interceptor.FormTokenInterceptor;
 import net.abc.xxx.model.User;
 import net.abc.xxx.service.UserService;
+import net.foreworld.model.ResultMap;
 import net.foreworld.util.encryptUtil.MD5;
 
 import org.apache.shiro.SecurityUtils;

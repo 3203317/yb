@@ -6,10 +6,10 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 
-import net.abc.model.ResultMap;
 import net.abc.service.impl.BaseService;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.service.ProjService;
+import net.foreworld.model.ResultMap;
 import tk.mybatis.mapper.entity.Example;
 
 /**
