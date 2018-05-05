@@ -2,9 +2,6 @@ package net.abc.util.freemarker;
 
 import java.io.IOException;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import freemarker.cache.StringTemplateLoader;
 import freemarker.core.ParseException;
 import freemarker.template.Configuration;
@@ -19,8 +16,6 @@ import freemarker.template.TemplateNotFoundException;
  */
 public final class TemplateUtil {
 
-	private static final Logger logger = LoggerFactory.getLogger(TemplateUtil.class);
-
 	private static volatile TemplateUtil instance;
 
 	private Configuration config;
@@ -33,7 +28,7 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @return
 	 */
 	public static TemplateUtil getDefault() {
@@ -48,7 +43,7 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @param template
 	 */
@@ -57,14 +52,15 @@ public final class TemplateUtil {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param name
 	 * @return
 	 * @throws MalformedTemplateNameException
 	 * @throws ParseException
 	 * @throws IOException
 	 */
-	public Template getTemplate(String name) throws MalformedTemplateNameException, ParseException, IOException {
+	public Template getTemplate(String name)
+			throws MalformedTemplateNameException, ParseException, IOException {
 
 		try {
 			return config.getTemplate(name, "UTF-8");

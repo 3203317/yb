@@ -45,7 +45,6 @@ public final class Processor {
 		template.process(model, bw);
 
 		if (null != bw) {
-
 			bw.flush();
 			bw.close();
 		}
