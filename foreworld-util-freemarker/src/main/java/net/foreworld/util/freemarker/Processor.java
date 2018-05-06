@@ -1,4 +1,4 @@
-package net.abc.util.freemarker;
+package net.foreworld.util.freemarker;
 
 import java.io.BufferedWriter;
 import java.io.IOException;

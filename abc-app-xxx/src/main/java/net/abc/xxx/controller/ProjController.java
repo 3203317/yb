@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import net.abc.util.freemarker.Processor;
 import net.abc.xxx.init.FreemarkerTemplateResource;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.model.ProjEntity;
@@ -27,6 +26,7 @@ import net.abc.xxx.service.ProjService;
 import net.abc.xxx.util.TempUtil;
 import net.foreworld.controller.BaseController;
 import net.foreworld.util.StringUtil;
+import net.foreworld.util.freemarker.Processor;
 
 /**
  *

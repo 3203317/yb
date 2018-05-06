@@ -1,4 +1,4 @@
-package net.abc.util.freemarker;
+package net.foreworld.util.freemarker;
 
 import java.io.IOException;
 
@@ -61,7 +61,6 @@ public final class TemplateUtil {
 	 */
 	public Template getTemplate(String name)
 			throws MalformedTemplateNameException, ParseException, IOException {
-
 		try {
 			return config.getTemplate(name, "UTF-8");
 		} catch (TemplateNotFoundException e) {
