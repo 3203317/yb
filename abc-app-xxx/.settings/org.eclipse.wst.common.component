@@ -28,9 +28,6 @@
         <dependent-module archiveName="foreworld-util-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-util/foreworld-util">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="foreworld-util-interceptor-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-util-interceptor/abc-util-interceptor">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <property name="java-output-path" value="/foundation-cppt/src/main/webapp/WEB-INF/classes"/>
         <property name="context-root" value="abc-app-xxx"/>
     </wb-module>

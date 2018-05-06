@@ -1,4 +1,4 @@
-package net.abc.util.interceptor;
+package net.foreworld.interceptor.form;
 
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import net.abc.util.annotation.FormToken;
 import net.foreworld.util.RandomUtil;
 import net.foreworld.util.StringUtil;
 
@@ -27,7 +26,7 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 	@Resource
 	private MessageSourceAccessor msa;
 
-	public static final String TOKEN = "__form_token";
+	public static final String TOKEN = "__formToken";
 
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
