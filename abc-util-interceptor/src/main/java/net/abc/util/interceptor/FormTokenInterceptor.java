@@ -8,14 +8,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import net.abc.util.annotation.FormToken;
+import net.foreworld.util.RandomUtil;
+import net.foreworld.util.StringUtil;
+
 import org.springframework.context.support.MessageSourceAccessor;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.method.HandlerMethod;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
-
-import net.abc.util.annotation.FormToken;
-import net.foreworld.util.StringUtil;
-import net.foreworld.util.verifyCode.VerifyCodeUtil;
 
 /**
  *
@@ -30,7 +30,8 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 	public static final String TOKEN = "__form_token";
 
 	@Override
-	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
+			Object handler) throws Exception {
 
 		if (!(handler instanceof HandlerMethod)) {
 			return super.preHandle(req, resp, handler);
@@ -47,7 +48,7 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 
 		if (needSave) {
 			HttpSession session = getSession(req);
-			session.setAttribute(TOKEN, VerifyCodeUtil.generateVerifyCode(4));
+			session.setAttribute(TOKEN, RandomUtil.genRandomCode(4));
 			return true;
 		}
 
@@ -59,9 +60,13 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
 
 		if (null == respBody) {
-			resp.sendRedirect("error?code=-1&msg=" + URLEncoder.encode(msa.getMessage("err_form_resubmit"), "utf-8"));
+			resp.sendRedirect("error?code=-1&msg="
+					+ URLEncoder.encode(msa.getMessage("err_form_resubmit"),
+							"utf-8"));
 		} else {
-			resp.getWriter().write("{\"code\":-1,\"msg\":\"" + msa.getMessage("err_form_resubmit") + "\"}");
+			resp.getWriter().write(
+					"{\"code\":-1,\"msg\":\""
+							+ msa.getMessage("err_form_resubmit") + "\"}");
 		}
 
 		return false;
@@ -92,7 +97,7 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 	}
 
 	/**
-	 * 
+	 *
 	 * @param req
 	 * @return
 	 */
