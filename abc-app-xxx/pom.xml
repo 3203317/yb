@@ -336,7 +336,12 @@
 		</dependency>
 		<dependency>
 			<groupId>net.foreworld</groupId>
-			<artifactId>foreworld-util-interceptor</artifactId>
+			<artifactId>foreworld-interceptor-form</artifactId>
+			<version>1.0.1</version>
+		</dependency>
+		<dependency>
+			<groupId>net.foreworld</groupId>
+			<artifactId>foreworld-util-verifycode</artifactId>
 			<version>1.0.1</version>
 		</dependency>
 	</dependencies>

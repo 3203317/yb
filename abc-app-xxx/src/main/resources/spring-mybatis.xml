@@ -127,8 +127,8 @@
 		<property name="maxUploadSize" value="9999999" />
 	</bean>
 
-	<bean id="formTokenInterceptor" class="net.abc.util.interceptor.FormTokenInterceptor" />
-	<bean id="verifyCodeInterceptor" class="net.abc.util.interceptor.VerifyCodeInterceptor" />
+	<bean id="formTokenInterceptor" class="net.foreworld.interceptor.form.FormTokenInterceptor" />
+	<!-- <bean id="verifyCodeInterceptor" class="net.abc.util.interceptor.VerifyCodeInterceptor" /> -->
 
 	<mvc:interceptors>
 
@@ -138,11 +138,11 @@
 			<ref bean="formTokenInterceptor" />
 		</mvc:interceptor>
 
-		<mvc:interceptor>
+		<!-- <mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<mvc:exclude-mapping path="/static/**" />
 			<ref bean="verifyCodeInterceptor" />
-		</mvc:interceptor>
+		</mvc:interceptor> -->
 
 	</mvc:interceptors>
 
