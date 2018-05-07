@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import net.abc.xxx.model.SysCfg;
 import net.abc.xxx.service.SysCfgService;
 import net.foreworld.model.ResultMap;
-import net.foreworld.test.BasicTest;
 
 import org.junit.Assert;
 import org.junit.Test;

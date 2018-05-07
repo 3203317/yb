@@ -8,7 +8,6 @@ import javax.transaction.Transactional;
 import net.abc.xxx.model.Role;
 import net.abc.xxx.service.RoleService;
 import net.foreworld.model.ResultMap;
-import net.foreworld.test.BasicTest;
 
 import org.junit.Assert;
 import org.junit.Test;

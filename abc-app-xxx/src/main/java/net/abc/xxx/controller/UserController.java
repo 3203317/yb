@@ -14,6 +14,7 @@ import net.foreworld.interceptor.form.FormToken;
 import net.foreworld.interceptor.form.FormTokenInterceptor;
 import net.foreworld.model.ResultMap;
 import net.foreworld.util.encrypt.MD5;
+import net.foreworld.util.verifycode.VerifyCode;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -154,24 +155,13 @@ public class UserController extends BaseController {
 	}
 
 	@FormToken
+	@VerifyCode
 	@ResponseBody
 	@RequestMapping(value = { "/user/profile" }, method = RequestMethod.POST, produces = "application/json")
 	public Map<String, Object> profile(HttpSession session, User user) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
-		// ResultMap<Void> verifyToken = verifyToken(session, verify_token);
-		// if (!verifyToken.isValid()) {
-		// result.put("msg", verifyToken.getMsg());
-		// return result;
-		// }
-		//
-		// ResultMap<Void> verifyImg = verifyImg(session, verify_imgCode);
-		//
-		// if (!verifyImg.isValid()) {
-		// result.put("msg", verifyImg.getMsg());
-		// return result;
-		// }
 
 		// 设置主键
 		user.setId(session.getAttribute("session.user.id").toString());
