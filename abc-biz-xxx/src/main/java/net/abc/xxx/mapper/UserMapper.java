@@ -1,1 +1,1 @@
-package net.abc.xxx.mapper;import net.abc.mapper.MyMapper;import net.abc.xxx.model.User;/** *  * @author huangxin <3203317@qq.com> * */public interface UserMapper extends MyMapper<User> {}
+package net.abc.xxx.mapper;import net.abc.xxx.model.User;import net.foreworld.mapper.MyMapper;/** *  * @author huangxin <3203317@qq.com> * */public interface UserMapper extends MyMapper<User> {}

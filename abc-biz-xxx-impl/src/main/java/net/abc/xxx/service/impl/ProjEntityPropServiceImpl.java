@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 
 import com.github.pagehelper.PageHelper;
 
-import net.abc.service.impl.BaseService;
 import net.abc.xxx.mapper.ProjEntityPropMapper;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.service.ProjEntityPropService;
 import net.foreworld.model.ResultMap;
+import net.foreworld.service.impl.BaseService;
 import net.foreworld.util.StringUtil;
 import tk.mybatis.mapper.entity.Example;
 

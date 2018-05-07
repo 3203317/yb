@@ -1,1 +1,1 @@
-package net.abc.xxx.mapper;import net.abc.mapper.MyMapper;import net.abc.xxx.model.Menu;/** *  * @author huangxin <3203317@qq.com> * */public interface MenuMapper extends MyMapper<Menu> {}
+package net.abc.xxx.mapper;import net.abc.xxx.model.Menu;import net.foreworld.mapper.MyMapper;/** *  * @author huangxin <3203317@qq.com> * */public interface MenuMapper extends MyMapper<Menu> {}

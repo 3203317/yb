@@ -1,7 +1,7 @@
 package net.abc.xxx.mapper;
 
-import net.abc.mapper.MyMapper;
 import net.abc.xxx.model.Proj;
+import net.foreworld.mapper.MyMapper;
 
 /**
  * 

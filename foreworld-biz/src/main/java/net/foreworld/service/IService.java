@@ -1,4 +1,4 @@
-package net.abc.service;
+package net.foreworld.service;
 
 import java.util.List;
 

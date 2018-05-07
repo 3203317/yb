@@ -2,9 +2,9 @@ package net.abc.xxx.service;
 
 import java.util.List;
 
-import net.abc.service.IService;
 import net.abc.xxx.model.Menu;
 import net.foreworld.model.ResultMap;
+import net.foreworld.service.IService;
 
 /**
  *
