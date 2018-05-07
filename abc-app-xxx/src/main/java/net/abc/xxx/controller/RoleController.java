@@ -1,8 +1,8 @@
 package net.abc.xxx.controller;
 
-import org.springframework.stereotype.Controller;
-
 import net.foreworld.controller.BaseController;
+
+import org.springframework.stereotype.Controller;
 
 /**
  * 

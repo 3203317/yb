@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import net.abc.xxx.model.Notice;
 import net.abc.xxx.service.NoticeService;
 import net.foreworld.model.ResultMap;
-import net.foreworld.test.BasicTest;
 
 import org.junit.Assert;
 import org.junit.Test;

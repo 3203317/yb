@@ -4,12 +4,12 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import net.foreworld.controller.BaseController;
+
 import org.apache.shiro.SecurityUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import net.foreworld.controller.BaseController;
 
 /**
  *

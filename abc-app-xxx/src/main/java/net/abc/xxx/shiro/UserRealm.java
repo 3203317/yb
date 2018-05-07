@@ -2,6 +2,9 @@ package net.abc.xxx.shiro;
 
 import javax.annotation.Resource;
 
+import net.abc.xxx.model.User;
+import net.abc.xxx.service.UserService;
+
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -11,9 +14,6 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
-
-import net.abc.xxx.model.User;
-import net.abc.xxx.service.UserService;
 
 /**
  * 

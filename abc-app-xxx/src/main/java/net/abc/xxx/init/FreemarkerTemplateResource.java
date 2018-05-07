@@ -3,6 +3,9 @@ package net.abc.xxx.init;
 import java.io.File;
 import java.io.IOException;
 
+import net.foreworld.util.FileUtil;
+import net.foreworld.util.freemarker.TemplateUtil;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
@@ -10,8 +13,6 @@ import org.springframework.stereotype.Component;
 import freemarker.core.ParseException;
 import freemarker.template.MalformedTemplateNameException;
 import freemarker.template.TemplateNotFoundException;
-import net.foreworld.util.FileUtil;
-import net.foreworld.util.freemarker.TemplateUtil;
 
 /**
  * 
