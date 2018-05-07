@@ -13,16 +13,7 @@
         <dependent-module archiveName="abc-model-xxx-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/abc-model-xxx/abc-model-xxx">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="foreworld-model-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-model/foreworld-model">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
         <dependent-module archiveName="foreworld-biz-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-biz/foreworld-biz">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="foreworld-app-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-app/foreworld-app">
-            <dependency-type>uses</dependency-type>
-        </dependent-module>
-        <dependent-module archiveName="foreworld-interceptor-form-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-interceptor-form/foreworld-interceptor-form">
             <dependency-type>uses</dependency-type>
         </dependent-module>
         <dependent-module archiveName="foreworld-util-verifycode-1.0.1.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/foreworld-util-verifycode/foreworld-util-verifycode">

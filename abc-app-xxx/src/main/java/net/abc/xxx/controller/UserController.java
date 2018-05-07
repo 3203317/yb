@@ -139,10 +139,12 @@ public class UserController extends BaseController {
 	 * @param map
 	 * @return
 	 */
+	@FormToken(save = true)
 	@RequestMapping(value = { "/user/profile" }, method = RequestMethod.GET)
 	public String profileUI(HttpSession session, Map<String, Object> map) {
 		map.put("verify_token",
 				session.getAttribute(FormTokenInterceptor.TOKEN));
+
 		User user = userService.selectByKey(session.getAttribute(
 				"session.user.id").toString());
 		map.put("data_user", user);
@@ -151,11 +153,10 @@ public class UserController extends BaseController {
 		return "user/1.0.2/profile";
 	}
 
+	@FormToken
 	@ResponseBody
 	@RequestMapping(value = { "/user/profile" }, method = RequestMethod.POST, produces = "application/json")
-	public Map<String, Object> profile(HttpSession session,
-			@RequestParam(required = true) String verify_token,
-			@RequestParam(required = true) String verify_imgCode, User user) {
+	public Map<String, Object> profile(HttpSession session, User user) {
 
 		Map<String, Object> result = new HashMap<String, Object>();
 		result.put("success", false);
