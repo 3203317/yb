@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="net.abc.xxx.mapper.ProjFormPropMapper">
+
+  <resultMap id="BaseResultMap" type="net.abc.xxx.model.ProjFormProp">
+    <id column="id" property="id" jdbcType="VARCHAR"></id>
+    <id column="form_id" property="form_id" jdbcType="VARCHAR"></id>
+    <result column="sort" property="sort" jdbcType="INTEGER"></result>
+    <result column="prop_name" property="prop_name" jdbcType="VARCHAR"></result>
+    <result column="create_time" property="create_time" jdbcType="TIMESTAMP"></result>
+    <result column="control_type" property="control_type" jdbcType="INTEGER"></result>
+  </resultMap>
+     
+  <resultMap id="ExtResultMap" type="net.abc.xxx.model.ProjFormProp" extends="BaseResultMap">
+    <result column="is_pk" property="is_pk" jdbcType="INTEGER"></result>
+    <result column="prop_type" property="prop_type" jdbcType="VARCHAR"></result>
+  </resultMap>
+
+	<select id="findByFormId" parameterType="java.lang.String"
+		resultMap="ExtResultMap">
+		SELECT c.prop_type, c.is_pk, a.* FROM (SELECT * FROM
+		gen_proj_form_prop WHERE
+		form_id=#{form_id}) a LEFT JOIN gen_proj_form
+		b ON (a.form_id=b.id)
+		LEFT JOIN gen_proj_entity_prop c ON
+		(c.proj_id=b.proj_id AND
+		c.entity_id=b.entity_id AND c.id=a.id) ORDER
+		BY a.sort
+	</select>
+</mapper>

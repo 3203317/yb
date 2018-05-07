@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="net.abc.xxx.mapper.ProjFormMapper">
+
+	<resultMap id="BaseResultMap" type="net.abc.xxx.model.ProjForm">
+		<id column="id" property="id" jdbcType="VARCHAR" />
+		<result column="form_name" property="form_name" jdbcType="VARCHAR" />
+		<result column="form_desc" property="form_desc" jdbcType="VARCHAR" />
+		<result column="create_time" property="create_time" jdbcType="TIMESTAMP" />
+
+		<result column="proj_id" property="proj_id" jdbcType="VARCHAR" />
+		<result column="form_type" property="form_type" jdbcType="INTEGER" />
+		<result column="entity_id" property="entity_id" jdbcType="VARCHAR" />
+	</resultMap>
+
+	<select id="findByProjId" parameterType="java.lang.String"
+		resultMap="BaseResultMap">
+		SELECT a.* FROM
+		gen_proj_form a LEFT JOIN
+		gen_proj_entity b
+		ON
+		(a.entity_id=b.id AND a.proj_id=b.proj_id)
+		WHERE
+		b.id IS NOT NULL AND
+		a.proj_id=#{proj_id} ORDER BY a.create_time
+	</select>
+</mapper>
