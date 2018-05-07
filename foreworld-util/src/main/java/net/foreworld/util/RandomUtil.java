@@ -19,8 +19,7 @@ public class RandomUtil {
 		String str = "";
 
 		for (int i = 0; i < size; i++) {
-			int s = (int) Math.floor(Math.random() * 10);
-			str += s;
+			str += (int) Math.floor(Math.random() * 10);
 		}
 
 		return str;
