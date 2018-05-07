@@ -2,15 +2,17 @@ package net.abc.xxx.service.impl;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
+import net.abc.xxx.mapper.SysCfgMapper;
 import net.abc.xxx.model.SysCfg;
 import net.abc.xxx.service.SysCfgService;
 import net.foreworld.model.ResultMap;
 import net.foreworld.service.impl.BaseService;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
+
+import com.github.pagehelper.PageHelper;
 
 /**
  *
@@ -18,7 +20,8 @@ import tk.mybatis.mapper.entity.Example;
  *
  */
 @Service("sysCfgService")
-public class SysCfgServiceImpl extends BaseService<SysCfg> implements SysCfgService {
+public class SysCfgServiceImpl extends BaseService<SysCfgMapper, SysCfg>
+		implements SysCfgService {
 
 	@Override
 	public int updateNotNull(SysCfg entity) {

@@ -3,19 +3,18 @@ package net.abc.xxx.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import javax.annotation.Resource;
-
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
 import net.abc.xxx.mapper.ProjFormPropMapper;
 import net.abc.xxx.model.ProjFormProp;
 import net.abc.xxx.service.ProjFormPropService;
 import net.foreworld.model.ResultMap;
 import net.foreworld.service.impl.BaseService;
 import net.foreworld.util.StringUtil;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
+
+import com.github.pagehelper.PageHelper;
 
 /**
  *
@@ -23,14 +22,13 @@ import tk.mybatis.mapper.entity.Example;
  *
  */
 @Service("projFormPropService")
-public class ProjFormPropServiceImpl extends BaseService<ProjFormProp> implements ProjFormPropService {
-
-	@Resource
-	private ProjFormPropMapper projFormPropMapper;
+public class ProjFormPropServiceImpl extends
+		BaseService<ProjFormPropMapper, ProjFormProp> implements
+		ProjFormPropService {
 
 	@Override
 	public List<ProjFormProp> findByFormId(String form_id) {
-		return projFormPropMapper.findByFormId(form_id);
+		return findByFormId(form_id);
 	}
 
 	@Override
@@ -46,7 +44,8 @@ public class ProjFormPropServiceImpl extends BaseService<ProjFormProp> implement
 	}
 
 	@Override
-	public List<ProjFormProp> findByProjFormProp(ProjFormProp entity, int page, int rows) {
+	public List<ProjFormProp> findByProjFormProp(ProjFormProp entity, int page,
+			int rows) {
 		Example example = new Example(ProjFormProp.class);
 		example.setOrderByClause("id ASC");
 

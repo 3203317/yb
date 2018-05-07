@@ -4,10 +4,6 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
 import net.abc.xxx.mapper.ProjFormMapper;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.model.ProjForm;
@@ -15,15 +11,21 @@ import net.abc.xxx.service.ProjFormService;
 import net.foreworld.model.ResultMap;
 import net.foreworld.service.impl.BaseService;
 import net.foreworld.util.StringUtil;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
 
+import com.github.pagehelper.PageHelper;
+
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
 @Service("projFormService")
-public class ProjFormServiceImpl extends BaseService<ProjForm> implements ProjFormService {
+public class ProjFormServiceImpl extends BaseService<ProjFormMapper, ProjForm>
+		implements ProjFormService {
 
 	@Override
 	public List<ProjForm> findByProjForm(ProjForm entity, int page, int rows) {

@@ -2,23 +2,26 @@ package net.abc.xxx.service.impl;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
+import net.abc.xxx.mapper.ProjMapper;
 import net.abc.xxx.model.Proj;
 import net.abc.xxx.service.ProjService;
 import net.foreworld.model.ResultMap;
 import net.foreworld.service.impl.BaseService;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
 
+import com.github.pagehelper.PageHelper;
+
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
 @Service("projService")
-public class ProjServiceImpl extends BaseService<Proj> implements ProjService {
+public class ProjServiceImpl extends BaseService<ProjMapper, Proj> implements
+		ProjService {
 
 	@Override
 	public List<Proj> findByProj(Proj entity, int page, int rows) {

@@ -15,40 +15,41 @@ public interface ProjFormPropService extends IService<ProjFormProp> {
 
 	List<ProjFormProp> findByFormId(String form_id);
 
-    /**
-     *
-     * @param id
-     * @return
-     */
-    ResultMap<Void> remove(String id);
+	/**
+	 *
+	 * @param id
+	 * @return
+	 */
+	ResultMap<Void> remove(String id);
 
-    /**
-     *
-     * @param entity
-     * @return
-     */
-    ResultMap<Void> editInfo(ProjFormProp entity);
+	/**
+	 *
+	 * @param entity
+	 * @return
+	 */
+	ResultMap<Void> editInfo(ProjFormProp entity);
 
-    /**
-     *
-     * @param entity
-     * @return
-     */
-    ResultMap<ProjFormProp> saveNew(ProjFormProp entity);
+	/**
+	 *
+	 * @param entity
+	 * @return
+	 */
+	ResultMap<ProjFormProp> saveNew(ProjFormProp entity);
 
-    /**
-     *
-     * @param entity
-     * @param page
-     * @param rows
-     * @return
-     */
-    List<ProjFormProp> findByProjFormProp(ProjFormProp entity, int page, int rows);
+	/**
+	 *
+	 * @param entity
+	 * @param page
+	 * @param rows
+	 * @return
+	 */
+	List<ProjFormProp> findByProjFormProp(ProjFormProp entity, int page,
+			int rows);
 
-    /**
-     *
-     * @param entity
-     * @return
-     */
-    ProjFormProp getByProjFormProp(ProjFormProp entity);
+	/**
+	 *
+	 * @param entity
+	 * @return
+	 */
+	ProjFormProp getByProjFormProp(ProjFormProp entity);
 }

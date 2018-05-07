@@ -3,16 +3,18 @@ package net.abc.xxx.service.impl;
 import java.util.Date;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
+import net.abc.xxx.mapper.ProjEntityMapper;
 import net.abc.xxx.model.ProjEntity;
 import net.abc.xxx.service.ProjEntityService;
 import net.foreworld.model.ResultMap;
 import net.foreworld.service.impl.BaseService;
 import net.foreworld.util.StringUtil;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
+
+import com.github.pagehelper.PageHelper;
 
 /**
  *
@@ -20,7 +22,8 @@ import tk.mybatis.mapper.entity.Example;
  *
  */
 @Service("projEntityService")
-public class ProjEntityServiceImpl extends BaseService<ProjEntity> implements ProjEntityService {
+public class ProjEntityServiceImpl extends
+		BaseService<ProjEntityMapper, ProjEntity> implements ProjEntityService {
 
 	@Override
 	public int save(ProjEntity entity) {
@@ -35,7 +38,8 @@ public class ProjEntityServiceImpl extends BaseService<ProjEntity> implements Pr
 	}
 
 	@Override
-	public List<ProjEntity> findByProjEntity(ProjEntity entity, int page, int rows) {
+	public List<ProjEntity> findByProjEntity(ProjEntity entity, int page,
+			int rows) {
 		Example example = new Example(ProjEntity.class);
 		example.setOrderByClause("id ASC");
 

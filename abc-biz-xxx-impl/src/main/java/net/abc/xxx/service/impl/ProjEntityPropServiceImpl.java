@@ -5,25 +5,28 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
-import org.springframework.stereotype.Service;
-
-import com.github.pagehelper.PageHelper;
-
 import net.abc.xxx.mapper.ProjEntityPropMapper;
 import net.abc.xxx.model.ProjEntityProp;
 import net.abc.xxx.service.ProjEntityPropService;
 import net.foreworld.model.ResultMap;
 import net.foreworld.service.impl.BaseService;
 import net.foreworld.util.StringUtil;
+
+import org.springframework.stereotype.Service;
+
 import tk.mybatis.mapper.entity.Example;
 
+import com.github.pagehelper.PageHelper;
+
 /**
- * 
+ *
  * @author huangxin <3203317@qq.com>
  *
  */
 @Service("projEntityPropService")
-public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> implements ProjEntityPropService {
+public class ProjEntityPropServiceImpl extends
+		BaseService<ProjEntityPropMapper, ProjEntityProp> implements
+		ProjEntityPropService {
 
 	@Override
 	public int updateNotNull(ProjEntityProp entity) {
@@ -38,7 +41,8 @@ public class ProjEntityPropServiceImpl extends BaseService<ProjEntityProp> imple
 	}
 
 	@Override
-	public List<ProjEntityProp> findByProjEntityProp(ProjEntityProp entity, int page, int rows) {
+	public List<ProjEntityProp> findByProjEntityProp(ProjEntityProp entity,
+			int page, int rows) {
 
 		Example example = new Example(ProjEntityProp.class);
 		example.setOrderByClause("is_pk desc");
