@@ -26,7 +26,7 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 	@Resource
 	private MessageSourceAccessor msa;
 
-	public static final String TOKEN = "__formToken";
+	public static final String TOKEN = "__formToken__";
 
 	@Override
 	public boolean preHandle(HttpServletRequest req, HttpServletResponse resp,
@@ -59,12 +59,12 @@ public class FormTokenInterceptor extends HandlerInterceptorAdapter {
 		ResponseBody respBody = method.getAnnotation(ResponseBody.class);
 
 		if (null == respBody) {
-			resp.sendRedirect("error?code=-1&msg="
+			resp.sendRedirect("error?code=ERR_FORM_RESUBMIT&msg="
 					+ URLEncoder.encode(msa.getMessage("err_form_resubmit"),
 							"utf-8"));
 		} else {
 			resp.getWriter().write(
-					"{\"code\":-1,\"msg\":\""
+					"{\"code\":\"ERR_FORM_RESUBMIT\",\"msg\":\""
 							+ msa.getMessage("err_form_resubmit") + "\"}");
 		}
 

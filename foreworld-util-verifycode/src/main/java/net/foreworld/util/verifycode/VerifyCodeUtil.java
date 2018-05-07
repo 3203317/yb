@@ -251,7 +251,7 @@ public class VerifyCodeUtil {
 	public static void main(String[] args) throws IOException {
 		File dir = new File("d:/");
 		int w = 200, h = 80;
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 1; i++) {
 			String verifyCode = RandomUtil.genRandomCode(4);
 			File file = new File(dir, verifyCode + ".jpg");
 			outputImage(w, h, file, verifyCode);
