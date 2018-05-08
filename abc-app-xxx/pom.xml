@@ -27,7 +27,7 @@
 		<pagehelper.version>4.0.3</pagehelper.version>
 		<mysql.version>5.1.29</mysql.version>
 		<spring.version>4.2.4.RELEASE</spring.version>
-		<spring.boot>1.5.3.RELEASE</spring.boot>
+		<spring.boot>1.5.9.RELEASE</spring.boot>
 	</properties>
 
 	<dependencies>
